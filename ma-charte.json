@@ -457,5 +457,151 @@
       "NOM_9x16.mp4",
       "NOM_4x5.mp4"
     ]
+  },
+  "moteur": {
+    "description": "Réglages du moteur d'animation Remotion (dossier moteur/). Les temps sont en secondes, les positions en pixels sur une image 1080×1920.",
+    "accent": "#FF4D00",
+    "sous_titres": {
+      "mode_par_defaut": "mot_a_mot",
+      "modes": {
+        "mot_a_mot": "Chaque mot apparaît quand il est dit, le mot en cours passe en orange, les mots-clés sont en Figtree Black. Même place, même taille, même police de base et même ombre que la première vidéo.",
+        "premiere_video": "Rendu exact de la première vidéo (sous-titres normaux + phrases fortes), incrusté par outils/sous_titres.py après le rendu Remotion.",
+        "aucun": "Pas de sous-titres."
+      },
+      "apparition_s": 0.13,
+      "mot_actif_couleur": "#FF4D00",
+      "mots_cles_police": "Figtree Black",
+      "max_mots": 4,
+      "max_caracteres": 18,
+      "pause_coupure_s": 0.35,
+      "maintien_apres_s": 0.5,
+      "masquer_pendant": [
+        "grand_titre",
+        "carte_fin"
+      ]
+    },
+    "accroche": {
+      "surtitre_police": "Figtree Bold",
+      "surtitre_taille_px": 34,
+      "surtitre_y": 440,
+      "delai_titre_s": 0.35,
+      "lettres_par_s": 24,
+      "titre_y_premiere_ligne": 560,
+      "ecart_lignes_px": 140
+    },
+    "grand_titre": {
+      "centre_y": 860,
+      "flou_visage_px": 26,
+      "assombrissement": 0.5,
+      "perspective_px": 1400,
+      "rotation_depart_deg": 75,
+      "decalage_lignes_s": 0.1
+    },
+    "icone": {
+      "taille_px": 280,
+      "x": 540,
+      "y": 640,
+      "particules": 14,
+      "duree_trace_s": 0.5
+    },
+    "chiffre": {
+      "taille_px": 200,
+      "x": 540,
+      "y": 980,
+      "duree_comptage_s": 1.0
+    },
+    "carte": {
+      "rect_video": [
+        90,
+        420,
+        430,
+        764
+      ],
+      "rect_panneau": [
+        550,
+        420,
+        440,
+        764
+      ],
+      "rayon_px": 36,
+      "duree_reduction_s": 0.45,
+      "debut_panneau_s": 0.27
+    },
+    "chat": {
+      "lettres_par_s": 28,
+      "delai_frappe_s": 0.3,
+      "pause_avant_envoi_s": 0.2,
+      "attente_reponse_s": 0.5,
+      "mots_par_s": 13
+    },
+    "checklist": {
+      "premier_coche_s": 0.5,
+      "intervalle_s": 0.45
+    },
+    "entonnoir": {
+      "intervalle_s": 0.3
+    },
+    "camera": {
+      "cadrages": [
+        1.0,
+        1.18,
+        1.08,
+        1.26
+      ],
+      "decalages_x": [
+        0,
+        -0.03,
+        0.025,
+        0
+      ],
+      "avancee_par_plan": 0.04,
+      "visage_par_defaut": [
+        0.5,
+        0.37
+      ],
+      "zoom_duree_s": 0.25
+    },
+    "transitions": {
+      "duree_s": 0.5,
+      "lumiere_couleurs": [
+        "#FF4D00",
+        "#FFB070",
+        "#FFFFFF"
+      ]
+    },
+    "ambiance": {
+      "grain_opacite": 0.07,
+      "vignette": 0.25,
+      "etalonnage_css": "contrast(1.08) saturate(0.92) brightness(0.985)",
+      "chapitres_y": 338
+    },
+    "carte_fin": {
+      "police_nom": "Figtree Black",
+      "taille_nom_px": 104
+    },
+    "sons": {
+      "volumes": {
+        "whoosh": 0.2,
+        "montee": 0.14,
+        "impact": 0.26,
+        "scintillement": 0.12,
+        "pop": 0.2,
+        "frappe": 0.05
+      }
+    },
+    "musique": {
+      "sous_la_voix_db": -20,
+      "baisse_quand_je_parle_db": -6,
+      "attaque_s": 0.12,
+      "relache_s": 0.45,
+      "normalisation_lufs": -14
+    },
+    "rendu": {
+      "crf": 18,
+      "audio_kbps": 256,
+      "loudness_lufs": -14,
+      "crete_dbtp": -1,
+      "format_4x5": "recadrage centré 1080×1350 (lignes 285 à 1635)"
+    }
   }
 }
