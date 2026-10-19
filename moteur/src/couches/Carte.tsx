@@ -13,7 +13,8 @@ export const Carte: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const C = charte.moteur.carte;
   const [x, y, w, h] = C.rect_panneau;
   const entree = easeOut(prog(t, e._t.panneau, e._t.panneau + 0.35));
-  const sortie = prog(t, e.fin - C.duree_reduction_s, e.fin - 0.05);
+  // le panneau disparaît juste AVANT que la vidéo reprenne tout l'écran (sinon il passe sur le visage)
+  const sortie = prog(t, e.fin - C.duree_reduction_s - 0.18, e.fin - C.duree_reduction_s + 0.02);
   const props = {e, t, charte};
   return (
     <div style={{position: 'absolute', left: x, top: y, width: w, height: h, opacity: entree * (1 - sortie), transform: `translateX(${((1 - entree) * 70 + sortie * 50).toFixed(1)}px)`}}>

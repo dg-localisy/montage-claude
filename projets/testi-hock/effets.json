@@ -1,0 +1,243 @@
+{
+ "_aide": "Témoignage Gary Hock (L'Immobilière Hock), version test 1. Temps en secondes. Rendu : cd moteur && node scripts/rendu.mjs ../projets/testi-hock/effets.json --nom testi-hock, puis outils/son_final.py. Mots : tous les mots dits sauf 4 hésitations (euh, ben), « trois » écrit « 3 ».",
+ "duree": 53.93,
+ "fps": 25,
+ "rush": {
+  "video": "../../Testi-Hock-compressed.mp4",
+  "mots": "mots.json"
+ },
+ "musique": {
+  "actif": false
+ },
+ "sous_titres": {
+  "mode": "mot_a_mot",
+  "mots_cles": [
+   "3",
+   "LOCALISY",
+   "Gary",
+   "Hock",
+   "fondateur",
+   "agences",
+   "Liège",
+   "cents",
+   "ventes",
+   "pas",
+   "évoluer",
+   "compétentes",
+   "vite",
+   "Google",
+   "IA",
+   "rien",
+   "ans",
+   "marketing",
+   "passerelle",
+   "technique",
+   "ciblage",
+   "site",
+   "contenu",
+   "ChatGPT",
+   "l'IA",
+   "outil",
+   "leads",
+   "rapportent",
+   "viennent",
+   "claire",
+   "investissement"
+  ]
+ },
+ "camera": {
+  "visage": [
+   0.57,
+   0.35
+  ],
+  "coupes": [
+   3.64,
+   8.84,
+   10.32,
+   16.2,
+   19.12,
+   21.4,
+   23.36,
+   29.44,
+   34.84,
+   36.72,
+   38.88,
+   40.6,
+   44.6,
+   48.12,
+   49.96,
+   51.04,
+   51.72
+  ]
+ },
+ "ambiance": {
+  "grain": 0.06,
+  "etalonnage": true
+ },
+ "effets": [
+  {
+   "type": "accroche",
+   "debut": 0.0,
+   "fin": 3.6,
+   "surtitre": "Témoignage client",
+   "titre": "Chiffre d'affaires ×3",
+   "mot_accent": "×3"
+  },
+  {
+   "type": "accroche",
+   "debut": 3.7,
+   "fin": 6.2,
+   "surtitre": "Fondateur · L'Immobilière Hock",
+   "titre": "Gary Hock"
+  },
+  {
+   "type": "chiffre",
+   "debut": 6.6,
+   "fin": 8.3,
+   "valeur": 3,
+   "legende": "agences immobilières"
+  },
+  {
+   "type": "icone",
+   "icone": "epingle",
+   "debut": 8.3,
+   "fin": 9.4
+  },
+  {
+   "type": "chiffre",
+   "debut": 9.4,
+   "fin": 10.3,
+   "valeur": 200,
+   "prefixe": "+",
+   "legende": "ventes par an",
+   "duree_comptage": 0.5
+  },
+  {
+   "type": "zoom",
+   "debut": 13.28,
+   "fin": 16.1,
+   "a": 1.15,
+   "duree": 0.15
+  },
+  {
+   "type": "icone",
+   "icone": "courbe",
+   "debut": 15.65,
+   "fin": 16.9
+  },
+  {
+   "type": "grand_titre",
+   "debut": 17.45,
+   "fin": 19.1,
+   "lignes": [
+    "S'entourer de",
+    "personnes",
+    "compétentes"
+   ],
+   "mot_accent": "COMPÉTENTES"
+  },
+  {
+   "type": "zoom",
+   "debut": 20.48,
+   "fin": 21.38,
+   "a": 1.22,
+   "duree": 0.22
+  },
+  {
+   "type": "icone",
+   "icone": "cible",
+   "debut": 22.4,
+   "fin": 23.3
+  },
+  {
+   "type": "icone",
+   "icone": "etincelle",
+   "debut": 23.9,
+   "fin": 25.2
+  },
+  {
+   "type": "zoom",
+   "debut": 26.3,
+   "fin": 26.65,
+   "a": 1.15,
+   "duree": 0.15
+  },
+  {
+   "type": "carte",
+   "animation": "gros_chiffre",
+   "debut": 27.6,
+   "fin": 29.42,
+   "titre": "Avec LOCALISY depuis",
+   "texte": "4 à 5 ans"
+  },
+  {
+   "type": "zoom",
+   "debut": 33.2,
+   "fin": 34.8,
+   "a": 1.15,
+   "duree": 0.15
+  },
+  {
+   "type": "carte",
+   "animation": "checklist",
+   "debut": 35.7,
+   "fin": 44.55,
+   "titre": "Il s'occupe de",
+   "items": [
+    "Le ciblage",
+    "La passerelle avec le site",
+    "La création de contenu",
+    "La visibilité dans ChatGPT"
+   ],
+   "coches": [
+    37.12,
+    38.22,
+    39.34,
+    42.84
+   ]
+  },
+  {
+   "type": "zoom",
+   "debut": 47.26,
+   "fin": 48.1,
+   "a": 1.15,
+   "duree": 0.15
+  },
+  {
+   "type": "carte",
+   "animation": "entonnoir",
+   "debut": 48.15,
+   "fin": 51.7,
+   "titre": "Je sais",
+   "etapes": [
+    {
+     "label": "Combien de leads par mois"
+    },
+    {
+     "label": "Ceux qui me rapportent"
+    },
+    {
+     "label": "D'où ils viennent"
+    }
+   ],
+   "temps_etapes": [
+    48.74,
+    50.28,
+    51.1
+   ]
+  },
+  {
+   "type": "zoom",
+   "debut": 51.8,
+   "fin": 53.93,
+   "a": 1.08,
+   "duree": 2.0
+  },
+  {
+   "type": "signature",
+   "debut": 51.93,
+   "fin": 53.93,
+   "y": 1450
+  }
+ ]
+}
