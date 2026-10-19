@@ -26,11 +26,11 @@ Durée visée : entre 30 et 60 secondes.
 
 On ouvre sur la meilleure phrase du client, même si elle arrive à la fin de l'interview, avec un titre qui reprend l'idée (par exemple « CHIFFRE D'AFFAIRES ×3 »). L'histoire commence juste après.
 
-Pas de sur-titre « Témoignage client ». Le titre de l'accroche, et celui qui présente le client (nom et fonction), se placent tout en haut. Pendant ce temps, l'image descend un peu pour que la tête passe sous le titre. Le haut libéré est rempli par un reflet en miroir du haut de l'image (le mur), pour qu'aucune jonction ne se voie.
+Pas de sur-titre « Témoignage client ». Le titre de l'accroche, et celui qui présente le client (nom et fonction), se placent sous le visage, juste au-dessus des sous-titres. L'image ne bouge jamais pour leur faire de la place.
 
 ## Les sous-titres
 
-**Choix actuel : sous-titres mot à mot.** Chaque mot prononcé est écrit (seules les hésitations validées, « euh », « ben », sont retirées). Chaque mot apparaît quand il est dit, le mot en cours passe en orange, et les mots importants sont en Figtree Black pour ressortir. La place, la taille, la police de base et l'ombre restent celles de la première vidéo.
+**Choix actuel : sous-titres mot à mot.** Chaque mot prononcé est écrit (seules les hésitations validées, « euh », « ben », sont retirées). Chaque mot apparaît quand il est dit, le mot en cours passe en orange, et les mots importants sont en Figtree Black pour ressortir. La taille, la police de base et l'ombre restent celles de la première vidéo ; la ligne est nettement plus bas (75 % de la hauteur, au plus bas de la zone sûre), pour laisser la place au titre d'accroche sous le visage.
 
 L'ancien rendu de la première vidéo reste disponible si on veut y revenir. Il en existe deux sortes, décrites ci-dessous.
 
@@ -38,7 +38,7 @@ L'ancien rendu de la première vidéo reste disponible si on veut y revenir. Il 
 
 - Figtree Light, en blanc, avec une ombre noire douce vers le bas à droite.
 - 1 à 4 mots à la fois (18 caractères maximum), sur une seule ligne.
-- Centrés, aux deux tiers de la hauteur de l'image, toujours au même endroit.
+- Centrés, aux trois quarts de la hauteur de l'image (75 %), toujours au même endroit.
 - Une majuscule en début de phrase et la ponctuation gardée (points, virgules, guillemets).
 - Aucune animation : un groupe remplace l'autre d'un coup. Rien à l'écran pendant les silences.
 - Pas d'orange.
@@ -91,7 +91,7 @@ Rendu naturel contrasté : noirs un peu plus profonds, couleurs légèrement ado
 
 ## La fin
 
-Pas de carte de fin. La vidéo se termine sur la phrase la plus forte du client. Pendant les 2 dernières secondes, le logo LOCALISY apparaît en petit, en blanc : en haut de l'image s'il y a de la place, sinon sous les sous-titres (jamais sur la tête).
+Pas de carte de fin. La vidéo se termine sur la phrase la plus forte du client. Pendant les dernières secondes, le logo LOCALISY apparaît en petit, en blanc : en haut de l'image s'il y a de la place, sinon sous le visage, juste au-dessus des sous-titres (jamais sur la tête), une fois les pastilles ou les chiffres partis.
 
 ## Les formats
 
@@ -133,7 +133,7 @@ Attention, « localisé » et « localiser » sont de vrais mots français. On �
 
 - [ ] Les 2 premières secondes donnent envie de rester.
 - [ ] Rien ne cache le visage du client : ni titre, ni icône, ni chiffre, ni pastille.
-- [ ] Les sous-titres sont à la même place et ont le même rendu que dans la première vidéo.
+- [ ] Les sous-titres sont toujours à la même place (75 % de la hauteur) et ont le même rendu que dans la première vidéo.
 - [ ] LOCALISY est bien écrit partout.
 - [ ] Jamais plus d'un élément orange à la fois.
 - [ ] Le son est à -14 LUFS et la voix reste toujours compréhensible.

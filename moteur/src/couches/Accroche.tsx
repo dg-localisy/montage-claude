@@ -6,14 +6,16 @@ import {easeOut, fondu, prog, sansPonctuation} from '../temps';
 // Accroche d'ouverture : un sur-titre qui glisse, puis un titre qui s'écrit lettre par lettre.
 export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, charte, projet}) => {
   const frame = useCurrentFrame();
-  const {fps, width: W} = useVideoConfig();
+  const {fps, width: W, height: H} = useVideoConfig();
   const t = frame / fps;
   if (t < e.debut || t > e.fin) return null;
   const A = charte.moteur.accroche;
   const ti = charte.titres;
   const accent = charte.couleurs.orange;
-  // Tout en haut de l'image ; la caméra descend l'image pour que le visage reste dessous (miseEnPage.ts).
-  const {presentation, avecSurtitre, surtitreTaille, surtitreY, em, ecart, premiere} = miseEnPageAccroche(e, charte);
+  // Sous le visage, juste au-dessus des sous-titres ; l'image ne bouge pas (miseEnPage.ts).
+  const {presentation, avecSurtitre, surtitreTaille, surtitreY, em, ecart, premiere, haut} = miseEnPageAccroche(e, charte);
+  // léger voile sombre derrière le titre et les sous-titres ; il commence sous le menton
+  const voileHaut = haut - 120;
   const visible = fondu(t, e.debut, e.fin, 0.25);
   const sortie = prog(t, e.fin - 0.3, e.fin);
   const s = easeOut(prog(t, e.debut, e.debut + 0.35));
@@ -31,7 +33,7 @@ export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, chart
 
   return (
     <div style={{position: 'absolute', inset: 0, opacity: visible * (1 - sortie), transform: `translateY(${(-24 * sortie).toFixed(1)}px)`}}>
-      <div style={{position: 'absolute', left: 0, top: 0, width: W, height: 900, background: presentation ? 'linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0) 62%)' : 'linear-gradient(to bottom, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.38) 45%, rgba(0,0,0,0) 72%)'}} />
+      <div style={{position: 'absolute', left: 0, top: voileHaut, width: W, height: H - voileHaut, background: `linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,${presentation ? 0.22 : 0.32}) 30%, rgba(0,0,0,${presentation ? 0.18 : 0.26}) 100%)`}} />
       {avecSurtitre && <div
         style={{
           position: 'absolute', top: surtitreY - surtitreTaille / 2, left: 0, width: W, display: 'flex', justifyContent: 'center', alignItems: 'center',

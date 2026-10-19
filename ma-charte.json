@@ -240,9 +240,9 @@
       "interlettrage_px": 0,
       "position": {
         "x": 540,
-        "y_ass_an2": 1313,
-        "ligne_de_base_y": 1297,
-        "explication": "Centré, ligne de base à 67,5 % de la hauteur : au même endroit que dans la première vidéo."
+        "y_ass_an2": 1456,
+        "ligne_de_base_y": 1440,
+        "explication": "Centré, ligne de base à 75 % de la hauteur : 143 px plus bas que dans la première vidéo (demande de l'utilisateur), au plus bas de la zone sûre, pour laisser la place au titre d'accroche sous le visage. Même taille et même rendu que la première vidéo."
       },
       "mots_par_groupe": {
         "min": 1,
@@ -332,7 +332,7 @@
           55
         ]
       },
-      "centre_vertical_y": 1260,
+      "centre_vertical_y": 1403,
       "animation_entree": {
         "description": "Chaque mot apparaît au moment où il est prononcé : très flou et semi-transparent, net en 100 ms.",
         "flou_depart": 16,
@@ -486,13 +486,11 @@
     "accroche": {
       "surtitre_police": "Figtree Bold",
       "surtitre_taille_px": 34,
-      "surtitre_y": 400,
       "delai_titre_s": 0.35,
       "lettres_par_s": 24,
       "ecart_lignes_px": 140,
-      "placement_titre": "Tout en haut. Pendant l'accroche, l'image descend juste assez pour que le haut de la tête passe sous le titre ; le haut libéré est rempli par un reflet en miroir du haut de l'image, sans flou (sinon un trait sombre apparaît à la jonction).",
-      "titre_haut_px": 350,
-      "marge_tete_px": 45
+      "placement_titre": "Sous le visage, juste au-dessus des sous-titres : le titre se construit de bas en haut à partir des sous-titres. L'image ne bouge jamais pour lui faire de la place.",
+      "marge_sous_titres_px": 50
     },
     "grand_titre": {
       "centre_y": 860,
@@ -514,7 +512,7 @@
     "chiffre": {
       "taille_px": 140,
       "x": 540,
-      "y": 1060,
+      "y": 1203,
       "duree_comptage_s": 0.5,
       "placement": "Sous le visage, juste au-dessus des sous-titres. Le visage n'est plus flouté."
     },
@@ -567,8 +565,7 @@
         0.5,
         0.37
       ],
-      "zoom_duree_s": 0.25,
-      "haut_tete_par_defaut": 0.19
+      "zoom_duree_s": 0.25
     },
     "transitions": {
       "duree_s": 0.5,
@@ -616,7 +613,7 @@
       "format_4x5": "recadrage centré 1080×1350 (lignes 285 à 1635)"
     },
     "liste": {
-      "y": 950,
+      "y": 1093,
       "taille_police_px": 42,
       "ecart_px": 12,
       "description": "Pastilles sous le visage, une par élément, qui glissent quand elles sont dites et restent affichées.",
@@ -642,7 +639,7 @@
   },
   "regles_ecran": [
     "Aucun texte, icône ou chiffre ne cache jamais le visage, même flouté. Seule exception : le grand titre 3D, avec le visage flouté derrière.",
-    "Accroche : pas de sur-titre « Témoignage client ». Le titre est tout en haut et l'image descend pour laisser la tête dessous.",
+    "Accroche : pas de sur-titre « Témoignage client ». Le titre se place sous le visage, juste au-dessus des sous-titres ; l'image ne bouge pas.",
     "Une icône se place juste au-dessus du mot qu'elle illustre.",
     "Les chiffres se placent sous le visage, juste au-dessus des sous-titres.",
     "Deux montages qui se suivent doivent être différents (par exemple une carte, puis des pastilles).",

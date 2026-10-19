@@ -45,7 +45,6 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 - `rush.mots` : temps de chaque mot, au format `[{"mot", "debut", "fin"}]` ou au format brut d'ElevenLabs Scribe (`words`). `rush.voix` est facultatif (sinon on garde le son du rush).
 - `sous_titres.mode` : `mot_a_mot` (par défaut), `premiere_video` (rendu exact de la première vidéo, incrusté après coup par `outils/sous_titres.py`, avec ses `phrases_fortes`) ou `aucun`.
 - `camera.visage` : position des yeux dans l'image (0 à 1). Les zooms sont centrés là.
-- `camera.haut_tete` : hauteur du haut de la tête (0 à 1, environ 0,19 pour un cadrage poitrine). Sert à descendre l'image sous les titres d'accroche.
 - `camera.coupes` : instants des coupes. Le cadrage change à chaque coupe, et l'image avance lentement pendant chaque plan.
 - `musique` : facultative. Elle est jouée 20 dB sous la voix et baisse encore de 6 dB quand on parle (réglages dans `moteur.musique`).
 
@@ -53,7 +52,7 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 
 | type | champs | rôle |
 |---|---|---|
-| `accroche` | `debut`, `fin`, `titre`, `surtitre` (facultatif), `mot_accent` (facultatif), `style` (facultatif) | Titre écrit lettre par lettre, tout en haut ; l'image descend pendant l'accroche pour que la tête passe sous le titre (`camera.haut_tete`). La 1re accroche ouvre la vidéo ; les suivantes (ex. le nom) prennent le style `presentation`, plus discret. |
+| `accroche` | `debut`, `fin`, `titre`, `surtitre` (facultatif), `mot_accent` (facultatif), `style` (facultatif) | Titre écrit lettre par lettre, sous le visage, juste au-dessus des sous-titres ; l'image ne bouge pas. Sur un cadrage très serré (menton bas), vérifier sur les images fixes que le titre ne touche pas le menton. La 1re accroche ouvre la vidéo ; les suivantes (ex. le nom) prennent le style `presentation`, plus discret. |
 | `grand_titre` | `debut`, `fin`, `lignes`, `mot_accent` | Phrase choc en 3D, visage flouté derrière. |
 | `icone` | `debut`, `fin`, `icone`, `mot` (conseillé), ou `x`, `y`, `taille` | `courbe`, `etoile`, `epingle`, `panier`, `coeur`, `bulle`, `cible`, `etincelle`, `ia` (puce « IA »). Rebond + particules. Avec `mot`, l'icône se pose juste au-dessus de ce mot dans les sous-titres et y reste jusqu'à `fin`, même si la ligne change (jamais sur le visage). |
 | `chiffre` | `debut`, `fin`, `valeur`, `de`, `prefixe`, `suffixe`, `decimales`, `legende` | Le chiffre défile jusqu'à sa valeur. |

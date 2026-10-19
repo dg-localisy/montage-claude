@@ -281,7 +281,6 @@ export function preparer(cheminEffets) {
   const cam = effetsJson.camera || {};
   const camera = {
     visage: cam.visage || M.camera.visage_par_defaut,
-    haut_tete: cam.haut_tete ?? M.camera.haut_tete_par_defaut,
     coupes: [...(cam.coupes || [])].sort((a, b) => a - b),
     cadrages: cam.cadrages || M.camera.cadrages,
     decalages_x: cam.decalages_x || M.camera.decalages_x,

@@ -1,19 +1,24 @@
 import {emDepuisAss} from './temps';
 
-// Mise en page d'une accroche, partagée par l'accroche (dessin) et la caméra (qui descend
-// l'image juste assez pour que le haut de la tête passe sous le titre : il ne cache jamais le visage).
+// Mise en page d'une accroche : sous le visage, juste au-dessus des sous-titres.
+// Le titre se construit de bas en haut à partir des sous-titres, l'image ne bouge pas.
+// Rien ne doit cacher le visage : sur un cadrage très serré (menton bas), vérifier les images fixes.
 export const miseEnPageAccroche = (e: any, charte: any) => {
   const A = charte.moteur.accroche;
+  const st = charte.sous_titres.normal;
   const presentation = e.variante === 'presentation';
   const avecSurtitre = Boolean(e.surtitre);
   const surtitreTaille = presentation ? 28 : A.surtitre_taille_px;
-  const surtitreY = A.titre_haut_px + surtitreTaille / 2; // centre du sur-titre
   const em0 = emDepuisAss(132);
   const em = em0 * (presentation ? 0.68 : 1);
   const ecart = (A.ecart_lignes_px / em0) * em;
-  const haut = avecSurtitre ? surtitreY + surtitreTaille / 2 + (presentation ? 22 : 30) : A.titre_haut_px;
-  const premiere = haut + 0.37 * em; // centre des majuscules de la première ligne
   const n = e._t?.lignes?.length ?? 1;
-  const bas = premiere + (n - 1) * ecart + 0.42 * em; // bas des lettres de la dernière ligne
-  return {presentation, avecSurtitre, surtitreTaille, surtitreY, em, ecart, premiere, bas};
+  // haut des majuscules des sous-titres (capitales de Figtree ≈ 0,72 em)
+  const hautSousTitres = st.position.ligne_de_base_y - 0.72 * emDepuisAss(st.taille_ass);
+  const bas = hautSousTitres - A.marge_sous_titres_px; // bas des lettres de la dernière ligne
+  const premiere = bas - (n - 1) * ecart - 0.42 * em; // centre des majuscules de la première ligne
+  const hautTitre = premiere - 0.37 * em;
+  const surtitreY = hautTitre - (presentation ? 22 : 30) - surtitreTaille / 2; // centre du sur-titre
+  const haut = avecSurtitre ? surtitreY - surtitreTaille / 2 : hautTitre; // haut de tout le bloc
+  return {presentation, avecSurtitre, surtitreTaille, surtitreY, em, ecart, premiere, haut, bas};
 };

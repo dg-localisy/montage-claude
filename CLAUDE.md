@@ -65,7 +65,7 @@ polices = sous_titres.dossier_polices_statiques("DOSSIER_TEMP/polices")
 
 - Sous-titres normaux : `{"debut", "fin", "texte"}`, 1 à 4 mots (18 caractères maximum), ponctuation et majuscules gardées, changement instantané.
 - Phrases fortes : `{"debut", "fin", "lignes": [[{"mot", "role", "debut"}, ...], ...]}` avec les rôles `liaison`, `liaison_gras`, `appui`, `fort`, `choc` (un seul `choc` par bloc). Chaque mot passe du flou au net quand il est prononcé.
-- Ne change ni la taille ni la position sans demande de l'utilisateur. Les temps des mots viennent de Scribe (`outils/elevenlabs.py`).
+- Ne change ni la taille ni la position sans demande de l'utilisateur. Position actuelle : ligne de base à 1440 px (75 %, au plus bas de la zone sûre), 143 px plus bas que la première vidéo, à sa demande. Les temps des mots viennent de Scribe (`outils/elevenlabs.py`).
 
 ### Aperçus : `outils/generer_apercus.py`
 
@@ -87,7 +87,7 @@ node scripts/rendu.mjs  CHEMIN/effets.json --nom NOM       # images fixes + vid�
 
 Options : `--sans-stills`, `--sans-4x5`, `--images 0-89`, `--sortie DOSSIER`. Sorties dans `moteur/sortie/` : `NOM_planche.png`, `NOM_stills/`, `NOM_9x16.mp4`, `NOM_4x5.mp4`.
 
-Animations : `accroche` (la 2e prend le style « présentation », pour le nom), `grand_titre`, `icone` (courbe, etoile, epingle, panier, coeur, bulle, cible, etincelle, ia ; toujours avec `mot` pour la poser au-dessus de son mot), `chiffre`, `carte` (chat_ia, entonnoir, gros_chiffre, checklist, avec temps imposés possibles), `liste` (pastilles sous le visage), `plan_de_coupe` (vidéo libre de droits en plein écran), `zoom`, `transition`, `carte_fin`, `signature` (`y` pour la déplacer). Sous-titres : `mot_a_mot` (choix de l'utilisateur), `premiere_video` ou `aucun`. `camera.visage` (yeux), `camera.haut_tete` (haut de la tête, mesuré) et `camera.coupes` (coupes du vidéaste, à détecter) sont importants.
+Animations : `accroche` (la 2e prend le style « présentation », pour le nom), `grand_titre`, `icone` (courbe, etoile, epingle, panier, coeur, bulle, cible, etincelle, ia ; toujours avec `mot` pour la poser au-dessus de son mot), `chiffre`, `carte` (chat_ia, entonnoir, gros_chiffre, checklist, avec temps imposés possibles), `liste` (pastilles sous le visage), `plan_de_coupe` (vidéo libre de droits en plein écran), `zoom`, `transition`, `carte_fin`, `signature` (`y` pour la déplacer). Sous-titres : `mot_a_mot` (choix de l'utilisateur), `premiere_video` ou `aucun`. `camera.visage` (yeux) et `camera.coupes` (coupes du vidéaste, à détecter) sont importants. Les titres d'accroche, chiffres et pastilles se placent sous le visage, au-dessus des sous-titres : l'image ne bouge jamais pour leur faire de la place.
 
 Règles :
 - RÈGLE ABSOLUE de l'utilisateur : rien ne cache jamais le visage (titre, icône, chiffre, pastille), même flouté. Seule exception : le grand titre 3D.

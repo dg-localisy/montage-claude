@@ -68,8 +68,7 @@
    49.96,
    51.04,
    51.72
-  ],
-  "haut_tete": 0.185
+  ]
  },
  "ambiance": {
   "grain": 0.06,
@@ -209,7 +208,7 @@
   {
    "type": "liste",
    "debut": 48.55,
-   "fin": 52.75,
+   "fin": 52.6,
    "items": [
     "Combien de leads par mois",
     "Ce qu'ils me rapportent",
@@ -230,9 +229,9 @@
   },
   {
    "type": "signature",
-   "debut": 51.93,
+   "debut": 52.6,
    "fin": 53.93,
-   "y": 1450
+   "y": 1319
   }
  ]
 }

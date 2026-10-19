@@ -1,6 +1,5 @@
 import React from 'react';
 import {AbsoluteFill, OffthreadVideo, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {miseEnPageAccroche} from '../miseEnPage';
 import {clamp, easeIn, easeInOut, easeOut, fondu, lerp, prog} from '../temps';
 
 type Zoom = {debut: number; fin?: number; a: number; duree: number};
@@ -65,27 +64,6 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
   const echelle = cadrage * avancee * z * (1 + 0.07 * g + 0.03 * v);
   const origine = `${cam.visage[0] * W}px ${cam.visage[1] * H}px`;
 
-  // Pendant une accroche, l'image descend juste assez pour que le haut de la tête passe sous le titre.
-  // Entre deux accroches rapprochées, le changement se fait sur la coupe (invisible), sinon en douceur.
-  const yeux = cam.visage[1] * H;
-  const hautTete = yeux - echelle * (yeux - cam.haut_tete * H);
-  const accroches = projet.effets.filter((e: any) => e.type === 'accroche').sort((a: any, b: any) => a.debut - b.debut);
-  const frontiere = (a: any, b: any) => (b.debut - a.fin < 0.6 ? coupes.find((c) => c >= a.fin - 0.15 && c <= b.debut + 0.15) : undefined);
-  let decalY = 0;
-  accroches.forEach((e: any, i: number) => {
-    const fAvant = i > 0 ? frontiere(accroches[i - 1], e) : undefined;
-    const fApres = i < accroches.length - 1 ? frontiere(e, accroches[i + 1]) : undefined;
-    const debut = fAvant ?? e.debut;
-    const fin = fApres ?? e.fin;
-    let w = 0;
-    if (t >= debut && t < fin) w = 1;
-    else if (fAvant === undefined && e.debut > 0.05 && t >= e.debut - 0.35 && t < e.debut) w = easeInOut(prog(t, e.debut - 0.35, e.debut));
-    else if (fApres === undefined && t >= fin && t < fin + 0.35) w = easeInOut(1 - prog(t, fin, fin + 0.35));
-    if (w > 0) {
-      const besoin = Math.max(0, miseEnPageAccroche(e, charte).bas + M.accroche.marge_tete_px - hautTete);
-      decalY = Math.max(decalY, besoin * w);
-    }
-  });
   const filtres = [
     pano.flou > 0.5 ? 'url(#flou-panoramique)' : '',
     projet.ambiance.etalonnage ? M.ambiance.etalonnage_css : '',
@@ -94,26 +72,12 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
   ].join(' ');
 
   const video = (cle: string, decalX: number, s: number, opacite: number, muet: boolean) => (
-    <div key={cle} style={{position: 'absolute', inset: 0, transform: `translateX(${decalage + decalX}px) translateY(${decalY.toFixed(1)}px) scale(${s})`, transformOrigin: origine, opacity: opacite}}>
+    <div key={cle} style={{position: 'absolute', inset: 0, transform: `translateX(${decalage + decalX}px) scale(${s})`, transformOrigin: origine, opacity: opacite}}>
       <OffthreadVideo src={staticFile(projet.rush.video)} muted={muet} style={{width: W, height: H, objectFit: 'cover'}} />
     </div>
   );
 
   const couches: React.ReactNode[] = [];
-  // haut libéré par la descente : rempli par le reflet de l'image (miroir au bord supérieur),
-  // pour que les couleurs se raccordent sans marche visible. Pas de flou : au bord, il mélangerait
-  // l'image avec du noir et ferait un trait sombre. L'axe du miroir est 3 px plus bas que le bord,
-  // pour que le reflet passe sous l'image principale et qu'aucun pixel noir ne reste à la jonction.
-  const bordHaut = decalY + cam.visage[1] * H * (1 - echelle);
-  if (decalY > 0.5 && bordHaut > 0) {
-    couches.push(
-      <div key="reflet" style={{position: 'absolute', inset: 0, transform: `translateY(${(2 * (bordHaut + 3)).toFixed(1)}px) scaleY(-1)`, transformOrigin: '0 0'}}>
-        <div style={{position: 'absolute', inset: 0, transform: `translateX(${decalage}px) translateY(${decalY.toFixed(1)}px) scale(${echelle})`, transformOrigin: origine}}>
-          <OffthreadVideo src={staticFile(projet.rush.video)} muted style={{width: W, height: H, objectFit: 'cover'}} />
-        </div>
-      </div>,
-    );
-  }
   couches.push(video('principale', pano.x, echelle, 1, Boolean(projet.rush.voix)));
   if (pano.flou > 0.5) couches.push(video('panoramique', pano.x + (pano.x < 0 ? W : -W), echelle, 1, true));
   // flou de mouvement du zoom : copies légèrement décalées en taille, semi-transparentes

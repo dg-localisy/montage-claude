@@ -77,6 +77,8 @@ function instantsDeControle(projet) {
       case 'chiffre': ajouter((T.comptage[0] + T.comptage[1]) / 2, 'chiffre : défile'); ajouter(T.comptage[1] + 0.1, 'chiffre : arrivé'); break;
       case 'carte_fin': ajouter(e.debut + 0.25, 'carte de fin : entrée'); ajouter(Math.min(e.fin, projet.duree) - 0.05, 'carte de fin'); break;
       case 'signature': ajouter(e.debut + 0.15, 'signature : fondu'); ajouter(Math.min(e.fin, projet.duree) - 0.05, 'signature'); break;
+      case 'liste': (e.temps || []).forEach((x, i) => ajouter(x + 0.3, `pastille ${i + 1}`)); ajouter(Math.min(e.fin, projet.duree) - 0.3, 'pastilles : toutes'); break;
+      case 'plan_de_coupe': ajouter(e.debut + 0.3, 'plan de coupe : début'); ajouter(e.fin - 0.2, 'plan de coupe : fin'); break;
       case 'carte':
         ajouter(e.debut + 0.22, 'carte : réduction');
         if (e.animation === 'chat_ia') { ajouter((T.frappe + T.finFrappe) / 2, 'chat : frappe'); ajouter((T.points[0] + T.points[1]) / 2, 'chat : « écrit… »'); ajouter(T.finReponse + 0.2, 'chat : réponse'); }
