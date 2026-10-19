@@ -12,15 +12,15 @@ export const Entonnoir: React.FC<{e: any; t: number; charte: any}> = ({e, t, cha
   const accent = charte.couleurs.orange;
   const n = e.etapes.length;
   const largeur = 388;
-  const hauteur = 118;
+  const hauteur = Math.min(150, (764 - 68 - (e.titre ? 66 : 0) - 12 * (n - 1)) / n);
   return (
     <div style={cadre}>
       {e.titre && <div style={titre}>{e.titre}</div>}
       <div style={{position: 'relative', flex: 1}}>
         {e.etapes.map((etape: any, i: number) => {
           const a = easeOut(prog(t, e._t.etapes[i], e._t.etapes[i] + 0.35));
-          const haut = largeur * (1 - (i / n) * 0.62);
-          const bas = largeur * (1 - ((i + 1) / n) * 0.62);
+          const haut = largeur * (1 - (i / n) * 0.5);
+          const bas = largeur * (1 - ((i + 1) / n) * 0.5);
           const derniere = i === n - 1;
           const valeur = typeof etape.valeur === 'number' ? nombreFr(lerp(0, etape.valeur, a)) : etape.valeur;
           return (
@@ -32,8 +32,8 @@ export const Entonnoir: React.FC<{e: any; t: number; charte: any}> = ({e, t, cha
                 />
               </svg>
               <div style={{position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                <div style={{fontFamily: 'Figtree Black', fontSize: 38, color: derniere ? accent : '#fff', lineHeight: 1}}>{valeur}</div>
-                <div style={{fontFamily: 'Figtree Medium', fontSize: 21, color: 'rgba(255,255,255,0.75)', marginTop: 6}}>{etape.label}</div>
+                <div style={{fontFamily: 'Figtree Black', fontSize: 44, color: derniere ? accent : '#fff', lineHeight: 1}}>{valeur}</div>
+                <div style={{fontFamily: 'Figtree Medium', fontSize: 23, color: 'rgba(255,255,255,0.75)', marginTop: 8}}>{etape.label}</div>
               </div>
             </div>
           );
@@ -75,18 +75,18 @@ export const Checklist: React.FC<{e: any; t: number; charte: any}> = ({e, t, cha
   return (
     <div style={cadre}>
       {e.titre && <div style={titre}>{e.titre}</div>}
-      <div style={{display: 'flex', flexDirection: 'column', gap: 26}}>
+      <div style={{display: 'flex', flexDirection: 'column', gap: 40, marginTop: 10}}>
         {e.items.map((item: string, i: number) => {
           const apparition = easeOut(prog(t, e._t.panneau + i * 0.08, e._t.panneau + i * 0.08 + 0.3));
           const coche = easeOut(prog(t, e._t.coches[i], e._t.coches[i] + 0.25));
           return (
             <div key={i} style={{display: 'flex', alignItems: 'center', gap: 18, opacity: apparition, transform: `translateX(${((1 - apparition) * 24).toFixed(1)}px)`}}>
-              <div style={{width: 42, height: 42, borderRadius: 11, flexShrink: 0, border: `2px solid ${coche > 0 ? accent : 'rgba(255,255,255,0.6)'}`, background: coche > 0 ? 'rgba(255,77,0,0.12)' : 'transparent', position: 'relative'}}>
-                <svg viewBox="0 0 24 24" width={38} height={38} style={{position: 'absolute', left: 0, top: 0}}>
+              <div style={{width: 48, height: 48, borderRadius: 12, flexShrink: 0, border: `2px solid ${coche > 0 ? accent : 'rgba(255,255,255,0.6)'}`, background: coche > 0 ? 'rgba(255,77,0,0.12)' : 'transparent', position: 'relative'}}>
+                <svg viewBox="0 0 24 24" width={44} height={44} style={{position: 'absolute', left: 0, top: 0}}>
                   <path d="M5.5 12.5 L10 17 L18.5 7.5" pathLength={1} fill="none" stroke={accent} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" strokeDasharray="1 1" strokeDashoffset={1 - coche} />
                 </svg>
               </div>
-              <div style={{fontFamily: 'Figtree Medium', fontSize: 28, lineHeight: 1.25, color: coche > 0.5 ? '#fff' : 'rgba(255,255,255,0.55)'}}>{item}</div>
+              <div style={{fontFamily: 'Figtree Medium', fontSize: 31, lineHeight: 1.25, color: coche > 0.5 ? '#fff' : 'rgba(255,255,255,0.55)'}}>{item}</div>
             </div>
           );
         })}

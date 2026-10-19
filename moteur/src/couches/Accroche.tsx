@@ -30,7 +30,11 @@ export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, chart
   let index = 0;
   const lignes: string[] = e._t.lignes;
   const nbTotal = lignes.join(' ').length;
-  const nbVisibles = Math.floor((t - e._t.titre) * A.lettres_par_s);
+  // dernière lettre déjà commencée (les sauts de ligne comptent pour un temps mais n'ont pas de lettre)
+  const sauts = new Set<number>();
+  lignes.reduce((acc, l) => { sauts.add(acc + l.length); return acc + l.length + 1; }, 0);
+  let dernierIndex = Math.min(nbTotal - 1, Math.floor((t - e._t.titre) * A.lettres_par_s));
+  if (sauts.has(dernierIndex)) dernierIndex -= 1;
   const curseurVisible = t < e._t.finFrappe + 0.5 && (t < e._t.finFrappe || Math.floor((t - e._t.finFrappe) * 4) % 2 === 0);
 
   return (
@@ -67,7 +71,7 @@ export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, chart
               return caracteres.split('').map((ch, ci) => {
                 const i = pos++;
                 const a = easeOut(prog(t, e._t.titre + i / A.lettres_par_s, e._t.titre + i / A.lettres_par_s + 0.08));
-                const dernier = i === Math.min(nbVisibles, nbTotal) - 1;
+                const dernier = i === dernierIndex;
                 return (
                   <span key={`${mi}-${ci}`} style={{position: 'relative', display: 'inline-block', color: couleur}}>
                     <span style={{display: 'inline-block', opacity: a, transform: `translateY(${((1 - a) * 14).toFixed(1)}px)`, filter: a < 1 ? `blur(${((1 - a) * 4).toFixed(1)}px)` : 'none'}}>{ch}</span>
