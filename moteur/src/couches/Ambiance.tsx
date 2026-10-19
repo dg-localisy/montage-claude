@@ -131,13 +131,13 @@ export const Signature: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const a = prog(t, e.debut, e.debut + 0.3);
   if (sig.type === 'logo' && sig.fichier) {
     return (
-      <div style={{position: 'absolute', left: 0, width: W, top: sig.position.y, display: 'flex', justifyContent: 'center', transform: 'translateY(-50%)', opacity: sig.opacite * a}}>
+      <div style={{position: 'absolute', left: 0, width: W, top: e.y ?? sig.position.y, display: 'flex', justifyContent: 'center', transform: 'translateY(-50%)', opacity: sig.opacite * a}}>
         <Img src={staticFile(sig.fichier)} style={{width: sig.largeur_px, height: 'auto', filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.45))'}} />
       </div>
     );
   }
   return (
-    <div style={{position: 'absolute', left: 0, width: W, top: sig.position.y - (sig.taille_px ?? 44) * 0.6, textAlign: 'center', fontFamily: sig.police, fontSize: sig.taille_px ?? 44, lineHeight: 1.2, color: sig.couleur, opacity: sig.opacite * a, textShadow: '0 2px 12px rgba(0,0,0,0.45)'}}>
+    <div style={{position: 'absolute', left: 0, width: W, top: (e.y ?? sig.position.y) - (sig.taille_px ?? 44) * 0.6, textAlign: 'center', fontFamily: sig.police, fontSize: sig.taille_px ?? 44, lineHeight: 1.2, color: sig.couleur, opacity: sig.opacite * a, textShadow: '0 2px 12px rgba(0,0,0,0.45)'}}>
       {e.texte || sig.texte}
     </div>
   );

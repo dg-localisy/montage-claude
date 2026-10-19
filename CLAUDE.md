@@ -75,16 +75,35 @@ polices = sous_titres.dossier_polices_statiques("DOSSIER_TEMP/polices")
 
 `transcrire(fichier, langue="fr", cache_dir=...)` (Scribe, mis en cache), `mots(transcription)`, `voix()`, `synthese(texte, voice_id, sortie)`. Voix française pour les tests : Sarah, `EXAVITQu4vr4xnSDxMaL`, modèle `eleven_multilingual_v2`.
 
-### Moteur d'animation Remotion : `moteur/` (en construction)
+### Moteur d'animation Remotion : `moteur/`
 
-Il doit composer toute la vidéo à partir de `ma-charte.json` et d'un fichier `effets.json` (temps en secondes) : sous-titres mot à mot, accroche, grands titres 3D, icônes, chiffres, cartes, mouvements de caméra, transitions, grain, étalonnage, effets sonores (fabriqués avec ffmpeg dans `moteur/public/sons/`), musique facultative 20 dB sous la voix.
+Compose toute la vidéo à partir de `ma-charte.json` et d'un fichier `effets.json` propre à chaque vidéo (temps en secondes). Mode d'emploi complet et format d'`effets.json` : `moteur/LISEZMOI.md`.
 
-Avant de t'en servir, regarde `moteur/package.json` et le mode d'emploi du moteur une fois terminé. Ne suppose pas qu'une commande marche sans l'avoir vérifiée.
+```
+cd moteur && npm install                                   # une fois par session (node_modules n'est pas suivi)
+node scripts/stills.mjs CHEMIN/effets.json --nom NOM       # images fixes de contrôle (environ 5 min)
+node scripts/rendu.mjs  CHEMIN/effets.json --nom NOM       # images fixes + vidéo 9:16 et 4:5 (environ 40 min pour 1 min)
+```
+
+Options : `--sans-stills`, `--sans-4x5`, `--images 0-89`, `--sortie DOSSIER`. Sorties dans `moteur/sortie/` : `NOM_planche.png`, `NOM_stills/`, `NOM_9x16.mp4`, `NOM_4x5.mp4`.
+
+Animations : `accroche` (la 2e prend le style « présentation », pour le nom), `grand_titre`, `icone` (courbe, etoile, epingle, panier, coeur, bulle, cible, etincelle), `chiffre`, `carte` (chat_ia, entonnoir, gros_chiffre, checklist, avec temps imposés possibles), `zoom`, `transition`, `carte_fin`, `signature` (`y` pour la déplacer). Sous-titres : `mot_a_mot` (par défaut), `premiere_video` ou `aucun`. `camera.visage` (position des yeux) et `camera.coupes` (coupes du vidéaste, à détecter) sont importants.
 
 Règles :
-- Remotion v4, même version pour tous les paquets `@remotion/*`. Installation : `cd moteur && npm install`.
-- Avant chaque rendu complet, fabrique des images fixes de chaque animation et vérifie-les toi-même.
-- Si Remotion plante au démarrage (« Target closed » ou « icudtl.dat ») : passe en mode chrome-for-testing, puis DEMANDE l'autorisation à l'utilisateur avant de lancer un rendu en dehors de l'environnement isolé.
+- Regarde TOUTES les images fixes en grand (par groupes de 8, la planche est trop petite) avant de livrer : textes sur les yeux ou la tête, compteur qui n'atteint pas sa valeur, animations qui se chevauchent, deux éléments orange à la fois.
+- Le son du rendu est ensuite refait par `outils/son_final.py` (voir plus bas), pour garantir -14 LUFS et des effets jamais plus de 6 dB au-dessus de la voix.
+- Le navigateur est le Chromium préinstallé (`/opt/pw-browsers`). En cas d'erreur « Target closed » ou « icudtl.dat », le script passe seul en chrome-for-testing. S'il échoue encore, DEMANDE l'autorisation à l'utilisateur avant de rendre en dehors de l'environnement isolé.
+- N'invente jamais un chiffre ou un résultat dans une carte : uniquement ce que la personne dit (pas de fausse réponse de ChatGPT, par exemple).
+- Licence Remotion : gratuite jusqu'à 3 salariés, licence entreprise payante au-delà.
+
+### Son final : `outils/son_final.py`
+
+```
+python3 outils/son_final.py --video moteur/sortie/NOM_9x16.mp4 --voix RUSH.mp4 \
+    --projet moteur/public/projet.json --sons moteur/public/sons --sortie FINAL_9x16.mp4
+```
+
+Refait le mélange voix + effets à partir des pistes séparées, baisse les effets qui dépassent la voix de plus de 6 dB (sonie momentanée EBU R128), règle le tout à -14 LUFS et la crête sous -1 dBTP, puis vérifie avec ffmpeg. Écrit `FINAL_9x16.son.json`. Applique ensuite le même son à la version 4:5 (`-c:v copy`).
 
 ## Chaîne de montage conseillée
 

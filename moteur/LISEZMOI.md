@@ -60,7 +60,7 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 | `zoom` | `debut`, `a`, `duree`, `fin` (facultatif) | Zoom avec flou de mouvement. |
 | `transition` | `debut` (instant de la coupe), `style`, `duree` | `lumiere` (lumière colorée) ou `panoramique` (panoramique rapide). |
 | `carte_fin` | `debut`, `fin`, `nom`, `role` | Carte de fin. Si `nom` vaut « LOCALISY », c'est le logo qui s'affiche. |
-| `signature` | `debut`, `fin` (facultatifs) | Logo LOCALISY discret en haut (charte `fin.signature`), par défaut sur les 2 dernières secondes. |
+| `signature` | `debut`, `fin`, `y` (facultatifs) | Logo LOCALISY discret (charte `fin.signature`), par défaut sur les 2 dernières secondes. `y` remplace la hauteur de la charte pour une vidéo (ex. 1450, sous les sous-titres, si le visage est cadré haut). |
 
 Champs des cartes :
 
