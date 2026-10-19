@@ -1,0 +1,19 @@
+{
+  "_aide": "Contrôle des ajouts : icônes cible et etincelle, temps imposés (coches, temps_etapes), étapes sans valeur, gros chiffre en texte fixe.",
+  "duree": 10,
+  "fps": 30,
+  "rush": {"video": "media/faux-facecam.mp4", "mots": "media/mots-rush.json"},
+  "sous_titres": {"mode": "aucun"},
+  "camera": {"visage": [0.5, 0.37], "coupes": []},
+  "ambiance": {"grain": 0.07, "etalonnage": true},
+  "effets": [
+    {"type": "icone", "icone": "cible", "debut": 0.1, "fin": 1.4},
+    {"type": "icone", "icone": "etincelle", "debut": 1.5, "fin": 2.8},
+    {"type": "carte", "animation": "checklist", "debut": 2.9, "fin": 5.4, "titre": "Ce qu'on a fait",
+     "items": ["Fiche Google", "Photos", "Avis", "Visible sur l'IA"], "coches": [3.6, 3.75, 4.3, 4.9]},
+    {"type": "carte", "animation": "entonnoir", "debut": 5.5, "fin": 7.6, "titre": "Le parcours",
+     "etapes": [{"label": "On vous trouve sur Google"}, {"label": "On visite le site"}, {"label": "On vous appelle", "valeur": 240}],
+     "temps_etapes": [5.9, 6.5, 6.9]},
+    {"type": "carte", "animation": "gros_chiffre", "debut": 7.7, "fin": 9.9, "titre": "Délai moyen", "texte": "4 à 5 ans", "legende": "avant de rentabiliser"}
+  ]
+}

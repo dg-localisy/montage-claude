@@ -1,0 +1,14 @@
+{
+  "_aide": "Contrôle : rush à 25 i/s, durée non entière, deux accroches (ouverture puis nom), signature de fin.",
+  "duree": 5.93,
+  "fps": 25,
+  "rush": {"video": "media/facecam-25ips.mp4", "mots": "media/mots-rush.json"},
+  "sous_titres": {"mode": "mot_a_mot", "mots_cles": ["LOCALISY", "doublé"]},
+  "camera": {"visage": [0.5, 0.37], "coupes": [2.76]},
+  "ambiance": {"grain": 0.07, "etalonnage": true, "chapitres": [{"titre": "Avant", "debut": 0}, {"titre": "Résultat", "debut": 2.76}]},
+  "effets": [
+    {"type": "accroche", "debut": 0.0, "fin": 2.5, "surtitre": "Témoignage · Le Fournil", "titre": "Invisibles sur Internet", "mot_accent": "INVISIBLES"},
+    {"type": "accroche", "debut": 2.6, "fin": 3.9, "surtitre": "Fondateur · L'Immobilière Hock", "titre": "Gary Hock"},
+    {"type": "signature"}
+  ]
+}
