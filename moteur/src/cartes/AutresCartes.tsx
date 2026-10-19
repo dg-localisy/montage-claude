@@ -1,5 +1,6 @@
 import React from 'react';
 import {easeOut, lerp, nombreFr, prog} from '../temps';
+import {rgba} from '../miseEnEvidence';
 
 const cadre: React.CSSProperties = {
   position: 'absolute', inset: 0, background: '#0e0e0e', borderRadius: 32, border: '1.5px solid rgba(255,255,255,0.12)',
@@ -7,9 +8,9 @@ const cadre: React.CSSProperties = {
 };
 const titre: React.CSSProperties = {fontFamily: 'Figtree Bold', fontSize: 30, color: '#fff', marginBottom: 26, lineHeight: 1.2};
 
-// Entonnoir : les étapes apparaissent l'une après l'autre, la dernière en orange.
+// Entonnoir : les étapes apparaissent l'une après l'autre, la dernière mise en avant.
 export const Entonnoir: React.FC<{e: any; t: number; charte: any}> = ({e, t, charte}) => {
-  const accent = charte.couleurs.orange;
+  const accent = charte.moteur.accent;
   const n = e.etapes.length;
   const largeur = 388;
   const hauteur = Math.min(150, (764 - 68 - (e.titre ? 66 : 0) - 12 * (n - 1)) / n);
@@ -29,7 +30,7 @@ export const Entonnoir: React.FC<{e: any; t: number; charte: any}> = ({e, t, cha
               <svg width={largeur} height={hauteur} style={{position: 'absolute', inset: 0}}>
                 <path
                   d={`M${(largeur - haut) / 2} 1 H${(largeur + haut) / 2} L${(largeur + bas) / 2} ${hauteur - 1} H${(largeur - bas) / 2} Z`}
-                  fill={derniere ? 'rgba(255,77,0,0.16)' : 'rgba(255,255,255,0.07)'} stroke={derniere ? accent : 'rgba(255,255,255,0.7)'} strokeWidth={2} strokeLinejoin="round"
+                  fill={derniere ? rgba(accent, 0.16) : 'rgba(255,255,255,0.07)'} stroke={derniere ? accent : 'rgba(255,255,255,0.7)'} strokeWidth={2} strokeLinejoin="round"
                 />
               </svg>
               <div style={{position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
@@ -46,9 +47,9 @@ export const Entonnoir: React.FC<{e: any; t: number; charte: any}> = ({e, t, cha
   );
 };
 
-// Gros chiffre : le nombre défile au centre d'un anneau orange qui se remplit.
+// Gros chiffre : le nombre défile au centre d'un anneau qui se remplit.
 export const GrosChiffre: React.FC<{e: any; t: number; charte: any}> = ({e, t, charte}) => {
-  const accent = charte.couleurs.orange;
+  const accent = charte.moteur.accent;
   const [a, b] = e._t.comptage;
   const texteFixe = typeof e.texte === 'string' && e.texte.length > 0;
   // avec un texte fixe : pas de comptage, le texte apparaît et l'anneau se dessine
@@ -80,9 +81,9 @@ export const GrosChiffre: React.FC<{e: any; t: number; charte: any}> = ({e, t, c
   );
 };
 
-// Checklist : chaque ligne se coche à son tour (coche orange qui se dessine).
+// Checklist : chaque ligne se coche à son tour (coche qui se dessine).
 export const Checklist: React.FC<{e: any; t: number; charte: any}> = ({e, t, charte}) => {
-  const accent = charte.couleurs.orange;
+  const accent = charte.moteur.accent;
   return (
     <div style={cadre}>
       {e.titre && <div style={titre}>{e.titre}</div>}
@@ -92,7 +93,7 @@ export const Checklist: React.FC<{e: any; t: number; charte: any}> = ({e, t, cha
           const coche = easeOut(prog(t, e._t.coches[i], e._t.coches[i] + 0.25));
           return (
             <div key={i} style={{display: 'flex', alignItems: 'center', gap: 18, opacity: apparition, transform: `translateX(${((1 - apparition) * 24).toFixed(1)}px)`}}>
-              <div style={{width: 48, height: 48, borderRadius: 12, flexShrink: 0, border: `2px solid ${coche > 0 ? accent : 'rgba(255,255,255,0.6)'}`, background: coche > 0 ? 'rgba(255,77,0,0.12)' : 'transparent', position: 'relative'}}>
+              <div style={{width: 48, height: 48, borderRadius: 12, flexShrink: 0, border: `2px solid ${coche > 0 ? accent : 'rgba(255,255,255,0.6)'}`, background: coche > 0 ? rgba(accent, 0.12) : 'transparent', position: 'relative'}}>
                 <svg viewBox="0 0 24 24" width={44} height={44} style={{position: 'absolute', left: 0, top: 0}}>
                   <path d="M5.5 12.5 L10 17 L18.5 7.5" pathLength={1} fill="none" stroke={accent} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" strokeDasharray="1 1" strokeDashoffset={1 - coche} />
                 </svg>

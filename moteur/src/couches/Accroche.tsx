@@ -2,6 +2,7 @@ import React from 'react';
 import {useCurrentFrame, useVideoConfig} from 'remotion';
 import {miseEnPageAccroche} from '../miseEnPage';
 import {easeOut, fondu, prog, sansPonctuation} from '../temps';
+import {styleEvidence} from '../miseEnEvidence';
 
 // Accroche d'ouverture : un sur-titre qui glisse, puis un titre qui s'écrit lettre par lettre.
 export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, charte, projet}) => {
@@ -11,7 +12,6 @@ export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, chart
   if (t < e.debut || t > e.fin) return null;
   const A = charte.moteur.accroche;
   const ti = charte.titres;
-  const accent = charte.couleurs.orange;
   // Sous le visage, juste au-dessus des sous-titres ; l'image ne bouge pas (miseEnPage.ts).
   const {presentation, avecSurtitre, surtitreTaille, surtitreY, em, ecart, premiere, haut} = miseEnPageAccroche(e, charte);
   // léger voile sombre derrière le titre et les sous-titres ; il commence sous le menton
@@ -60,17 +60,18 @@ export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, chart
             }}
           >
             {mots.map((mot, mi) => {
-              const couleur = sansPonctuation(mot) === accentMot ? accent : '#fff';
+              // mot mis en évidence : italique + relief (pas de couleur)
+              const evidence = sansPonctuation(mot) === accentMot ? styleEvidence(ti.police, em, charte) : {};
               const caracteres = (mi > 0 ? ' ' : '') + mot;
               return caracteres.split('').map((ch, ci) => {
                 const i = pos++;
                 const a = easeOut(prog(t, e._t.titre + i / e._t.vitesse, e._t.titre + i / e._t.vitesse + 0.08));
                 const dernier = i === dernierIndex;
                 return (
-                  <span key={`${mi}-${ci}`} style={{position: 'relative', display: 'inline-block', color: couleur}}>
+                  <span key={`${mi}-${ci}`} style={{position: 'relative', display: 'inline-block', color: '#fff', ...evidence}}>
                     <span style={{display: 'inline-block', opacity: a, transform: `translateY(${((1 - a) * 14).toFixed(1)}px)`, filter: a < 1 ? `blur(${((1 - a) * 4).toFixed(1)}px)` : 'none'}}>{ch}</span>
                     {dernier && curseurVisible && (
-                      <span style={{position: 'absolute', right: -14, top: '50%', width: presentation ? 6 : 8, height: em * 0.8, marginTop: -em * 0.45, background: presentation ? '#fff' : accent, borderRadius: 2}} />
+                      <span style={{position: 'absolute', right: -14, top: '50%', width: presentation ? 6 : 8, height: em * 0.8, marginTop: -em * 0.45, background: '#fff', borderRadius: 2}} />
                     )}
                   </span>
                 );

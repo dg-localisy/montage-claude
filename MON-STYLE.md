@@ -1,6 +1,6 @@
 # Mon style de montage
 
-Des témoignages clients premium : du noir et du blanc, une seule touche d'orange, un rythme vif sans être nerveux, et le client toujours au centre.
+Des témoignages clients premium : du noir et du blanc uniquement, sobre et classe, un rythme vif sans être nerveux, et le client toujours au centre.
 
 À relire avant chaque montage. Les réglages précis (tailles, positions, codes couleur, réglages ffmpeg) sont dans `ma-charte.json`. Les images d'exemple sont dans le dossier `apercus/`.
 
@@ -8,7 +8,7 @@ Des témoignages clients premium : du noir et du blanc, une seule touche d'orang
 
 On fait des témoignages de clients de LOCALISY pour le grand public. Instagram passe en premier, puis TikTok, Facebook et LinkedIn.
 
-Le client est la star. Les titres, les cartes et les icônes servent ce qu'il dit. S'il y a un doute, on enlève un effet plutôt que d'en ajouter un.
+Le client est la star. Les titres, les cartes et les plans de coupe servent ce qu'il dit. S'il y a un doute, on enlève un effet plutôt que d'en ajouter un.
 
 **Règle absolue : rien ne cache jamais le visage.** Ni un texte, ni une icône, ni un chiffre, même avec le fond flouté. Seule exception : le grand titre 3D, qui floute volontairement le visage derrière lui.
 
@@ -30,7 +30,7 @@ Pas de sur-titre « Témoignage client ». Le titre de l'accroche, et celui qui 
 
 ## Les sous-titres
 
-**Choix actuel : sous-titres mot à mot.** Chaque mot prononcé est écrit (seules les hésitations validées, « euh », « ben », sont retirées). Chaque mot apparaît quand il est dit, le mot en cours passe en orange, et les mots importants sont en Figtree Black pour ressortir. La taille, la police de base et l'ombre restent celles de la première vidéo ; la ligne est nettement plus bas (75 % de la hauteur, au plus bas de la zone sûre), pour laisser la place au titre d'accroche sous le visage.
+**Choix actuel : sous-titres mot à mot.** Chaque mot prononcé est écrit (seules les hésitations validées, « euh », « ben », sont retirées). Chaque mot apparaît quand il est dit, tout en blanc, et les mots importants ressortent en italique (Figtree Black Italic) avec un relief noir. La taille, la police de base et l'ombre restent celles de la première vidéo ; la ligne est nettement plus bas (75 % de la hauteur, au plus bas de la zone sûre), pour laisser la place au titre d'accroche sous le visage.
 
 L'ancien rendu de la première vidéo reste disponible si on veut y revenir. Il en existe deux sortes, décrites ci-dessous.
 
@@ -53,7 +53,7 @@ L'ancien rendu de la première vidéo reste disponible si on veut y revenir. Il 
 
 ## Les grands titres
 
-En Figtree Black, en MAJUSCULES, avec des lettres un peu resserrées. Trois lignes maximum, en blanc avec un seul mot orange. Un léger dégradé noir derrière les rend lisibles, et les lignes montent une par une.
+En Figtree Black, en MAJUSCULES, avec des lettres un peu resserrées. Trois lignes maximum, en blanc ; un seul mot mis en évidence, en italique avec un relief noir (pas de couleur). Un léger dégradé noir derrière les rend lisibles, et les lignes montent une par une.
 
 Le titre ne cache jamais les yeux du client. Si le visage est placé haut, il passe sous le menton.
 
@@ -61,7 +61,7 @@ Le titre ne cache jamais les yeux du client. Si le visage est placé haut, il pa
 
 Ils apparaissent dans des cartes flottantes : coins arrondis, ombre douce, posées sur un fond noir ou sur la vidéo floutée et assombrie, avec un mouvement très lent.
 
-Les chiffres montent vite en compteur (une demi-seconde), de 0 jusqu'à la valeur. Ils se placent sous le visage, juste au-dessus des sous-titres. Le chiffre est blanc, les signes + et % sont orange.
+Les chiffres montent vite en compteur (une demi-seconde), de 0 jusqu'à la valeur. Ils se placent sous le visage, juste au-dessus des sous-titres. Le chiffre et les signes + et % sont blancs.
 
 Une énumération (« combien de leads, ce qu'ils me rapportent, d'où ils viennent ») peut aussi s'afficher en pastilles sous le visage : chaque pastille glisse quand elle est dite et reste à l'écran.
 
@@ -73,15 +73,13 @@ Pour illustrer un moment, une vidéo libre de droits (par exemple un gros plan d
 
 Coupes nettes entre les plans du client, sans effet. Un glissement rapide pour passer aux cartes et aux chiffres. Pas de fondus enchaînés ni de transitions fantaisie.
 
-## Les icônes
+## Pas de pictos
 
-Trait fin blanc, bouts arrondis, avec un seul détail orange (souvent un point). Le trait se dessine en une demi-seconde, puis le détail orange apparaît avec un petit rebond.
-
-Une icône se place juste au-dessus du mot qu'elle illustre, dans les sous-titres (par exemple l'épingle au-dessus de « Liège »), jamais sur le visage. Pour l'IA, on utilise une puce électronique avec « IA » en orange, pas une étincelle.
+Plus d'icônes (épingle, courbe, cible…) : on en a trop vu. À la place, un plan de coupe en plein écran (une vidéo libre de droits qui illustre ce qui est dit : la ville, un écran d'ordinateur, une réunion…), sans son, pendant que la voix continue.
 
 ## Le son
 
-La voix passe avant tout. Dessous, une musique instrumentale douce (piano léger ou électro calme), libre de droits, que je fournis. Elle baisse toute seule quand le client parle. Les bruitages sont très discrets et rapides : de petits tics quand un chiffre défile, un souffle doux et un coup sourd pour le grand titre, un « whoosh » léger (volume bas) pour les transitions. Pas de montée lente ni d'impact fort. Pas de bruitage sur les zooms : seulement sur les animations (cartes, coches, icônes, chiffres, titres). Une icône ne reprend pas le son du titre du début (cible : petite fléchette ; IA : petits bips électroniques).
+La voix passe avant tout. Dessous, une musique instrumentale douce (piano léger ou électro calme), libre de droits, que je fournis. Elle baisse toute seule quand le client parle. Les bruitages sont brefs et doux, jamais agaçants : un petit « woutch » (un souffle d'un quart de seconde) quand un titre, une carte ou un plan de coupe arrive, un mini-woutch pour les chiffres et les pastilles, un toc feutré et grave pour les coches. Aucune note aiguë (pas de scintillement, de « pop », de tics ni de bips). Pas de bruitage sur les zooms.
 
 Volume final : -14 LUFS, le niveau attendu par les réseaux sociaux.
 
@@ -123,7 +121,8 @@ Attention, « localisé » et « localiser » sont de vrais mots français. On �
 
 ## Ce que j'évite
 
-- Deux éléments orange en même temps à l'écran.
+- La couleur (orange compris) : tout reste en noir et blanc.
+- Les pictos.
 - Les emojis, les couleurs hors charte, toute police autre que Figtree.
 - Les fondus enchaînés et les transitions fantaisie.
 - Un texte hors de la zone sûre (caché par les boutons, ou coupé en 4:5).
@@ -132,9 +131,9 @@ Attention, « localisé » et « localiser » sont de vrais mots français. On �
 ## À vérifier avant de livrer
 
 - [ ] Les 2 premières secondes donnent envie de rester.
-- [ ] Rien ne cache le visage du client : ni titre, ni icône, ni chiffre, ni pastille.
+- [ ] Rien ne cache le visage du client : ni titre, ni chiffre, ni pastille.
 - [ ] Les sous-titres sont toujours à la même place (75 % de la hauteur) et ont le même rendu que dans la première vidéo.
 - [ ] LOCALISY est bien écrit partout.
-- [ ] Jamais plus d'un élément orange à la fois.
+- [ ] Aucune couleur : noir et blanc uniquement, mots importants en italique avec relief noir.
 - [ ] Le son est à -14 LUFS et la voix reste toujours compréhensible.
 - [ ] Les deux fichiers (9:16 et 4:5) sont exportés et je les ai regardés en entier.

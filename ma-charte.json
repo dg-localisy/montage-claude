@@ -21,12 +21,20 @@
     "noir": "#000000",
     "blanc": "#FFFFFF",
     "orange": "#FF4D00",
-    "regle": "Noir et blanc partout. L'orange reste une petite touche : un seul mot ou un seul détail orange à l'écran à la fois (titres, icônes, chiffres). Les sous-titres restent entièrement blancs, comme dans la première vidéo.",
+    "regle": "Noir et blanc uniquement (demande de l'utilisateur : plus sobre, plus classe). Plus d'orange dans les montages : les mots importants ressortent en italique avec un relief (voir mise_en_evidence). L'orange #FF4D00 reste dans la palette de la marque mais n'apparaît plus dans les vidéos.",
     "ass": {
       "noir": "&H00000000",
       "blanc": "&H00FFFFFF",
       "orange": "&H00004DFF"
     }
+  },
+  "mise_en_evidence": {
+    "description": "Comment un mot important ressort sans couleur : la même graisse en italique (ex. Figtree Black Italic), avec un relief noir vers le bas à droite (comme un léger volume), puis une ombre douce. Remplace l'orange. Relief en noir, pas en gris ni en blanc, et italique accentué (inclinaison ajoutée à celle de la police) : demandes de l'utilisateur.",
+    "inclinaison_supplementaire_deg": 12,
+    "profondeur_em": 0.06,
+    "gris_haut": 0,
+    "gris_bas": 0,
+    "ombre_opacite": 0.6
   },
   "polices": {
     "dossier": ".",
@@ -352,8 +360,8 @@
     "interlettrage_px": -2,
     "couleur": "#FFFFFF",
     "mot_cle": {
-      "couleur": "#FF4D00",
-      "regle": "Un seul mot orange par titre."
+      "couleur": "#FFFFFF",
+      "regle": "Un seul mot mis en évidence par titre : même graisse en italique, avec le relief de mise_en_evidence. Pas d'orange."
     },
     "lignes_max": 3,
     "mots_par_ligne_max": 3,
@@ -371,7 +379,7 @@
   "visuels": {
     "captures_ecran": "Carte flottante : coins arrondis de 32 px, ombre douce (flou 40 px, 45 %), sur fond noir ou sur la vidéo floutée et assombrie, avec un mouvement lent de 100 % à 103 %.",
     "produits_et_lieux": "Carte flottante. Plein écran seulement si l'image est verticale et de bonne qualité.",
-    "chiffres": "Compteur qui monte de 0 à la valeur en 0,8 s (ralentit à la fin), en Figtree Black blanc. Les signes + et % sont en orange."
+    "chiffres": "Compteur qui monte de 0 à la valeur en 0,8 s (ralentit à la fin), en Figtree Black blanc. Les signes + et % sont blancs aussi."
   },
   "transitions": {
     "entre_plans_du_client": "coupe nette, sans effet",
@@ -386,13 +394,13 @@
     "style": "trait fin",
     "couleur_trait": "#FFFFFF",
     "epaisseur": "2,5 % de la taille de l'icône (9 px pour une icône de 360 px)",
-    "detail_orange": "Un seul détail orange (#FF4D00) par icône, par exemple un point.",
+    "detail_orange": "Plus utilisé : l'utilisateur ne veut plus de pictos (trop vus). À la place, des plans de coupe en plein écran. Si une icône revient un jour, son détail est blanc.",
     "bouts_de_trait": "arrondis",
     "taille_px": {
       "min": 220,
       "max": 360
     },
-    "animation": "Le trait se dessine en 0,5 s, puis le détail orange apparaît avec un petit rebond."
+    "animation": "Le trait se dessine en 0,5 s, puis le détail apparaît avec un petit rebond."
   },
   "etalonnage": {
     "style": "naturel contrasté",
@@ -463,16 +471,16 @@
   },
   "moteur": {
     "description": "Réglages du moteur d'animation Remotion (dossier moteur/). Les temps sont en secondes, les positions en pixels sur une image 1080×1920.",
-    "accent": "#FF4D00",
+    "accent": "#FFFFFF",
     "sous_titres": {
       "mode_par_defaut": "mot_a_mot",
       "modes": {
-        "mot_a_mot": "Chaque mot apparaît quand il est dit, le mot en cours passe en orange, les mots-clés sont en Figtree Black. Même place, même taille, même police de base et même ombre que la première vidéo.",
+        "mot_a_mot": "Chaque mot apparaît quand il est dit, tout en blanc ; les mots-clés sont en Figtree Black Italic avec un relief (mise_en_evidence). Même place, même taille, même police de base et même ombre que la première vidéo.",
         "premiere_video": "Rendu exact de la première vidéo (sous-titres normaux + phrases fortes), incrusté par outils/sous_titres.py après le rendu Remotion.",
         "aucun": "Pas de sous-titres."
       },
       "apparition_s": 0.13,
-      "mot_actif_couleur": "#FF4D00",
+      "mot_actif_couleur": "#FFFFFF",
       "mots_cles_police": "Figtree Black",
       "max_mots": 4,
       "max_caracteres": 18,
@@ -596,9 +604,12 @@
         "compteur": 0.3,
         "titre": 0.18,
         "cible": 0.3,
-        "numerique": 0.1
+        "numerique": 0.1,
+        "woutch": 0.11,
+        "woutch_court": 0.12,
+        "tap": 0.25
       },
-      "preferences": "Bruitages discrets et rapides. Pas de montée lente ni d'impact fort. Chiffres : petits tics rapides. Grand titre : souffle doux et coup sourd. Whoosh de transition bas (volume 0,1). Pas de bruitage sur les zooms ; seulement sur les animations (cartes, coches, icônes, chiffres, titres). Les icônes ne reprennent pas le son de l'accroche du début : cible = fléchette, IA = petits bips électroniques."
+      "preferences": "Bruitages brefs et doux, jamais agaçants (demande de l'utilisateur) : un petit « woutch » (souffle de 0,25 s) pour les titres, cartes et plans de coupe, un mini-woutch (0,15 s) pour les chiffres et les pastilles, un toc feutré et grave pour les coches. Aucune note aiguë (plus de scintillement, de pop, de tics de compteur ni de bips). Pas de bruitage sur les zooms."
     },
     "musique": {
       "sous_la_voix_db": -20,
@@ -642,7 +653,8 @@
   "regles_ecran": [
     "Aucun texte, icône ou chiffre ne cache jamais le visage, même flouté. Seule exception : le grand titre 3D, avec le visage flouté derrière.",
     "Accroche : pas de sur-titre « Témoignage client ». Le titre se place sous le visage, juste au-dessus des sous-titres ; l'image ne bouge pas.",
-    "Une icône se place juste au-dessus du mot qu'elle illustre.",
+    "Pas de pictos (l'utilisateur ne les supporte plus) : à la place, un plan de coupe en plein écran.",
+    "Noir et blanc uniquement : les mots importants ressortent en italique avec un relief, jamais en couleur.",
     "Les chiffres se placent sous le visage, juste au-dessus des sous-titres.",
     "Deux montages qui se suivent doivent être différents (par exemple une carte, puis des pastilles).",
     "Une carte ou une liste reste visible au moins 1,2 s après son dernier élément.",

@@ -2,14 +2,14 @@ import React from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {easeOut, lerp, nombreFr, prog} from '../temps';
 
-// Chiffre qui défile jusqu'à sa valeur. Le chiffre est blanc, les signes (+, %, €…) en orange.
+// Chiffre qui défile jusqu'à sa valeur. Le chiffre et ses signes (+, %, €…) sont blancs (charte → moteur.accent).
 export const Chiffre: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const frame = useCurrentFrame();
   const {fps, width: W} = useVideoConfig();
   const t = frame / fps;
   if (t < e.debut || t > e.fin) return null;
   const C = charte.moteur.chiffre;
-  const accent = charte.couleurs.orange;
+  const accent = charte.moteur.accent;
   const taille = e.taille ?? C.taille_px;
   const [a, b] = e._t.comptage;
   const p = easeOut(prog(t, a, b));

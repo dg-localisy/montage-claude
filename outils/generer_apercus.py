@@ -120,7 +120,8 @@ def rendu(fond, ass_texte, sortie, polices, t=0.9):
 
 
 def mot_cle(mot):
-    return f"{{\\c{ASS_ORANGE}&}}{mot}{{\\c{ASS_BLANC}&}}"
+    # mot mis en évidence sans couleur : italique + relief noir (ombre nette décalée), puis retour au style
+    return f"{{\\fnFigtree Black Italic\\bord0\\blur0\\shad7\\4c&H000000&\\4a&H00&}}{mot}{{\\r\\blur12}}"
 
 
 def sous_titre(texte):
@@ -204,11 +205,7 @@ def main():
             for i, l in enumerate(lignes))
         rendu(degrade_haut(fond), ENTETE_TITRES + evts, SORTIE / "2-grand-titre.png", polices)
 
-        # 3. Icône animée figée en plein tracé, sur la vidéo floutée et assombrie
-        flou = fond.filter(ImageFilter.GaussianBlur(40)).point(lambda v: int(v * 0.45))
-        ico = icone_courbe(360)
-        flou.paste(ico, (540 - ico.width // 2, 800 - ico.height // 2), ico)
-        rendu(flou, sous_titre("Et ça a décollé."), SORTIE / "3-icone-animee.png", polices)
+        # (plus d'aperçu d'icône : l'utilisateur ne veut plus de pictos, remplacés par des plans de coupe)
 
     print("Aperçus enregistrés dans", SORTIE)
 

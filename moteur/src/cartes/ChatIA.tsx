@@ -4,7 +4,7 @@ import {easeOut, prog} from '../temps';
 // Fenêtre de chat IA : mon message se tape tout seul, s'envoie, l'IA « écrit… » puis répond.
 export const ChatIA: React.FC<{e: any; t: number; charte: any}> = ({e, t, charte}) => {
   const C = charte.moteur.chat;
-  const accent = charte.couleurs.orange;
+  const accent = charte.moteur.accent;
   const T = e._t;
   const nbLettres = Math.max(0, Math.min(e.message.length, Math.floor((t - T.frappe) * C.lettres_par_s)));
   const envoye = t >= T.envoi;

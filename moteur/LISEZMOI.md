@@ -54,7 +54,7 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 |---|---|---|
 | `accroche` | `debut`, `fin`, `titre`, `surtitre` (facultatif), `mot_accent` (facultatif), `style` (facultatif) | Titre écrit lettre par lettre, sous le visage, juste au-dessus des sous-titres ; l'image ne bouge pas. Sur un cadrage très serré (menton bas), vérifier sur les images fixes que le titre ne touche pas le menton. La 1re accroche ouvre la vidéo ; les suivantes (ex. le nom) prennent le style `presentation`, plus discret. |
 | `grand_titre` | `debut`, `fin`, `lignes`, `mot_accent` | Phrase choc en 3D, visage flouté derrière. |
-| `icone` | `debut`, `fin`, `icone`, `mot` (conseillé), ou `x`, `y`, `taille` | `courbe`, `etoile`, `epingle`, `panier`, `coeur`, `bulle`, `cible`, `etincelle`, `ia` (puce « IA »). Rebond + particules. Avec `mot`, l'icône se pose juste au-dessus de ce mot dans les sous-titres et y reste jusqu'à `fin`, même si la ligne change (jamais sur le visage). |
+| `icone` | `debut`, `fin`, `icone`, `mot` (conseillé), ou `x`, `y`, `taille` | `courbe`, `etoile`, `epingle`, `panier`, `coeur`, `bulle`, `cible`, `etincelle`, `ia` (puce « IA »). Rebond + particules. Avec `mot`, l'icône se pose juste au-dessus de ce mot dans les sous-titres et y reste jusqu'à `fin`, même si la ligne change (jamais sur le visage). L'utilisateur ne veut plus de pictos : préférer `plan_de_coupe`. |
 | `chiffre` | `debut`, `fin`, `valeur`, `de`, `prefixe`, `suffixe`, `decimales`, `legende` | Le chiffre défile jusqu'à sa valeur. |
 | `carte` | `debut`, `fin`, `animation` + champs ci-dessous | La vidéo se réduit en carte arrondie, l'animation joue à côté. |
 | `liste` | `debut`, `fin`, `items`, `temps`, `y` | Pastilles sous le visage, une par élément, qui glissent quand elles sont dites et restent affichées. Pas de cadrage serré pendant la liste. |
@@ -71,7 +71,7 @@ Champs des cartes :
 - `gros_chiffre` : `titre`, `valeur`, `prefixe`, `suffixe`, `decimales`, `legende`, ou bien `texte` (texte fixe, sans comptage) ;
 - `checklist` : `titre`, `items`, `coches` (facultatif, secondes absolues).
 
-Chaque animation (sauf les zooms) déclenche un son discret (whoosh, montée, impact, scintillement, pop, frappe, compteur, titre ; icônes cible = `cible`, ia = `numerique`), généré par `scripts/sons.mjs` avec ffmpeg. Ajoute `"son": false` à une animation pour le couper.
+Chaque animation (sauf les zooms) déclenche un son bref et doux : `woutch` (titres, cartes, plans de coupe), `woutch_court` (chiffres, pastilles), `tap` (coches), généré par `scripts/sons.mjs` avec ffmpeg. Les anciens sons (whoosh, scintillement, pop, compteur…) restent dans le fichier mais ne sont plus utilisés. Ajoute `"son": false` à une animation pour le couper.
 
 ## Organisation
 

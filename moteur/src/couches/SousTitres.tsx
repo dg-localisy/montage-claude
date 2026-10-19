@@ -2,10 +2,11 @@ import React from 'react';
 import {useCurrentFrame, useVideoConfig} from 'remotion';
 import {easeOut, emDepuisAss, fondu, prog} from '../temps';
 import {DessinIcone} from './Icone';
+import {styleEvidence} from '../miseEnEvidence';
 
 // Sous-titres mot à mot. Même place, même taille, même police de base et même ombre
 // que ceux de la première vidéo (charte → sous_titres). Seuls changent :
-// l'apparition mot par mot, le mot en cours en orange et les mots-clés en Figtree Black.
+// l'apparition mot par mot et les mots-clés en italique avec un relief (charte → mise_en_evidence). Tout reste blanc.
 // Les icônes liées à un mot sont dessinées juste au-dessus de ce mot (jamais sur le visage) ;
 // si la ligne de sous-titres change avant la fin de l'icône, l'icône reste à sa place.
 export const SousTitres: React.FC<{projet: any; charte: any}> = ({projet, charte}) => {
@@ -24,6 +25,7 @@ export const SousTitres: React.FC<{projet: any; charte: any}> = ({projet, charte
   const M = charte.moteur.sous_titres;
   const em = emDepuisAss(n.taille_ass);
   const o = st.ombre;
+  const relief = styleEvidence(M.mots_cles_police, em, charte);
   const ombre = `${o.decalage_x_px}px ${o.decalage_y_px}px ${o.flou}px rgba(0,0,0,1), ${o.decalage_x_px}px ${o.decalage_y_px}px ${o.epaisseur_px}px rgba(0,0,0,0.95), 0 0 ${o.epaisseur_px}px rgba(0,0,0,0.6)`;
 
   const icones = projet.effets.filter((e: any) => e.type === 'icone' && e.mot_id !== undefined && t >= e.debut && t <= e.fin);
@@ -51,9 +53,9 @@ export const SousTitres: React.FC<{projet: any; charte: any}> = ({projet, charte
               {i > 0 ? ' ' : ''}
               <span
                 style={{
-                  position: 'relative', display: 'inline-block', fontFamily: m.cle ? M.mots_cles_police : n.police,
-                  color: fantome ? 'transparent' : actif ? M.mot_actif_couleur : st.couleur, textShadow: fantome ? 'none' : ombre, opacity: a,
-                  transform: `translateY(${((1 - a) * 10).toFixed(1)}px)`, filter: a < 1 ? `blur(${((1 - a) * 5).toFixed(1)}px)` : 'none',
+                  position: 'relative', display: 'inline-block', fontFamily: m.cle ? relief.fontFamily : n.police,
+                  color: fantome ? 'transparent' : actif ? M.mot_actif_couleur : st.couleur, textShadow: fantome ? 'none' : m.cle ? relief.textShadow : ombre, opacity: a,
+                  transform: `translateY(${((1 - a) * 10).toFixed(1)}px)${m.cle ? ' ' + relief.transform : ''}`, filter: a < 1 ? `blur(${((1 - a) * 5).toFixed(1)}px)` : 'none',
                 }}
               >
                 {m.texte}

@@ -25,10 +25,10 @@ Ce dépôt sert à monter automatiquement les vidéos de l'agence LOCALISY (tém
 | `ma-charte.json` | Toutes les règles chiffrées : couleurs, polices, sous-titres, titres, icônes, son, formats, mots à corriger |
 | `MON-STYLE.md` | Le même style en langage simple, avec la liste des vérifications avant livraison |
 | `Figtree-*.ttf` | Les polices. N'utilise que les fichiers statiques : les deux `*VariableFont*` portent le même nom interne que Figtree Light |
-| `apercus/` | Images d'aperçu validées par l'utilisateur (sous-titre, phrase forte, grand titre, icône) |
+| `apercus/` | Images d'aperçu (sous-titre, phrase forte, grand titre) |
 | `marque/` | Logo LOCALISY en SVG et PNG (blanc, gris #333333, noir). Reproduit d'après le logo fourni : LOCALISY en Figtree ExtraBold, interlettrage 5,7 %. Blanc sur la vidéo, jamais déformé ni orange |
 
-Repères de la charte : noir #000000, blanc #FFFFFF, petite touche d'orange #FF4D00 (un seul élément orange à la fois). Formats 9:16 (1080×1920) et 4:5 (1080×1350). Son final à -14 LUFS, crête à -1 dBTP. LOCALISY s'écrit toujours en majuscules.
+Repères de la charte : noir #000000, blanc #FFFFFF, et c'est tout : plus d'orange dans les vidéos (demande de l'utilisateur). Les mots importants ressortent en italique avec un relief noir (`mise_en_evidence` dans la charte). Formats 9:16 (1080×1920) et 4:5 (1080×1350). Son final à -14 LUFS, crête à -1 dBTP. LOCALISY s'écrit toujours en majuscules.
 
 ## Les outils
 
@@ -87,11 +87,11 @@ node scripts/rendu.mjs  CHEMIN/effets.json --nom NOM       # images fixes + vid�
 
 Options : `--sans-stills`, `--sans-4x5`, `--images 0-89`, `--sortie DOSSIER`. Sorties dans `moteur/sortie/` : `NOM_planche.png`, `NOM_stills/`, `NOM_9x16.mp4`, `NOM_4x5.mp4`.
 
-Animations : `accroche` (la 2e prend le style « présentation », pour le nom), `grand_titre`, `icone` (courbe, etoile, epingle, panier, coeur, bulle, cible, etincelle, ia ; toujours avec `mot` pour la poser au-dessus de son mot), `chiffre`, `carte` (chat_ia, entonnoir, gros_chiffre, checklist, avec temps imposés possibles), `liste` (pastilles sous le visage), `plan_de_coupe` (vidéo libre de droits en plein écran), `zoom`, `transition`, `carte_fin`, `signature` (`y` pour la déplacer ; l'utilisateur ne veut pas de logo à la fin des témoignages, ne pas l'utiliser sans demande). Sous-titres : `mot_a_mot` (choix de l'utilisateur), `premiere_video` ou `aucun`. `camera.visage` (yeux) et `camera.coupes` (coupes du vidéaste, à détecter) sont importants. Les titres d'accroche, chiffres et pastilles se placent sous le visage, au-dessus des sous-titres : l'image ne bouge jamais pour leur faire de la place.
+Animations : `accroche` (la 2e prend le style « présentation », pour le nom), `grand_titre`, `icone` (l'utilisateur ne veut plus de pictos : à remplacer par des plans de coupe plein écran), `chiffre`, `carte` (chat_ia, entonnoir, gros_chiffre, checklist, avec temps imposés possibles), `liste` (pastilles sous le visage), `plan_de_coupe` (vidéo libre de droits en plein écran), `zoom`, `transition`, `carte_fin`, `signature` (`y` pour la déplacer ; l'utilisateur ne veut pas de logo à la fin des témoignages, ne pas l'utiliser sans demande). Sous-titres : `mot_a_mot` (choix de l'utilisateur), `premiere_video` ou `aucun`. `camera.visage` (yeux) et `camera.coupes` (coupes du vidéaste, à détecter) sont importants. Les titres d'accroche, chiffres et pastilles se placent sous le visage, au-dessus des sous-titres : l'image ne bouge jamais pour leur faire de la place.
 
 Règles :
 - RÈGLE ABSOLUE de l'utilisateur : rien ne cache jamais le visage (titre, icône, chiffre, pastille), même flouté. Seule exception : le grand titre 3D.
-- Regarde TOUTES les images fixes en grand (par groupes de 8, la planche est trop petite) avant de livrer : quelque chose sur le visage ou la tête, compteur qui n'atteint pas sa valeur, animations qui se chevauchent, icône trop petite ou trop brève, dernier élément d'une liste trop bref, deux éléments orange à la fois.
+- Regarde TOUTES les images fixes en grand (par groupes de 8, la planche est trop petite) avant de livrer : quelque chose sur le visage ou la tête, compteur qui n'atteint pas sa valeur, animations qui se chevauchent, dernier élément d'une liste trop bref, une couleur autre que noir et blanc.
 - Bruitages : discrets et rapides (voir `moteur.sons.preferences` dans la charte). Pas de montée lente ni d'impact fort.
 - Banques de vidéos libres de droits (Pexels, Pixabay…) bloquées par le réseau : demander à l'utilisateur de déposer le clip sur GitHub, ou d'autoriser le domaine.
 - Un changement limité à quelques secondes se refait sans tout rendre : `--images DEBUT-FIN` sur les seules images touchées, puis recollage à l'image près (vérifier les bords).
@@ -132,5 +132,5 @@ Refait le mélange voix + effets à partir des pistes séparées, baisse les eff
 
 ## Questions encore ouvertes avec l'utilisateur
 
-- Sous-titres : l'utilisateur a choisi le mot à mot (tous les mots dits, mots importants en Figtree Black, mot en cours en orange). Il n'a pas encore réagi au fait que l'orange du mot en cours peut s'ajouter à un autre élément orange.
+- Plans de coupe : les banques de vidéos sont bloquées par le réseau. Attendre que l'utilisateur dépose les clips (ou autorise le domaine) pour remplacer les anciens pictos.
 - La charte disait « pas de carte de fin » et « pas de transitions colorées ». Le moteur sait les faire : ne les utiliser que si l'utilisateur le demande pour une vidéo.

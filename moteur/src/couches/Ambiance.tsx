@@ -93,7 +93,7 @@ export const CarteFin: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const t = frame / fps;
   if (t < e.debut) return null;
   const F = charte.moteur.carte_fin;
-  const accent = charte.couleurs.orange;
+  const accent = charte.moteur.accent;
   const fond = easeOut(prog(t, e.debut, e.debut + 0.3));
   const barre = easeOut(prog(t, e.debut + 0.15, e.debut + 0.5));
   const role = easeOut(prog(t, e.debut + 0.35, e.debut + 0.65));

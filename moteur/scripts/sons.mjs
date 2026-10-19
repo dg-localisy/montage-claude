@@ -24,6 +24,20 @@ function balayage(duree, f0, fmax, f1) {
 }
 
 const RECETTES = {
+  // --- sons actuels (demande de l'utilisateur : brefs, doux, sans note aiguë) ---
+  // woutch : petit souffle bref et doux (bruit rose filtré qui glisse vers l'aigu puis retombe)
+  woutch: (d = 0.26) => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.9:seed=7`,
+    '-af', `asendcmd=c='${balayage(d, 350, 1700, 600)}',bandpass@b=f=350:width_type=o:w=1.2,lowpass=f=4500,` +
+      `afade=t=in:d=${(d * 0.55).toFixed(2)}:curve=qsin,afade=t=out:st=${(d * 0.55).toFixed(2)}:d=${(d * 0.45).toFixed(2)}:curve=qsin`],
+  // woutch_court : la même chose en plus court et un peu plus léger (chiffres, pastilles)
+  woutch_court: (d = 0.16) => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.9:seed=11`,
+    '-af', `asendcmd=c='${balayage(d, 500, 2000, 900)}',bandpass@b=f=500:width_type=o:w=1.2,lowpass=f=5000,` +
+      `afade=t=in:d=${(d * 0.5).toFixed(2)}:curve=qsin,afade=t=out:st=${(d * 0.5).toFixed(2)}:d=${(d * 0.5).toFixed(2)}:curve=qsin`],
+  // tap : petit toc feutré, grave et très court (comme un doigt sur une table), pour les coches
+  tap: () => ['-f', 'lavfi', '-i',
+    `aevalsrc='(0.8*sin(2*PI*150*t)+0.35*sin(2*PI*310*t))*exp(-45*t)*(1-exp(-1500*t))+0.15*(random(0)*2-1)*exp(-400*t)':s=${SR}:d=0.12`,
+    '-af', 'lowpass=f=1800,afade=t=out:st=0.09:d=0.03'],
+  // --- anciens sons (gardés au cas où) ---
   // souffle d'air qui passe : bruit rose filtré, la fréquence monte puis redescend
   whoosh: (d = 0.6) => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.9`,
     '-af', `asendcmd=c='${balayage(d, 250, 2600, 700)}',bandpass@b=f=250:width_type=o:w=1.4,` +

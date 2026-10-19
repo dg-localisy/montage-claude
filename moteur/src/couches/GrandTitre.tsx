@@ -1,6 +1,7 @@
 import React from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {clamp, emDepuisAss, prog, sansPonctuation} from '../temps';
+import {styleEvidence} from '../miseEnEvidence';
 
 // Grand titre sur une phrase choc : le visage est flouté derrière (voir Camera),
 // chaque ligne arrive en 3D (bascule vers l'avant), puis repart vers le haut.
@@ -11,7 +12,6 @@ export const GrandTitre: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   if (t < e.debut - 0.05 || t > e.fin) return null;
   const G = charte.moteur.grand_titre;
   const ti = charte.titres;
-  const accent = charte.couleurs.orange;
   const em = emDepuisAss(132) * 1.12;
   const ecart = 150;
   const lignes: string[] = e.lignes.map((l: string) => l.toUpperCase());
@@ -36,7 +36,7 @@ export const GrandTitre: React.FC<{e: any; charte: any}> = ({e, charte}) => {
             }}
           >
             {ligne.split(' ').map((mot, mi) => (
-              <span key={mi} style={{color: sansPonctuation(mot) === accentMot ? accent : '#fff'}}>
+              <span key={mi} style={{color: '#fff', ...(sansPonctuation(mot) === accentMot ? styleEvidence(ti.police, em, charte) : {})}}>
                 {(mi > 0 ? ' ' : '') + mot}
               </span>
             ))}

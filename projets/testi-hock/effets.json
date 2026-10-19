@@ -97,13 +97,6 @@
    "legende": "agences immobilières"
   },
   {
-   "type": "icone",
-   "icone": "epingle",
-   "debut": 8.3,
-   "fin": 9.4,
-   "mot": "Liège"
-  },
-  {
    "type": "chiffre",
    "debut": 9.4,
    "fin": 10.3,
@@ -117,13 +110,6 @@
    "fin": 16.1,
    "a": 1.15,
    "duree": 0.15
-  },
-  {
-   "type": "icone",
-   "icone": "courbe",
-   "debut": 15.65,
-   "fin": 16.9,
-   "mot": "évoluer"
   },
   {
    "type": "grand_titre",
@@ -142,20 +128,6 @@
    "fin": 21.38,
    "a": 1.22,
    "duree": 0.22
-  },
-  {
-   "type": "icone",
-   "icone": "cible",
-   "debut": 22.4,
-   "fin": 23.3,
-   "mot": "ciblage"
-  },
-  {
-   "type": "icone",
-   "icone": "ia",
-   "debut": 23.9,
-   "fin": 25.2,
-   "mot": "IA"
   },
   {
    "type": "plan_de_coupe",

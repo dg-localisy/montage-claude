@@ -187,29 +187,28 @@ function sonsPour(e, M) {
   const v = M.sons.volumes;
   const s = (nom, debut, facteur = 1) => ({fichier: `sons/${nom}.wav`, debut: Math.max(0, debut), volume: +(v[nom] * facteur).toFixed(3), effet: e.type});
   const t = e._t || {};
+  // Bruitages brefs et doux (demande de l'utilisateur) : woutch pour les entrées, mini-woutch pour les petits
+  // éléments, toc feutré pour les coches. Aucun son sur les zooms.
   switch (e.type) {
-    case 'accroche': return e.variante === 'presentation' ? [s('whoosh', e.debut, 0.6), s('pop', t.finFrappe, 0.6)] : [s('whoosh', e.debut), s('scintillement', t.finFrappe)];
-    case 'signature': return [s('scintillement', e.debut, 0.6)];
-    case 'grand_titre': return [s('titre', e.debut - 0.45)];
-    // icônes : certaines ont leur propre son (calé sur l'apparition du détail orange, 0,4 s après le début),
-    // les autres un pop + un scintillement
-    case 'icone': return e.icone === 'cible' ? [s('cible', e.debut + 0.28)] : e.icone === 'ia' ? [s('numerique', e.debut + 0.05)]
-      : [s('pop', e.debut), s('scintillement', e.debut + 0.1)];
-    case 'chiffre': return [s('compteur', t.comptage[0])];
-    case 'liste': return e.temps.map((c) => s('pop', c, 0.6));
-    case 'plan_de_coupe': return [s('whoosh', e.debut - 0.15, 0.6)];
+    case 'accroche': return [s('woutch', e.debut, e.variante === 'presentation' ? 0.7 : 1)];
+    case 'signature': return [s('woutch_court', e.debut, 0.6)];
+    case 'grand_titre': return [s('woutch', e.debut - 0.12)];
+    case 'icone': return [s('woutch_court', e.debut)];
+    case 'chiffre': return [s('woutch_court', t.comptage[0])];
+    case 'liste': return e.temps.map((c) => s('woutch_court', c - 0.03, 0.8));
+    case 'plan_de_coupe': return [s('woutch', e.debut - 0.12)];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
-    case 'transition': return e.style === 'lumiere' ? [s('whoosh', e.debut - 0.3), s('scintillement', e.debut - 0.05, 0.8)] : [s('whoosh', e.debut - 0.25, 1.2)];
-    case 'carte_fin': return [s('impact', e.debut, 0.7), s('scintillement', e.debut + 0.25)];
+    case 'transition': return [s('woutch', e.debut - 0.13)];
+    case 'carte_fin': return [s('woutch', e.debut)];
     case 'carte': {
-      const liste = [s('whoosh', e.debut), s('whoosh', e.fin - (M.carte.duree_reduction_s + 0.05), 0.8)];
+      const liste = [s('woutch', e.debut), s('woutch', e.fin - (M.carte.duree_reduction_s + 0.05), 0.8)];
       if (e.animation === 'chat_ia') {
         for (let i = 0; i < e.message.length; i += 2) liste.push(s('frappe', t.frappe + i / M.chat.lettres_par_s));
-        liste.push(s('pop', t.envoi), s('pop', t.reponse, 0.9));
+        liste.push(s('tap', t.envoi), s('tap', t.reponse, 0.9));
       }
-      if (e.animation === 'checklist') t.coches.forEach((c) => liste.push(s('pop', c, 0.9)));
-      if (e.animation === 'entonnoir') t.etapes.forEach((c) => liste.push(s('pop', c, 0.6)));
-      if (e.animation === 'gros_chiffre') liste.push(...(e.texte ? [s('pop', t.comptage[0], 0.9)] : [s('montee', t.comptage[0] - 0.2, 0.7), s('impact', t.comptage[1], 0.7)]));
+      if (e.animation === 'checklist') t.coches.forEach((c) => liste.push(s('tap', c)));
+      if (e.animation === 'entonnoir') t.etapes.forEach((c) => liste.push(s('tap', c, 0.8)));
+      if (e.animation === 'gros_chiffre') liste.push(s('tap', t.comptage[0]));
       return liste;
     }
     default: return [];

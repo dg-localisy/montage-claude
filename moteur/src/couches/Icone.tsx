@@ -2,7 +2,7 @@ import React from 'react';
 import {random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {easeOut, prog} from '../temps';
 
-// Icônes au trait fin blanc + un seul détail orange (charte → icones), dessinées sur 100×100.
+// Icônes au trait fin blanc + un seul détail (couleur charte → moteur.accent), dessinées sur 100×100. Plus utilisées par défaut : l'utilisateur préfère des plans de coupe.
 const ICONES: Record<string, {traits: string[]; detail: (c: string) => React.ReactNode}> = {
   courbe: {traits: ['M10 8 V90 H92', 'M22 74 L42 52 L57 63 L86 24'], detail: (c) => <circle cx={86} cy={24} r={6} fill={c} />},
   etoile: {
@@ -39,7 +39,7 @@ const ICONES: Record<string, {traits: string[]; detail: (c: string) => React.Rea
 export const DessinIcone: React.FC<{e: any; t: number; taille: number; charte: any}> = ({e, t, taille, charte}) => {
   const {fps} = useVideoConfig();
   const I = charte.moteur.icone;
-  const accent = charte.couleurs.orange;
+  const accent = charte.moteur.accent;
   const def = ICONES[e.icone] ?? ICONES.courbe;
   const rebond = spring({frame: (t - e.debut) * fps, fps, config: {damping: 8, stiffness: 170, mass: 0.7}});
   const trace = easeOut(prog(t, e.debut + 0.05, e.debut + 0.05 + I.duree_trace_s));

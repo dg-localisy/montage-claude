@@ -1,7 +1,7 @@
 // Rendu complet d'une vidéo à partir de ma-charte.json + effets.json.
 //
 //   node scripts/rendu.mjs chemin/effets.json [--sortie dossier] [--nom essai]
-//                          [--stills-seulement] [--sans-stills] [--sans-4x5] [--images 0-89]
+//                          [--stills-seulement] [--sans-stills] [--sans-4x5] [--images 0-89] [--instants 1.8,18]
 //
 // Étapes : préparation → images fixes de contrôle (planche) → rendu Remotion →
 // sous-titres « premiere_video » si demandés → volume -14 LUFS → version 4:5.
@@ -155,7 +155,11 @@ if (!drapeau('--sans-stills')) {
   const dossierStills = path.join(sortie, `${nom}_stills`);
   fs.rmSync(dossierStills, {recursive: true, force: true});
   fs.mkdirSync(dossierStills, {recursive: true});
-  const instants = instantsDeControle(projet);
+  // --instants 1.8,18,37.5 : seulement ces moments (contrôle rapide), sinon tous les instants de contrôle
+  const choisis = option('--instants');
+  const instants = choisis
+    ? choisis.split(',').map((x) => ({t: Math.round(parseFloat(x) * projet.fps) / projet.fps, etiquette: 'choisi'}))
+    : instantsDeControle(projet);
   console.log(`Images fixes de contrôle : ${instants.length}`);
   for (const [i, ins] of instants.entries()) {
     ins.fichier = path.join(dossierStills, `${String(i).padStart(2, '0')}_${ins.t.toFixed(2)}s.png`);
