@@ -158,13 +158,6 @@
    "mot": "IA"
   },
   {
-   "type": "zoom",
-   "debut": 26.3,
-   "fin": 26.65,
-   "a": 1.15,
-   "duree": 0.15
-  },
-  {
    "type": "plan_de_coupe",
    "debut": 27.3,
    "fin": 29.44,
@@ -226,12 +219,6 @@
    "fin": 53.93,
    "a": 1.08,
    "duree": 2.0
-  },
-  {
-   "type": "signature",
-   "debut": 52.6,
-   "fin": 53.93,
-   "y": 1319
   }
  ]
 }

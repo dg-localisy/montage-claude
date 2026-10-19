@@ -191,11 +191,14 @@ function sonsPour(e, M) {
     case 'accroche': return e.variante === 'presentation' ? [s('whoosh', e.debut, 0.6), s('pop', t.finFrappe, 0.6)] : [s('whoosh', e.debut), s('scintillement', t.finFrappe)];
     case 'signature': return [s('scintillement', e.debut, 0.6)];
     case 'grand_titre': return [s('titre', e.debut - 0.45)];
-    case 'icone': return [s('pop', e.debut), s('scintillement', e.debut + 0.1)];
+    // icônes : certaines ont leur propre son (calé sur l'apparition du détail orange, 0,4 s après le début),
+    // les autres un pop + un scintillement
+    case 'icone': return e.icone === 'cible' ? [s('cible', e.debut + 0.28)] : e.icone === 'ia' ? [s('numerique', e.debut + 0.05)]
+      : [s('pop', e.debut), s('scintillement', e.debut + 0.1)];
     case 'chiffre': return [s('compteur', t.comptage[0])];
     case 'liste': return e.temps.map((c) => s('pop', c, 0.6));
     case 'plan_de_coupe': return [s('whoosh', e.debut - 0.15, 0.6)];
-    case 'zoom': return [s('whoosh', e.debut - 0.05, 0.7)];
+    case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
     case 'transition': return e.style === 'lumiere' ? [s('whoosh', e.debut - 0.3), s('scintillement', e.debut - 0.05, 0.8)] : [s('whoosh', e.debut - 0.25, 1.2)];
     case 'carte_fin': return [s('impact', e.debut, 0.7), s('scintillement', e.debut + 0.25)];
     case 'carte': {

@@ -59,10 +59,10 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 | `carte` | `debut`, `fin`, `animation` + champs ci-dessous | La vidéo se réduit en carte arrondie, l'animation joue à côté. |
 | `liste` | `debut`, `fin`, `items`, `temps`, `y` | Pastilles sous le visage, une par élément, qui glissent quand elles sont dites et restent affichées. Pas de cadrage serré pendant la liste. |
 | `plan_de_coupe` | `debut`, `fin`, `fichier`, `debut_clip` | Vidéo d'illustration (libre de droits) en plein écran, sans son : la voix continue. |
-| `zoom` | `debut`, `a`, `duree`, `fin` (facultatif) | Zoom avec flou de mouvement. |
+| `zoom` | `debut`, `a`, `duree`, `fin` (facultatif) | Zoom avec flou de mouvement, sans bruitage. Éviter un zoom qui ressort aussitôt (moins d'1 s) : ça fait un à-coup. |
 | `transition` | `debut` (instant de la coupe), `style`, `duree` | `lumiere` (lumière colorée) ou `panoramique` (panoramique rapide). |
 | `carte_fin` | `debut`, `fin`, `nom`, `role` | Carte de fin. Si `nom` vaut « LOCALISY », c'est le logo qui s'affiche. |
-| `signature` | `debut`, `fin`, `y` (facultatifs) | Logo LOCALISY discret (charte `fin.signature`), par défaut sur les 2 dernières secondes. `y` remplace la hauteur de la charte pour une vidéo (ex. 1450, sous les sous-titres, si le visage est cadré haut). |
+| `signature` | `debut`, `fin`, `y` (facultatifs) | Logo LOCALISY discret (charte `fin.signature`), par défaut sur les 2 dernières secondes. L'utilisateur n'en veut pas à la fin des témoignages : seulement sur demande. `y` remplace la hauteur de la charte pour une vidéo (ex. 1450, sous les sous-titres, si le visage est cadré haut). |
 
 Champs des cartes :
 
@@ -71,7 +71,7 @@ Champs des cartes :
 - `gros_chiffre` : `titre`, `valeur`, `prefixe`, `suffixe`, `decimales`, `legende`, ou bien `texte` (texte fixe, sans comptage) ;
 - `checklist` : `titre`, `items`, `coches` (facultatif, secondes absolues).
 
-Chaque animation déclenche un son discret (whoosh, montée, impact, scintillement, pop, frappe), généré par `scripts/sons.mjs` avec ffmpeg. Ajoute `"son": false` à une animation pour le couper.
+Chaque animation (sauf les zooms) déclenche un son discret (whoosh, montée, impact, scintillement, pop, frappe, compteur, titre ; icônes cible = `cible`, ia = `numerique`), généré par `scripts/sons.mjs` avec ffmpeg. Ajoute `"son": false` à une animation pour le couper.
 
 ## Organisation
 

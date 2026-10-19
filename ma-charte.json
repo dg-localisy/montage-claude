@@ -408,7 +408,7 @@
   },
   "fin": {
     "type": "le client conclut",
-    "regle": "Pas de carte de fin. La vidéo se termine sur la dernière phrase forte du client.",
+    "regle": "Pas de carte de fin ni de logo à la fin (l'utilisateur n'en veut pas). La vidéo se termine sur la dernière phrase forte du client.",
     "signature": {
       "texte": "LOCALISY",
       "police": "Figtree ExtraBold",
@@ -594,9 +594,11 @@
         "pop": 0.2,
         "frappe": 0.05,
         "compteur": 0.3,
-        "titre": 0.18
+        "titre": 0.18,
+        "cible": 0.2,
+        "numerique": 0.1
       },
-      "preferences": "Bruitages discrets et rapides. Pas de montée lente ni d'impact fort. Chiffres : petits tics rapides. Grand titre : souffle doux et coup sourd. Whoosh de transition bas (volume 0,1)."
+      "preferences": "Bruitages discrets et rapides. Pas de montée lente ni d'impact fort. Chiffres : petits tics rapides. Grand titre : souffle doux et coup sourd. Whoosh de transition bas (volume 0,1). Pas de bruitage sur les zooms ; seulement sur les animations (cartes, coches, icônes, chiffres, titres). Les icônes ne reprennent pas le son de l'accroche du début : cible = fléchette, IA = petits bips électroniques."
     },
     "musique": {
       "sous_la_voix_db": -20,

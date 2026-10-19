@@ -59,6 +59,18 @@ const RECETTES = {
     '-filter_complex', `[0:a]bandpass=f=1000:width_type=o:w=2.2,afade=t=in:d=0.46:curve=exp,afade=t=out:st=0.46:d=0.04[s];` +
       `[1:a]lowpass=f=260,adelay=450|450[b];[s][b]amix=inputs=2:duration=longest:normalize=0,aecho=0.8:0.35:55:0.18[o]`,
     '-map', '[o]'],
+  // cible : petite fléchette qui file (souffle très court) puis se plante (« toc » sec et feutré, à 0,14 s)
+  cible: () => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=0.16:a=0.7`,
+    '-f', 'lavfi', '-i', `aevalsrc='(0.9*sin(2*PI*460*t)*exp(-38*t)+0.5*(random(0)*2-1)*exp(-260*t))*(1-exp(-900*t))':s=${SR}:d=0.3`,
+    '-filter_complex', `[0:a]bandpass=f=2400:width_type=o:w=1.6,volume=8,afade=t=in:d=0.12:curve=exp,afade=t=out:st=0.12:d=0.04[s];` +
+      `[1:a]lowpass=f=3200,adelay=140:all=1[b];[s][b]amix=inputs=2:duration=longest:normalize=0[o]`,
+    '-map', '[o]'],
+  // numerique (IA) : trois petits bips électroniques qui montent, puis un bip quand « IA » s'allume (à 0,36 s)
+  numerique: () => {
+    const bips = [[1318, 0], [1760, 0.06], [2637, 0.12], [3520, 0.36]];
+    const expr = bips.map(([f, t0]) => `between(t,${t0},${t0 + 0.05})*sin(PI*(t-${t0})/0.05)*(sin(2*PI*${f}*(t-${t0}))+0.25*sin(2*PI*${3 * f}*(t-${t0})))`).join('+');
+    return ['-f', 'lavfi', '-i', `aevalsrc='0.5*(${expr})':s=${SR}:d=0.45`, '-af', 'lowpass=f=9000'];
+  },
   // frappe : clic de clavier très court
   frappe: (d = 0.05) => ['-f', 'lavfi', '-i', `aevalsrc='(random(0)*2-1)*exp(-140*t)':s=${SR}:d=${d}`,
     '-af', 'highpass=f=1800,lowpass=f=7000'],

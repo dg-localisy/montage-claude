@@ -81,7 +81,7 @@ Une icône se place juste au-dessus du mot qu'elle illustre, dans les sous-titre
 
 ## Le son
 
-La voix passe avant tout. Dessous, une musique instrumentale douce (piano léger ou électro calme), libre de droits, que je fournis. Elle baisse toute seule quand le client parle. Les bruitages sont très discrets et rapides : de petits tics quand un chiffre défile, un souffle doux et un coup sourd pour le grand titre, un « whoosh » léger (volume bas) pour les transitions. Pas de montée lente ni d'impact fort.
+La voix passe avant tout. Dessous, une musique instrumentale douce (piano léger ou électro calme), libre de droits, que je fournis. Elle baisse toute seule quand le client parle. Les bruitages sont très discrets et rapides : de petits tics quand un chiffre défile, un souffle doux et un coup sourd pour le grand titre, un « whoosh » léger (volume bas) pour les transitions. Pas de montée lente ni d'impact fort. Pas de bruitage sur les zooms : seulement sur les animations (cartes, coches, icônes, chiffres, titres). Une icône ne reprend pas le son du titre du début (cible : petite fléchette ; IA : petits bips électroniques).
 
 Volume final : -14 LUFS, le niveau attendu par les réseaux sociaux.
 
@@ -91,7 +91,7 @@ Rendu naturel contrasté : noirs un peu plus profonds, couleurs légèrement ado
 
 ## La fin
 
-Pas de carte de fin. La vidéo se termine sur la phrase la plus forte du client. Pendant les dernières secondes, le logo LOCALISY apparaît en petit, en blanc : en haut de l'image s'il y a de la place, sinon sous le visage, juste au-dessus des sous-titres (jamais sur la tête), une fois les pastilles ou les chiffres partis.
+Pas de carte de fin, et pas de logo LOCALISY à la fin : la vidéo se termine simplement sur la phrase la plus forte du client.
 
 ## Les formats
 
