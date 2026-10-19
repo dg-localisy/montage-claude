@@ -1,0 +1,378 @@
+{
+  "nom": "Charte de montage LOCALISY",
+  "version": 1,
+  "mise_a_jour": "2026-10-19",
+  "sujet": "Témoignages clients pour promouvoir l'agence de marketing LOCALISY auprès du grand public",
+  "plateformes": {
+    "prioritaire": "Instagram",
+    "autres": [
+      "TikTok",
+      "Facebook",
+      "LinkedIn"
+    ]
+  },
+  "famille_de_style": "Premium",
+  "comptes_de_reference": [
+    "Creatical",
+    "agencepersonnelle",
+    "zenvyx.cuts"
+  ],
+  "couleurs": {
+    "noir": "#000000",
+    "blanc": "#FFFFFF",
+    "orange": "#FF4D00",
+    "regle": "Noir et blanc partout. L'orange reste une petite touche : un seul mot ou un seul détail orange à l'écran à la fois.",
+    "ass": {
+      "noir": "&H00000000",
+      "blanc": "&H00FFFFFF",
+      "orange": "&H00004DFF"
+    }
+  },
+  "polices": {
+    "dossier": ".",
+    "attention": "Les deux fichiers VariableFont portent le même nom interne que Figtree Light (« Figtree Light » et « Figtree Light Italic »). Ne passer à ffmpeg/libass que les fichiers statiques pour éviter qu'il prenne la mauvaise version.",
+    "sous_titres": {
+      "nom_interne": "Figtree SemiBold",
+      "fichier": "Figtree-SemiBold.ttf",
+      "graisse": 600
+    },
+    "titres": {
+      "nom_interne": "Figtree Black",
+      "fichier": "Figtree-Black.ttf",
+      "graisse": 900
+    },
+    "chiffres": {
+      "nom_interne": "Figtree Black",
+      "fichier": "Figtree-Black.ttf",
+      "graisse": 900
+    },
+    "petits_textes": {
+      "nom_interne": "Figtree Bold",
+      "fichier": "Figtree-Bold.ttf",
+      "graisse": 700
+    },
+    "inventaire": [
+      {
+        "fichier": "Figtree-Black.ttf",
+        "nom_interne": "Figtree Black",
+        "famille": "Figtree Black",
+        "style": "Regular",
+        "graisse": 900,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-BlackItalic.ttf",
+        "nom_interne": "Figtree Black Italic",
+        "famille": "Figtree Black",
+        "style": "Italic",
+        "graisse": 900,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-Bold.ttf",
+        "nom_interne": "Figtree Bold",
+        "famille": "Figtree",
+        "style": "Bold",
+        "graisse": 700,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-BoldItalic.ttf",
+        "nom_interne": "Figtree Bold Italic",
+        "famille": "Figtree",
+        "style": "Bold Italic",
+        "graisse": 700,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-ExtraBold.ttf",
+        "nom_interne": "Figtree ExtraBold",
+        "famille": "Figtree ExtraBold",
+        "style": "Regular",
+        "graisse": 800,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-ExtraBoldItalic.ttf",
+        "nom_interne": "Figtree ExtraBold Italic",
+        "famille": "Figtree ExtraBold",
+        "style": "Italic",
+        "graisse": 800,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-Italic-VariableFont_wght.ttf",
+        "nom_interne": "Figtree Light Italic",
+        "famille": "Figtree Light",
+        "style": "Italic",
+        "graisse": 300,
+        "variable": true
+      },
+      {
+        "fichier": "Figtree-Italic.ttf",
+        "nom_interne": "Figtree Italic",
+        "famille": "Figtree",
+        "style": "Italic",
+        "graisse": 400,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-Light.ttf",
+        "nom_interne": "Figtree Light",
+        "famille": "Figtree Light",
+        "style": "Regular",
+        "graisse": 300,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-LightItalic.ttf",
+        "nom_interne": "Figtree Light Italic",
+        "famille": "Figtree Light",
+        "style": "Italic",
+        "graisse": 300,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-Medium.ttf",
+        "nom_interne": "Figtree Medium",
+        "famille": "Figtree Medium",
+        "style": "Regular",
+        "graisse": 500,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-MediumItalic.ttf",
+        "nom_interne": "Figtree Medium Italic",
+        "famille": "Figtree Medium",
+        "style": "Italic",
+        "graisse": 500,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-Regular.ttf",
+        "nom_interne": "Figtree Regular",
+        "famille": "Figtree",
+        "style": "Regular",
+        "graisse": 400,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-SemiBold.ttf",
+        "nom_interne": "Figtree SemiBold",
+        "famille": "Figtree SemiBold",
+        "style": "Regular",
+        "graisse": 600,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-SemiBoldItalic.ttf",
+        "nom_interne": "Figtree SemiBold Italic",
+        "famille": "Figtree SemiBold",
+        "style": "Italic",
+        "graisse": 600,
+        "variable": false
+      },
+      {
+        "fichier": "Figtree-VariableFont_wght.ttf",
+        "nom_interne": "Figtree Light",
+        "famille": "Figtree Light",
+        "style": "Regular",
+        "graisse": 300,
+        "variable": true
+      }
+    ]
+  },
+  "formats": [
+    {
+      "nom": "vertical",
+      "ratio": "9:16",
+      "largeur": 1080,
+      "hauteur": 1920,
+      "usage": "Reels Instagram, TikTok, Stories, Reels Facebook"
+    },
+    {
+      "nom": "fil",
+      "ratio": "4:5",
+      "largeur": 1080,
+      "hauteur": 1350,
+      "usage": "fil LinkedIn et Facebook",
+      "fabrication": "recadrage centré de la version 9:16 (on garde les lignes 285 à 1635)"
+    }
+  ],
+  "zone_sure_9x16": {
+    "explication": "Tous les textes restent dans cette zone : elle évite les boutons d'Instagram et TikTok et reste visible dans la version 4:5.",
+    "x_min": 90,
+    "x_max": 950,
+    "y_min": 330,
+    "y_max": 1500
+  },
+  "accroche": {
+    "type": "phrase choc du client",
+    "duree_max_s": 2.5,
+    "regle": "Ouvrir sur la meilleure phrase du témoignage, même si elle arrive plus tard dans l'interview, avec un grand titre qui reprend l'idée clé. Ensuite seulement, l'histoire commence."
+  },
+  "rythme_de_coupe": {
+    "style": "dynamique maîtrisé",
+    "duree_plan_s": {
+      "min": 1.5,
+      "max": 2.5
+    },
+    "silences": "Supprimer les blancs de plus de 0,3 s et les hésitations (euh, ben, répétitions).",
+    "marge_autour_des_mots_s": 0.08,
+    "zoom_lent": "100 % vers 108 % pendant les phrases fortes",
+    "zoom_rapide": "115 % sur un mot clé, en 0,15 s, jamais deux fois de suite",
+    "duree_video_conseillee_s": {
+      "min": 30,
+      "max": 60
+    }
+  },
+  "sous_titres": {
+    "police": "Figtree SemiBold",
+    "taille_px": 70,
+    "casse": "normale (pas de majuscules forcées), sauf LOCALISY",
+    "couleur": "#FFFFFF",
+    "mot_cle": {
+      "couleur": "#FF4D00",
+      "regle": "Au plus un mot orange par groupe, et seulement sur les mots qui portent le sens : chiffres, résultats, émotions, LOCALISY. Pas sur chaque groupe."
+    },
+    "mots_par_groupe": {
+      "min": 2,
+      "max": 4
+    },
+    "lignes_max": 1,
+    "position": {
+      "ancrage": "centre",
+      "x": 540,
+      "y": 1400,
+      "explication": "Bas/milieu : au-dessus des légendes et boutons d'Instagram, et toujours visible en 4:5."
+    },
+    "ombre": {
+      "couleur": "#000000",
+      "opacite_contour": 0.45,
+      "opacite_ombre": 0.5,
+      "contour_px": 4,
+      "decalage_px": 2,
+      "flou": 6
+    },
+    "animation": {
+      "entree": "fondu de 120 ms avec un léger rebond (92 % puis 104 % puis 100 % en 220 ms)",
+      "sortie": "coupe nette"
+    },
+    "ponctuation": "Pas de point final. Garder les virgules et les points d'interrogation utiles.",
+    "style_ass": "Style: SousTitres,Figtree SemiBold,70,&H00FFFFFF,&H00FFFFFF,&H73000000,&H80000000,0,0,0,0,100,100,0,0,1,4,2,5,90,130,0,1",
+    "balises_ass_mot_cle": "{\\c&H00004DFF&}MOT{\\c&H00FFFFFF&}"
+  },
+  "titres": {
+    "police": "Figtree Black",
+    "taille_px": 132,
+    "casse": "MAJUSCULES",
+    "interlettrage_px": -2,
+    "couleur": "#FFFFFF",
+    "mot_cle": {
+      "couleur": "#FF4D00",
+      "regle": "Un seul mot orange par titre."
+    },
+    "lignes_max": 3,
+    "mots_par_ligne_max": 3,
+    "position": {
+      "ancrage": "centre",
+      "x": 540,
+      "y_premiere_ligne": 470,
+      "ecart_lignes_px": 140,
+      "regle": "Le titre ne cache jamais les yeux. Si le visage est placé haut dans l'image, mettre le titre sous le menton (première ligne vers y = 1100)."
+    },
+    "fond": "Léger dégradé noir (0 à 60 %) derrière le titre pour qu'il reste lisible sur n'importe quelle image.",
+    "animation": "Chaque ligne glisse de 40 px vers le haut avec un fondu, en 250 ms, avec 80 ms de décalage entre les lignes.",
+    "style_ass": "Style: Titre,Figtree Black,132,&H00FFFFFF,&H00FFFFFF,&HB4000000,&HB4000000,0,0,0,0,100,100,-2,0,1,6,0,5,90,130,0,1"
+  },
+  "visuels": {
+    "captures_ecran": "Carte flottante : coins arrondis de 32 px, ombre douce (flou 40 px, 45 %), sur fond noir ou sur la vidéo floutée et assombrie, avec un mouvement lent de 100 % à 103 %.",
+    "produits_et_lieux": "Carte flottante. Plein écran seulement si l'image est verticale et de bonne qualité.",
+    "chiffres": "Compteur qui monte de 0 à la valeur en 0,8 s (ralentit à la fin), en Figtree Black blanc. Les signes + et % sont en orange."
+  },
+  "transitions": {
+    "entre_plans_du_client": "coupe nette, sans effet",
+    "vers_cartes_et_chiffres": "glissement rapide de 200 ms avec un peu de flou de mouvement",
+    "a_eviter": [
+      "fondus enchaînés",
+      "transitions fantaisie",
+      "balayages colorés"
+    ]
+  },
+  "icones": {
+    "style": "trait fin",
+    "couleur_trait": "#FFFFFF",
+    "epaisseur": "2,5 % de la taille de l'icône (9 px pour une icône de 360 px)",
+    "detail_orange": "Un seul détail orange (#FF4D00) par icône, par exemple un point.",
+    "bouts_de_trait": "arrondis",
+    "taille_px": {
+      "min": 220,
+      "max": 360
+    },
+    "animation": "Le trait se dessine en 0,5 s, puis le détail orange apparaît avec un petit rebond."
+  },
+  "etalonnage": {
+    "style": "naturel contrasté",
+    "regle": "Noirs un peu plus profonds, couleurs légèrement adoucies, peaux préservées. Même rendu pour tous les témoignages.",
+    "filtre_ffmpeg": "eq=contrast=1.08:saturation=0.92:gamma=0.98"
+  },
+  "son": {
+    "volume_final_lufs": -14,
+    "crete_max_dbtp": -1.0,
+    "voix": "Réduction de bruit légère et égalisation douce. La voix reste toujours au premier plan.",
+    "musique": "Instrumentale minimaliste (piano léger ou électro calme), libre de droits, fournie par toi. Environ 18 dB sous la voix, avec baisse automatique quand le client parle.",
+    "bruitages": "Whoosh et clics très discrets quand un titre, une carte ou un chiffre apparaît."
+  },
+  "fin": {
+    "type": "le client conclut",
+    "regle": "Pas de carte de fin. La vidéo se termine sur la dernière phrase forte du client.",
+    "signature": {
+      "texte": "LOCALISY",
+      "police": "Figtree Bold",
+      "taille_px": 44,
+      "couleur": "#FFFFFF",
+      "opacite": 0.85,
+      "position": {
+        "x": 540,
+        "y": 380
+      },
+      "duree_s": 2,
+      "apparition": "fondu de 300 ms sur les 2 dernières secondes"
+    }
+  },
+  "mots_a_corriger": [
+    {
+      "forme_correcte": "LOCALISY",
+      "remplacer_automatiquement": [
+        "Localisy",
+        "Localisi",
+        "Localizy",
+        "Lokalisy",
+        "Locali-sy",
+        "Local isy",
+        "Localisie",
+        "Localysie",
+        "Local easy",
+        "Locale isy"
+      ],
+      "verifier_a_l_oreille": [
+        "localisé",
+        "localisée",
+        "localiser",
+        "localisez"
+      ],
+      "pourquoi_verifier": "Ce sont de vrais mots français : on ne les remplace qu'après avoir écouté le passage."
+    }
+  ],
+  "mots_cles_transcription": [
+    "LOCALISY"
+  ],
+  "export": {
+    "video": "H.264, profil High, yuv420p, cadence d'origine (25 ou 30 images/s)",
+    "audio": "AAC, 48 kHz, 256 kb/s",
+    "fichiers": [
+      "NOM_9x16.mp4",
+      "NOM_4x5.mp4"
+    ]
+  }
+}
