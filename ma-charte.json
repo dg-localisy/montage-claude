@@ -411,8 +411,7 @@
     "regle": "Pas de carte de fin. La vidéo se termine sur la dernière phrase forte du client.",
     "signature": {
       "texte": "LOCALISY",
-      "police": "Figtree Bold",
-      "taille_px": 44,
+      "police": "Figtree ExtraBold",
       "couleur": "#FFFFFF",
       "opacite": 0.85,
       "position": {
@@ -420,7 +419,11 @@
         "y": 380
       },
       "duree_s": 2,
-      "apparition": "fondu de 300 ms sur les 2 dernières secondes"
+      "apparition": "fondu de 300 ms sur les 2 dernières secondes",
+      "type": "logo",
+      "fichier": "marque/logo-localisy-blanc.png",
+      "largeur_px": 300,
+      "note": "Le logo remplace le simple texte LOCALISY."
     }
   },
   "mots_a_corriger": [
@@ -603,6 +606,23 @@
       "loudness_lufs": -14,
       "crete_dbtp": -1,
       "format_4x5": "recadrage centré 1080×1350 (lignes 285 à 1635)"
+    }
+  },
+  "marque": {
+    "logo": {
+      "description": "Logo LOCALISY : le mot LOCALISY en Figtree ExtraBold, majuscules, interlettrage de 5,7 % (reproduit à l'identique d'après le logo fourni par l'utilisateur).",
+      "police": "Figtree ExtraBold",
+      "interlettrage_em": 0.057,
+      "fichiers": {
+        "blanc": "marque/logo-localisy-blanc.svg",
+        "gris": "marque/logo-localisy-gris.svg",
+        "noir": "marque/logo-localisy-noir.svg",
+        "blanc_png": "marque/logo-localisy-blanc.png",
+        "noir_png": "marque/logo-localisy-noir.png",
+        "gris_png": "marque/logo-localisy-gris.png"
+      },
+      "couleur_officielle": "#333333",
+      "regle": "Blanc sur la vidéo ou un fond sombre, gris #333333 ou noir sur fond clair. Ne jamais le déformer ni le recolorer en orange."
     }
   }
 }

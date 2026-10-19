@@ -26,6 +26,7 @@ Ce dépôt sert à monter automatiquement les vidéos de l'agence LOCALISY (tém
 | `MON-STYLE.md` | Le même style en langage simple, avec la liste des vérifications avant livraison |
 | `Figtree-*.ttf` | Les polices. N'utilise que les fichiers statiques : les deux `*VariableFont*` portent le même nom interne que Figtree Light |
 | `apercus/` | Images d'aperçu validées par l'utilisateur (sous-titre, phrase forte, grand titre, icône) |
+| `marque/` | Logo LOCALISY en SVG et PNG (blanc, gris #333333, noir). Reproduit d'après le logo fourni : LOCALISY en Figtree ExtraBold, interlettrage 5,7 %. Blanc sur la vidéo, jamais déformé ni orange |
 
 Repères de la charte : noir #000000, blanc #FFFFFF, petite touche d'orange #FF4D00 (un seul élément orange à la fois). Formats 9:16 (1080×1920) et 4:5 (1080×1350). Son final à -14 LUFS, crête à -1 dBTP. LOCALISY s'écrit toujours en majuscules.
 
