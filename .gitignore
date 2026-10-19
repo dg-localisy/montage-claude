@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+node_modules/
+moteur/essai/media/
+moteur/out/
+moteur/sorties/
+moteur/public/media/
+moteur/public/polices/
+moteur/public/projet.json

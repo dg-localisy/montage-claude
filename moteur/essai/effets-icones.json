@@ -1,0 +1,18 @@
+{
+  "_aide": "Galerie de contrôle : les six icônes et le chiffre seul. Sert aux images fixes.",
+  "duree": 10,
+  "fps": 30,
+  "rush": {"video": "media/faux-facecam.mp4", "mots": "media/mots-rush.json"},
+  "sous_titres": {"mode": "aucun"},
+  "camera": {"visage": [0.5, 0.37], "coupes": []},
+  "ambiance": {"grain": 0.07, "etalonnage": true},
+  "effets": [
+    {"type": "icone", "icone": "courbe", "debut": 0.1, "fin": 1.6},
+    {"type": "icone", "icone": "etoile", "debut": 1.7, "fin": 3.2},
+    {"type": "icone", "icone": "epingle", "debut": 3.3, "fin": 4.8},
+    {"type": "icone", "icone": "panier", "debut": 4.9, "fin": 6.4},
+    {"type": "icone", "icone": "coeur", "debut": 6.5, "fin": 8.0},
+    {"type": "icone", "icone": "bulle", "debut": 8.1, "fin": 9.6},
+    {"type": "chiffre", "debut": 8.1, "fin": 9.9, "valeur": 12400, "legende": "vues sur Google"}
+  ]
+}

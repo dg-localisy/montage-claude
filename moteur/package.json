@@ -1,0 +1,24 @@
+{
+  "name": "moteur-localisy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Moteur d'animation Remotion : compose la vidéo à partir de ma-charte.json et effets.json",
+  "scripts": {
+    "preparer": "node scripts/preparer.mjs",
+    "stills": "node scripts/stills.mjs",
+    "rendu": "node scripts/rendu.mjs",
+    "studio": "remotion studio src/index.ts"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.536",
+    "@remotion/cli": "4.0.536",
+    "@remotion/renderer": "4.0.536",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.536"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}
