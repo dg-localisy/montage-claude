@@ -1,7 +1,9 @@
-"""Fabrique les 3 images d'aperçu de la charte (sous-titre, grand titre, icône figée).
+"""Fabrique les images d'aperçu de la charte : sous-titre normal, phrase forte,
+grand titre et icône animée figée.
 
 Tout est lu dans ma-charte.json : couleurs, polices, tailles, positions.
-Les textes sont rendus par ffmpeg + libass, comme dans les vrais montages.
+Les textes sont rendus par ffmpeg + libass, comme dans les vrais montages
+(les sous-titres passent par outils/sous_titres.py).
 
 Usage : python3 outils/generer_apercus.py
 """
@@ -13,6 +15,8 @@ import tempfile
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
+
+import sous_titres
 
 RACINE = Path(__file__).resolve().parent.parent
 CHARTE = json.loads((RACINE / "ma-charte.json").read_text(encoding="utf-8"))
@@ -29,16 +33,6 @@ BLANC = hex_rgb(CHARTE["couleurs"]["blanc"])
 ORANGE = hex_rgb(CHARTE["couleurs"]["orange"])
 ASS_BLANC = CHARTE["couleurs"]["ass"]["blanc"]
 ASS_ORANGE = CHARTE["couleurs"]["ass"]["orange"]
-
-
-def dossier_polices(tmp):
-    """Copie (lien) seulement les polices statiques : les variables portent le même nom que Figtree Light."""
-    d = Path(tmp) / "polices"
-    d.mkdir()
-    for f in CHARTE["polices"]["inventaire"]:
-        if not f["variable"]:
-            (d / f["fichier"]).symlink_to(RACINE / CHARTE["polices"]["dossier"] / f["fichier"])
-    return d
 
 
 def image_de_test():
@@ -99,26 +93,28 @@ def degrade_haut(img, hauteur=1100, opacite=0.6):
     return Image.composite(Image.new("RGB", (W, H), (0, 0, 0)), img, masque)
 
 
-def rendu_ass(fond, styles, evenements, sortie, polices):
+ENTETE_TITRES = (
+    "[Script Info]\nScriptType: v4.00+\nPlayResX: 1080\nPlayResY: 1920\n"
+    "WrapStyle: 2\nScaledBorderAndShadow: yes\n\n"
+    "[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, "
+    "OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, "
+    "Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
+    + CHARTE["titres"]["style_ass"] + "\n\n[Events]\n"
+    "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
+)
+
+
+def rendu(fond, ass_texte, sortie, polices, t=0.9):
+    """Incruste un fichier .ass sur une image, figé à l'instant t (en secondes)."""
     with tempfile.TemporaryDirectory() as tmp:
         fond_png = Path(tmp) / "fond.png"
         fond.save(fond_png)
         ass = Path(tmp) / "textes.ass"
-        ass.write_text(
-            "[Script Info]\nScriptType: v4.00+\nPlayResX: 1080\nPlayResY: 1920\n"
-            "WrapStyle: 2\nScaledBorderAndShadow: yes\n\n"
-            "[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, "
-            "OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, "
-            "Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
-            + "\n".join(styles) + "\n\n[Events]\n"
-            "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
-            + "\n".join(f"Dialogue: 0,0:00:00.00,0:00:05.00,{st},,0,0,0,,{txt}" for st, txt in evenements)
-            + "\n",
-            encoding="utf-8",
-        )
+        ass.write_text(ass_texte, encoding="utf-8")
         subprocess.run(
-            ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(fond_png),
-             "-vf", f"subtitles={ass}:fontsdir={polices}", "-frames:v", "1", str(sortie)],
+            ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-loop", "1", "-framerate", "30",
+             "-t", "2", "-i", str(fond_png), "-vf", f"subtitles={ass}:fontsdir={polices}",
+             "-ss", str(t), "-frames:v", "1", str(sortie)],
             check=True,
         )
 
@@ -127,10 +123,8 @@ def mot_cle(mot):
     return f"{{\\c{ASS_ORANGE}&}}{mot}{{\\c{ASS_BLANC}&}}"
 
 
-def sous_titre(texte_avant, mot, texte_apres=""):
-    st = CHARTE["sous_titres"]
-    pos = f"{{\\pos({st['position']['x']},{st['position']['y']})\\blur{st['ombre']['flou']}}}"
-    return ("SousTitres", pos + texte_avant + mot_cle(mot) + texte_apres)
+def sous_titre(texte):
+    return sous_titres.fichier_ass([{"debut": 0, "fin": 2, "texte": texte}])
 
 
 def icone_courbe(taille, progression=0.72):
@@ -186,28 +180,35 @@ def icone_courbe(taille, progression=0.72):
 def main():
     SORTIE.mkdir(exist_ok=True)
     fond = image_de_test()
-    st, ti = CHARTE["sous_titres"], CHARTE["titres"]
+    ti = CHARTE["titres"]
 
     with tempfile.TemporaryDirectory() as tmp:
-        polices = dossier_polices(tmp)
+        polices = sous_titres.dossier_polices_statiques(Path(tmp) / "polices")
 
-        # 1. Sous-titre sur l'image de test
-        rendu_ass(fond, [st["style_ass"]], [sous_titre("on est enfin ", "visibles")],
-                  SORTIE / "1-sous-titre.png", polices)
+        # 1. Sous-titre normal (même rendu et même place que la première vidéo)
+        rendu(fond, sous_titre("Tout a changé."), SORTIE / "1-sous-titre.png", polices)
+
+        # 1b. Phrase forte : mots de tailles différentes, figée une fois tous les mots apparus
+        bloc = {"debut": 0.0, "fin": 2.0, "lignes": [
+            [{"mot": "on a", "role": "appui", "debut": 0.0}],
+            [{"mot": "doublé", "role": "choc", "debut": 0.25}],
+            [{"mot": "nos", "role": "liaison", "debut": 0.5}, {"mot": "clients", "role": "fort", "debut": 0.6}],
+        ]}
+        rendu(fond, sous_titres.fichier_ass(blocs=[bloc]), SORTIE / "1b-phrase-forte.png", polices)
 
         # 2. Grand titre (accroche)
         lignes = ["EN 3 MOIS", "ON A " + mot_cle("DOUBLÉ"), "NOS CLIENTS"]
         y0, ecart = ti["position"]["y_premiere_ligne"], ti["position"]["ecart_lignes_px"]
-        evts = [("Titre", f"{{\\pos({ti['position']['x']},{y0 + i * ecart})\\blur12}}{l}")
-                for i, l in enumerate(lignes)]
-        rendu_ass(degrade_haut(fond), [ti["style_ass"]], evts, SORTIE / "2-grand-titre.png", polices)
+        evts = "".join(
+            f"Dialogue: 0,0:00:00.00,0:00:05.00,Titre,,0,0,0,,{{\\pos({ti['position']['x']},{y0 + i * ecart})\\blur12}}{l}\n"
+            for i, l in enumerate(lignes))
+        rendu(degrade_haut(fond), ENTETE_TITRES + evts, SORTIE / "2-grand-titre.png", polices)
 
         # 3. Icône animée figée en plein tracé, sur la vidéo floutée et assombrie
         flou = fond.filter(ImageFilter.GaussianBlur(40)).point(lambda v: int(v * 0.45))
         ico = icone_courbe(360)
         flou.paste(ico, (540 - ico.width // 2, 800 - ico.height // 2), ico)
-        rendu_ass(flou, [st["style_ass"]], [sous_titre("nos ventes ont ", "grimpé")],
-                  SORTIE / "3-icone-animee.png", polices)
+        rendu(flou, sous_titre("Et ça a décollé."), SORTIE / "3-icone-animee.png", polices)
 
     print("Aperçus enregistrés dans", SORTIE)
 

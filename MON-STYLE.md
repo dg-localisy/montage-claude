@@ -26,13 +26,26 @@ On ouvre sur la meilleure phrase du client, même si elle arrive à la fin de l'
 
 ## Les sous-titres
 
-- Police Figtree SemiBold, en blanc, en minuscules normales.
-- 2 à 4 mots à la fois, sur une seule ligne.
-- En bas/milieu de l'image, au-dessus des boutons et de la légende d'Instagram.
-- Une ombre légère pour rester lisible sur tous les fonds.
-- Ils apparaissent en fondu avec un tout petit rebond.
-- Un mot en orange au maximum, et seulement quand il compte : un chiffre, un résultat, une émotion, ou LOCALISY. Beaucoup de groupes n'en ont aucun.
-- Pas de point final.
+Ils reprennent exactement ceux de notre première vidéo : même rendu, même place. Les réglages ont été mesurés image par image sur cette vidéo.
+
+Il y en a de deux sortes.
+
+**Les sous-titres normaux**, pour presque toute la vidéo :
+
+- Figtree Light, en blanc, avec une ombre noire douce vers le bas à droite.
+- 1 à 4 mots à la fois (18 caractères maximum), sur une seule ligne.
+- Centrés, aux deux tiers de la hauteur de l'image, toujours au même endroit.
+- Une majuscule en début de phrase et la ponctuation gardée (points, virgules, guillemets).
+- Aucune animation : un groupe remplace l'autre d'un coup. Rien à l'écran pendant les silences.
+- Pas d'orange.
+
+**Les phrases fortes**, pour les phrases clés (à peu près une toutes les 4 à 5 secondes) :
+
+- 2 ou 3 lignes très serrées, au même endroit que les sous-titres normaux.
+- Des mots de tailles différentes : les petits mots de liaison (« des », « avec ») en petit et en trait fin, les mots d'appui plus grands, et un seul mot choc en gras, en très grand (« touche », « doublé »).
+- Un petit mot placé avant un gros mot est remonté, comme un exposant.
+- Les lignes sont un peu décalées les unes par rapport aux autres, en escalier.
+- Chaque mot apparaît au moment où il est prononcé, en passant du flou au net. À la fin, tout le bloc se floute et disparaît.
 
 ## Les grands titres
 
@@ -83,7 +96,8 @@ Famille Figtree, dans le dossier du projet. Noms écrits dans les fichiers :
 
 | Usage | Nom interne | Fichier |
 |---|---|---|
-| Sous-titres | Figtree SemiBold | Figtree-SemiBold.ttf |
+| Sous-titres normaux et petits mots des phrases fortes | Figtree Light | Figtree-Light.ttf |
+| Mots forts des phrases fortes | Figtree Bold | Figtree-Bold.ttf |
 | Grands titres et chiffres | Figtree Black | Figtree-Black.ttf |
 | Petits textes, signature LOCALISY | Figtree Bold | Figtree-Bold.ttf |
 
@@ -107,6 +121,7 @@ Attention, « localisé » et « localiser » sont de vrais mots français. On �
 
 - [ ] Les 2 premières secondes donnent envie de rester.
 - [ ] Aucun texte ne cache les yeux du client.
+- [ ] Les sous-titres sont à la même place et ont le même rendu que dans la première vidéo.
 - [ ] LOCALISY est bien écrit partout.
 - [ ] Jamais plus d'un élément orange à la fois.
 - [ ] Le son est à -14 LUFS et la voix reste toujours compréhensible.

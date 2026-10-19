@@ -1,6 +1,6 @@
 {
   "nom": "Charte de montage LOCALISY",
-  "version": 1,
+  "version": 2,
   "mise_a_jour": "2026-10-19",
   "sujet": "Témoignages clients pour promouvoir l'agence de marketing LOCALISY auprès du grand public",
   "plateformes": {
@@ -21,7 +21,7 @@
     "noir": "#000000",
     "blanc": "#FFFFFF",
     "orange": "#FF4D00",
-    "regle": "Noir et blanc partout. L'orange reste une petite touche : un seul mot ou un seul détail orange à l'écran à la fois.",
+    "regle": "Noir et blanc partout. L'orange reste une petite touche : un seul mot ou un seul détail orange à l'écran à la fois (titres, icônes, chiffres). Les sous-titres restent entièrement blancs, comme dans la première vidéo.",
     "ass": {
       "noir": "&H00000000",
       "blanc": "&H00FFFFFF",
@@ -227,40 +227,123 @@
     }
   },
   "sous_titres": {
-    "police": "Figtree SemiBold",
-    "taille_px": 70,
-    "casse": "normale (pas de majuscules forcées), sauf LOCALISY",
+    "reference": "Première vidéo LOCALISY (download_2.mp4, 720×1280, 30 i/s), mesurée image par image puis mise à l'échelle 1080×1920 (×1,5).",
     "couleur": "#FFFFFF",
-    "mot_cle": {
-      "couleur": "#FF4D00",
-      "regle": "Au plus un mot orange par groupe, et seulement sur les mots qui portent le sens : chiffres, résultats, émotions, LOCALISY. Pas sur chaque groupe."
-    },
-    "mots_par_groupe": {
-      "min": 2,
-      "max": 4
-    },
-    "lignes_max": 1,
-    "position": {
-      "ancrage": "centre",
-      "x": 540,
-      "y": 1400,
-      "explication": "Bas/milieu : au-dessus des légendes et boutons d'Instagram, et toujours visible en 4:5."
+    "orange": "aucun, comme dans la première vidéo",
+    "style_ass": "Style: ST,Figtree Light,83,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,105,100,0,0,1,0,0,2,0,0,0,1",
+    "normal": {
+      "police": "Figtree Light",
+      "fichier": "Figtree-Light.ttf",
+      "taille_ass": 83,
+      "hauteur_x_px": 34.5,
+      "largeur_lettres_pct": 105,
+      "interlettrage_px": 0,
+      "position": {
+        "x": 540,
+        "y_ass_an2": 1313,
+        "ligne_de_base_y": 1297,
+        "explication": "Centré, ligne de base à 67,5 % de la hauteur : au même endroit que dans la première vidéo."
+      },
+      "mots_par_groupe": {
+        "min": 1,
+        "max": 4
+      },
+      "caracteres_max": 18,
+      "lignes_max": 1,
+      "casse": "normale, avec une majuscule en début de phrase",
+      "ponctuation": "gardée (points, virgules, ?, guillemets “ ”), apostrophe typographique ’",
+      "apparition": "Instantanée, sans animation. Les groupes se remplacent d'un coup. Rien à l'écran pendant les silences."
     },
     "ombre": {
       "couleur": "#000000",
-      "opacite_contour": 0.45,
-      "opacite_ombre": 0.5,
-      "contour_px": 4,
-      "decalage_px": 2,
-      "flou": 6
+      "opacite": 1.0,
+      "decalage_x_px": 2.5,
+      "decalage_y_px": 4,
+      "epaisseur_px": 2.5,
+      "flou": 4.5,
+      "methode": "Copie noire du texte sur un calque juste en dessous (ombre portée douce, vers le bas à droite)."
     },
-    "animation": {
-      "entree": "fondu de 120 ms avec un léger rebond (92 % puis 104 % puis 100 % en 220 ms)",
-      "sortie": "coupe nette"
-    },
-    "ponctuation": "Pas de point final. Garder les virgules et les points d'interrogation utiles.",
-    "style_ass": "Style: SousTitres,Figtree SemiBold,70,&H00FFFFFF,&H00FFFFFF,&H73000000,&H80000000,0,0,0,0,100,100,0,0,1,4,2,5,90,130,0,1",
-    "balises_ass_mot_cle": "{\\c&H00004DFF&}MOT{\\c&H00FFFFFF&}"
+    "phrases_fortes": {
+      "usage": "Pour les phrases clés, environ une toutes les 4 à 5 secondes. Elles remplacent les sous-titres normaux le temps de la phrase.",
+      "lignes": {
+        "min": 2,
+        "max": 3
+      },
+      "mots_par_ligne_max": 2,
+      "roles": {
+        "liaison": {
+          "police": "Figtree Light",
+          "echelle": 1.0,
+          "exemples": [
+            "des",
+            "sur les",
+            "avec"
+          ]
+        },
+        "liaison_gras": {
+          "police": "Figtree Bold",
+          "echelle": 1.0,
+          "exemples": [
+            "Hautes Fagnes",
+            "lourd"
+          ]
+        },
+        "appui": {
+          "police": "Figtree Light",
+          "echelle": 1.55,
+          "exemples": [
+            "Chaque",
+            "mot est",
+            "donc on",
+            "la presse"
+          ]
+        },
+        "fort": {
+          "police": "Figtree Bold",
+          "echelle": 1.6,
+          "exemples": [
+            "humains",
+            "le coeur",
+            "réseaux sociaux"
+          ]
+        },
+        "choc": {
+          "police": "Figtree Bold",
+          "echelle": 2.05,
+          "exemples": [
+            "touche",
+            "L'incendie",
+            "belge"
+          ],
+          "regle": "Un seul mot choc par bloc."
+        }
+      },
+      "interligne_facteur": 0.65,
+      "interligne": "Écart entre deux lignes de base = 0,65 × la plus grande taille ASS des deux lignes (lignes très serrées).",
+      "petit_mot_a_cote_d_un_gros": "Avant le gros mot : remonté de la moitié de la hauteur du gros mot. Après : sur la même ligne de base.",
+      "decalage_lignes_px": {
+        "2": [
+          -25,
+          25
+        ],
+        "3": [
+          -30,
+          30,
+          55
+        ]
+      },
+      "centre_vertical_y": 1260,
+      "animation_entree": {
+        "description": "Chaque mot apparaît au moment où il est prononcé : très flou et semi-transparent, net en 100 ms.",
+        "flou_depart": 16,
+        "opacite_depart": 0.55,
+        "duree_ms": 100
+      },
+      "animation_sortie": {
+        "description": "Tout le bloc se floute et disparaît en 120 ms.",
+        "duree_ms": 120
+      }
+    }
   },
   "titres": {
     "police": "Figtree Black",
