@@ -57,6 +57,16 @@ function copierPolices(charte) {
   }
 }
 
+// logos de la marque (dossier marque/ du dépôt) → public/marque/, comme les polices
+function copierMarque(charte) {
+  const fichiers = new Set(Object.values(charte.marque?.logo?.fichiers || {}).filter((f) => String(f).endsWith('.png')));
+  if (charte.fin?.signature?.fichier) fichiers.add(charte.fin.signature.fichier);
+  for (const f of fichiers) {
+    const source = path.join(REPO, f);
+    if (fs.existsSync(source)) relier(source, path.join(PUBLIC, f));
+  }
+}
+
 // ---------- mots et sous-titres ----------
 const PONCTUATION_SEULE = /^[!?;:.,…»«"“”]+$/;
 
@@ -210,6 +220,7 @@ export function preparer(cheminEffets) {
   const chemin = (p) => path.resolve(base, p);
 
   copierPolices(charte);
+  copierMarque(charte);
   genererSons(path.join(PUBLIC, 'sons'));
 
   const rush = effetsJson.rush;

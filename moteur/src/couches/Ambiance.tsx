@@ -1,5 +1,5 @@
 import React from 'react';
-import {useCurrentFrame, useVideoConfig} from 'remotion';
+import {Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {easeOut, fondu, lerp, prog} from '../temps';
 
 // Transition « lumière colorée » : un halo chaud traverse l'image au moment de la coupe.
@@ -98,23 +98,30 @@ export const CarteFin: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const barre = easeOut(prog(t, e.debut + 0.15, e.debut + 0.5));
   const role = easeOut(prog(t, e.debut + 0.35, e.debut + 0.65));
   const lettres = String(e.nom).split('');
+  const logo = charte.marque?.logo?.fichiers?.blanc_png;
+  const estLaMarque = logo && String(e.nom).trim().toUpperCase() === 'LOCALISY';
+  const revele = easeOut(prog(t, e.debut + 0.1, e.debut + 0.6));
   return (
     <div style={{position: 'absolute', inset: 0, background: `rgba(0,0,0,${(0.92 * fond).toFixed(3)})`}}>
       <div style={{position: 'absolute', left: 0, width: W, top: 820, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <div style={{width: 90 * barre, height: 7, borderRadius: 4, background: accent, marginBottom: 34}} />
-        <div style={{fontFamily: F.police_nom, fontSize: F.taille_nom_px, color: '#fff', letterSpacing: -2, lineHeight: 1, whiteSpace: 'pre'}}>
-          {lettres.map((l, i) => {
-            const a = easeOut(prog(t, e.debut + 0.1 + i * 0.035, e.debut + 0.1 + i * 0.035 + 0.3));
-            return <span key={i} style={{display: 'inline-block', opacity: a, transform: `translateY(${((1 - a) * 40).toFixed(1)}px)`}}>{l}</span>;
-          })}
-        </div>
+        {estLaMarque ? (
+          <Img src={staticFile(logo)} style={{width: 620, height: 'auto', opacity: revele, clipPath: `inset(0 ${((1 - revele) * 100).toFixed(1)}% 0 0)`, transform: `translateY(${((1 - revele) * 20).toFixed(1)}px)`}} />
+        ) : (
+          <div style={{fontFamily: F.police_nom, fontSize: F.taille_nom_px, color: '#fff', letterSpacing: -2, lineHeight: 1, whiteSpace: 'pre'}}>
+            {lettres.map((l, i) => {
+              const a = easeOut(prog(t, e.debut + 0.1 + i * 0.035, e.debut + 0.1 + i * 0.035 + 0.3));
+              return <span key={i} style={{display: 'inline-block', opacity: a, transform: `translateY(${((1 - a) * 40).toFixed(1)}px)`}}>{l}</span>;
+            })}
+          </div>
+        )}
         {e.role && <div style={{fontFamily: 'Figtree Light', fontSize: 44, color: 'rgba(255,255,255,0.82)', marginTop: 22, opacity: role, transform: `translateY(${((1 - role) * 16).toFixed(1)}px)`}}>{e.role}</div>}
       </div>
     </div>
   );
 };
 
-// Signature de fin discrète (charte → fin.signature) : « LOCALISY » en petit, en haut, en fondu.
+// Signature de fin discrète (charte → fin.signature) : le logo LOCALISY en petit, en haut, en fondu.
 export const Signature: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const frame = useCurrentFrame();
   const {fps, width: W} = useVideoConfig();
@@ -122,8 +129,15 @@ export const Signature: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   if (t < e.debut || t > e.fin) return null;
   const sig = charte.fin.signature;
   const a = prog(t, e.debut, e.debut + 0.3);
+  if (sig.type === 'logo' && sig.fichier) {
+    return (
+      <div style={{position: 'absolute', left: 0, width: W, top: sig.position.y, display: 'flex', justifyContent: 'center', transform: 'translateY(-50%)', opacity: sig.opacite * a}}>
+        <Img src={staticFile(sig.fichier)} style={{width: sig.largeur_px, height: 'auto', filter: 'drop-shadow(0 2px 10px rgba(0,0,0,0.45))'}} />
+      </div>
+    );
+  }
   return (
-    <div style={{position: 'absolute', left: 0, width: W, top: sig.position.y - sig.taille_px * 0.6, textAlign: 'center', fontFamily: sig.police, fontSize: sig.taille_px, lineHeight: 1.2, color: sig.couleur, opacity: sig.opacite * a, textShadow: '0 2px 12px rgba(0,0,0,0.45)', letterSpacing: 1}}>
+    <div style={{position: 'absolute', left: 0, width: W, top: sig.position.y - (sig.taille_px ?? 44) * 0.6, textAlign: 'center', fontFamily: sig.police, fontSize: sig.taille_px ?? 44, lineHeight: 1.2, color: sig.couleur, opacity: sig.opacite * a, textShadow: '0 2px 12px rgba(0,0,0,0.45)'}}>
       {e.texte || sig.texte}
     </div>
   );

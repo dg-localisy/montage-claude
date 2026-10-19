@@ -76,6 +76,7 @@ function instantsDeControle(projet) {
       case 'icone': ajouter(e.debut + 0.18, 'icône : rebond + particules'); ajouter(e.debut + 0.6, 'icône : posée'); break;
       case 'chiffre': ajouter((T.comptage[0] + T.comptage[1]) / 2, 'chiffre : défile'); ajouter(T.comptage[1] + 0.1, 'chiffre : arrivé'); break;
       case 'carte_fin': ajouter(e.debut + 0.25, 'carte de fin : entrée'); ajouter(Math.min(e.fin, projet.duree) - 0.05, 'carte de fin'); break;
+      case 'signature': ajouter(e.debut + 0.15, 'signature : fondu'); ajouter(Math.min(e.fin, projet.duree) - 0.05, 'signature'); break;
       case 'carte':
         ajouter(e.debut + 0.22, 'carte : réduction');
         if (e.animation === 'chat_ia') { ajouter((T.frappe + T.finFrappe) / 2, 'chat : frappe'); ajouter((T.points[0] + T.points[1]) / 2, 'chat : « écrit… »'); ajouter(T.finReponse + 0.2, 'chat : réponse'); }
@@ -119,7 +120,7 @@ function normaliserVolume(entree, cible, lufs, crete) {
   const mesure = spawnSync('ffmpeg', ['-hide_banner', '-i', entree, '-af', `loudnorm=I=${lufs}:TP=${crete}:LRA=11:print_format=json`, '-f', 'null', '-'], {encoding: 'utf8'});
   const json = JSON.parse(mesure.stderr.slice(mesure.stderr.lastIndexOf('{')));
   const filtre = `loudnorm=I=${lufs}:TP=${crete}:LRA=11:measured_I=${json.input_i}:measured_TP=${json.input_tp}:measured_LRA=${json.input_lra}:measured_thresh=${json.input_thresh}:offset=${json.target_offset}:linear=true`;
-  execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', entree, '-c:v', 'copy', '-af', filtre, '-ar', '48000', '-c:a', 'aac', '-b:a', '256k', cible]);
+  execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', entree, '-c:v', 'copy', '-af', filtre, '-ar', '48000', '-c:a', 'aac', '-b:a', '256k', '-shortest', cible]);
   return parseFloat(json.input_i);
 }
 
