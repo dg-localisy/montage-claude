@@ -1,5 +1,5 @@
 {
- "_aide": "Témoignage Gary Hock (L'Immobilière Hock), version test 1. Temps en secondes. Rendu : cd moteur && node scripts/rendu.mjs ../projets/testi-hock/effets.json --nom testi-hock, puis outils/son_final.py. Mots : tous les mots dits sauf 4 hésitations (euh, ben), « trois » écrit « 3 ».",
+ "_aide": "Témoignage Gary Hock (L'Immobilière Hock), version test 2. Temps en secondes. Rendu : cd moteur && node scripts/rendu.mjs ../projets/testi-hock/effets.json --nom testi-hock, puis outils/son_final.py. Mots : tous les mots dits sauf 4 hésitations (euh, ben), « trois » écrit « 3 ».",
  "duree": 53.93,
  "fps": 25,
  "rush": {
@@ -68,7 +68,8 @@
    49.96,
    51.04,
    51.72
-  ]
+  ],
+  "haut_tete": 0.185
  },
  "ambiance": {
   "grain": 0.06,
@@ -79,7 +80,6 @@
    "type": "accroche",
    "debut": 0.0,
    "fin": 3.6,
-   "surtitre": "Témoignage client",
    "titre": "Chiffre d'affaires ×3",
    "mot_accent": "×3"
   },
@@ -101,7 +101,8 @@
    "type": "icone",
    "icone": "epingle",
    "debut": 8.3,
-   "fin": 9.4
+   "fin": 9.4,
+   "mot": "Liège"
   },
   {
    "type": "chiffre",
@@ -109,8 +110,7 @@
    "fin": 10.3,
    "valeur": 200,
    "prefixe": "+",
-   "legende": "ventes par an",
-   "duree_comptage": 0.5
+   "legende": "ventes par an"
   },
   {
    "type": "zoom",
@@ -123,7 +123,8 @@
    "type": "icone",
    "icone": "courbe",
    "debut": 15.65,
-   "fin": 16.9
+   "fin": 16.9,
+   "mot": "évoluer"
   },
   {
    "type": "grand_titre",
@@ -147,13 +148,15 @@
    "type": "icone",
    "icone": "cible",
    "debut": 22.4,
-   "fin": 23.3
+   "fin": 23.3,
+   "mot": "ciblage"
   },
   {
    "type": "icone",
-   "icone": "etincelle",
+   "icone": "ia",
    "debut": 23.9,
-   "fin": 25.2
+   "fin": 25.2,
+   "mot": "IA"
   },
   {
    "type": "zoom",
@@ -161,14 +164,6 @@
    "fin": 26.65,
    "a": 1.15,
    "duree": 0.15
-  },
-  {
-   "type": "carte",
-   "animation": "gros_chiffre",
-   "debut": 27.6,
-   "fin": 29.42,
-   "titre": "Avec LOCALISY depuis",
-   "texte": "4 à 5 ans"
   },
   {
    "type": "zoom",
@@ -204,23 +199,15 @@
    "duree": 0.15
   },
   {
-   "type": "carte",
-   "animation": "entonnoir",
-   "debut": 48.15,
-   "fin": 51.7,
-   "titre": "Je sais",
-   "etapes": [
-    {
-     "label": "Combien de leads par mois"
-    },
-    {
-     "label": "Ceux qui me rapportent"
-    },
-    {
-     "label": "D'où ils viennent"
-    }
+   "type": "liste",
+   "debut": 48.55,
+   "fin": 52.75,
+   "items": [
+    "Combien de leads par mois",
+    "Ce qu'ils me rapportent",
+    "D'où ils viennent"
    ],
-   "temps_etapes": [
+   "temps": [
     48.74,
     50.28,
     51.1

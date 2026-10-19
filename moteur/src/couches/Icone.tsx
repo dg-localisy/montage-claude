@@ -20,24 +20,27 @@ const ICONES: Record<string, {traits: string[]; detail: (c: string) => React.Rea
     traits: ['M44 12 C47 36 54 43 78 46 C54 49 47 56 44 80 C41 56 34 49 10 46 C34 43 41 36 44 12 Z'],
     detail: (c) => <path d="M80 8 C81 15 83 17 90 18 C83 19 81 21 80 28 C79 21 77 19 70 18 C77 17 79 15 80 8 Z" fill={c} />,
   },
+  ia: {
+    traits: [
+      'M30 22 H70 A8 8 0 0 1 78 30 V70 A8 8 0 0 1 70 78 H30 A8 8 0 0 1 22 70 V30 A8 8 0 0 1 30 22 Z',
+      'M38 22 V9 M50 22 V9 M62 22 V9 M38 78 V91 M50 78 V91 M62 78 V91 M22 38 H9 M22 50 H9 M22 62 H9 M78 38 H91 M78 50 H91 M78 62 H91',
+    ],
+    detail: (c) => (
+      <text x={50} y={60} textAnchor="middle" fontFamily="Figtree Black" fontSize={28} letterSpacing={1} fill={c}>IA</text>
+    ),
+  },
   bulle: {
     traits: ['M16 18 H84 A8 8 0 0 1 92 26 V62 A8 8 0 0 1 84 70 H42 L24 86 V70 H16 A8 8 0 0 1 8 62 V26 A8 8 0 0 1 16 18 Z'],
     detail: (c) => (<g><circle cx={32} cy={44} r={4.5} fill="#fff" /><circle cx={50} cy={44} r={4.5} fill={c} /><circle cx={68} cy={44} r={4.5} fill="#fff" /></g>),
   },
 };
 
-export const Icone: React.FC<{e: any; charte: any}> = ({e, charte}) => {
-  const frame = useCurrentFrame();
+// Dessin de l'icône (trait qui se dessine, rebond, particules) dans une boîte de 2 × taille.
+export const DessinIcone: React.FC<{e: any; t: number; taille: number; charte: any}> = ({e, t, taille, charte}) => {
   const {fps} = useVideoConfig();
-  const t = frame / fps;
-  if (t < e.debut || t > e.fin) return null;
   const I = charte.moteur.icone;
   const accent = charte.couleurs.orange;
-  const taille = e.taille ?? I.taille_px;
-  const x = e.x ?? I.x;
-  const y = e.y ?? I.y;
   const def = ICONES[e.icone] ?? ICONES.courbe;
-
   const rebond = spring({frame: (t - e.debut) * fps, fps, config: {damping: 8, stiffness: 170, mass: 0.7}});
   const trace = easeOut(prog(t, e.debut + 0.05, e.debut + 0.05 + I.duree_trace_s));
   const detail = spring({frame: (t - e.debut - I.duree_trace_s * 0.8) * fps, fps, config: {damping: 7, stiffness: 220, mass: 0.5}});
@@ -52,7 +55,7 @@ export const Icone: React.FC<{e: any; charte: any}> = ({e, charte}) => {
     for (let i = 0; i < I.particules; i++) {
       const angle = (i / I.particules) * Math.PI * 2 + random(`a${e.id}-${i}`) * 0.5;
       const distance = taille * (0.45 + 0.45 * random(`d${e.id}-${i}`)) * easeOut(p) + taille * 0.25;
-      const r = (3 + 5 * random(`r${e.id}-${i}`)) * (1 - p);
+      const r = (3 + 5 * random(`r${e.id}-${i}`)) * (1 - p) * Math.min(1, taille / 200);
       particules.push(
         <circle key={i} cx={taille + Math.cos(angle) * distance} cy={taille + Math.sin(angle) * distance} r={r} fill={i % 3 === 0 ? accent : '#fff'} opacity={1 - p} />,
       );
@@ -60,8 +63,8 @@ export const Icone: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   }
 
   return (
-    <div style={{position: 'absolute', left: x - taille, top: y - taille, width: taille * 2, height: taille * 2, opacity: 1 - sortie}}>
-      <svg width={taille * 2} height={taille * 2} style={{position: 'absolute', inset: 0}}>{particules}</svg>
+    <div style={{position: 'relative', width: taille * 2, height: taille * 2, opacity: 1 - sortie}}>
+      <svg width={taille * 2} height={taille * 2} style={{position: 'absolute', inset: 0, overflow: 'visible'}}>{particules}</svg>
       <svg
         viewBox="0 0 100 100" width={taille} height={taille}
         style={{position: 'absolute', left: taille / 2, top: taille / 2, transform: `scale(${echelle})`, overflow: 'visible', filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.45))'}}
@@ -71,6 +74,24 @@ export const Icone: React.FC<{e: any; charte: any}> = ({e, charte}) => {
         ))}
         <g style={{transform: `scale(${detail})`, transformOrigin: 'center', transformBox: 'fill-box'}}>{def.detail(accent)}</g>
       </svg>
+    </div>
+  );
+};
+
+// Icône posée librement (x, y). Les icônes liées à un mot (« mot » dans effets.json) sont dessinées
+// par les sous-titres, juste au-dessus de ce mot, pour ne jamais cacher le visage.
+export const Icone: React.FC<{e: any; charte: any}> = ({e, charte}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  if (t < e.debut || t > e.fin) return null;
+  const I = charte.moteur.icone;
+  const taille = e.taille ?? I.taille_px;
+  const x = e.x ?? I.x;
+  const y = e.y ?? I.y;
+  return (
+    <div style={{position: 'absolute', left: x - taille, top: y - taille}}>
+      <DessinIcone e={e} t={t} taille={taille} charte={charte} />
     </div>
   );
 };

@@ -7,6 +7,8 @@ import {Carte} from './couches/Carte';
 import {Chiffre} from './couches/Chiffre';
 import {GrandTitre} from './couches/GrandTitre';
 import {Icone} from './couches/Icone';
+import {Liste} from './couches/Liste';
+import {PlanDeCoupe} from './couches/PlanDeCoupe';
 import {Sons} from './couches/Sons';
 import {SousTitres} from './couches/SousTitres';
 import {usePolices} from './polices';
@@ -24,14 +26,18 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
   const effets = projet.effets;
   const de = (type: string) => effets.filter((e: any) => e.type === type);
   // voile sombre discret derrière les icônes et les chiffres, pour la lisibilité
-  const voile = Math.max(0, ...[...de('icone'), ...de('chiffre')].map((e: any) => fondu(t, e.debut, e.fin, 0.2)));
+  // (seulement pour les icônes posées librement : les icônes liées à un mot et les chiffres sont sous le visage)
+  const libres = de('icone').filter((e: any) => e.mot_id === undefined);
+  const voile = Math.max(0, ...libres.map((e: any) => fondu(t, e.debut, e.fin, 0.2)));
 
   return (
     <AbsoluteFill style={{background: '#000'}}>
       <Camera projet={projet} charte={charte} />
+      {de('plan_de_coupe').map((e: any) => <PlanDeCoupe key={e.id} e={e} charte={charte} etalonnage={projet.ambiance.etalonnage} />)}
       {de('carte').map((e: any) => <Carte key={e.id} e={e} charte={charte} />)}
       {voile > 0 && <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)', opacity: voile}} />}
-      {de('icone').map((e: any) => <Icone key={e.id} e={e} charte={charte} />)}
+      {libres.map((e: any) => <Icone key={e.id} e={e} charte={charte} />)}
+      {de('liste').map((e: any) => <Liste key={e.id} e={e} charte={charte} />)}
       {de('chiffre').map((e: any) => <Chiffre key={e.id} e={e} charte={charte} />)}
       {de('grand_titre').map((e: any) => <GrandTitre key={e.id} e={e} charte={charte} />)}
       {de('accroche').map((e: any) => <Accroche key={e.id} e={e} charte={charte} projet={projet} />)}

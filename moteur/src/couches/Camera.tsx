@@ -1,5 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, OffthreadVideo, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {miseEnPageAccroche} from '../miseEnPage';
 import {clamp, easeIn, easeInOut, easeOut, fondu, lerp, prog} from '../temps';
 
 type Zoom = {debut: number; fin?: number; a: number; duree: number};
@@ -43,7 +44,9 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
   const k = coupes.filter((c) => t >= c).length;
   const debutPlan = k === 0 ? 0 : coupes[k - 1];
   const finPlan = k < coupes.length ? coupes[k] : projet.duree;
-  const cadrage = cam.cadrages[k % cam.cadrages.length];
+  // pas de cadrage serré sur un plan où s'affiche une liste de pastilles (elle reste sous le menton)
+  const listeSurLePlan = projet.effets.some((e: any) => e.type === 'liste' && e.debut < finPlan && e.fin > debutPlan);
+  const cadrage = Math.min(cam.cadrages[k % cam.cadrages.length], listeSurLePlan ? M.liste.cadrage_max : Infinity);
   const decalage = cam.decalages_x[k % cam.decalages_x.length] * W;
   const avancee = 1 + cam.avancee * prog(t, debutPlan, finPlan);
 
@@ -53,7 +56,7 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
 
   const titres = projet.effets.filter((e: any) => e.type === 'grand_titre');
   const g = Math.max(0, ...titres.map((e: any) => fondu(t, e.debut - 0.12, e.fin, 0.22)));
-  const stats = projet.effets.filter((e: any) => e.type === 'icone' || e.type === 'chiffre');
+  const stats = projet.effets.filter((e: any) => (e.type === 'icone' || e.type === 'chiffre') && e.flou_visage === true);
   const v = Math.max(0, ...stats.map((e: any) => fondu(t, e.debut, e.fin, 0.2)));
   const cartes = projet.effets.filter((e: any) => e.type === 'carte');
   const c = Math.max(0, ...cartes.map((e: any) => fondu(t, e.debut, e.fin, M.carte.duree_reduction_s)));
@@ -61,6 +64,28 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
 
   const echelle = cadrage * avancee * z * (1 + 0.07 * g + 0.03 * v);
   const origine = `${cam.visage[0] * W}px ${cam.visage[1] * H}px`;
+
+  // Pendant une accroche, l'image descend juste assez pour que le haut de la tête passe sous le titre.
+  // Entre deux accroches rapprochées, le changement se fait sur la coupe (invisible), sinon en douceur.
+  const yeux = cam.visage[1] * H;
+  const hautTete = yeux - echelle * (yeux - cam.haut_tete * H);
+  const accroches = projet.effets.filter((e: any) => e.type === 'accroche').sort((a: any, b: any) => a.debut - b.debut);
+  const frontiere = (a: any, b: any) => (b.debut - a.fin < 0.6 ? coupes.find((c) => c >= a.fin - 0.15 && c <= b.debut + 0.15) : undefined);
+  let decalY = 0;
+  accroches.forEach((e: any, i: number) => {
+    const fAvant = i > 0 ? frontiere(accroches[i - 1], e) : undefined;
+    const fApres = i < accroches.length - 1 ? frontiere(e, accroches[i + 1]) : undefined;
+    const debut = fAvant ?? e.debut;
+    const fin = fApres ?? e.fin;
+    let w = 0;
+    if (t >= debut && t < fin) w = 1;
+    else if (fAvant === undefined && e.debut > 0.05 && t >= e.debut - 0.35 && t < e.debut) w = easeInOut(prog(t, e.debut - 0.35, e.debut));
+    else if (fApres === undefined && t >= fin && t < fin + 0.35) w = easeInOut(1 - prog(t, fin, fin + 0.35));
+    if (w > 0) {
+      const besoin = Math.max(0, miseEnPageAccroche(e, charte).bas + M.accroche.marge_tete_px - hautTete);
+      decalY = Math.max(decalY, besoin * w);
+    }
+  });
   const filtres = [
     pano.flou > 0.5 ? 'url(#flou-panoramique)' : '',
     projet.ambiance.etalonnage ? M.ambiance.etalonnage_css : '',
@@ -69,12 +94,21 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
   ].join(' ');
 
   const video = (cle: string, decalX: number, s: number, opacite: number, muet: boolean) => (
-    <div key={cle} style={{position: 'absolute', inset: 0, transform: `translateX(${decalage + decalX}px) scale(${s})`, transformOrigin: origine, opacity: opacite}}>
+    <div key={cle} style={{position: 'absolute', inset: 0, transform: `translateX(${decalage + decalX}px) translateY(${decalY.toFixed(1)}px) scale(${s})`, transformOrigin: origine, opacity: opacite}}>
       <OffthreadVideo src={staticFile(projet.rush.video)} muted={muet} style={{width: W, height: H, objectFit: 'cover'}} />
     </div>
   );
 
-  const couches = [video('principale', pano.x, echelle, 1, Boolean(projet.rush.voix))];
+  const couches: React.ReactNode[] = [];
+  // haut libéré par la descente : rempli par une copie très floue de l'image (le mur continue)
+  if (decalY > 0.5) {
+    couches.push(
+      <div key="fond-flou" style={{position: 'absolute', inset: 0, transform: 'scale(1.6)', transformOrigin: '50% 0%', filter: 'blur(45px) brightness(0.95)'}}>
+        <OffthreadVideo src={staticFile(projet.rush.video)} muted style={{width: W, height: H, objectFit: 'cover'}} />
+      </div>,
+    );
+  }
+  couches.push(video('principale', pano.x, echelle, 1, Boolean(projet.rush.voix)));
   if (pano.flou > 0.5) couches.push(video('panoramique', pano.x + (pano.x < 0 ? W : -W), echelle, 1, true));
   // flou de mouvement du zoom : copies légèrement décalées en taille, semi-transparentes
   const force = clamp(Math.abs(vitesseZoom) / 1.2);

@@ -46,6 +46,19 @@ const RECETTES = {
   // pop : petite bulle (la hauteur descend vite)
   pop: (d = 0.16) => ['-f', 'lavfi', '-i', `aevalsrc='0.8*sin(2*PI*(950*t-2200*t*t))*exp(-22*t)*(1-exp(-500*t))':s=${SR}:d=${d}`,
     '-af', `afade=t=out:st=${d - 0.03}:d=0.03`],
+  // compteur : petits tics rapides et discrets pendant que le chiffre défile, puis un tic final
+  compteur: (d = 0.55) => {
+    const tics = Array.from({length: 9}, (_, k) => +(0.42 * (1 - Math.pow(1 - k / 8, 1.3))).toFixed(3));
+    const expr = tics.map((t0) => `gt(t,${t0})*(0.55*sin(2*PI*3300*(t-${t0}))*exp(-900*(t-${t0})))`).join('+')
+      + `+gt(t,0.47)*0.8*sin(2*PI*2100*(t-0.47))*exp(-160*(t-0.47))`;
+    return ['-f', 'lavfi', '-i', `aevalsrc='${expr}':s=${SR}:d=${d}`, '-af', 'highpass=f=900,lowpass=f=9000'];
+  },
+  // titre : un souffle d'air qui gonfle doucement puis un coup sourd et rond (sans claquement)
+  titre: () => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=0.5:a=0.6`,
+    '-f', 'lavfi', '-i', `aevalsrc='0.9*sin(2*PI*(62*t-10*t*t))*exp(-6*t)*(1-exp(-250*t))':s=${SR}:d=0.9`,
+    '-filter_complex', `[0:a]bandpass=f=1000:width_type=o:w=2.2,afade=t=in:d=0.46:curve=exp,afade=t=out:st=0.46:d=0.04[s];` +
+      `[1:a]lowpass=f=260,adelay=450|450[b];[s][b]amix=inputs=2:duration=longest:normalize=0,aecho=0.8:0.35:55:0.18[o]`,
+    '-map', '[o]'],
   // frappe : clic de clavier très court
   frappe: (d = 0.05) => ['-f', 'lavfi', '-i', `aevalsrc='(random(0)*2-1)*exp(-140*t)':s=${SR}:d=${d}`,
     '-af', 'highpass=f=1800,lowpass=f=7000'],

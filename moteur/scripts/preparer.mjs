@@ -190,9 +190,11 @@ function sonsPour(e, M) {
   switch (e.type) {
     case 'accroche': return e.variante === 'presentation' ? [s('whoosh', e.debut, 0.6), s('pop', t.finFrappe, 0.6)] : [s('whoosh', e.debut), s('scintillement', t.finFrappe)];
     case 'signature': return [s('scintillement', e.debut, 0.6)];
-    case 'grand_titre': return [s('montee', e.debut - 0.7), s('impact', e.debut + 0.12)];
+    case 'grand_titre': return [s('titre', e.debut - 0.45)];
     case 'icone': return [s('pop', e.debut), s('scintillement', e.debut + 0.1)];
-    case 'chiffre': return [s('montee', t.comptage[0] - 0.2, 0.8), s('impact', t.comptage[1], 0.6)];
+    case 'chiffre': return [s('compteur', t.comptage[0])];
+    case 'liste': return e.temps.map((c) => s('pop', c, 0.6));
+    case 'plan_de_coupe': return [s('whoosh', e.debut - 0.15, 0.6)];
     case 'zoom': return [s('whoosh', e.debut - 0.05, 0.7)];
     case 'transition': return e.style === 'lumiere' ? [s('whoosh', e.debut - 0.3), s('scintillement', e.debut - 0.05, 0.8)] : [s('whoosh', e.debut - 0.25, 1.2)];
     case 'carte_fin': return [s('impact', e.debut, 0.7), s('scintillement', e.debut + 0.25)];
@@ -243,7 +245,7 @@ export function preparer(cheminEffets) {
   const st = {...M.sous_titres, ...(effetsJson.sous_titres || {})};
   const mots = corriger(lireMots(chemin(rush.mots)), charte);
   const cles = new Set((st.mots_cles || []).map(normaliser));
-  for (const m of mots) m.cle = cles.has(normaliser(m.texte));
+  mots.forEach((m, i) => { m.id = i; m.cle = cles.has(normaliser(m.texte)); });
   const groupes = construireGroupes(mots, st);
 
   const effets = (effetsJson.effets || []).map((e, i) => ({id: i, ...e}));
@@ -255,11 +257,31 @@ export function preparer(cheminEffets) {
     e.debut = e.debut ?? duree - charte.fin.signature.duree_s;
     e.fin = e.fin ?? duree;
   }
+  // icône liée à un mot (« mot ») : dessinée juste au-dessus de ce mot dans les sous-titres,
+  // (elle reste à sa place si la ligne de sous-titres change avant sa fin)
+  for (const e of effets.filter((x) => x.type === 'icone' && x.mot)) {
+    const cible = normaliser(e.mot);
+    const candidats = mots.filter((m) => normaliser(m.texte) === cible);
+    const m = candidats.sort((a, b) => Math.abs(a.debut - e.debut) - Math.abs(b.debut - e.debut))[0];
+    if (!m || Math.abs(m.debut - e.debut) > 2) {
+      console.warn(`Icône « ${e.icone} » : mot « ${e.mot} » introuvable près de ${e.debut} s, icône posée librement.`);
+      continue;
+    }
+    e.mot_id = m.id;
+    e.debut = Math.max(e.debut, m.debut - 0.05);
+  }
+  // plan de coupe : la vidéo est copiée dans public/media
+  for (const e of effets.filter((x) => x.type === 'plan_de_coupe')) {
+    const f = chemin(e.fichier);
+    e.src = `media/plan_${e.id}${path.extname(f)}`;
+    relier(f, path.join(PUBLIC, e.src));
+  }
   for (const e of effets) e._t = calculerTemps(e, M);
 
   const cam = effetsJson.camera || {};
   const camera = {
     visage: cam.visage || M.camera.visage_par_defaut,
+    haut_tete: cam.haut_tete ?? M.camera.haut_tete_par_defaut,
     coupes: [...(cam.coupes || [])].sort((a, b) => a - b),
     cadrages: cam.cadrages || M.camera.cadrages,
     decalages_x: cam.decalages_x || M.camera.decalages_x,

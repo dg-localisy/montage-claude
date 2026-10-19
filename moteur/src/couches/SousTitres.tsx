@@ -1,10 +1,13 @@
 import React from 'react';
 import {useCurrentFrame, useVideoConfig} from 'remotion';
 import {easeOut, emDepuisAss, fondu, prog} from '../temps';
+import {DessinIcone} from './Icone';
 
 // Sous-titres mot à mot. Même place, même taille, même police de base et même ombre
 // que ceux de la première vidéo (charte → sous_titres). Seuls changent :
 // l'apparition mot par mot, le mot en cours en orange et les mots-clés en Figtree Black.
+// Les icônes liées à un mot sont dessinées juste au-dessus de ce mot (jamais sur le visage) ;
+// si la ligne de sous-titres change avant la fin de l'icône, l'icône reste à sa place.
 export const SousTitres: React.FC<{projet: any; charte: any}> = ({projet, charte}) => {
   const frame = useCurrentFrame();
   const {fps, width: W} = useVideoConfig();
@@ -15,7 +18,6 @@ export const SousTitres: React.FC<{projet: any; charte: any}> = ({projet, charte
   const visibilite = 1 - Math.max(0, ...masques.map((e: any) => fondu(t, e.debut - 0.06, e.fin, 0.12)));
   if (visibilite <= 0.001) return null;
   const groupe = projet.groupes.find((g: any) => t >= g.debut - 0.05 && t < g.fin_affichage);
-  if (!groupe) return null;
 
   const st = charte.sous_titres;
   const n = st.normal;
@@ -24,29 +26,47 @@ export const SousTitres: React.FC<{projet: any; charte: any}> = ({projet, charte
   const o = st.ombre;
   const ombre = `${o.decalage_x_px}px ${o.decalage_y_px}px ${o.flou}px rgba(0,0,0,1), ${o.decalage_x_px}px ${o.decalage_y_px}px ${o.epaisseur_px}px rgba(0,0,0,0.95), 0 0 ${o.epaisseur_px}px rgba(0,0,0,0.6)`;
 
-  return (
+  const icones = projet.effets.filter((e: any) => e.type === 'icone' && e.mot_id !== undefined && t >= e.debut && t <= e.fin);
+  const tailleIcone = charte.moteur.icone.taille_mot_px;
+  const groupeDe = (id: number) => projet.groupes.find((g: any) => g.mots.some((m: any) => m.id === id));
+
+  // une ligne de sous-titres ; « fantome » : texte invisible, seules les icônes se voient (même mise en page)
+  const ligne = (g: any, fantome: boolean, cle: string) => (
     <div
+      key={cle}
       style={{
         position: 'absolute', left: 0, width: W, top: n.position.ligne_de_base_y - 0.85 * em,
         textAlign: 'center', fontSize: em, lineHeight: 1, opacity: visibilite, whiteSpace: 'nowrap',
       }}
     >
       <div style={{display: 'inline-block', transform: `scaleX(${n.largeur_lettres_pct / 100})`}}>
-        {groupe.mots.map((m: any, i: number) => {
-          const a = easeOut(prog(t, m.debut - 0.03, m.debut - 0.03 + M.apparition_s));
-          const suivant = groupe.mots[i + 1];
+        {g.mots.map((m: any, i: number) => {
+          const a = fantome ? 1 : easeOut(prog(t, m.debut - 0.03, m.debut - 0.03 + M.apparition_s));
+          const suivant = g.mots[i + 1];
           const actif = t >= m.debut - 0.03 && t < (suivant ? suivant.debut - 0.03 : m.fin + 0.15);
+          const icone = icones.find((e: any) => e.mot_id === m.id);
+          const ti = icone ? icone.taille ?? tailleIcone : 0;
           return (
             <React.Fragment key={i}>
               {i > 0 ? ' ' : ''}
               <span
                 style={{
-                  display: 'inline-block', fontFamily: m.cle ? M.mots_cles_police : n.police,
-                  color: actif ? M.mot_actif_couleur : st.couleur, textShadow: ombre, opacity: a,
+                  position: 'relative', display: 'inline-block', fontFamily: m.cle ? M.mots_cles_police : n.police,
+                  color: fantome ? 'transparent' : actif ? M.mot_actif_couleur : st.couleur, textShadow: fantome ? 'none' : ombre, opacity: a,
                   transform: `translateY(${((1 - a) * 10).toFixed(1)}px)`, filter: a < 1 ? `blur(${((1 - a) * 5).toFixed(1)}px)` : 'none',
                 }}
               >
                 {m.texte}
+                {icone && (
+                  <span
+                    style={{
+                      position: 'absolute', left: '50%', bottom: '100%', marginBottom: -ti / 2 + 8, lineHeight: 0,
+                      transform: `translateX(-50%) scaleX(${(100 / n.largeur_lettres_pct).toFixed(4)})`,
+                    }}
+                  >
+                    <DessinIcone e={icone} t={t} taille={ti} charte={charte} />
+                  </span>
+                )}
               </span>
             </React.Fragment>
           );
@@ -54,4 +74,12 @@ export const SousTitres: React.FC<{projet: any; charte: any}> = ({projet, charte
       </div>
     </div>
   );
+
+  const lignes: React.ReactNode[] = [];
+  if (groupe) lignes.push(ligne(groupe, false, 'courant'));
+  for (const e of icones) {
+    const g = groupeDe(e.mot_id);
+    if (g && g !== groupe) lignes.push(ligne(g, true, `fantome-${e.id}`));
+  }
+  return lignes.length ? <>{lignes}</> : null;
 };

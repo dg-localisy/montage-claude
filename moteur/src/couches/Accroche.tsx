@@ -1,6 +1,7 @@
 import React from 'react';
 import {useCurrentFrame, useVideoConfig} from 'remotion';
-import {easeOut, emDepuisAss, fondu, prog, sansPonctuation} from '../temps';
+import {miseEnPageAccroche} from '../miseEnPage';
+import {easeOut, fondu, prog, sansPonctuation} from '../temps';
 
 // Accroche d'ouverture : un sur-titre qui glisse, puis un titre qui s'écrit lettre par lettre.
 export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, charte, projet}) => {
@@ -9,22 +10,10 @@ export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, chart
   const t = frame / fps;
   if (t < e.debut || t > e.fin) return null;
   const A = charte.moteur.accroche;
-  const presentation = e.variante === 'presentation';
-  const surtitreY = A.surtitre_y + (presentation ? 40 : 0);
-  const surtitreTaille = presentation ? 28 : A.surtitre_taille_px;
   const ti = charte.titres;
   const accent = charte.couleurs.orange;
-  // Le titre ne cache jamais les yeux (charte) : il tient entre le sur-titre et le haut des yeux.
-  // Le zoom de la caméra est centré sur le visage, donc les yeux restent à cette hauteur.
-  const yeux = projet.camera.visage[1] * 1920;
-  const nbLignes = e._t.lignes.length;
-  const em0 = emDepuisAss(132) * (presentation ? 0.68 : 1);
-  const rapport = A.ecart_lignes_px / em0;
-  const haut = surtitreY + surtitreTaille / 2 + (presentation ? 26 : 34);
-  const bas = yeux - A.marge_yeux_px;
-  const em = Math.min(em0, (bas - haut) / ((nbLignes - 1) * rapport + 0.74));
-  const ecart = rapport * em;
-  const premiere = haut + 0.37 * em; // centre des majuscules de la première ligne
+  // Tout en haut de l'image ; la caméra descend l'image pour que le visage reste dessous (miseEnPage.ts).
+  const {presentation, avecSurtitre, surtitreTaille, surtitreY, em, ecart, premiere} = miseEnPageAccroche(e, charte);
   const visible = fondu(t, e.debut, e.fin, 0.25);
   const sortie = prog(t, e.fin - 0.3, e.fin);
   const s = easeOut(prog(t, e.debut, e.debut + 0.35));
@@ -42,8 +31,8 @@ export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, chart
 
   return (
     <div style={{position: 'absolute', inset: 0, opacity: visible * (1 - sortie), transform: `translateY(${(-24 * sortie).toFixed(1)}px)`}}>
-      <div style={{position: 'absolute', left: 0, top: 0, width: W, height: 1250, background: presentation ? 'linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0) 62%)' : 'linear-gradient(to bottom, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.38) 45%, rgba(0,0,0,0) 72%)'}} />
-      <div
+      <div style={{position: 'absolute', left: 0, top: 0, width: W, height: 900, background: presentation ? 'linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0) 62%)' : 'linear-gradient(to bottom, rgba(0,0,0,0.66) 0%, rgba(0,0,0,0.38) 45%, rgba(0,0,0,0) 72%)'}} />
+      {avecSurtitre && <div
         style={{
           position: 'absolute', top: surtitreY - surtitreTaille / 2, left: 0, width: W, display: 'flex', justifyContent: 'center', alignItems: 'center',
           gap: 18, opacity: s, transform: `translateX(${((1 - s) * -40).toFixed(1)}px)`,
@@ -53,7 +42,7 @@ export const Accroche: React.FC<{e: any; charte: any; projet: any}> = ({e, chart
         <div style={{fontFamily: presentation ? 'Figtree SemiBold' : A.surtitre_police, fontSize: surtitreTaille, letterSpacing: presentation ? 4 : 6, color: 'rgba(255,255,255,0.9)', textTransform: 'uppercase', lineHeight: 1}}>
           {e.surtitre}
         </div>
-      </div>
+      </div>}
       {lignes.map((ligne, li) => {
         const debutLigne = index;
         index += ligne.length + 1;

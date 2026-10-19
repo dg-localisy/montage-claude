@@ -490,8 +490,9 @@
       "delai_titre_s": 0.35,
       "lettres_par_s": 24,
       "ecart_lignes_px": 140,
-      "marge_yeux_px": 50,
-      "placement_titre": "Calculé automatiquement entre le sur-titre et les yeux (camera.visage) ; la taille baisse si la place manque."
+      "placement_titre": "Tout en haut. Pendant l'accroche, l'image descend juste assez pour que le haut de la tête passe sous le titre ; le haut libéré est rempli par une copie floue de l'image.",
+      "titre_haut_px": 350,
+      "marge_tete_px": 45
     },
     "grand_titre": {
       "centre_y": 860,
@@ -506,13 +507,16 @@
       "x": 540,
       "y": 640,
       "particules": 14,
-      "duree_trace_s": 0.5
+      "duree_trace_s": 0.5,
+      "taille_mot_px": 210,
+      "placement": "Juste au-dessus du mot qu'elle illustre, dans les sous-titres (champ « mot » dans effets.json). Jamais sur le visage."
     },
     "chiffre": {
-      "taille_px": 200,
+      "taille_px": 140,
       "x": 540,
-      "y": 980,
-      "duree_comptage_s": 1.0
+      "y": 1060,
+      "duree_comptage_s": 0.5,
+      "placement": "Sous le visage, juste au-dessus des sous-titres. Le visage n'est plus flouté."
     },
     "carte": {
       "rect_video": [
@@ -563,7 +567,8 @@
         0.5,
         0.37
       ],
-      "zoom_duree_s": 0.25
+      "zoom_duree_s": 0.25,
+      "haut_tete_par_defaut": 0.19
     },
     "transitions": {
       "duree_s": 0.5,
@@ -585,13 +590,16 @@
     },
     "sons": {
       "volumes": {
-        "whoosh": 0.2,
+        "whoosh": 0.1,
         "montee": 0.14,
         "impact": 0.26,
         "scintillement": 0.12,
         "pop": 0.2,
-        "frappe": 0.05
-      }
+        "frappe": 0.05,
+        "compteur": 0.3,
+        "titre": 0.18
+      },
+      "preferences": "Bruitages discrets et rapides. Pas de montée lente ni d'impact fort. Chiffres : petits tics rapides. Grand titre : souffle doux et coup sourd. Whoosh de transition bas (volume 0,1)."
     },
     "musique": {
       "sous_la_voix_db": -20,
@@ -606,6 +614,13 @@
       "loudness_lufs": -14,
       "crete_dbtp": -1,
       "format_4x5": "recadrage centré 1080×1350 (lignes 285 à 1635)"
+    },
+    "liste": {
+      "y": 950,
+      "taille_police_px": 42,
+      "ecart_px": 12,
+      "description": "Pastilles sous le visage, une par élément, qui glissent quand elles sont dites et restent affichées.",
+      "cadrage_max": 1.08
     }
   },
   "marque": {
@@ -624,5 +639,14 @@
       "couleur_officielle": "#333333",
       "regle": "Blanc sur la vidéo ou un fond sombre, gris #333333 ou noir sur fond clair. Ne jamais le déformer ni le recolorer en orange."
     }
-  }
+  },
+  "regles_ecran": [
+    "Aucun texte, icône ou chiffre ne cache jamais le visage, même flouté. Seule exception : le grand titre 3D, avec le visage flouté derrière.",
+    "Accroche : pas de sur-titre « Témoignage client ». Le titre est tout en haut et l'image descend pour laisser la tête dessous.",
+    "Une icône se place juste au-dessus du mot qu'elle illustre.",
+    "Les chiffres se placent sous le visage, juste au-dessus des sous-titres.",
+    "Deux montages qui se suivent doivent être différents (par exemple une carte, puis des pastilles).",
+    "Une carte ou une liste reste visible au moins 1,2 s après son dernier élément.",
+    "Pour illustrer un moment (poignée de main, lieu…), un plan de coupe libre de droits plutôt qu'un graphique."
+  ]
 }
