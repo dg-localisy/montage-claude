@@ -34,8 +34,8 @@ export const Ambiance: React.FC<{projet: any; charte: any}> = ({projet, charte})
   const {fps, width: W, height: H} = useVideoConfig();
   const t = frame / fps;
   const A = charte.moteur.ambiance;
-  const finale = projet.effets.find((e: any) => e.type === 'carte_fin');
-  const masqueChapitres = finale ? fondu(t, finale.debut - 0.05, finale.fin + 1, 0.2) : 0;
+  const finales = projet.effets.filter((e: any) => e.type === 'carte_fin' || e.type === 'signature');
+  const masqueChapitres = Math.max(0, ...finales.map((e: any) => fondu(t, e.debut - 0.25, e.fin + 1, 0.25)));
   const chapitres = projet.chapitres;
   const actuel = chapitres.findIndex((c: any) => t >= c.debut && t < c.fin);
   const x0 = 90;
@@ -110,6 +110,21 @@ export const CarteFin: React.FC<{e: any; charte: any}> = ({e, charte}) => {
         </div>
         {e.role && <div style={{fontFamily: 'Figtree Light', fontSize: 44, color: 'rgba(255,255,255,0.82)', marginTop: 22, opacity: role, transform: `translateY(${((1 - role) * 16).toFixed(1)}px)`}}>{e.role}</div>}
       </div>
+    </div>
+  );
+};
+
+// Signature de fin discrète (charte → fin.signature) : « LOCALISY » en petit, en haut, en fondu.
+export const Signature: React.FC<{e: any; charte: any}> = ({e, charte}) => {
+  const frame = useCurrentFrame();
+  const {fps, width: W} = useVideoConfig();
+  const t = frame / fps;
+  if (t < e.debut || t > e.fin) return null;
+  const sig = charte.fin.signature;
+  const a = prog(t, e.debut, e.debut + 0.3);
+  return (
+    <div style={{position: 'absolute', left: 0, width: W, top: sig.position.y - sig.taille_px * 0.6, textAlign: 'center', fontFamily: sig.police, fontSize: sig.taille_px, lineHeight: 1.2, color: sig.couleur, opacity: sig.opacite * a, textShadow: '0 2px 12px rgba(0,0,0,0.45)', letterSpacing: 1}}>
+      {e.texte || sig.texte}
     </div>
   );
 };

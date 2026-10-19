@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Accroche} from './couches/Accroche';
-import {Ambiance, CarteFin, Lumieres} from './couches/Ambiance';
+import {Ambiance, CarteFin, Lumieres, Signature} from './couches/Ambiance';
 import {Camera} from './couches/Camera';
 import {Carte} from './couches/Carte';
 import {Chiffre} from './couches/Chiffre';
@@ -38,6 +38,7 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
       <SousTitres projet={projet} charte={charte} />
       <Lumieres projet={projet} charte={charte} />
       <Ambiance projet={projet} charte={charte} />
+      {de('signature').map((e: any) => <Signature key={e.id} e={e} charte={charte} />)}
       {de('carte_fin').map((e: any) => <CarteFin key={e.id} e={e} charte={charte} />)}
       <Sons projet={projet} />
     </AbsoluteFill>
