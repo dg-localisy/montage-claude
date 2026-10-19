@@ -12,6 +12,14 @@ const ICONES: Record<string, {traits: string[]; detail: (c: string) => React.Rea
   epingle: {traits: ['M50 92 C50 92 20 60 20 38 A30 30 0 0 1 80 38 C80 60 50 92 50 92 Z'], detail: (c) => <circle cx={50} cy={38} r={10} fill={c} />},
   panier: {traits: ['M8 16 H22 L32 64 H80 L90 30 H25'], detail: (c) => (<g fill={c}><circle cx={38} cy={80} r={6} /><circle cx={74} cy={80} r={6} /></g>)},
   coeur: {traits: ['M50 86 C22 66 8 50 8 34 A20 20 0 0 1 50 26 A20 20 0 0 1 92 34 C92 50 78 66 50 86 Z'], detail: (c) => <circle cx={74} cy={34} r={5} fill={c} />},
+  cible: {
+    traits: ['M12 50 A38 38 0 1 0 88 50 A38 38 0 1 0 12 50 Z', 'M28 50 A22 22 0 1 0 72 50 A22 22 0 1 0 28 50 Z', 'M90 10 L57 43', 'M90 10 V22 M90 10 H78'],
+    detail: (c) => <circle cx={50} cy={50} r={7} fill={c} />,
+  },
+  etincelle: {
+    traits: ['M44 12 C47 36 54 43 78 46 C54 49 47 56 44 80 C41 56 34 49 10 46 C34 43 41 36 44 12 Z'],
+    detail: (c) => <path d="M80 8 C81 15 83 17 90 18 C83 19 81 21 80 28 C79 21 77 19 70 18 C77 17 79 15 80 8 Z" fill={c} />,
+  },
   bulle: {
     traits: ['M16 18 H84 A8 8 0 0 1 92 26 V62 A8 8 0 0 1 84 70 H42 L24 86 V70 H16 A8 8 0 0 1 8 62 V26 A8 8 0 0 1 16 18 Z'],
     detail: (c) => (<g><circle cx={32} cy={44} r={4.5} fill="#fff" /><circle cx={50} cy={44} r={4.5} fill={c} /><circle cx={68} cy={44} r={4.5} fill="#fff" /></g>),

@@ -22,7 +22,8 @@ export const Entonnoir: React.FC<{e: any; t: number; charte: any}> = ({e, t, cha
           const haut = largeur * (1 - (i / n) * 0.5);
           const bas = largeur * (1 - ((i + 1) / n) * 0.5);
           const derniere = i === n - 1;
-          const valeur = typeof etape.valeur === 'number' ? nombreFr(lerp(0, etape.valeur, a)) : etape.valeur;
+          const sansValeur = etape.valeur === undefined || etape.valeur === null || etape.valeur === '';
+          const valeur = sansValeur ? null : typeof etape.valeur === 'number' ? nombreFr(lerp(0, etape.valeur, a)) : String(etape.valeur);
           return (
             <div key={i} style={{position: 'absolute', left: 0, top: i * (hauteur + 12), width: largeur, height: hauteur, opacity: a, transform: `scaleX(${(0.6 + 0.4 * a).toFixed(3)})`}}>
               <svg width={largeur} height={hauteur} style={{position: 'absolute', inset: 0}}>
@@ -32,8 +33,10 @@ export const Entonnoir: React.FC<{e: any; t: number; charte: any}> = ({e, t, cha
                 />
               </svg>
               <div style={{position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                <div style={{fontFamily: 'Figtree Black', fontSize: 44, color: derniere ? accent : '#fff', lineHeight: 1}}>{valeur}</div>
-                <div style={{fontFamily: 'Figtree Medium', fontSize: 23, color: 'rgba(255,255,255,0.75)', marginTop: 8}}>{etape.label}</div>
+                {valeur !== null && <div style={{fontFamily: 'Figtree Black', fontSize: 44, color: derniere ? accent : '#fff', lineHeight: 1}}>{valeur}</div>}
+                <div style={valeur !== null
+                  ? {fontFamily: 'Figtree Medium', fontSize: 23, color: 'rgba(255,255,255,0.75)', marginTop: 8}
+                  : {fontFamily: 'Figtree SemiBold', fontSize: 28, color: derniere ? accent : '#fff', textAlign: 'center', lineHeight: 1.2, padding: '0 40px'}}>{etape.label}</div>
               </div>
             </div>
           );
@@ -47,9 +50,13 @@ export const Entonnoir: React.FC<{e: any; t: number; charte: any}> = ({e, t, cha
 export const GrosChiffre: React.FC<{e: any; t: number; charte: any}> = ({e, t, charte}) => {
   const accent = charte.couleurs.orange;
   const [a, b] = e._t.comptage;
-  const p = easeOut(prog(t, a, b));
+  const texteFixe = typeof e.texte === 'string' && e.texte.length > 0;
+  // avec un texte fixe : pas de comptage, le texte apparaît et l'anneau se dessine
+  const p = texteFixe ? easeOut(prog(t, a, a + 0.5)) : easeOut(prog(t, a, b));
+  const apparition = texteFixe ? easeOut(prog(t, a, a + 0.3)) : 1;
   const r = 160;
   const circ = 2 * Math.PI * r;
+  const tailleTexte = texteFixe ? Math.min(96, Math.floor(560 / Math.max(4, e.texte.length))) : 104;
   return (
     <div style={{...cadre, alignItems: 'center'}}>
       {e.titre && <div style={{...titre, textAlign: 'center'}}>{e.titre}</div>}
@@ -58,10 +65,14 @@ export const GrosChiffre: React.FC<{e: any; t: number; charte: any}> = ({e, t, c
           <circle cx={r + 12} cy={r + 12} r={r} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth={10} />
           <circle cx={r + 12} cy={r + 12} r={r} fill="none" stroke={accent} strokeWidth={10} strokeLinecap="round" strokeDasharray={`${circ * p * (e.remplissage ?? 1)} ${circ}`} />
         </svg>
-        <div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Figtree Black', fontSize: 104, color: '#fff', letterSpacing: -3}}>
-          {e.prefixe && <span style={{color: accent}}>{e.prefixe}</span>}
-          {nombreFr(lerp(e.de ?? 0, e.valeur, p), e.decimales ?? 0)}
-          {e.suffixe && <span style={{color: accent, fontSize: 64}}>{e.suffixe}</span>}
+        <div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Figtree Black', fontSize: tailleTexte, color: '#fff', letterSpacing: texteFixe ? -1 : -3, textAlign: 'center', lineHeight: 1.05, padding: '0 34px', opacity: apparition, transform: `scale(${(0.85 + 0.15 * apparition).toFixed(3)})`}}>
+          {texteFixe ? e.texte : (
+            <>
+              {e.prefixe && <span style={{color: accent}}>{e.prefixe}</span>}
+              {nombreFr(lerp(e.de ?? 0, e.valeur, p), e.decimales ?? 0)}
+              {e.suffixe && <span style={{color: accent, fontSize: 64}}>{e.suffixe}</span>}
+            </>
+          )}
         </div>
       </div>
       {e.legende && <div style={{fontFamily: 'Figtree Medium', fontSize: 30, color: 'rgba(255,255,255,0.85)', marginTop: 34, textAlign: 'center', lineHeight: 1.3}}>{e.legende}</div>}

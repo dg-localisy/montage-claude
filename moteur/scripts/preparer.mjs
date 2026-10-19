@@ -137,10 +137,12 @@ function decouperTitre(titre, maxMots = 3, maxCar = 13) {
 function calculerTemps(e, M) {
   const t = {};
   if (e.type === 'accroche') {
-    t.lignes = decouperTitre(e.titre.toUpperCase());
+    const presentation = e.variante === 'presentation';
+    t.lignes = decouperTitre(e.titre.toUpperCase(), 3, presentation ? 18 : 13);
     t.titre = e.debut + M.accroche.delai_titre_s;
+    t.vitesse = M.accroche.lettres_par_s * (presentation ? 1.25 : 1);
     const n = t.lignes.join(' ').length;
-    t.finFrappe = t.titre + n / M.accroche.lettres_par_s;
+    t.finFrappe = t.titre + n / t.vitesse;
   }
   if (e.type === 'chiffre') {
     t.comptage = [e.debut + 0.1, e.debut + 0.1 + (e.duree_comptage ?? M.chiffre.duree_comptage_s)];
@@ -158,10 +160,10 @@ function calculerTemps(e, M) {
       t.finReponse = t.reponse + e.reponse.split(/\s+/).length / c.mots_par_s;
     }
     if (e.animation === 'checklist') {
-      t.coches = e.items.map((_, i) => p + M.checklist.premier_coche_s + i * M.checklist.intervalle_s);
+      t.coches = e.items.map((_, i) => (e.coches && e.coches[i] !== undefined ? e.coches[i] : p + M.checklist.premier_coche_s + i * M.checklist.intervalle_s));
     }
     if (e.animation === 'entonnoir') {
-      t.etapes = e.etapes.map((_, i) => p + 0.2 + i * M.entonnoir.intervalle_s);
+      t.etapes = e.etapes.map((_, i) => (e.temps_etapes && e.temps_etapes[i] !== undefined ? e.temps_etapes[i] : p + 0.2 + i * M.entonnoir.intervalle_s));
     }
     if (e.animation === 'gros_chiffre') {
       t.comptage = [p + 0.25, p + 0.25 + (e.duree_comptage ?? 1.2)];
@@ -176,7 +178,8 @@ function sonsPour(e, M) {
   const s = (nom, debut, facteur = 1) => ({fichier: `sons/${nom}.wav`, debut: Math.max(0, debut), volume: +(v[nom] * facteur).toFixed(3), effet: e.type});
   const t = e._t || {};
   switch (e.type) {
-    case 'accroche': return [s('whoosh', e.debut), s('scintillement', t.finFrappe)];
+    case 'accroche': return e.variante === 'presentation' ? [s('whoosh', e.debut, 0.6), s('pop', t.finFrappe, 0.6)] : [s('whoosh', e.debut), s('scintillement', t.finFrappe)];
+    case 'signature': return [s('scintillement', e.debut, 0.6)];
     case 'grand_titre': return [s('montee', e.debut - 0.7), s('impact', e.debut + 0.12)];
     case 'icone': return [s('pop', e.debut), s('scintillement', e.debut + 0.1)];
     case 'chiffre': return [s('montee', t.comptage[0] - 0.2, 0.8), s('impact', t.comptage[1], 0.6)];
@@ -191,7 +194,7 @@ function sonsPour(e, M) {
       }
       if (e.animation === 'checklist') t.coches.forEach((c) => liste.push(s('pop', c, 0.9)));
       if (e.animation === 'entonnoir') t.etapes.forEach((c) => liste.push(s('pop', c, 0.6)));
-      if (e.animation === 'gros_chiffre') liste.push(s('montee', t.comptage[0] - 0.2, 0.7), s('impact', t.comptage[1], 0.7));
+      if (e.animation === 'gros_chiffre') liste.push(...(e.texte ? [s('pop', t.comptage[0], 0.9)] : [s('montee', t.comptage[0] - 0.2, 0.7), s('impact', t.comptage[1], 0.7)]));
       return liste;
     }
     default: return [];
@@ -233,6 +236,14 @@ export function preparer(cheminEffets) {
   const groupes = construireGroupes(mots, st);
 
   const effets = (effetsJson.effets || []).map((e, i) => ({id: i, ...e}));
+  // la première accroche ouvre la vidéo ; les suivantes (ex. le nom) sont plus discrètes
+  const accroches = effets.filter((e) => e.type === 'accroche').sort((a, b) => a.debut - b.debut);
+  accroches.forEach((e, i) => { e.variante = e.style || (i === 0 ? 'ouverture' : 'presentation'); });
+  // signature de fin (charte → fin.signature) : par défaut sur les dernières secondes
+  for (const e of effets.filter((x) => x.type === 'signature')) {
+    e.debut = e.debut ?? duree - charte.fin.signature.duree_s;
+    e.fin = e.fin ?? duree;
+  }
   for (const e of effets) e._t = calculerTemps(e, M);
 
   const cam = effetsJson.camera || {};
