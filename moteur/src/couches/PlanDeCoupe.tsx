@@ -8,6 +8,9 @@ export const PlanDeCoupe: React.FC<{e: any; charte: any; etalonnage: boolean}> =
   const {fps, width: W, height: H} = useVideoConfig();
   const de = Math.round(e.debut * fps);
   const duree = Math.max(1, Math.round(e.fin * fps) - de);
+  // le voile suit la ligne des sous-titres (en % de la hauteur)
+  const base = (charte.sous_titres.normal.position.ligne_de_base_y / H) * 100;
+  const voile = `linear-gradient(to bottom, rgba(0,0,0,0) ${(base - 20).toFixed(1)}%, rgba(0,0,0,0.5) ${(base - 6).toFixed(1)}%, rgba(0,0,0,0.5) ${(base + 3).toFixed(1)}%, rgba(0,0,0,0) ${(base + 16).toFixed(1)}%)`;
   return (
     <Sequence from={de} durationInFrames={duree} layout="none">
       <AbsoluteFill>
@@ -17,7 +20,7 @@ export const PlanDeCoupe: React.FC<{e: any; charte: any; etalonnage: boolean}> =
         />
         {e.voile !== false && (
           // léger dégradé sombre sous les sous-titres : ils restent lisibles même sur un fond clair
-          <AbsoluteFill style={{background: 'linear-gradient(to bottom, rgba(0,0,0,0) 48%, rgba(0,0,0,0.42) 66%, rgba(0,0,0,0.42) 74%, rgba(0,0,0,0) 90%)'}} />
+          <AbsoluteFill style={{background: voile}} />
         )}
       </AbsoluteFill>
     </Sequence>
