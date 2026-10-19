@@ -490,7 +490,7 @@
       "delai_titre_s": 0.35,
       "lettres_par_s": 24,
       "ecart_lignes_px": 140,
-      "placement_titre": "Tout en haut. Pendant l'accroche, l'image descend juste assez pour que le haut de la tête passe sous le titre ; le haut libéré est rempli par une copie floue de l'image.",
+      "placement_titre": "Tout en haut. Pendant l'accroche, l'image descend juste assez pour que le haut de la tête passe sous le titre ; le haut libéré est rempli par un reflet en miroir du haut de l'image, sans flou (sinon un trait sombre apparaît à la jonction).",
       "titre_haut_px": 350,
       "marge_tete_px": 45
     },

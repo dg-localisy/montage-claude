@@ -26,7 +26,7 @@ Durée visée : entre 30 et 60 secondes.
 
 On ouvre sur la meilleure phrase du client, même si elle arrive à la fin de l'interview, avec un titre qui reprend l'idée (par exemple « CHIFFRE D'AFFAIRES ×3 »). L'histoire commence juste après.
 
-Pas de sur-titre « Témoignage client ». Le titre de l'accroche, et celui qui présente le client (nom et fonction), se placent tout en haut. Pendant ce temps, l'image descend un peu pour que la tête passe sous le titre. Le haut libéré est rempli par une copie floue du fond.
+Pas de sur-titre « Témoignage client ». Le titre de l'accroche, et celui qui présente le client (nom et fonction), se placent tout en haut. Pendant ce temps, l'image descend un peu pour que la tête passe sous le titre. Le haut libéré est rempli par un reflet en miroir du haut de l'image (le mur), pour qu'aucune jonction ne se voie.
 
 ## Les sous-titres
 

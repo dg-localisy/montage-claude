@@ -100,11 +100,17 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
   );
 
   const couches: React.ReactNode[] = [];
-  // haut libéré par la descente : rempli par une copie très floue de l'image (le mur continue)
-  if (decalY > 0.5) {
+  // haut libéré par la descente : rempli par le reflet de l'image (miroir au bord supérieur),
+  // pour que les couleurs se raccordent sans marche visible. Pas de flou : au bord, il mélangerait
+  // l'image avec du noir et ferait un trait sombre. L'axe du miroir est 3 px plus bas que le bord,
+  // pour que le reflet passe sous l'image principale et qu'aucun pixel noir ne reste à la jonction.
+  const bordHaut = decalY + cam.visage[1] * H * (1 - echelle);
+  if (decalY > 0.5 && bordHaut > 0) {
     couches.push(
-      <div key="fond-flou" style={{position: 'absolute', inset: 0, transform: 'scale(1.6)', transformOrigin: '50% 0%', filter: 'blur(45px) brightness(0.95)'}}>
-        <OffthreadVideo src={staticFile(projet.rush.video)} muted style={{width: W, height: H, objectFit: 'cover'}} />
+      <div key="reflet" style={{position: 'absolute', inset: 0, transform: `translateY(${(2 * (bordHaut + 3)).toFixed(1)}px) scaleY(-1)`, transformOrigin: '0 0'}}>
+        <div style={{position: 'absolute', inset: 0, transform: `translateX(${decalage}px) translateY(${decalY.toFixed(1)}px) scale(${echelle})`, transformOrigin: origine}}>
+          <OffthreadVideo src={staticFile(projet.rush.video)} muted style={{width: W, height: H, objectFit: 'cover'}} />
+        </div>
       </div>,
     );
   }
