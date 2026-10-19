@@ -53,15 +53,18 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
 
   const titres = projet.effets.filter((e: any) => e.type === 'grand_titre');
   const g = Math.max(0, ...titres.map((e: any) => fondu(t, e.debut - 0.12, e.fin, 0.22)));
+  const stats = projet.effets.filter((e: any) => e.type === 'icone' || e.type === 'chiffre');
+  const v = Math.max(0, ...stats.map((e: any) => fondu(t, e.debut, e.fin, 0.2)));
   const cartes = projet.effets.filter((e: any) => e.type === 'carte');
   const c = Math.max(0, ...cartes.map((e: any) => fondu(t, e.debut, e.fin, M.carte.duree_reduction_s)));
   const pano = panoramique(t, projet.transitions, W);
 
-  const echelle = cadrage * avancee * z * (1 + 0.07 * g);
+  const echelle = cadrage * avancee * z * (1 + 0.07 * g + 0.03 * v);
   const origine = `${cam.visage[0] * W}px ${cam.visage[1] * H}px`;
   const filtres = [
     pano.flou > 0.5 ? 'url(#flou-panoramique)' : '',
     projet.ambiance.etalonnage ? M.ambiance.etalonnage_css : '',
+    v > 0.001 && g < 0.001 ? `blur(${(v * 9).toFixed(1)}px) brightness(${(1 - 0.25 * v).toFixed(3)})` : '',
     g > 0.001 ? `blur(${(g * M.grand_titre.flou_visage_px).toFixed(1)}px) brightness(${(1 - M.grand_titre.assombrissement * g).toFixed(3)})` : '',
   ].join(' ');
 

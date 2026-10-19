@@ -1,0 +1,10 @@
+node_modules/
+sortie/
+public/media/
+public/polices/
+public/sons/
+public/projet.json
+essai/media/faux-facecam.mp4
+essai/media/musique.wav
+*.brut.wav
+.remotion/

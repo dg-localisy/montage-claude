@@ -483,11 +483,12 @@
     "accroche": {
       "surtitre_police": "Figtree Bold",
       "surtitre_taille_px": 34,
-      "surtitre_y": 440,
+      "surtitre_y": 400,
       "delai_titre_s": 0.35,
       "lettres_par_s": 24,
-      "titre_y_premiere_ligne": 560,
-      "ecart_lignes_px": 140
+      "ecart_lignes_px": 140,
+      "marge_yeux_px": 50,
+      "placement_titre": "Calculé automatiquement entre le sur-titre et les yeux (camera.visage) ; la taille baisse si la place manque."
     },
     "grand_titre": {
       "centre_y": 860,

@@ -8,7 +8,7 @@ export const usePolices = (charte: any) => {
     const fichiers = charte.polices.inventaire.filter((f: any) => !f.variable);
     Promise.all(
       fichiers.map((f: any) =>
-        new FontFace(f.nom_interne, `url('${staticFile('polices/' + f.fichier)}')`).load().then((p) => document.fonts.add(p)),
+        new FontFace(f.nom_interne, `url('${staticFile('polices/' + f.fichier)}')`).load().then((p) => (document.fonts as any).add(p)),
       ),
     )
       .then(() => continueRender(attente))

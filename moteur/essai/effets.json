@@ -12,32 +12,107 @@
   },
   "sous_titres": {
     "mode": "mot_a_mot",
-    "mots_cles": ["LOCALISY", "doublé", "recommande"]
+    "mots_cles": [
+      "LOCALISY",
+      "doublé",
+      "recommande"
+    ]
   },
   "camera": {
-    "visage": [0.5, 0.37],
-    "coupes": [2.76, 4.93, 8.95]
+    "visage": [
+      0.5,
+      0.37
+    ],
+    "coupes": [
+      2.76,
+      4.93,
+      8.95
+    ]
   },
   "ambiance": {
     "grain": 0.07,
     "etalonnage": true,
     "chapitres": [
-      {"titre": "Avant", "debut": 0},
-      {"titre": "Résultat", "debut": 2.76},
-      {"titre": "Aujourd'hui", "debut": 4.93}
+      {
+        "titre": "Avant",
+        "debut": 0
+      },
+      {
+        "titre": "Résultat",
+        "debut": 2.76
+      },
+      {
+        "titre": "Aujourd'hui",
+        "debut": 4.93
+      }
     ]
   },
   "effets": [
-    {"type": "accroche", "debut": 0.0, "fin": 2.65, "surtitre": "Témoignage · Le Fournil", "titre": "Invisibles sur Internet", "mot_accent": "INVISIBLES"},
-    {"type": "transition", "style": "lumiere", "debut": 2.76},
-    {"type": "icone", "icone": "courbe", "debut": 2.85, "fin": 3.8},
-    {"type": "chiffre", "debut": 2.9, "fin": 3.8, "valeur": 100, "prefixe": "+", "suffixe": " %", "legende": "de clients"},
-    {"type": "grand_titre", "debut": 3.8, "fin": 4.9, "lignes": ["On a doublé", "nos clients"], "mot_accent": "DOUBLÉ"},
-    {"type": "transition", "style": "panoramique", "debut": 4.93, "duree": 0.45},
-    {"type": "carte", "animation": "chat_ia", "debut": 5.0, "fin": 8.9,
-     "titre": "Assistant IA", "message": "Une boulangerie à Lyon ?",
-     "reponse": "Je vous recommande Le Fournil, noté 4,9/5 par 300 clients."},
-    {"type": "zoom", "debut": 8.95, "a": 1.22, "duree": 0.22},
-    {"type": "carte_fin", "debut": 9.3, "fin": 10.0, "nom": "LOCALISY", "role": "Agence marketing locale"}
+    {
+      "type": "accroche",
+      "debut": 0.0,
+      "fin": 2.65,
+      "surtitre": "Témoignage · Le Fournil",
+      "titre": "Invisibles sur Internet",
+      "mot_accent": "INVISIBLES"
+    },
+    {
+      "type": "transition",
+      "style": "lumiere",
+      "debut": 2.76
+    },
+    {
+      "type": "icone",
+      "icone": "courbe",
+      "debut": 2.85,
+      "fin": 3.8
+    },
+    {
+      "type": "chiffre",
+      "debut": 2.9,
+      "fin": 3.8,
+      "valeur": 100,
+      "prefixe": "+",
+      "suffixe": " %",
+      "legende": "de clients"
+    },
+    {
+      "type": "grand_titre",
+      "debut": 3.8,
+      "fin": 4.9,
+      "lignes": [
+        "On a doublé",
+        "nos clients"
+      ],
+      "mot_accent": "DOUBLÉ"
+    },
+    {
+      "type": "transition",
+      "style": "panoramique",
+      "debut": 4.93,
+      "duree": 0.45
+    },
+    {
+      "type": "carte",
+      "animation": "chat_ia",
+      "debut": 5.15,
+      "fin": 8.9,
+      "titre": "Assistant IA",
+      "message": "Une boulangerie à Lyon ?",
+      "reponse": "Je vous recommande Le Fournil, noté 4,9/5 par 300 clients."
+    },
+    {
+      "type": "zoom",
+      "debut": 8.95,
+      "a": 1.22,
+      "duree": 0.22
+    },
+    {
+      "type": "carte_fin",
+      "debut": 9.3,
+      "fin": 10.0,
+      "nom": "LOCALISY",
+      "role": "Agence marketing locale"
+    }
   ]
 }
