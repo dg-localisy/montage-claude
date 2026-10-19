@@ -44,7 +44,8 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 
 - `rush.mots` : temps de chaque mot, au format `[{"mot", "debut", "fin"}]` ou au format brut d'ElevenLabs Scribe (`words`). `rush.voix` est facultatif (sinon on garde le son du rush).
 - `sous_titres.mode` : `mot_a_mot` (par défaut), `premiere_video` (rendu exact de la première vidéo, incrusté après coup par `outils/sous_titres.py`, avec ses `phrases_fortes`) ou `aucun`.
-- `camera.visage` : position des yeux dans l'image (0 à 1). Les zooms sont centrés là, et l'accroche se place au-dessus.
+- `camera.visage` : position des yeux dans l'image (0 à 1). Les zooms sont centrés là.
+- `camera.haut_tete` : hauteur du haut de la tête (0 à 1, environ 0,19 pour un cadrage poitrine). Sert à descendre l'image sous les titres d'accroche.
 - `camera.coupes` : instants des coupes. Le cadrage change à chaque coupe, et l'image avance lentement pendant chaque plan.
 - `musique` : facultative. Elle est jouée 20 dB sous la voix et baisse encore de 6 dB quand on parle (réglages dans `moteur.musique`).
 
@@ -52,11 +53,13 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 
 | type | champs | rôle |
 |---|---|---|
-| `accroche` | `debut`, `fin`, `surtitre`, `titre`, `mot_accent` (facultatif), `style` (facultatif) | Sur-titre + titre écrit lettre par lettre. La 1re accroche ouvre la vidéo ; les suivantes (ex. le nom) prennent le style `presentation`, plus discret. |
+| `accroche` | `debut`, `fin`, `titre`, `surtitre` (facultatif), `mot_accent` (facultatif), `style` (facultatif) | Titre écrit lettre par lettre, tout en haut ; l'image descend pendant l'accroche pour que la tête passe sous le titre (`camera.haut_tete`). La 1re accroche ouvre la vidéo ; les suivantes (ex. le nom) prennent le style `presentation`, plus discret. |
 | `grand_titre` | `debut`, `fin`, `lignes`, `mot_accent` | Phrase choc en 3D, visage flouté derrière. |
-| `icone` | `debut`, `fin`, `icone`, `x`, `y`, `taille` | `courbe`, `etoile`, `epingle`, `panier`, `coeur`, `bulle`, `cible`, `etincelle`. Rebond + particules. |
+| `icone` | `debut`, `fin`, `icone`, `mot` (conseillé), ou `x`, `y`, `taille` | `courbe`, `etoile`, `epingle`, `panier`, `coeur`, `bulle`, `cible`, `etincelle`, `ia` (puce « IA »). Rebond + particules. Avec `mot`, l'icône se pose juste au-dessus de ce mot dans les sous-titres et y reste jusqu'à `fin`, même si la ligne change (jamais sur le visage). |
 | `chiffre` | `debut`, `fin`, `valeur`, `de`, `prefixe`, `suffixe`, `decimales`, `legende` | Le chiffre défile jusqu'à sa valeur. |
 | `carte` | `debut`, `fin`, `animation` + champs ci-dessous | La vidéo se réduit en carte arrondie, l'animation joue à côté. |
+| `liste` | `debut`, `fin`, `items`, `temps`, `y` | Pastilles sous le visage, une par élément, qui glissent quand elles sont dites et restent affichées. Pas de cadrage serré pendant la liste. |
+| `plan_de_coupe` | `debut`, `fin`, `fichier`, `debut_clip` | Vidéo d'illustration (libre de droits) en plein écran, sans son : la voix continue. |
 | `zoom` | `debut`, `a`, `duree`, `fin` (facultatif) | Zoom avec flou de mouvement. |
 | `transition` | `debut` (instant de la coupe), `style`, `duree` | `lumiere` (lumière colorée) ou `panoramique` (panoramique rapide). |
 | `carte_fin` | `debut`, `fin`, `nom`, `role` | Carte de fin. Si `nom` vaut « LOCALISY », c'est le logo qui s'affiche. |

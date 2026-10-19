@@ -87,10 +87,14 @@ node scripts/rendu.mjs  CHEMIN/effets.json --nom NOM       # images fixes + vid�
 
 Options : `--sans-stills`, `--sans-4x5`, `--images 0-89`, `--sortie DOSSIER`. Sorties dans `moteur/sortie/` : `NOM_planche.png`, `NOM_stills/`, `NOM_9x16.mp4`, `NOM_4x5.mp4`.
 
-Animations : `accroche` (la 2e prend le style « présentation », pour le nom), `grand_titre`, `icone` (courbe, etoile, epingle, panier, coeur, bulle, cible, etincelle), `chiffre`, `carte` (chat_ia, entonnoir, gros_chiffre, checklist, avec temps imposés possibles), `zoom`, `transition`, `carte_fin`, `signature` (`y` pour la déplacer). Sous-titres : `mot_a_mot` (par défaut), `premiere_video` ou `aucun`. `camera.visage` (position des yeux) et `camera.coupes` (coupes du vidéaste, à détecter) sont importants.
+Animations : `accroche` (la 2e prend le style « présentation », pour le nom), `grand_titre`, `icone` (courbe, etoile, epingle, panier, coeur, bulle, cible, etincelle, ia ; toujours avec `mot` pour la poser au-dessus de son mot), `chiffre`, `carte` (chat_ia, entonnoir, gros_chiffre, checklist, avec temps imposés possibles), `liste` (pastilles sous le visage), `plan_de_coupe` (vidéo libre de droits en plein écran), `zoom`, `transition`, `carte_fin`, `signature` (`y` pour la déplacer). Sous-titres : `mot_a_mot` (choix de l'utilisateur), `premiere_video` ou `aucun`. `camera.visage` (yeux), `camera.haut_tete` (haut de la tête, mesuré) et `camera.coupes` (coupes du vidéaste, à détecter) sont importants.
 
 Règles :
-- Regarde TOUTES les images fixes en grand (par groupes de 8, la planche est trop petite) avant de livrer : textes sur les yeux ou la tête, compteur qui n'atteint pas sa valeur, animations qui se chevauchent, deux éléments orange à la fois.
+- RÈGLE ABSOLUE de l'utilisateur : rien ne cache jamais le visage (titre, icône, chiffre, pastille), même flouté. Seule exception : le grand titre 3D.
+- Regarde TOUTES les images fixes en grand (par groupes de 8, la planche est trop petite) avant de livrer : quelque chose sur le visage ou la tête, compteur qui n'atteint pas sa valeur, animations qui se chevauchent, icône trop petite ou trop brève, dernier élément d'une liste trop bref, deux éléments orange à la fois.
+- Bruitages : discrets et rapides (voir `moteur.sons.preferences` dans la charte). Pas de montée lente ni d'impact fort.
+- Banques de vidéos libres de droits (Pexels, Pixabay…) bloquées par le réseau : demander à l'utilisateur de déposer le clip sur GitHub, ou d'autoriser le domaine.
+- Un changement limité à quelques secondes se refait sans tout rendre : `--images DEBUT-FIN` sur les seules images touchées, puis recollage à l'image près (vérifier les bords).
 - Le son du rendu est ensuite refait par `outils/son_final.py` (voir plus bas), pour garantir -14 LUFS et des effets jamais plus de 6 dB au-dessus de la voix.
 - Le navigateur est le Chromium préinstallé (`/opt/pw-browsers`). En cas d'erreur « Target closed » ou « icudtl.dat », le script passe seul en chrome-for-testing. S'il échoue encore, DEMANDE l'autorisation à l'utilisateur avant de rendre en dehors de l'environnement isolé.
 - N'invente jamais un chiffre ou un résultat dans une carte : uniquement ce que la personne dit (pas de fausse réponse de ChatGPT, par exemple).
@@ -128,6 +132,5 @@ Refait le mélange voix + effets à partir des pistes séparées, baisse les eff
 
 ## Questions encore ouvertes avec l'utilisateur
 
-- Phrases fortes : garder tout en blanc, comme la première vidéo, ou mettre le mot `choc` en orange ? (posée, sans réponse pour l'instant)
-- Le moteur Remotion demande des sous-titres mot à mot avec le mot actif en orange, alors que l'utilisateur voulait juste avant le même rendu que la première vidéo. Le moteur prévoit les deux modes : faire choisir l'utilisateur.
-- La charte disait « pas de carte de fin » et « pas de transitions colorées », mais le moteur doit savoir faire une carte de fin et une transition lumière. Ne les utiliser que si l'utilisateur le demande pour une vidéo.
+- Sous-titres : l'utilisateur a choisi le mot à mot (tous les mots dits, mots importants en Figtree Black, mot en cours en orange). Il n'a pas encore réagi au fait que l'orange du mot en cours peut s'ajouter à un autre élément orange.
+- La charte disait « pas de carte de fin » et « pas de transitions colorées ». Le moteur sait les faire : ne les utiliser que si l'utilisateur le demande pour une vidéo.

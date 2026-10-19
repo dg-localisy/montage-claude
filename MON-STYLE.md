@@ -10,6 +10,8 @@ On fait des témoignages de clients de LOCALISY pour le grand public. Instagram 
 
 Le client est la star. Les titres, les cartes et les icônes servent ce qu'il dit. S'il y a un doute, on enlève un effet plutôt que d'en ajouter un.
 
+**Règle absolue : rien ne cache jamais le visage.** Ni un texte, ni une icône, ni un chiffre, même avec le fond flouté. Seule exception : le grand titre 3D, qui floute volontairement le visage derrière lui.
+
 Comptes qui m'inspirent : Creatical, agencepersonnelle, zenvyx.cuts.
 
 ## Le rythme
@@ -22,13 +24,15 @@ Durée visée : entre 30 et 60 secondes.
 
 ## Les 2 premières secondes
 
-On ouvre sur la meilleure phrase du client, même si elle arrive à la fin de l'interview, avec un grand titre qui reprend l'idée. L'histoire commence juste après.
+On ouvre sur la meilleure phrase du client, même si elle arrive à la fin de l'interview, avec un titre qui reprend l'idée (par exemple « CHIFFRE D'AFFAIRES ×3 »). L'histoire commence juste après.
+
+Pas de sur-titre « Témoignage client ». Le titre de l'accroche, et celui qui présente le client (nom et fonction), se placent tout en haut. Pendant ce temps, l'image descend un peu pour que la tête passe sous le titre. Le haut libéré est rempli par une copie floue du fond.
 
 ## Les sous-titres
 
-Ils reprennent exactement ceux de notre première vidéo : même rendu, même place. Les réglages ont été mesurés image par image sur cette vidéo.
+**Choix actuel : sous-titres mot à mot.** Chaque mot prononcé est écrit (seules les hésitations validées, « euh », « ben », sont retirées). Chaque mot apparaît quand il est dit, le mot en cours passe en orange, et les mots importants sont en Figtree Black pour ressortir. La place, la taille, la police de base et l'ombre restent celles de la première vidéo.
 
-Il y en a de deux sortes.
+L'ancien rendu de la première vidéo reste disponible si on veut y revenir. Il en existe deux sortes, décrites ci-dessous.
 
 **Les sous-titres normaux**, pour presque toute la vidéo :
 
@@ -57,7 +61,13 @@ Le titre ne cache jamais les yeux du client. Si le visage est placé haut, il pa
 
 Ils apparaissent dans des cartes flottantes : coins arrondis, ombre douce, posées sur un fond noir ou sur la vidéo floutée et assombrie, avec un mouvement très lent.
 
-Les chiffres montent en compteur, de 0 jusqu'à la valeur. Le chiffre est blanc, les signes + et % sont orange.
+Les chiffres montent vite en compteur (une demi-seconde), de 0 jusqu'à la valeur. Ils se placent sous le visage, juste au-dessus des sous-titres. Le chiffre est blanc, les signes + et % sont orange.
+
+Une énumération (« combien de leads, ce qu'ils me rapportent, d'où ils viennent ») peut aussi s'afficher en pastilles sous le visage : chaque pastille glisse quand elle est dite et reste à l'écran.
+
+Deux montages qui se suivent doivent être différents (par exemple une carte, puis des pastilles). Une carte ou une liste reste visible au moins 1,2 s après son dernier élément.
+
+Pour illustrer un moment, une vidéo libre de droits (par exemple un gros plan de mains qui se serrent) vaut mieux qu'un graphique. Elle passe en plein écran, sans son, pendant que la voix continue.
 
 ## Les transitions
 
@@ -67,9 +77,11 @@ Coupes nettes entre les plans du client, sans effet. Un glissement rapide pour p
 
 Trait fin blanc, bouts arrondis, avec un seul détail orange (souvent un point). Le trait se dessine en une demi-seconde, puis le détail orange apparaît avec un petit rebond.
 
+Une icône se place juste au-dessus du mot qu'elle illustre, dans les sous-titres (par exemple l'épingle au-dessus de « Liège »), jamais sur le visage. Pour l'IA, on utilise une puce électronique avec « IA » en orange, pas une étincelle.
+
 ## Le son
 
-La voix passe avant tout. Dessous, une musique instrumentale douce (piano léger ou électro calme), libre de droits, que je fournis. Elle baisse toute seule quand le client parle. Les bruitages sont très discrets : un léger « whoosh » ou un clic quand un titre, une carte ou un chiffre apparaît.
+La voix passe avant tout. Dessous, une musique instrumentale douce (piano léger ou électro calme), libre de droits, que je fournis. Elle baisse toute seule quand le client parle. Les bruitages sont très discrets et rapides : de petits tics quand un chiffre défile, un souffle doux et un coup sourd pour le grand titre, un « whoosh » léger (volume bas) pour les transitions. Pas de montée lente ni d'impact fort.
 
 Volume final : -14 LUFS, le niveau attendu par les réseaux sociaux.
 
@@ -79,7 +91,7 @@ Rendu naturel contrasté : noirs un peu plus profonds, couleurs légèrement ado
 
 ## La fin
 
-Pas de carte de fin. La vidéo se termine sur la phrase la plus forte du client. Pendant les 2 dernières secondes, LOCALISY apparaît en petit, en blanc, en haut de l'image.
+Pas de carte de fin. La vidéo se termine sur la phrase la plus forte du client. Pendant les 2 dernières secondes, le logo LOCALISY apparaît en petit, en blanc : en haut de l'image s'il y a de la place, sinon sous les sous-titres (jamais sur la tête).
 
 ## Les formats
 
@@ -120,7 +132,7 @@ Attention, « localisé » et « localiser » sont de vrais mots français. On �
 ## À vérifier avant de livrer
 
 - [ ] Les 2 premières secondes donnent envie de rester.
-- [ ] Aucun texte ne cache les yeux du client.
+- [ ] Rien ne cache le visage du client : ni titre, ni icône, ni chiffre, ni pastille.
 - [ ] Les sous-titres sont à la même place et ont le même rendu que dans la première vidéo.
 - [ ] LOCALISY est bien écrit partout.
 - [ ] Jamais plus d'un élément orange à la fois.
