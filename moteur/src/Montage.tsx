@@ -5,6 +5,7 @@ import {Ambiance, CarteFin, Lumieres, Signature} from './couches/Ambiance';
 import {Camera} from './couches/Camera';
 import {Carte} from './couches/Carte';
 import {Chiffre} from './couches/Chiffre';
+import {EcranChat} from './couches/EcranChat';
 import {GrandTitre} from './couches/GrandTitre';
 import {Icone} from './couches/Icone';
 import {Liste} from './couches/Liste';
@@ -34,6 +35,7 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
     <AbsoluteFill style={{background: '#000'}}>
       <Camera projet={projet} charte={charte} />
       {de('plan_de_coupe').map((e: any) => <PlanDeCoupe key={e.id} e={e} charte={charte} etalonnage={projet.ambiance.etalonnage} />)}
+      {de('ecran_chat').map((e: any) => <EcranChat key={e.id} e={e} charte={charte} />)}
       {de('carte').map((e: any) => <Carte key={e.id} e={e} charte={charte} />)}
       {voile > 0 && <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)', opacity: voile}} />}
       {libres.map((e: any) => <Icone key={e.id} e={e} charte={charte} />)}

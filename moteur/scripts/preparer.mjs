@@ -154,6 +154,15 @@ function calculerTemps(e, M) {
     const n = t.lignes.join(' ').length;
     t.finFrappe = t.titre + n / t.vitesse;
   }
+  if (e.type === 'ecran_chat') {
+    // la question se tape assez vite pour laisser au moins reflexion_min_s à l'assistant qui « réfléchit »
+    const c = M.ecran_chat;
+    t.frappe = e.debut + c.delai_frappe_s;
+    const dispo = Math.max(0.5, e.fin - e.debut - c.delai_frappe_s - c.pause_avant_envoi_s - c.reflexion_min_s);
+    t.vitesse = Math.max(c.lettres_par_s, e.question.length / dispo);
+    t.finFrappe = t.frappe + e.question.length / t.vitesse;
+    t.envoi = t.finFrappe + c.pause_avant_envoi_s;
+  }
   if (e.type === 'chiffre') {
     t.comptage = [e.debut + 0.1, e.debut + 0.1 + (e.duree_comptage ?? M.chiffre.duree_comptage_s)];
   }
@@ -197,6 +206,7 @@ function sonsPour(e, M) {
     case 'chiffre': return [s('woutch_court', t.comptage[0])];
     case 'liste': return e.temps.map((c) => s('woutch_court', c - 0.03, 0.8));
     case 'plan_de_coupe': return [s('woutch', e.debut - 0.12)];
+    case 'ecran_chat': return [s('tap', t.envoi, 0.8)];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
     case 'transition': return [s('woutch', e.debut - 0.13)];
     case 'carte_fin': return [s('woutch', e.debut)];

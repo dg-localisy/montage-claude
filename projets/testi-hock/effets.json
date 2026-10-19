@@ -97,6 +97,14 @@
    "legende": "agences immobilières"
   },
   {
+   "type": "plan_de_coupe",
+   "debut": 8.3,
+   "fin": 9.38,
+   "fichier": "media/liege_vue_aerienne.mp4",
+   "debut_clip": 0,
+   "_source": "Clip libre de droits choisi par l'utilisateur (vue aérienne de ville, 3840×2160), passage 1,0–2,8 s recadré en vertical. Sur « province de Liège »."
+  },
+  {
    "type": "chiffre",
    "debut": 9.4,
    "fin": 10.3,
@@ -110,6 +118,14 @@
    "fin": 16.1,
    "a": 1.15,
    "duree": 0.15
+  },
+  {
+   "type": "plan_de_coupe",
+   "debut": 15.25,
+   "fin": 17.4,
+   "fichier": "media/equipe_bureau.mp4",
+   "debut_clip": 0,
+   "_source": "Clip libre de droits choisi par l'utilisateur (Pexels 7643845, 4096×2160), passage 4,0–6,6 s recadré en vertical sur l'équipe. Sur « si on voulait évoluer »."
   },
   {
    "type": "grand_titre",
@@ -128,6 +144,21 @@
    "fin": 21.38,
    "a": 1.22,
    "duree": 0.22
+  },
+  {
+   "type": "plan_de_coupe",
+   "debut": 22.3,
+   "fin": 23.4,
+   "fichier": "media/recherche_google.mp4",
+   "debut_clip": 0,
+   "_source": "Clip libre de droits choisi par l'utilisateur (Pexels 18839549, 1920×1080), passage 0,3–2,1 s recadré en vertical sur la main et le logo Google. Sur « ciblage, Google »."
+  },
+  {
+   "type": "ecran_chat",
+   "debut": 23.4,
+   "fin": 25.85,
+   "question": "Quelle agence immobilière choisir à Liège ?",
+   "_note": "Animation façon ChatGPT demandée par l'utilisateur sur « tout ce qui est IA » : la question se tape et s'envoie, pas de réponse inventée."
   },
   {
    "type": "plan_de_coupe",

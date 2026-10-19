@@ -541,6 +541,15 @@
       "duree_reduction_s": 0.45,
       "debut_panneau_s": 0.27
     },
+    "ecran_chat": {
+      "description": "Écran plein cadre façon ChatGPT (mode sombre, noir et blanc) : une question se tape puis s'envoie, l'assistant réfléchit. Jamais de réponse inventée.",
+      "salutation": "Comment puis-je vous aider ?",
+      "barre_y": 900,
+      "delai_frappe_s": 0.15,
+      "lettres_par_s": 30,
+      "pause_avant_envoi_s": 0.12,
+      "reflexion_min_s": 0.6
+    },
     "chat": {
       "lettres_par_s": 28,
       "delai_frappe_s": 0.3,
