@@ -41,7 +41,7 @@ Repères de la charte : noir #000000, blanc #FFFFFF, et c'est tout : plus d'oran
 - Accroche : riser + résultat géant derrière la tête. Plans de coupe choisis par l'utilisateur. Carte en verre bien sous le visage.
 - **Toujours une musique de fond** douce et tendance, à volume bas (`outils/musique_douce.py`, ou un morceau fourni). L'utilisateur préfère la version avec musique.
 - Bruitages brefs, doux et variés. Pas de logo à la fin.
-- Sons fournis par l'utilisateur dans `sons_fournis/` (déclarés dans la charte, `moteur.sons.fournis`) : le riser cinématique pour l'accroche (il remplace le riser fabriqué) et `transition_oxid`, son bruit de transition préféré, à mettre sur une ou deux transitions par vidéo (`"son_entree": "transition_oxid"` sur un `plan_de_coupe` ou un `ecran_chat`).
+- Sons fournis par l'utilisateur dans `sons_fournis/` (déclarés dans la charte, `moteur.sons.fournis`) : le riser cinématique pour l'accroche (il remplace le riser fabriqué) et quatre bruits de transition : `transition_oxid` (son préféré), `transition_whoosh_oxid` (souffle très bref), `transition_base` (souffle ample avec du corps) et `swoosh_universfield` (swoosh qui monte et passe). À mettre sur une ou deux transitions par vidéo avec `"son_entree": "NOM"` sur un `plan_de_coupe`, un `ecran_chat` ou une `transition`, en changeant de son d'une transition à l'autre. Leurs volumes sont déjà égalisés dans la charte, et chacun est calé pour que son sommet tombe pile sur la coupe (`avance_s`).
 - Livrer seulement le 9:16, sauf demande.
 
 ## Les outils

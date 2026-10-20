@@ -655,13 +655,19 @@
         "pop_doux": 0.16,
         "impact_doux": 0.17,
         "clic": 0.12,
-        "transition_oxid": 0.25
+        "transition_oxid": 0.25,
+        "transition_whoosh_oxid": 0.24,
+        "transition_base": 0.2,
+        "swoosh_universfield": 0.27
       },
       "riser_duree_s": 2.0,
       "fournis": {
         "_note": "Sons fournis par l'utilisateur (dossier sons_fournis/ du dépôt) : ils remplacent le son fabriqué du même nom. fin_s = moment du fichier où le son doit finir (ex. coupure d'un riser), duree_s = durée gardée.",
         "riser": {"fichier": "sons_fournis/riser_cinematique.mp3", "fin_s": 3.714, "duree_s": 2.0, "fondu_entree_s": 0.15, "origine": "Riser cinématique fourni par l'utilisateur (Pixabay, Dragon Studio, cinematic riser 03). Il monte puis s'arrête net : la coupure tombe pile sur l'accroche (« ×3 »)."},
-        "transition_oxid": {"fichier": "sons_fournis/transition_oxid.mp3", "fin_s": 1.272, "duree_s": 1.272, "fondu_entree_s": 0.005, "avance_s": 0.15, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, OxidVideos, transition sfx 2), qu'il aime bien. Sommet à 0,15 s : placé 0,15 s avant la coupe. À utiliser sur une ou deux transitions par vidéo (son_entree), pour varier."}
+        "transition_oxid": {"fichier": "sons_fournis/transition_oxid.mp3", "fin_s": 1.272, "duree_s": 1.272, "fondu_entree_s": 0.005, "avance_s": 0.15, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, OxidVideos, transition sfx 2), qu'il aime bien. Sommet à 0,15 s : placé 0,15 s avant la coupe. À utiliser sur une ou deux transitions par vidéo (son_entree), pour varier."},
+        "transition_whoosh_oxid": {"fichier": "sons_fournis/transition_whoosh_oxid.mp3", "fin_s": 1.2, "duree_s": 1.2, "fondu_entree_s": 0.005, "avance_s": 0.1, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, OxidVideos, transition sfx whoosh). Souffle très bref et net, sommet à 0,1 s : placé 0,1 s avant la coupe."},
+        "transition_base": {"fichier": "sons_fournis/transition_base.mp3", "fin_s": 1.698, "duree_s": 1.278, "fondu_entree_s": 0.03, "avance_s": 0.33, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, Trading Nation, transition base). Le silence du début est retiré (on garde à partir de 0,42 s) ; souffle plus ample avec un peu de corps, sommet 0,33 s après le début."},
+        "swoosh_universfield": {"fichier": "sons_fournis/swoosh_universfield.mp3", "fin_s": 1.056, "duree_s": 0.906, "fondu_entree_s": 0.03, "avance_s": 0.35, "origine": "Swoosh fourni par l'utilisateur (Pixabay, Universfield, swoosh 015). Le silence du début est retiré (on garde à partir de 0,15 s) ; swoosh qui monte et passe, sommet 0,35 s après le début."}
       },
       "preferences": "Bruitages brefs et doux, jamais agaçants, et variés selon l'animation (demande de l'utilisateur) : riser + coup sourd pour l'accroche ; woutch (titre), woutch grave (présentation, carte en verre), swoosh ample (plans de coupe, écran qui arrive), mini-woutch (chiffres), petite bulle grave (pastilles), toc feutré (éléments de la carte), petit coup sourd (mot derrière la tête), frappes de clavier très douces et clic de souris (écran ChatGPT). Aucune note aiguë. Pas de bruitage sur les zooms."
     },

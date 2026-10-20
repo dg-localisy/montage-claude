@@ -256,7 +256,7 @@ function sonsPour(e, M) {
     case 'texte_derriere': return e.riser ? [s('riser', e.debut - M.sons.riser_duree_s), s('chute', e.debut)] : [s('impact_doux', e.debut)];
     case 'carte_verre': return [s('woutch_grave', e.debut - 0.05), ...t.items.map((c) => s('tap', c, 0.8))];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
-    case 'transition': return [s('woutch', e.debut - 0.13)];
+    case 'transition': return [entree('woutch', 0.13)];
     case 'carte_fin': return [s('woutch', e.debut)];
     case 'carte': {
       const liste = [s('woutch', e.debut), s('woutch', e.fin - (M.carte.duree_reduction_s + 0.05), 0.8)];

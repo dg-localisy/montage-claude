@@ -81,6 +81,8 @@ Champs des cartes :
 
 Chaque animation (sauf les zooms) déclenche un son bref et doux : `woutch` (titres, cartes, plans de coupe), `woutch_court` (chiffres, pastilles), `tap` (coches), généré par `scripts/sons.mjs` avec ffmpeg. Les anciens sons (whoosh, scintillement, pop, compteur…) restent dans le fichier mais ne sont plus utilisés. Ajoute `"son": false` à une animation pour le couper.
 
+Sons fournis par l'utilisateur : fichiers du dossier `sons_fournis/`, déclarés dans la charte (`moteur.sons.fournis` : `fichier`, `fin_s`, `duree_s`, `fondu_entree_s`, `avance_s`, et un volume dans `moteur.sons.volumes`). Un son fourni qui porte le nom d'un son fabriqué le remplace (ex. `riser`). Les bruits de transition (`transition_oxid`, `transition_whoosh_oxid`, `transition_base`, `swoosh_universfield`) se choisissent avec `"son_entree": "NOM"` sur un `plan_de_coupe`, un `ecran_chat` ou une `transition` : le son démarre `avance_s` secondes avant l'animation, pour que son sommet tombe sur la coupe. Pour en ajouter un : copier le fichier dans `sons_fournis/`, mesurer le moment de son sommet, le déclarer, puis égaliser son volume sur les autres (sonie momentanée maximale identique).
+
 ## Organisation
 
 - `scripts/preparer.mjs` : toute la logique (groupes de sous-titres, temps des animations, sons). Écrit `public/projet.json`.
