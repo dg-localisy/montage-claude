@@ -327,6 +327,8 @@
         }
       },
       "interligne_facteur": 0.82,
+      "marge_exposant_em": 0.2,
+      "marge_exposant": "Un petit mot remonté (exposant) garde au moins 0,2 em d'espace avec la ligne du dessus : jamais collé (demande de l'utilisateur, « évolue / tellement »).",
       "interligne": "Écart entre deux lignes de base = 0,82 × la plus grande taille ASS des deux lignes (lignes serrées mais aérées : 0,65 jugé trop collé par l'utilisateur).",
       "petit_mot_a_cote_d_un_gros": "Avant le gros mot : remonté de la moitié de la hauteur du gros mot. Après : sur la même ligne de base.",
       "decalage_lignes_px": {

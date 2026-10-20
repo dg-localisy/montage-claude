@@ -64,7 +64,10 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
   const c = Math.max(0, ...cartes.map((e: any) => fondu(t, e.debut, e.fin, M.carte.duree_reduction_s)));
   const pano = panoramique(t, projet.transitions, W);
 
-  const echelle = cadrage * avancee * z * (1 + 0.07 * g + 0.03 * v);
+  // l'image doit toujours couvrir tout le cadre malgré son décalage horizontal (sinon une bande noire apparaît sur un côté)
+  const ox = cam.visage[0] * W;
+  const couvre = decalage > 0 ? 1 + decalage / ox : decalage < 0 ? 1 - decalage / (W - ox) : 1;
+  const echelle = Math.max(cadrage * avancee * z * (1 + 0.07 * g + 0.03 * v), couvre + 0.002);
   const origine = `${cam.visage[0] * W}px ${cam.visage[1] * H}px`;
 
   const filtres = [

@@ -97,10 +97,15 @@ def _mise_en_page(bloc):
             m["remonte"] = 0.5 * grand["taille"] * EM_PAR_TAILLE if avant_le_grand else 0.0
         lignes.append({"mots": mots, "largeur": x, "taille": grand["taille"]})
 
-    # lignes de base, serrées
+    # lignes de base, serrées ; si un petit mot est remonté (exposant) sur la ligne du dessous,
+    # on écarte juste assez pour qu'il ne touche pas la ligne du dessus (l'utilisateur les trouvait collés)
     bases = [0.0]
     for a, b in zip(lignes, lignes[1:]):
-        bases.append(bases[-1] + FORTES["interligne_facteur"] * max(a["taille"], b["taille"]))
+        ecart = FORTES["interligne_facteur"] * max(a["taille"], b["taille"])
+        for m in b["mots"]:
+            if m["remonte"] > 0:
+                ecart = max(ecart, m["remonte"] + 0.72 * m["taille"] * EM_PAR_TAILLE + FORTES.get("marge_exposant_em", 0.2) * a["taille"] * EM_PAR_TAILLE)
+        bases.append(bases[-1] + ecart)
     haut = bases[0] - 0.72 * lignes[0]["taille"] * EM_PAR_TAILLE  # haut des majuscules de la 1re ligne
     decal_y = FORTES["centre_vertical_y"] - (haut + bases[-1]) / 2
     decal_x = FORTES["decalage_lignes_px"].get(str(len(lignes)), [0] * len(lignes))
