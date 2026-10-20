@@ -140,6 +140,7 @@ def main():
     p.add_argument("--projet", required=True)
     p.add_argument("--sons", required=True)
     p.add_argument("--sortie", required=True)
+    p.add_argument("--sans-musique", action="store_true", help="ne pas mélanger la musique de projet.json (pour en mettre une autre ensuite)")
     a = p.parse_args()
 
     projet_brut = json.loads(Path(a.projet).read_text(encoding="utf-8"))
@@ -155,7 +156,7 @@ def main():
     apres = mesurer_effets(voix, effets, projet)
 
     # 2. musique de fond (facultative), puis mélange, gain unique pour atteindre -14 LUFS et limiteur doux si besoin
-    musique, info_musique = piste_musique(projet, Path(a.sons).parent, voix, n)
+    musique, info_musique = (None, None) if a.sans_musique else piste_musique(projet, Path(a.sons).parent, voix, n)
     mix = voix + effets + (musique if musique is not None else 0)
     gain = CIBLE_LUFS - sonie_integree(mix)
     mix *= 10 ** (gain / 20)

@@ -645,11 +645,11 @@
         "woutch_court": 0.12,
         "tap": 0.25,
         "riser": 0.2,
-        "chute": 0.32,
+        "chute": 0.15,
         "swoosh": 0.1,
         "woutch_grave": 0.14,
         "pop_doux": 0.16,
-        "impact_doux": 0.3,
+        "impact_doux": 0.17,
         "clic": 0.12
       },
       "riser_duree_s": 2.0,
