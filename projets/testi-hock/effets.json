@@ -7,42 +7,151 @@
   "mots": "mots.json"
  },
  "musique": {
-  "actif": false
+  "actif": true,
+  "fichier": "media/musique_douce.wav",
+  "_note": "Musique originale (outils/musique_douce.py), lo-fi douce ; démarre quand le ×3 tombe."
  },
  "sous_titres": {
-  "mode": "mot_a_mot",
-  "mots_cles": [
-   "3",
-   "LOCALISY",
-   "Gary",
-   "Hock",
-   "fondateur",
-   "agences",
-   "Liège",
-   "cents",
-   "ventes",
-   "pas",
-   "évoluer",
-   "compétentes",
-   "vite",
-   "Google",
-   "IA",
-   "rien",
-   "ans",
-   "marketing",
-   "passerelle",
-   "technique",
-   "ciblage",
-   "site",
-   "contenu",
-   "ChatGPT",
-   "l'IA",
-   "outil",
-   "leads",
-   "rapportent",
-   "viennent",
-   "claire",
-   "investissement"
+  "mode": "premiere_video",
+  "_note": "Sous-titres de la vidéo INCENDIE (première vidéo) : normaux en Figtree Light, phrases fortes en mots de tailles différentes sur les passages importants.",
+  "phrases_fortes": [
+   {
+    "debut": 11.38,
+    "lignes": [
+     [
+      {
+       "mot": "travailler",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "avec une",
+       "role": "liaison"
+      },
+      {
+       "mot": "agence.",
+       "role": "choc"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 15.28,
+    "lignes": [
+     [
+      {
+       "mot": "si on voulait",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "évoluer,",
+       "role": "choc"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 17.54,
+    "fin": 18.3,
+    "lignes": [
+     [
+      {
+       "mot": "s'entourer",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "de",
+       "role": "liaison"
+      },
+      {
+       "mot": "personnes",
+       "role": "appui"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 20.48,
+    "lignes": [
+     [
+      {
+       "mot": "évolue",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "tellement",
+       "role": "liaison"
+      },
+      {
+       "mot": "vite",
+       "role": "choc"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 27.8,
+    "lignes": [
+     [
+      {
+       "mot": "travailler avec",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "LOCALISY",
+       "role": "choc"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 46.92,
+    "lignes": [
+     [
+      {
+       "mot": "vraiment",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "mesurer",
+       "role": "choc"
+      },
+      {
+       "mot": "les leads.",
+       "role": "liaison"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 52.62,
+    "fin": 53.93,
+    "lignes": [
+     [
+      {
+       "mot": "mon retour sur",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "investissement.",
+       "role": "fort"
+      }
+     ]
+    ]
+   }
   ]
  },
  "camera": {
@@ -68,7 +177,8 @@
    49.96,
    51.04,
    51.72
-  ]
+  ],
+  "masques": "masques"
  },
  "ambiance": {
   "grain": 0.06,
@@ -79,22 +189,52 @@
    "type": "accroche",
    "debut": 0.0,
    "fin": 3.6,
-   "titre": "Chiffre d'affaires ×3",
-   "mot_accent": "×3"
+   "titre": "Chiffre d'affaires",
+   "son": false,
+   "remplace": [
+    "chiffre",
+    "d'affaires"
+   ]
+  },
+  {
+   "type": "texte_derriere",
+   "debut": 2.08,
+   "fin": 3.62,
+   "texte": "×3",
+   "taille": 470,
+   "y": 262,
+   "riser": true,
+   "_note": "Accroche : riser qui monte jusqu'au « 3 » prononcé, puis ×3 géant derrière la tête.",
+   "remplace": [
+    "fois",
+    "3"
+   ]
   },
   {
    "type": "accroche",
    "debut": 3.7,
    "fin": 6.2,
    "surtitre": "Fondateur · L'Immobilière Hock",
-   "titre": "Gary Hock"
+   "titre": "Gary Hock",
+   "remplace": [
+    "Gary",
+    "Hock",
+    "fondateur",
+    "de",
+    "L'Immobilière"
+   ]
   },
   {
    "type": "chiffre",
    "debut": 6.6,
    "fin": 8.3,
    "valeur": 3,
-   "legende": "agences immobilières"
+   "legende": "agences immobilières",
+   "remplace": [
+    "trois",
+    "agences",
+    "immobilières"
+   ]
   },
   {
    "type": "plan_de_coupe",
@@ -110,7 +250,13 @@
    "fin": 10.3,
    "valeur": 200,
    "prefixe": "+",
-   "legende": "ventes par an"
+   "legende": "ventes par an",
+   "remplace_temps": [
+    [
+     9.25,
+     10.3
+    ]
+   ]
   },
   {
    "type": "zoom",
@@ -120,23 +266,16 @@
    "duree": 0.15
   },
   {
-   "type": "plan_de_coupe",
-   "debut": 15.25,
-   "fin": 17.4,
-   "fichier": "media/equipe_bureau.mp4",
-   "debut_clip": 0,
-   "_source": "Clip libre de droits choisi par l'utilisateur (Pexels 7643845, 4096×2160), passage 4,0–6,6 s recadré en vertical sur l'équipe. Sur « si on voulait évoluer »."
-  },
-  {
-   "type": "grand_titre",
-   "debut": 17.45,
-   "fin": 19.1,
-   "lignes": [
-    "S'entourer de",
-    "personnes",
+   "type": "texte_derriere",
+   "debut": 18.3,
+   "fin": 19.75,
+   "texte": "COMPÉTENTES",
+   "taille": 140,
+   "y": 290,
+   "remplace": [
     "compétentes"
    ],
-   "mot_accent": "COMPÉTENTES"
+   "intervalle": 0.035
   },
   {
    "type": "zoom",
@@ -161,6 +300,17 @@
    "_note": "Animation façon ChatGPT demandée par l'utilisateur sur « tout ce qui est IA » : la question se tape et s'envoie, pas de réponse inventée."
   },
   {
+   "type": "texte_derriere",
+   "debut": 26.3,
+   "fin": 27.28,
+   "texte": "RIEN",
+   "taille": 300,
+   "y": 228,
+   "remplace": [
+    "rien"
+   ]
+  },
+  {
    "type": "plan_de_coupe",
    "debut": 27.3,
    "fin": 29.44,
@@ -176,9 +326,8 @@
    "duree": 0.15
   },
   {
-   "type": "carte",
-   "animation": "checklist",
-   "debut": 35.7,
+   "type": "carte_verre",
+   "debut": 34.88,
    "fin": 44.55,
    "titre": "Ils s'occupent de",
    "items": [
@@ -187,11 +336,33 @@
     "La création de contenu",
     "La visibilité dans ChatGPT"
    ],
-   "coches": [
+   "temps": [
     37.12,
     38.22,
     39.34,
     42.84
+   ],
+   "remplace_temps": [
+    [
+     34.85,
+     35.7
+    ],
+    [
+     37.1,
+     37.7
+    ],
+    [
+     37.75,
+     38.9
+    ],
+    [
+     38.9,
+     39.7
+    ],
+    [
+     42.45,
+     43.5
+    ]
    ]
   },
   {
@@ -214,6 +385,12 @@
     48.74,
     50.28,
     51.1
+   ],
+   "remplace_temps": [
+    [
+     48.7,
+     51.8
+    ]
    ]
   },
   {

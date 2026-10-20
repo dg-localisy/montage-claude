@@ -104,6 +104,37 @@ function corriger(mots, charte) {
   return mots;
 }
 
+// Phrases fortes (sous-titres « première vidéo ») : chaque élément prend le temps où son premier mot est prononcé.
+// Il suffit d'écrire les lignes et les rôles dans effets.json ; « debut » du bloc = un peu avant son premier mot.
+function calerPhrasesFortes(blocs, mots) {
+  return blocs.map((b) => {
+    // premier mot : celui qui correspond au début du bloc, le plus proche du temps indiqué
+    const premierMot = normaliser(b.lignes[0][0].mot.trim().split(/\s+/)[0]);
+    let k = -1;
+    mots.forEach((m, i) => {
+      if (normaliser(m.texte) === premierMot && Math.abs(m.debut - b.debut) < 1.5 && (k < 0 || Math.abs(m.debut - b.debut) < Math.abs(mots[k].debut - b.debut))) k = i;
+    });
+    if (k < 0) k = mots.findIndex((m) => m.debut >= b.debut - 0.15);
+    const k0 = k;
+    const lignes = b.lignes.map((ligne) => ligne.map((item) => {
+      const n = item.mot.trim().split(/\s+/).length;
+      const premier = mots[k];
+      if (!premier || normaliser(premier.texte) !== normaliser(item.mot.trim().split(/\s+/)[0])) {
+        console.warn(`Phrase forte à ${b.debut} s : « ${item.mot} » ne correspond pas au mot prononcé « ${premier ? premier.texte : '?'} ».`);
+      }
+      const debut = item.debut ?? (premier ? premier.debut : b.debut);
+      if (k >= 0) k += n;
+      return {...item, debut};
+    }));
+    const dernier = k > 0 ? mots[k - 1] : null;
+    // le bloc reste affiché jusqu'au mot suivant (au plus 0,45 s après son dernier mot), comme dans la vidéo INCENDIE
+    const suivant = mots[k];
+    const fin = b.fin ?? Math.min(dernier ? dernier.fin + 0.45 : b.debut + 2, suivant ? suivant.debut - 0.02 : Infinity);
+    const ids = mots.slice(Math.max(0, k0), Math.max(0, k)).map((m) => m.id);
+    return {...b, debut: lignes[0][0].debut, lignes, fin, ids};
+  });
+}
+
 export function construireGroupes(mots, regles) {
   const groupes = [];
   let courant = [];
@@ -154,6 +185,15 @@ function calculerTemps(e, M) {
     const n = t.lignes.join(' ').length;
     t.finFrappe = t.titre + n / t.vitesse;
   }
+  if (e.type === 'texte_derriere') {
+    // les lettres apparaissent une à une (comme « YES » dans la vidéo de référence)
+    const T = M.texte_derriere;
+    const n = e.texte.replace(/\s/g, '').length;
+    t.lettres = Array.from({length: n}, (_, i) => e.debut + i * (e.intervalle ?? T.intervalle_lettres_s));
+  }
+  if (e.type === 'carte_verre') {
+    t.items = e.items.map((_, i) => (e.temps && e.temps[i] !== undefined ? e.temps[i] : e.debut + 0.4 + i * 0.8));
+  }
   if (e.type === 'ecran_chat') {
     // la question se tape assez vite pour laisser au moins reflexion_min_s à l'assistant qui « réfléchit »
     const c = M.ecran_chat;
@@ -199,14 +239,20 @@ function sonsPour(e, M) {
   // Bruitages brefs et doux (demande de l'utilisateur) : woutch pour les entrées, mini-woutch pour les petits
   // éléments, toc feutré pour les coches. Aucun son sur les zooms.
   switch (e.type) {
-    case 'accroche': return [s('woutch', e.debut, e.variante === 'presentation' ? 0.7 : 1)];
+    case 'accroche': return e.variante === 'presentation' ? [s('woutch_grave', e.debut, 0.8)] : [s('woutch', e.debut)];
     case 'signature': return [s('woutch_court', e.debut, 0.6)];
     case 'grand_titre': return [s('woutch', e.debut - 0.12)];
     case 'icone': return [s('woutch_court', e.debut)];
     case 'chiffre': return [s('woutch_court', t.comptage[0])];
-    case 'liste': return e.temps.map((c) => s('woutch_court', c - 0.03, 0.8));
-    case 'plan_de_coupe': return [s('woutch', e.debut - 0.12)];
-    case 'ecran_chat': return [s('tap', t.envoi, 0.8)];
+    case 'liste': return e.temps.map((c) => s('pop_doux', c));
+    case 'plan_de_coupe': return [s('swoosh', e.debut - 0.18)];
+    // écran ChatGPT : il arrive (swoosh), quelques frappes de clavier très douces pendant la saisie, clic de souris sur « envoyer »
+    case 'ecran_chat': return [s('swoosh', e.debut - 0.12),
+      ...Array.from({length: Math.floor(e.question.length / 3)}, (_, i) => s('frappe', t.frappe + (3 * i) / t.vitesse, i % 2 ? 0.6 : 0.9)),
+      s('clic', t.envoi - 0.04)];
+    // l'accroche principale monte avec un riser qui s'arrête net quand le chiffre tombe (« ×3 »), puis un coup sourd
+    case 'texte_derriere': return e.riser ? [s('riser', e.debut - M.sons.riser_duree_s), s('chute', e.debut)] : [s('impact_doux', e.debut)];
+    case 'carte_verre': return [s('woutch_grave', e.debut - 0.05), ...t.items.map((c) => s('tap', c, 0.8))];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
     case 'transition': return [s('woutch', e.debut - 0.13)];
     case 'carte_fin': return [s('woutch', e.debut)];
@@ -258,9 +304,24 @@ export function preparer(cheminEffets) {
   const mots = corriger(lireMots(chemin(rush.mots)), charte);
   const cles = new Set((st.mots_cles || []).map(normaliser));
   mots.forEach((m, i) => { m.id = i; m.cle = cles.has(normaliser(m.texte)); });
-  const groupes = construireGroupes(mots, st);
-
   const effets = (effetsJson.effets || []).map((e, i) => ({id: i, ...e}));
+  // Mode « première vidéo » : pas de doublon. Les mots d'une phrase forte, ou déjà affichés par une animation
+  // (titre, chiffre, texte derrière la tête, carte, pastilles), ne sont pas répétés dans les sous-titres normaux.
+  //   remplace : ["mot", …] retirés s'ils sont prononcés pendant l'animation (ou jusqu'à 0,6 s avant) ;
+  //   remplace_temps : [[debut, fin], …] tous les mots prononcés dans ces intervalles sont retirés.
+  const phrasesFortes = calerPhrasesFortes(st.phrases_fortes || [], mots);
+  const remplaces = effets.filter((e) => e.remplace).flatMap((e) => e.remplace.flatMap((r) => r.split(/\s+/)).map((r) => ({debut: e.debut - 0.6, fin: e.fin + 0.1, mot: normaliser(r)})));
+  const intervalles = effets.filter((e) => e.remplace_temps).flatMap((e) => e.remplace_temps);
+  const dansUnBloc = new Set(phrasesFortes.flatMap((b) => b.ids));
+  const masque = (m) => dansUnBloc.has(m.id)
+    || remplaces.some((r) => normaliser(m.texte) === r.mot && m.debut >= r.debut && m.debut <= r.fin)
+    || intervalles.some(([a, z]) => m.debut >= a && m.debut < z);
+  const premiereVideo = (st.mode || st.mode_par_defaut) === 'premiere_video';
+  const groupes = construireGroupes(premiereVideo ? mots.filter((m) => !masque(m)) : mots, st);
+  // un sous-titre normal s'efface quand une phrase forte commence (jamais les deux en même temps)
+  if (premiereVideo) for (const g of groups()) for (const b of phrasesFortes) if (b.debut > g.debut) g.fin_affichage = Math.min(g.fin_affichage, b.debut);
+  function groups() { return groupes; }
+
   // la première accroche ouvre la vidéo ; les suivantes (ex. le nom) sont plus discrètes
   const accroches = effets.filter((e) => e.type === 'accroche').sort((a, b) => a.debut - b.debut);
   accroches.forEach((e, i) => { e.variante = e.style || (i === 0 ? 'ouverture' : 'presentation'); });
@@ -282,6 +343,13 @@ export function preparer(cheminEffets) {
     e.mot_id = m.id;
     e.debut = Math.max(e.debut, m.debut - 0.05);
   }
+  // masques de détourage (outils/detourage.py) : pour redessiner la personne devant un texte derrière la tête
+  let masques = null;
+  if (effetsJson.camera && effetsJson.camera.masques) {
+    const dossier = chemin(effetsJson.camera.masques);
+    for (const f of fs.readdirSync(dossier)) if (f.endsWith('.png')) relier(path.join(dossier, f), path.join(PUBLIC, 'masques', f));
+    masques = 'masques';
+  }
   // plan de coupe : la vidéo est copiée dans public/media
   for (const e of effets.filter((x) => x.type === 'plan_de_coupe')) {
     const f = chemin(e.fichier);
@@ -297,6 +365,7 @@ export function preparer(cheminEffets) {
     cadrages: cam.cadrages || M.camera.cadrages,
     decalages_x: cam.decalages_x || M.camera.decalages_x,
     avancee: cam.avancee ?? M.camera.avancee_par_plan,
+    masques,
     zooms: effets.filter((e) => e.type === 'zoom').map((e) => ({debut: e.debut, fin: e.fin, a: e.a ?? 1.25, duree: e.duree ?? M.camera.zoom_duree_s})),
   };
   const transitions = effets.filter((e) => e.type === 'transition').map((e) => ({...e, duree: e.duree ?? M.transitions.duree_s}));
@@ -309,7 +378,7 @@ export function preparer(cheminEffets) {
     fps, duree, largeur: 1080, hauteur: 1920,
     rush: {video: 'media/rush' + path.extname(videoSource), voix},
     musique, mots, groupes,
-    sous_titres: {mode: st.mode || st.mode_par_defaut, masquer_pendant: st.masquer_pendant, phrases_fortes: st.phrases_fortes || []},
+    sous_titres: {mode: st.mode || st.mode_par_defaut, masquer_pendant: st.masquer_pendant, phrases_fortes: phrasesFortes},
     camera, transitions,
     effets: effets.filter((e) => !['zoom', 'transition'].includes(e.type)),
     chapitres: (amb.chapitres || []).map((c, i, l) => ({...c, fin: l[i + 1] ? l[i + 1].debut : duree})),

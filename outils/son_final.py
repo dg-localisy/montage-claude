@@ -1,9 +1,11 @@
-"""Son final d'un montage : voix + effets sonores, mesurés et réglés selon la charte.
+"""Son final d'un montage : voix + effets sonores (+ musique de fond), mesurés et réglés selon la charte.
 
 Règles :
 - volume final à -14 LUFS (intégré), crête vraie sous -1 dBTP ;
 - un effet sonore n'est jamais plus de 6 dB au-dessus de la voix qui l'entoure
-  (mesure en sonie « momentanée » sur 400 ms, pondération K de la norme EBU R128).
+  (mesure en sonie « momentanée » sur 400 ms, pondération K de la norme EBU R128) ;
+- la musique (si projet.json en a une) reste « sous_la_voix_db » sous la voix, et baisse encore
+  de « baisse_quand_je_parle_db » quand la personne parle (attaque et relâche douces).
 
 Le mélange est refait à partir des pistes séparées (voix du rush + effets listés dans
 moteur/public/projet.json), ce qui permet de mesurer chaque effet seul et de le baisser au besoin.
@@ -89,6 +91,30 @@ def piste_effets(projet, dossier_sons, n, gains_db=None):
     return effets
 
 
+def piste_musique(projet, dossier_public, voix, n):
+    """Musique de fond réglée sous la voix, qui baisse quand la personne parle."""
+    m = projet.get("musique")
+    if not m:
+        return None, None
+    x = lire(Path(dossier_public) / m["fichier"])
+    x = x[:, :n] if x.shape[1] >= n else np.pad(x, ((0, 0), (0, n - x.shape[1])))
+    gain_db = sonie_integree(voix) + m["sous_la_voix_db"] - sonie_integree(x)
+    # voix active : énergie par tranches de 20 ms, au-dessus de (niveau fort de la voix - 30 dB)
+    pas = int(0.02 * SR)
+    mono = voix.mean(axis=0)
+    nb = len(mono) // pas
+    db = 10 * np.log10(np.maximum((mono[: nb * pas].reshape(nb, pas) ** 2).mean(axis=1), 1e-12))
+    actif = (db > np.percentile(db, 95) - 30).astype(float)
+    lisse = np.zeros(nb)
+    a_att, a_rel = 1 - np.exp(-0.02 / m["attaque_s"]), 1 - np.exp(-0.02 / m["relache_s"])
+    for i in range(nb):
+        prec = lisse[i - 1] if i else 0.0
+        lisse[i] = prec + (a_att if actif[i] > prec else a_rel) * (actif[i] - prec)
+    baisse = np.interp(np.arange(n), (np.arange(nb) + 0.5) * pas, lisse) * m["baisse_quand_je_parle_db"]
+    x = x * 10 ** ((gain_db + baisse) / 20)
+    return x, {"gain_db": round(gain_db, 1), "sous_la_voix_db": m["sous_la_voix_db"], "baisse_quand_je_parle_db": m["baisse_quand_je_parle_db"]}
+
+
 def mesurer_effets(voix, effets, projet):
     """Pour chaque effet : sa sonie maximale seule, et celle de la voix autour (±2 s, hors silences)."""
     pv, tv = puissances_blocs(voix)
@@ -128,8 +154,9 @@ def main():
     effets = piste_effets(projet, a.sons, n, gains)
     apres = mesurer_effets(voix, effets, projet)
 
-    # 2. mélange, gain unique pour atteindre -14 LUFS, puis limiteur doux si la crête dépasse -1 dBTP
-    mix = voix + effets
+    # 2. musique de fond (facultative), puis mélange, gain unique pour atteindre -14 LUFS et limiteur doux si besoin
+    musique, info_musique = piste_musique(projet, Path(a.sons).parent, voix, n)
+    mix = voix + effets + (musique if musique is not None else 0)
     gain = CIBLE_LUFS - sonie_integree(mix)
     mix *= 10 ** (gain / 20)
     tmp = Path(a.sortie).with_suffix(".mix.wav")
@@ -149,7 +176,7 @@ def main():
     integre = float(resume.split("I:")[1].split("LUFS")[0])
     crete = float(resume.split("Peak:")[1].split("dBFS")[0])
     rapport = {"lufs_integre": integre, "crete_vraie_dbtp": crete, "gain_applique_db": round(gain, 1),
-               "effets_avant": avant, "effets_apres": apres, "baisses_db": [round(g, 1) for g in gains],
+               "effets_avant": avant, "effets_apres": apres, "baisses_db": [round(g, 1) for g in gains], "musique": info_musique,
                "ok": abs(integre - CIBLE_LUFS) <= 0.5 and crete <= CRETE_MAX + 0.1 and all(x["ecart_db"] <= ECART_MAX for x in apres)}
     Path(a.sortie).with_suffix(".son.json").write_text(json.dumps(rapport, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"Sonie intégrée : {integre} LUFS (cible {CIBLE_LUFS}), crête vraie : {crete} dBTP")

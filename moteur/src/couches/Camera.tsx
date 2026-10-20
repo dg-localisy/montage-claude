@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, OffthreadVideo, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Img, OffthreadVideo, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {clamp, easeIn, easeInOut, easeOut, fondu, lerp, prog} from '../temps';
 
 type Zoom = {debut: number; fin?: number; a: number; duree: number};
@@ -31,7 +31,9 @@ const panoramique = (t: number, transitions: any[], W: number) => {
   return {x: 0, flou: 0};
 };
 
-export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) => {
+// avantPlan : redessine seulement la personne (vidéo découpée par le masque de détourage, même cadrage),
+// par-dessus un texte placé derrière la tête. Rien n'est dessiné hors des moments de texte derrière la tête.
+export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> = ({projet, charte, avantPlan = false}) => {
   const frame = useCurrentFrame();
   const {fps, width: W, height: H} = useVideoConfig();
   const t = frame / fps;
@@ -43,9 +45,10 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
   const k = coupes.filter((c) => t >= c).length;
   const debutPlan = k === 0 ? 0 : coupes[k - 1];
   const finPlan = k < coupes.length ? coupes[k] : projet.duree;
-  // pas de cadrage serré sur un plan où s'affiche une liste de pastilles (elle reste sous le menton)
+  // pas de cadrage serré sur un plan où s'affiche une liste de pastilles ou une carte en verre (elle reste sous le menton)
   const listeSurLePlan = projet.effets.some((e: any) => e.type === 'liste' && e.debut < finPlan && e.fin > debutPlan);
-  const cadrage = Math.min(cam.cadrages[k % cam.cadrages.length], listeSurLePlan ? M.liste.cadrage_max : Infinity);
+  const verreSurLePlan = projet.effets.some((e: any) => e.type === 'carte_verre' && e.debut < finPlan && e.fin > debutPlan);
+  const cadrage = Math.min(cam.cadrages[k % cam.cadrages.length], listeSurLePlan ? M.liste.cadrage_max : Infinity, verreSurLePlan ? M.carte_verre.cadrage_max : Infinity);
   const decalage = cam.decalages_x[k % cam.decalages_x.length] * W;
   const avancee = 1 + cam.avancee * prog(t, debutPlan, finPlan);
 
@@ -76,6 +79,25 @@ export const Camera: React.FC<{projet: any; charte: any}> = ({projet, charte}) =
       <OffthreadVideo src={staticFile(projet.rush.video)} muted={muet} style={{width: W, height: H, objectFit: 'cover'}} />
     </div>
   );
+
+  if (avantPlan) {
+    const derriere = projet.effets.some((e: any) => e.type === 'texte_derriere' && t >= e.debut - 0.02 && t <= e.fin + 0.02);
+    if (!derriere || !cam.masques) return null;
+    const masque = staticFile(`${cam.masques}/m_${String(frame).padStart(5, '0')}.png`);
+    return (
+      <AbsoluteFill>
+        {/* image cachée : Remotion attend son chargement avant de prendre la photo de l'image */}
+        <Img src={masque} style={{position: 'absolute', width: 1, height: 1, opacity: 0}} />
+        <div style={{position: 'absolute', inset: 0, filter: filtres}}>
+          <div style={{position: 'absolute', inset: 0, transform: `translateX(${decalage + pano.x}px) scale(${echelle})`, transformOrigin: origine}}>
+            <div style={{position: 'absolute', inset: 0, WebkitMaskImage: `url(${masque})`, maskImage: `url(${masque})`, WebkitMaskSize: '100% 100%', maskSize: '100% 100%'}}>
+              <OffthreadVideo src={staticFile(projet.rush.video)} muted style={{width: W, height: H, objectFit: 'cover'}} />
+            </div>
+          </div>
+        </div>
+      </AbsoluteFill>
+    );
+  }
 
   const couches: React.ReactNode[] = [];
   couches.push(video('principale', pano.x, echelle, 1, Boolean(projet.rush.voix)));

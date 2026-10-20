@@ -12,6 +12,13 @@ function ffmpeg(args) {
   execFileSync('ffmpeg', ['-v', 'error', '-y', ...args], {stdio: ['ignore', 'ignore', 'pipe']});
 }
 
+// montée exponentielle d'une fréquence de filtre (commande toutes les 20 ms), pour le riser
+function montee(duree, f0, f1, cible) {
+  const cmds = [];
+  for (let t = 0; t <= duree; t += 0.02) cmds.push(`${t.toFixed(2)} ${cible} frequency ${Math.round(f0 * Math.pow(f1 / f0, t / duree))}`);
+  return cmds.join(';');
+}
+
 // balayage d'un filtre passe-bande (commande envoyée toutes les 20 ms)
 function balayage(duree, f0, fmax, f1) {
   const cmds = [];
@@ -24,6 +31,15 @@ function balayage(duree, f0, fmax, f1) {
 }
 
 const RECETTES = {
+  // riser : souffle qui monte vers l'aigu + ton qui grimpe, de plus en plus fort, puis arrêt net (accroche)
+  riser: (d = 2.0) => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.7:seed=3`,
+    '-f', 'lavfi', '-i', `aevalsrc='(0.5*sin(2*PI*(110*t+(700-110)/(2*${d})*t*t))+0.25*sin(2*PI*(220*t+(1400-220)/(2*${d})*t*t)))*pow(t/${d},2)':s=${SR}:d=${d}`,
+    '-filter_complex', `[0:a]asendcmd=c='${montee(d, 250, 7000, 'highpass@h')}',highpass@h=f=250,lowpass=f=11000,afade=t=in:d=${d}:curve=exp[s];` +
+      `[1:a]tremolo=f=12:d=0.35,lowpass=f=3000[o];[s][o]amix=inputs=2:duration=longest:normalize=0,afade=t=out:st=${(d - 0.025).toFixed(3)}:d=0.025[r]`,
+    '-map', '[r]'],
+  // chute : coup sourd et rond quand l'accroche tombe (grave qui descend, sans claquement)
+  chute: () => ['-f', 'lavfi', '-i', `aevalsrc='0.9*sin(2*PI*(62*t-16*t*t))*exp(-4.2*t)*(1-exp(-260*t))+0.18*(random(0)*2-1)*exp(-70*t)':s=${SR}:d=0.9`,
+    '-af', 'lowpass=f=700'],
   // --- sons actuels (demande de l'utilisateur : brefs, doux, sans note aiguë) ---
   // woutch : petit souffle bref et doux (bruit rose filtré qui glisse vers l'aigu puis retombe)
   woutch: (d = 0.26) => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.9:seed=7`,
@@ -37,6 +53,23 @@ const RECETTES = {
   tap: () => ['-f', 'lavfi', '-i',
     `aevalsrc='(0.8*sin(2*PI*150*t)+0.35*sin(2*PI*310*t))*exp(-45*t)*(1-exp(-1500*t))+0.15*(random(0)*2-1)*exp(-400*t)':s=${SR}:d=0.12`,
     '-af', 'lowpass=f=1800,afade=t=out:st=0.09:d=0.03'],
+  // swoosh : passage d'air plus long et plus ample (plans de coupe, écran qui arrive)
+  swoosh: (d = 0.45) => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.9:seed=19`,
+    '-af', `asendcmd=c='${balayage(d, 220, 3200, 500)}',bandpass@b=f=220:width_type=o:w=1.0,lowpass=f=6000,` +
+      `afade=t=in:d=${(d * 0.5).toFixed(2)}:curve=qsin,afade=t=out:st=${(d * 0.5).toFixed(2)}:d=${(d * 0.5).toFixed(2)}:curve=qsin`],
+  // woutch_grave : souffle court et plus grave (présentation, carte en verre)
+  woutch_grave: (d = 0.3) => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.9:seed=23`,
+    '-af', `asendcmd=c='${balayage(d, 160, 900, 280)}',bandpass@b=f=160:width_type=o:w=1.2,lowpass=f=2500,` +
+      `afade=t=in:d=${(d * 0.5).toFixed(2)}:curve=qsin,afade=t=out:st=${(d * 0.5).toFixed(2)}:d=${(d * 0.5).toFixed(2)}:curve=qsin`],
+  // pop_doux : petite bulle grave et ronde (pastilles), sans aigu
+  pop_doux: (d = 0.14) => ['-f', 'lavfi', '-i', `aevalsrc='0.8*sin(2*PI*(520*t-900*t*t))*exp(-28*t)*(1-exp(-800*t))':s=${SR}:d=${d}`,
+    '-af', `lowpass=f=2000,afade=t=out:st=${(d - 0.03).toFixed(2)}:d=0.03`],
+  // impact_doux : petit coup sourd et court (mot derrière la tête)
+  impact_doux: () => ['-f', 'lavfi', '-i', `aevalsrc='0.9*sin(2*PI*(90*t-40*t*t))*exp(-9*t)*(1-exp(-400*t))+0.2*(random(0)*2-1)*exp(-45*t)':s=${SR}:d=0.5`,
+    '-af', 'lowpass=f=1200'],
+  // clic : clic de souris (appui puis relâchement)
+  clic: () => ['-f', 'lavfi', '-i', `aevalsrc='(random(0)*2-1)*(exp(-900*t)+0.6*gt(t,0.06)*exp(-900*(t-0.06)))':s=${SR}:d=0.1`,
+    '-af', 'highpass=f=1500,lowpass=f=6000'],
   // --- anciens sons (gardés au cas où) ---
   // souffle d'air qui passe : bruit rose filtré, la fréquence monte puis redescend
   whoosh: (d = 0.6) => ['-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.9`,

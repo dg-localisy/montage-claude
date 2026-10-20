@@ -35,7 +35,9 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
   "duree": 10, "fps": 30,
   "rush": {"video": "media/rush.mp4", "mots": "media/mots.json", "voix": "media/voix.wav"},
   "musique": {"fichier": "media/musique.mp3", "actif": true},
-  "sous_titres": {"mode": "mot_a_mot", "mots_cles": ["LOCALISY", "doublé"], "phrases_fortes": []},
+  "sous_titres": {"mode": "premiere_video", "phrases_fortes": [
+    {"debut": 15.28, "lignes": [[{"mot": "si on voulait", "role": "appui"}], [{"mot": "évoluer,", "role": "choc"}]]}
+  ]},
   "camera": {"visage": [0.5, 0.37], "coupes": [2.76, 4.93]},
   "ambiance": {"grain": 0.07, "etalonnage": true, "chapitres": [{"titre": "Avant", "debut": 0}]},
   "effets": [ ... ]
@@ -43,7 +45,10 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 ```
 
 - `rush.mots` : temps de chaque mot, au format `[{"mot", "debut", "fin"}]` ou au format brut d'ElevenLabs Scribe (`words`). `rush.voix` est facultatif (sinon on garde le son du rush).
-- `sous_titres.mode` : `mot_a_mot` (par défaut), `premiere_video` (rendu exact de la première vidéo, incrusté après coup par `outils/sous_titres.py`, avec ses `phrases_fortes`) ou `aucun`.
+- `sous_titres.mode` : `premiere_video` (par défaut : rendu de la vidéo INCENDIE, incrusté après coup par `outils/sous_titres.py`), `mot_a_mot` ou `aucun`.
+- `sous_titres.phrases_fortes` : passages importants. Pour chaque bloc, `debut` (le temps du premier mot, à peu près) et les `lignes` de `{mot, role}` (rôles : `liaison`, `liaison_gras`, `appui`, `fort`, `choc`, un seul `choc`). Les mots doivent se suivre comme ils sont dits ; le moteur trouve seul le temps de chaque mot, retire ces mots des sous-titres normaux et fait finir le bloc avant le mot suivant. 2 lignes, et vérifier que le bloc tient dans l'écran.
+- `remplace` (liste de mots) ou `remplace_temps` (liste d'intervalles `[debut, fin]`) sur n'importe quelle animation : ces mots ne sont pas répétés dans les sous-titres (pas de doublon avec un titre, un chiffre, une carte…).
+- `camera.masques` : dossier des masques de détourage (`outils/detourage.py`), pour `texte_derriere`.
 - `camera.visage` : position des yeux dans l'image (0 à 1). Les zooms sont centrés là.
 - `camera.coupes` : instants des coupes. Le cadrage change à chaque coupe, et l'image avance lentement pendant chaque plan.
 - `musique` : facultative. Elle est jouée 20 dB sous la voix et baisse encore de 6 dB quand on parle (réglages dans `moteur.musique`).
@@ -53,7 +58,10 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 | type | champs | rôle |
 |---|---|---|
 | `accroche` | `debut`, `fin`, `titre`, `surtitre` (facultatif), `mot_accent` (facultatif), `style` (facultatif) | Titre écrit lettre par lettre, sous le visage, juste au-dessus des sous-titres ; l'image ne bouge pas. Sur un cadrage très serré (menton bas), vérifier sur les images fixes que le titre ne touche pas le menton. La 1re accroche ouvre la vidéo ; les suivantes (ex. le nom) prennent le style `presentation`, plus discret. |
-| `grand_titre` | `debut`, `fin`, `lignes`, `mot_accent` | Phrase choc en 3D, visage flouté derrière. |
+| `grand_titre` | `debut`, `fin`, `lignes`, `mot_accent` | Phrase choc en 3D, visage flouté derrière. Plus utilisé : l'agence préfère `texte_derriere`. |
+| `texte_derriere` | `debut`, `fin`, `texte`, `taille`, `y`, `x`, `remplace`, `riser`, `intervalle` | Mot géant derrière la tête (lettres une à une), la personne détourée passe devant. Toujours parfaitement lisible : au-dessus de la tête. `riser: true` (accroche) : riser qui finit au début du mot, puis coup sourd. |
+| `carte_verre` | `debut`, `fin`, `titre`, `items`, `temps`, `y` | Carte en verre dépoli devant la personne, sous le visage : éléments qui apparaissent à leurs `temps`, repère ▶ sur l'élément en cours. Cadrage limité sur ces plans. |
+| `ecran_chat` | `debut`, `fin`, `question`, `salutation` | Fenêtre façon ChatGPT qui arrive en 3D sur fond sombre, question tapée, curseur qui clique sur « envoyer », assistant qui réfléchit. Jamais de réponse. |
 | `icone` | `debut`, `fin`, `icone`, `mot` (conseillé), ou `x`, `y`, `taille` | `courbe`, `etoile`, `epingle`, `panier`, `coeur`, `bulle`, `cible`, `etincelle`, `ia` (puce « IA »). Rebond + particules. Avec `mot`, l'icône se pose juste au-dessus de ce mot dans les sous-titres et y reste jusqu'à `fin`, même si la ligne change (jamais sur le visage). L'utilisateur ne veut plus de pictos : préférer `plan_de_coupe`. |
 | `chiffre` | `debut`, `fin`, `valeur`, `de`, `prefixe`, `suffixe`, `decimales`, `legende` | Le chiffre défile jusqu'à sa valeur. |
 | `carte` | `debut`, `fin`, `animation` + champs ci-dessous | La vidéo se réduit en carte arrondie, l'animation joue à côté. |

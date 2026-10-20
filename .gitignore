@@ -7,3 +7,9 @@ moteur/sorties/
 moteur/public/media/
 moteur/public/polices/
 moteur/public/projet.json
+
+# masques de détourage (régénérables avec outils/detourage.py)
+projets/*/masques/
+moteur/public/masques/
+# musique composée par outils/musique_douce.py (régénérable)
+projets/*/media/musique_douce.wav

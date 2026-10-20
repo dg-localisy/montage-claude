@@ -326,8 +326,8 @@
           "regle": "Un seul mot choc par bloc."
         }
       },
-      "interligne_facteur": 0.65,
-      "interligne": "Écart entre deux lignes de base = 0,65 × la plus grande taille ASS des deux lignes (lignes très serrées).",
+      "interligne_facteur": 0.82,
+      "interligne": "Écart entre deux lignes de base = 0,82 × la plus grande taille ASS des deux lignes (lignes serrées mais aérées : 0,65 jugé trop collé par l'utilisateur).",
       "petit_mot_a_cote_d_un_gros": "Avant le gros mot : remonté de la moitié de la hauteur du gros mot. Après : sur la même ligne de base.",
       "decalage_lignes_px": {
         "2": [
@@ -340,7 +340,7 @@
           55
         ]
       },
-      "centre_vertical_y": 1403,
+      "centre_vertical_y": 1370,
       "animation_entree": {
         "description": "Chaque mot apparaît au moment où il est prononcé : très flou et semi-transparent, net en 100 ms.",
         "flou_depart": 16,
@@ -473,7 +473,7 @@
     "description": "Réglages du moteur d'animation Remotion (dossier moteur/). Les temps sont en secondes, les positions en pixels sur une image 1080×1920.",
     "accent": "#FFFFFF",
     "sous_titres": {
-      "mode_par_defaut": "mot_a_mot",
+      "mode_par_defaut": "premiere_video",
       "modes": {
         "mot_a_mot": "Chaque mot apparaît quand il est dit, tout en blanc ; les mots-clés sont en Figtree Black Italic avec un relief (mise_en_evidence). Même place, même taille, même police de base et même ombre que la première vidéo.",
         "premiere_video": "Rendu exact de la première vidéo (sous-titres normaux + phrases fortes), incrusté par outils/sous_titres.py après le rendu Remotion.",
@@ -541,10 +541,37 @@
       "duree_reduction_s": 0.45,
       "debut_panneau_s": 0.27
     },
+    "texte_derriere": {
+      "description": "Texte géant derrière la tête (vidéo de référence : « YES », « LEGAL ») : lettres qui apparaissent une à une, puis la personne détourée passe devant. Noir sur le mur clair, légèrement transparent, comme imprimé sur le mur.",
+      "police": "Figtree Black",
+      "taille_px": 420,
+      "y": 520,
+      "couleur": "#0A0A0A",
+      "opacite": 0.86,
+      "interligne": 0.86,
+      "interlettrage_em": -0.035,
+      "intervalle_lettres_s": 0.06,
+      "duree_lettre_s": 0.2,
+      "sortie_s": 0.25
+    },
+    "carte_verre": {
+      "description": "Carte en verre dépoli devant la personne, sous le visage (vidéo de référence : carte « You need ») : titre, éléments qui apparaissent un à un, repère ▶ sur l'élément en cours. Verre sombre, bord blanc lumineux.",
+      "y": 1040,
+      "largeur_px": 820,
+      "marge_px": 24,
+      "titre_px": 40,
+      "texte_px": 37,
+      "hauteur_ligne_px": 56,
+      "inclinaison_deg": 6,
+      "cadrage_max": 1.0,
+      "regle": "Bien sous le visage (l'utilisateur l'a trouvée trop près du visage à 975 px) et juste au-dessus des sous-titres ; pas de cadrage serré sur ces plans."
+    },
     "ecran_chat": {
-      "description": "Écran plein cadre façon ChatGPT (mode sombre, noir et blanc) : une question se tape puis s'envoie, l'assistant réfléchit. Jamais de réponse inventée.",
+      "description": "Écran façon ChatGPT (noir et blanc) : la fenêtre arrive en 3D et flotte sur un fond sombre (vidéo de référence), la question se tape, un curseur clique sur « envoyer », l'assistant réfléchit. Jamais de réponse inventée.",
       "salutation": "Comment puis-je vous aider ?",
-      "barre_y": 900,
+      "fenetre_largeur_px": 980,
+      "fenetre_hauteur_px": 820,
+      "fenetre_y": 380,
       "delai_frappe_s": 0.15,
       "lettres_par_s": 30,
       "pause_avant_envoi_s": 0.12,
@@ -609,19 +636,27 @@
         "impact": 0.26,
         "scintillement": 0.12,
         "pop": 0.2,
-        "frappe": 0.05,
+        "frappe": 0.04,
         "compteur": 0.3,
         "titre": 0.18,
         "cible": 0.3,
         "numerique": 0.1,
         "woutch": 0.11,
         "woutch_court": 0.12,
-        "tap": 0.25
+        "tap": 0.25,
+        "riser": 0.2,
+        "chute": 0.32,
+        "swoosh": 0.1,
+        "woutch_grave": 0.14,
+        "pop_doux": 0.16,
+        "impact_doux": 0.3,
+        "clic": 0.12
       },
-      "preferences": "Bruitages brefs et doux, jamais agaçants (demande de l'utilisateur) : un petit « woutch » (souffle de 0,25 s) pour les titres, cartes et plans de coupe, un mini-woutch (0,15 s) pour les chiffres et les pastilles, un toc feutré et grave pour les coches. Aucune note aiguë (plus de scintillement, de pop, de tics de compteur ni de bips). Pas de bruitage sur les zooms."
+      "riser_duree_s": 2.0,
+      "preferences": "Bruitages brefs et doux, jamais agaçants, et variés selon l'animation (demande de l'utilisateur) : riser + coup sourd pour l'accroche ; woutch (titre), woutch grave (présentation, carte en verre), swoosh ample (plans de coupe, écran qui arrive), mini-woutch (chiffres), petite bulle grave (pastilles), toc feutré (éléments de la carte), petit coup sourd (mot derrière la tête), frappes de clavier très douces et clic de souris (écran ChatGPT). Aucune note aiguë. Pas de bruitage sur les zooms."
     },
     "musique": {
-      "sous_la_voix_db": -20,
+      "sous_la_voix_db": -17,
       "baisse_quand_je_parle_db": -6,
       "attaque_s": 0.12,
       "relache_s": 0.45,

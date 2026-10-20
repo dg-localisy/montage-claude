@@ -126,12 +126,17 @@ function normaliserVolume(entree, cible, lufs, crete) {
   return parseFloat(json.input_i);
 }
 
-function incrusterPremiereVideo(projet, entree, cible) {
+function incrusterPremiereVideo(projet, entree, cible, decalage = 0) {
   // Rendu exact de la première vidéo : on réutilise outils/sous_titres.py (libass).
-  const groupes = projet.groupes.map((g) => ({debut: g.debut, fin: g.fin_affichage, texte: g.mots.map((m) => m.texte).join(' ')}));
+  // decalage : début du passage rendu (option --images), pour que les sous-titres tombent au bon moment.
+  const d = (x) => x - decalage;
+  const groupes = projet.groupes.map((g) => ({debut: d(g.debut), fin: d(g.fin_affichage), texte: g.mots.map((m) => m.texte).join(' ')}))
+    .filter((g) => g.fin > 0);
+  const blocs = projet.sous_titres.phrases_fortes.map((b) => ({...b, debut: d(b.debut), fin: d(b.fin), lignes: b.lignes.map((l) => l.map((m) => ({...m, debut: d(m.debut)})))}))
+    .filter((b) => b.fin > 0);
   const donnees = path.join(sortie, 'sous-titres.json');
   const ass = path.join(sortie, 'sous-titres.ass');
-  fs.writeFileSync(donnees, JSON.stringify({groupes, blocs: projet.sous_titres.phrases_fortes}));
+  fs.writeFileSync(donnees, JSON.stringify({groupes, blocs}));
   execFileSync('python3', ['-c', 'import sys, json; sys.path.insert(0, sys.argv[1]); import sous_titres as s; d = json.load(open(sys.argv[2])); open(sys.argv[3], "w").write(s.fichier_ass(d["groupes"], d["blocs"]))',
     path.join(REPO, 'outils'), donnees, ass]);
   const polices = path.join(sortie, 'polices');
@@ -186,7 +191,7 @@ if (!drapeau('--stills-seulement')) {
   let avantSon = brut;
   if (projet.sous_titres.mode === 'premiere_video') {
     avantSon = path.join(sortie, `${nom}_soustitres.mp4`);
-    incrusterPremiereVideo(projet, brut, avantSon);
+    incrusterPremiereVideo(projet, brut, avantSon, plage ? Number(plage.split('-')[0]) / projet.fps : 0);
   }
   const final = path.join(sortie, `${nom}_9x16.mp4`);
   const avant = normaliserVolume(avantSon, final, charte.moteur.rendu.loudness_lufs, charte.moteur.rendu.crete_dbtp);

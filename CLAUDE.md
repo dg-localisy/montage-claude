@@ -87,10 +87,13 @@ node scripts/rendu.mjs  CHEMIN/effets.json --nom NOM       # images fixes + vid�
 
 Options : `--sans-stills`, `--sans-4x5`, `--images 0-89`, `--sortie DOSSIER`. Sorties dans `moteur/sortie/` : `NOM_planche.png`, `NOM_stills/`, `NOM_9x16.mp4`, `NOM_4x5.mp4`.
 
-Animations : `accroche` (la 2e prend le style « présentation », pour le nom), `grand_titre`, `icone` (l'utilisateur ne veut plus de pictos : à remplacer par des plans de coupe plein écran), `chiffre`, `carte` (chat_ia, entonnoir, gros_chiffre, checklist, avec temps imposés possibles), `liste` (pastilles sous le visage), `plan_de_coupe` (vidéo libre de droits en plein écran), `zoom`, `transition`, `carte_fin`, `signature` (`y` pour la déplacer ; l'utilisateur ne veut pas de logo à la fin des témoignages, ne pas l'utiliser sans demande). Sous-titres : `mot_a_mot` (choix de l'utilisateur), `premiere_video` ou `aucun`. `camera.visage` (yeux) et `camera.coupes` (coupes du vidéaste, à détecter) sont importants. Les titres d'accroche, chiffres et pastilles se placent sous le visage, au-dessus des sous-titres : l'image ne bouge jamais pour leur faire de la place.
+Animations : `accroche` (la 2e prend le style « présentation », pour le nom), `texte_derriere` (mot géant derrière la tête, personne détourée devant ; `riser: true` pour l'accroche), `carte_verre` (carte en verre dépoli devant la personne, liste qui se déroule), `ecran_chat` (fenêtre ChatGPT en 3D, question tapée, curseur qui clique, jamais de réponse), `grand_titre` (plus utilisé : il floute le visage), `icone` (l'utilisateur ne veut plus de pictos : à remplacer par des plans de coupe plein écran), `chiffre`, `carte` (chat_ia, entonnoir, gros_chiffre, checklist, avec temps imposés possibles), `liste` (pastilles sous le visage), `plan_de_coupe` (vidéo libre de droits en plein écran), `zoom`, `transition`, `carte_fin`, `signature` (`y` pour la déplacer ; l'utilisateur ne veut pas de logo à la fin des témoignages, ne pas l'utiliser sans demande). Sous-titres : `premiere_video` (choix actuel : rendu de la vidéo INCENDIE, avec `phrases_fortes` dans effets.json, calées toutes seules sur les mots), `mot_a_mot` ou `aucun`. Pas de doublon : `remplace` / `remplace_temps` sur une animation retire des sous-titres les mots qu'elle affiche. `camera.visage` (yeux) et `camera.coupes` (coupes du vidéaste, à détecter) sont importants. Les titres d'accroche, chiffres et pastilles se placent sous le visage, au-dessus des sous-titres : l'image ne bouge jamais pour leur faire de la place.
 
 Règles :
-- RÈGLE ABSOLUE de l'utilisateur : rien ne cache jamais le visage (titre, icône, chiffre, pastille), même flouté. Seule exception : le grand titre 3D.
+- RÈGLE ABSOLUE de l'utilisateur : rien ne cache jamais le visage (titre, chiffre, pastille, carte), même flouté. Un texte derrière la tête doit rester parfaitement lisible : au-dessus de la tête, seules des mèches devant le bas des lettres.
+- Trame commune des témoignages et règle « pas de doublon » : voir `MON-STYLE.md`.
+- Détourage pour le texte derrière la tête : `python3 outils/detourage.py RUSH.mp4 projets/NOM/masques --modele rvm_mobilenetv3_fp32.onnx` (modèle RobustVideoMatting, 15 Mo, à télécharger depuis les « releases » GitHub de PeterL1n/RobustVideoMatting ; `pip3 install onnxruntime`), puis `"camera": {"masques": "masques"}` dans effets.json. Masques non suivis par git.
+- Contrôle rapide de quelques images : `node scripts/stills.mjs effets.json --nom NOM --instants 2.3,18.8` (les sous-titres « premiere_video » sont incrustés après coup : les ajouter aux images avec le fichier .ass pour vérifier).
 - Regarde TOUTES les images fixes en grand (par groupes de 8, la planche est trop petite) avant de livrer : quelque chose sur le visage ou la tête, compteur qui n'atteint pas sa valeur, animations qui se chevauchent, dernier élément d'une liste trop bref, une couleur autre que noir et blanc.
 - Bruitages : discrets et rapides (voir `moteur.sons.preferences` dans la charte). Pas de montée lente ni d'impact fort.
 - Banques de vidéos libres de droits (Pexels, Pixabay…) bloquées par le réseau : demander à l'utilisateur de déposer le clip sur GitHub, ou d'autoriser le domaine.
@@ -99,6 +102,10 @@ Règles :
 - Le navigateur est le Chromium préinstallé (`/opt/pw-browsers`). En cas d'erreur « Target closed » ou « icudtl.dat », le script passe seul en chrome-for-testing. S'il échoue encore, DEMANDE l'autorisation à l'utilisateur avant de rendre en dehors de l'environnement isolé.
 - N'invente jamais un chiffre ou un résultat dans une carte : uniquement ce que la personne dit (pas de fausse réponse de ChatGPT, par exemple).
 - Licence Remotion : gratuite jusqu'à 3 salariés, licence entreprise payante au-delà.
+
+### Musique de fond : `outils/musique_douce.py`
+
+`python3 outils/musique_douce.py projets/NOM/media/musique_douce.wav --duree DUREE --debut 2.08` compose une musique originale lo-fi douce (libre de droits), qui commence au moment voulu (quand l'accroche tombe). Puis `"musique": {"actif": true, "fichier": "media/musique_douce.wav"}` dans effets.json. Les banques de musique (Pixabay, FreePD…) sont bloquées par le réseau : l'utilisateur peut aussi fournir un morceau. Le niveau (sous la voix, baisse quand la personne parle) est réglé par `son_final.py` (charte → `moteur.musique`). Je ne peux pas écouter : vérifier au moins la répartition des fréquences (pas de grave envahissant, peu d'énergie entre 1 et 4 kHz pour laisser la voix claire).
 
 ### Son final : `outils/son_final.py`
 
@@ -132,5 +139,6 @@ Refait le mélange voix + effets à partir des pistes séparées, baisse les eff
 
 ## Questions encore ouvertes avec l'utilisateur
 
-- Plans de coupe : les banques de vidéos sont bloquées par le réseau. Attendre que l'utilisateur dépose les clips (ou autorise le domaine) pour remplacer les anciens pictos.
+- Plans de coupe : c'est l'utilisateur qui choisit les clips (il n'a pas aimé ceux proposés). `videos.pexels.com` est autorisé, mais pas la recherche (`www.pexels.com`) ; Instagram et Pixabay sont bloqués : demander des enregistrements d'écran ou les fichiers.
+- Comptes de référence pour le montage : la vidéo INCENDIE, la vidéo de référence (texte derrière la tête, écrans animés, carte en verre) et le compte Instagram jorb.media (à voir via des enregistrements d'écran).
 - La charte disait « pas de carte de fin » et « pas de transitions colorées ». Le moteur sait les faire : ne les utiliser que si l'utilisateur le demande pour une vidéo.

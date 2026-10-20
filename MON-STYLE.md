@@ -22,17 +22,32 @@ Zoom très lent sur les phrases fortes. Petit zoom rapide sur un mot clé, mais 
 
 Durée visée : entre 30 et 60 secondes.
 
-## Les 2 premières secondes
+## La trame des témoignages
 
-On ouvre sur la meilleure phrase du client, même si elle arrive à la fin de l'interview, avec un titre qui reprend l'idée (par exemple « CHIFFRE D'AFFAIRES ×3 »). L'histoire commence juste après.
+Tous les témoignages suivent la même trame, inspirée de la vidéo INCENDIE et de la vidéo de référence (texte derrière la tête, écrans animés) :
 
-Pas de sur-titre « Témoignage client ». Le titre de l'accroche, et celui qui présente le client (nom et fonction), se placent sous le visage, juste au-dessus des sous-titres. L'image ne bouge jamais pour leur faire de la place.
+1. **L'accroche (0–3 s)** : la meilleure phrase du client, avec un riser qui monte jusqu'au résultat, puis le résultat chiffré en très grand derrière sa tête (« ×3 »). Un titre court (« CHIFFRE D'AFFAIRES ») sous le visage, juste au-dessus des sous-titres.
+2. **La présentation** : nom en grand et fonction en petit, sous le visage.
+3. **Les chiffres du client** (agences, ventes…) qui défilent sous le visage.
+4. **L'histoire**, en sous-titres INCENDIE, avec une phrase forte toutes les 5 à 7 secondes.
+5. **Des plans de coupe en plein écran** sur ce qui est concret (la ville, une recherche Google, une poignée de main…), choisis par l'agence.
+6. **Un ou deux mots clés derrière sa tête** (« COMPÉTENTES », « RIEN »).
+7. **Un écran animé** quand il parle d'un outil (fenêtre ChatGPT qui arrive en 3D, question tapée, curseur qui clique). Jamais de réponse inventée.
+8. **Une carte en verre dépoli devant lui** pour ce que fait LOCALISY : les éléments s'affichent un à un, un repère ▶ descend.
+9. **Des pastilles** pour une deuxième énumération (ce qu'il mesure, ce qu'il obtient).
+10. **La fin** sur sa phrase la plus forte, en phrase forte. Pas de logo, pas de carte de fin.
+
+**Pas de doublon** : un mot affiché en grand (titre, chiffre, mot derrière la tête, carte, pastilles) n'est pas répété dans les sous-titres.
+
+## Le texte derrière la tête
+
+Un mot géant, en noir légèrement transparent, comme imprimé sur le mur. Les lettres apparaissent une à une, puis le client passe devant (il est détouré image par image).
+
+**Il doit rester parfaitement lisible** : on le place au-dessus de la tête, et seules quelques mèches de cheveux passent devant le bas des lettres. Jamais le visage devant le cœur d'une lettre, sinon ça ne sert à rien. Et rien ne cache jamais le visage.
 
 ## Les sous-titres
 
-**Choix actuel : sous-titres mot à mot.** Chaque mot prononcé est écrit (seules les hésitations validées, « euh », « ben », sont retirées). Chaque mot apparaît quand il est dit, tout en blanc, et les mots importants ressortent en italique (Figtree Black Italic) avec un relief noir. La taille, la police de base et l'ombre restent celles de la première vidéo ; la ligne est nettement plus bas (75 % de la hauteur, au plus bas de la zone sûre), pour laisser la place au titre d'accroche sous le visage.
-
-L'ancien rendu de la première vidéo reste disponible si on veut y revenir. Il en existe deux sortes, décrites ci-dessous.
+**Choix actuel : les sous-titres de la vidéo INCENDIE**, même police, même ombre, mêmes couleurs, même disposition des mots sur les passages importants. Seule différence : ils sont plus bas (75 % de la hauteur), pour laisser la place aux titres sous le visage.
 
 **Les sous-titres normaux**, pour presque toute la vidéo :
 
@@ -41,33 +56,31 @@ L'ancien rendu de la première vidéo reste disponible si on veut y revenir. Il 
 - Centrés, aux trois quarts de la hauteur de l'image (75 %), toujours au même endroit.
 - Une majuscule en début de phrase et la ponctuation gardée (points, virgules, guillemets).
 - Aucune animation : un groupe remplace l'autre d'un coup. Rien à l'écran pendant les silences.
-- Pas d'orange.
 
-**Les phrases fortes**, pour les phrases clés (à peu près une toutes les 4 à 5 secondes) :
+**Les phrases fortes**, pour les passages importants (comme « donc on touche des humains » dans INCENDIE), environ une toutes les 5 à 7 secondes :
 
-- 2 ou 3 lignes très serrées, au même endroit que les sous-titres normaux.
-- Des mots de tailles différentes : les petits mots de liaison (« des », « avec ») en petit et en trait fin, les mots d'appui plus grands, et un seul mot choc en gras, en très grand (« touche », « doublé »).
+- 2 lignes (3 au plus si elles tiennent dans l'écran), au même endroit que les sous-titres normaux, serrées mais aérées.
+- Des mots de tailles différentes : les petits mots de liaison (« des », « avec une ») en petit et en trait fin, les mots d'appui plus grands, et un seul mot choc en gras, en très grand (« agence », « évoluer », « LOCALISY »).
 - Un petit mot placé avant un gros mot est remonté, comme un exposant.
 - Les lignes sont un peu décalées les unes par rapport aux autres, en escalier.
 - Chaque mot apparaît au moment où il est prononcé, en passant du flou au net. À la fin, tout le bloc se floute et disparaît.
+- Le sous-titre normal s'efface quand la phrase forte arrive : jamais les deux en même temps.
 
-## Les grands titres
+(Le mode « mot à mot », avec l'italique en relief, reste disponible si on veut y revenir.)
 
-En Figtree Black, en MAJUSCULES, avec des lettres un peu resserrées. Trois lignes maximum, en blanc ; un seul mot mis en évidence, en italique avec un relief noir (pas de couleur). Un léger dégradé noir derrière les rend lisibles, et les lignes montent une par une.
+## Les titres et les chiffres
 
-Le titre ne cache jamais les yeux du client. Si le visage est placé haut, il passe sous le menton.
+Titres en Figtree Black, en MAJUSCULES, sous le visage, juste au-dessus des sous-titres. L'image ne bouge jamais pour leur faire de la place. Pas de grand titre qui floute le visage : on préfère le texte derrière la tête.
 
-## Captures d'écran, chiffres, produits, lieux
+Les données clés sont en très grand (« chiffres grands écrans ») : un résultat comme « ×3 » ne doit jamais paraître léger. Les autres chiffres montent vite en compteur (une demi-seconde), de 0 jusqu'à la valeur, sous le visage. Tout est blanc ou noir.
 
-Ils apparaissent dans des cartes flottantes : coins arrondis, ombre douce, posées sur un fond noir ou sur la vidéo floutée et assombrie, avec un mouvement très lent.
+## Écrans et cartes
 
-Les chiffres montent vite en compteur (une demi-seconde), de 0 jusqu'à la valeur. Ils se placent sous le visage, juste au-dessus des sous-titres. Le chiffre et les signes + et % sont blancs.
-
-Une énumération (« combien de leads, ce qu'ils me rapportent, d'où ils viennent ») peut aussi s'afficher en pastilles sous le visage : chaque pastille glisse quand elle est dite et reste à l'écran.
-
-Deux montages qui se suivent doivent être différents (par exemple une carte, puis des pastilles). Une carte ou une liste reste visible au moins 1,2 s après son dernier élément.
-
-Pour illustrer un moment, une vidéo libre de droits (par exemple un gros plan de mains qui se serrent) vaut mieux qu'un graphique. Elle passe en plein écran, sans son, pendant que la voix continue.
+- **Carte en verre dépoli** devant le client, bien sous le visage et au-dessus des sous-titres : verre sombre, bord blanc lumineux, légère perspective. Les éléments apparaissent quand ils sont dits.
+- **Écran animé** (interface en 3D sur fond sombre, curseur qui clique) pour un outil ou un site.
+- **Pastilles** sous le visage pour une énumération courte.
+- Deux montages qui se suivent doivent être différents. Une carte ou une liste reste visible au moins 1,2 s après son dernier élément.
+- Les plans de coupe (vidéos libres de droits) passent en plein écran, sans son. C'est l'agence qui les choisit.
 
 ## Les transitions
 
@@ -79,7 +92,7 @@ Plus d'icônes (épingle, courbe, cible…) : on en a trop vu. À la place, un p
 
 ## Le son
 
-La voix passe avant tout. Dessous, une musique instrumentale douce (piano léger ou électro calme), libre de droits, que je fournis. Elle baisse toute seule quand le client parle. Les bruitages sont brefs et doux, jamais agaçants : un petit « woutch » (un souffle d'un quart de seconde) quand un titre, une carte ou un plan de coupe arrive, un mini-woutch pour les chiffres et les pastilles, un toc feutré et grave pour les coches. Aucune note aiguë (pas de scintillement, de « pop », de tics ni de bips). Pas de bruitage sur les zooms.
+La voix passe avant tout. Dessous, une musique douce et un peu tendance (lo-fi : piano électrique, basse ronde, rythmique feutrée), à volume bas : environ 17 dB sous la voix, et encore 6 dB de moins quand le client parle. Faute d'accès aux banques de musique, elle est composée par l'outil (donc libre de droits) ; on peut aussi fournir un morceau. Elle démarre quand l'accroche tombe. Les bruitages sont brefs et doux, jamais agaçants : un petit « woutch » (un souffle d'un quart de seconde) quand un titre, une carte ou un plan de coupe arrive, un mini-woutch pour les chiffres et les pastilles, un toc feutré et grave pour les coches. Aucune note aiguë (pas de scintillement, de « pop », de tics ni de bips). Pas de bruitage sur les zooms. Exception voulue par l'agence : l'accroche monte avec un riser qui s'arrête net quand le résultat tombe (« ×3 »), suivi d'un coup sourd.
 
 Volume final : -14 LUFS, le niveau attendu par les réseaux sociaux.
 
@@ -132,7 +145,10 @@ Attention, « localisé » et « localiser » sont de vrais mots français. On �
 
 - [ ] Les 2 premières secondes donnent envie de rester.
 - [ ] Rien ne cache le visage du client : ni titre, ni chiffre, ni pastille.
-- [ ] Les sous-titres sont toujours à la même place (75 % de la hauteur) et ont le même rendu que dans la première vidéo.
+- [ ] Les sous-titres ont le rendu de la vidéo INCENDIE, à 75 % de la hauteur, avec des phrases fortes bien aérées sur les passages importants.
+- [ ] Aucun mot affiché en grand n'est répété dans les sous-titres.
+- [ ] Tout texte derrière la tête est parfaitement lisible.
+- [ ] Orthographe et polices (Figtree uniquement) relues sur chaque texte.
 - [ ] LOCALISY est bien écrit partout.
 - [ ] Aucune couleur : noir et blanc uniquement, mots importants en italique avec relief noir.
 - [ ] Le son est à -14 LUFS et la voix reste toujours compréhensible.
