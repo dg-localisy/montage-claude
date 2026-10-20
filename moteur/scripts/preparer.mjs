@@ -135,6 +135,10 @@ function calerPhrasesFortes(blocs, mots) {
   });
 }
 
+const PETITS_MOTS = ['le', 'la', 'les', "l'", 'un', 'une', 'des', 'du', 'de', "d'", 'au', 'aux', 'à', 'en', 'et', 'ou', 'mais', 'sur', 'dans', 'pour', 'par', 'avec',
+  'sans', 'chez', 'qui', 'que', "qu'", 'ce', 'ces', 'cet', 'cette', 'mon', 'ma', 'mes', 'ton', 'ta', 'tes', 'son', 'sa', 'ses', 'notre', 'nos', 'votre', 'vos',
+  'leur', 'leurs', 'je', "j'", 'il', 'elle', 'on', 'nous', 'vous', 'ils', 'elles', 'ne', "n'", 'se', "s'", 'y'];
+
 export function construireGroupes(mots, regles) {
   const groupes = [];
   let courant = [];
@@ -143,15 +147,42 @@ export function construireGroupes(mots, regles) {
     if (courant.length) groupes.push({mots: courant, debut: courant[0].debut, fin: courant[courant.length - 1].fin});
     courant = [];
   };
+  // un sous-titre coupé parce qu'il est plein ne finit pas par un petit mot (« la », « des », « qui »…) :
+  // ce mot passe au sous-titre suivant, avec le mot qu'il annonce (« qui passent / la porte », pas « qui passent la / porte »)
+  const petits = new Set((regles.petits_mots || PETITS_MOTS).map(normaliser));
   for (const m of mots) {
     if (courant.length) {
       const dernier = courant[courant.length - 1];
-      if (courant.length >= regles.max_mots || texte([...courant, m]).length > regles.max_caracteres || m.debut - dernier.fin > regles.pause_coupure_s) pousser();
+      if (m.debut - dernier.fin > regles.pause_coupure_s) pousser();
+      else if (courant.length >= regles.max_mots || texte([...courant, m]).length > regles.max_caracteres) {
+        const reporte = [];
+        while (courant.length > 1 && petits.has(normaliser(courant[courant.length - 1].texte))) reporte.unshift(courant.pop());
+        if (courant.every((x) => petits.has(normaliser(x.texte)))) {
+          // il ne resterait que des petits mots (« sur ») : tout passe ensemble au sous-titre suivant s'il reste lisible
+          courant.push(...reporte);
+          if (texte([...courant, m]).length > regles.max_caracteres + 4) pousser();
+        } else {
+          pousser();
+          courant = reporte;
+        }
+      }
     }
     courant.push(m);
     if (/[.,!?;:…]$/.test(m.texte)) pousser();
   }
   pousser();
+  // un sous-titre qui resterait moins d'un quart de seconde (débit rapide) est fusionné avec le suivant, s'il reste court
+  const dureeMin = regles.duree_min_s ?? 0.25;
+  for (let i = 0; i < groupes.length - 1; i++) {
+    const g = groupes[i];
+    const s = groupes[i + 1];
+    const tous = [...g.mots, ...s.mots];
+    if (s.debut - g.debut < dureeMin && !/[.,!?;:…]$/.test(g.mots[g.mots.length - 1].texte) && s.debut - g.fin <= regles.pause_coupure_s
+      && texte(tous).length <= regles.max_caracteres + 4 && tous.length <= regles.max_mots + 1) {
+      groupes.splice(i, 2, {mots: tous, debut: g.debut, fin: s.fin});
+      i--;
+    }
+  }
   groupes.forEach((g, i) => {
     const suivant = groupes[i + 1];
     g.fin_affichage = Math.min(suivant ? suivant.debut : Infinity, g.fin + regles.maintien_apres_s);
@@ -322,6 +353,11 @@ export function preparer(cheminEffets) {
   const groupes = construireGroupes(premiereVideo ? mots.filter((m) => !masque(m)) : mots, st);
   // un sous-titre normal s'efface quand une phrase forte commence (jamais les deux en même temps)
   if (premiereVideo) for (const g of groups()) for (const b of phrasesFortes) if (b.debut > g.debut) g.fin_affichage = Math.min(g.fin_affichage, b.debut);
+  // ni quand une animation commence à afficher les mots suivants à sa place (ex. le nom de la présentation, posé sur la ligne des sous-titres)
+  if (premiereVideo) {
+    const arrets = [...intervalles.map(([a]) => a), ...mots.filter(masque).map((m) => m.debut)];
+    for (const g of groupes) for (const a of arrets) if (a > g.debut) g.fin_affichage = Math.min(g.fin_affichage, a);
+  }
   function groups() { return groupes; }
 
   // la première accroche ouvre la vidéo ; les suivantes (ex. le nom) sont plus discrètes

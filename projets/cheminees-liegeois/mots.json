@@ -1,0 +1,1052 @@
+[
+ {
+  "mot": "En",
+  "debut": 0.06,
+  "fin": 0.12
+ },
+ {
+  "mot": "2026,",
+  "debut": 0.22,
+  "fin": 0.82
+ },
+ {
+  "mot": "la",
+  "debut": 0.92,
+  "fin": 1.02
+ },
+ {
+  "mot": "majorité",
+  "debut": 1.1,
+  "fin": 1.46
+ },
+ {
+  "mot": "des",
+  "debut": 1.5,
+  "fin": 1.56
+ },
+ {
+  "mot": "clients",
+  "debut": 1.74,
+  "fin": 2.08
+ },
+ {
+  "mot": "qui",
+  "debut": 2.1,
+  "fin": 2.2
+ },
+ {
+  "mot": "passent",
+  "debut": 2.26,
+  "fin": 2.42
+ },
+ {
+  "mot": "la",
+  "debut": 2.46,
+  "fin": 2.56
+ },
+ {
+  "mot": "porte",
+  "debut": 2.6,
+  "fin": 2.82
+ },
+ {
+  "mot": "sont",
+  "debut": 2.88,
+  "fin": 3.0
+ },
+ {
+  "mot": "sûrement",
+  "debut": 3.06,
+  "fin": 3.26
+ },
+ {
+  "mot": "des",
+  "debut": 3.3,
+  "fin": 3.399
+ },
+ {
+  "mot": "clients",
+  "debut": 3.44,
+  "fin": 3.74
+ },
+ {
+  "mot": "qui",
+  "debut": 3.9,
+  "fin": 3.98
+ },
+ {
+  "mot": "viennent",
+  "debut": 4.02,
+  "fin": 4.24
+ },
+ {
+  "mot": "d'Internet.",
+  "debut": 4.62,
+  "fin": 5.14
+ },
+ {
+  "mot": "Clairement,",
+  "debut": 5.2,
+  "fin": 5.46
+ },
+ {
+  "mot": "de",
+  "debut": 5.5,
+  "fin": 5.56
+ },
+ {
+  "mot": "toute",
+  "debut": 5.6,
+  "fin": 5.68
+ },
+ {
+  "mot": "façon,",
+  "debut": 5.72,
+  "fin": 5.98
+ },
+ {
+  "mot": "LOCALISY",
+  "debut": 6.14,
+  "fin": 6.58
+ },
+ {
+  "mot": "gère",
+  "debut": 6.74,
+  "fin": 6.98
+ },
+ {
+  "mot": "la",
+  "debut": 7.04,
+  "fin": 7.18
+ },
+ {
+  "mot": "majorité",
+  "debut": 7.22,
+  "fin": 7.62
+ },
+ {
+  "mot": "de",
+  "debut": 7.64,
+  "fin": 7.68
+ },
+ {
+  "mot": "nos",
+  "debut": 7.7,
+  "fin": 7.76
+ },
+ {
+  "mot": "réseaux",
+  "debut": 7.8,
+  "fin": 7.98
+ },
+ {
+  "mot": "sociaux,",
+  "debut": 8.04,
+  "fin": 8.42
+ },
+ {
+  "mot": "les",
+  "debut": 8.7,
+  "fin": 8.76
+ },
+ {
+  "mot": "sites",
+  "debut": 8.78,
+  "fin": 8.88
+ },
+ {
+  "mot": "Internet",
+  "debut": 8.92,
+  "fin": 9.26
+ },
+ {
+  "mot": "et",
+  "debut": 9.28,
+  "fin": 9.32
+ },
+ {
+  "mot": "autres.",
+  "debut": 9.36,
+  "fin": 9.68
+ },
+ {
+  "mot": "Donc",
+  "debut": 9.72,
+  "fin": 9.84
+ },
+ {
+  "mot": "Cheminées",
+  "debut": 9.86,
+  "fin": 10.1
+ },
+ {
+  "mot": "Liégeois",
+  "debut": 10.1,
+  "fin": 10.34
+ },
+ {
+  "mot": "existe",
+  "debut": 10.38,
+  "fin": 10.6
+ },
+ {
+  "mot": "depuis",
+  "debut": 10.62,
+  "fin": 10.96
+ },
+ {
+  "mot": "plus",
+  "debut": 11.18,
+  "fin": 11.26
+ },
+ {
+  "mot": "de",
+  "debut": 11.28,
+  "fin": 11.32
+ },
+ {
+  "mot": "60",
+  "debut": 11.56,
+  "fin": 11.72
+ },
+ {
+  "mot": "ans.",
+  "debut": 11.76,
+  "fin": 11.92
+ },
+ {
+  "mot": "On",
+  "debut": 11.94,
+  "fin": 12.0
+ },
+ {
+  "mot": "est",
+  "debut": 12.02,
+  "fin": 12.06
+ },
+ {
+  "mot": "actif",
+  "debut": 12.1,
+  "fin": 12.3
+ },
+ {
+  "mot": "dans",
+  "debut": 12.34,
+  "fin": 12.42
+ },
+ {
+  "mot": "le",
+  "debut": 12.44,
+  "fin": 12.48
+ },
+ {
+  "mot": "domaine",
+  "debut": 12.5,
+  "fin": 12.8
+ },
+ {
+  "mot": "des",
+  "debut": 12.94,
+  "fin": 13.02
+ },
+ {
+  "mot": "cheminées,",
+  "debut": 13.04,
+  "fin": 13.56
+ },
+ {
+  "mot": "des",
+  "debut": 13.62,
+  "fin": 13.74
+ },
+ {
+  "mot": "poêles",
+  "debut": 13.76,
+  "fin": 13.9
+ },
+ {
+  "mot": "et",
+  "debut": 13.92,
+  "fin": 13.96
+ },
+ {
+  "mot": "des",
+  "debut": 14.0,
+  "fin": 14.08
+ },
+ {
+  "mot": "inserts.",
+  "debut": 14.14,
+  "fin": 14.6
+ },
+ {
+  "mot": "Leader",
+  "debut": 14.68,
+  "fin": 14.92
+ },
+ {
+  "mot": "en",
+  "debut": 15.0,
+  "fin": 15.06
+ },
+ {
+  "mot": "Wallonie",
+  "debut": 15.1,
+  "fin": 15.58
+ },
+ {
+  "mot": "sur",
+  "debut": 15.9,
+  "fin": 16.04
+ },
+ {
+  "mot": "4",
+  "debut": 16.08,
+  "fin": 16.24
+ },
+ {
+  "mot": "points",
+  "debut": 16.26,
+  "fin": 16.4
+ },
+ {
+  "mot": "de",
+  "debut": 16.42,
+  "fin": 16.46
+ },
+ {
+  "mot": "vente.",
+  "debut": 16.52,
+  "fin": 16.86
+ },
+ {
+  "mot": "La",
+  "debut": 17.02,
+  "fin": 17.08
+ },
+ {
+  "mot": "collaboration,",
+  "debut": 17.22,
+  "fin": 17.76
+ },
+ {
+  "mot": "elle",
+  "debut": 17.8,
+  "fin": 17.86
+ },
+ {
+  "mot": "a",
+  "debut": 17.9,
+  "fin": 17.96
+ },
+ {
+  "mot": "commencé",
+  "debut": 17.98,
+  "fin": 18.36
+ },
+ {
+  "mot": "il",
+  "debut": 18.4,
+  "fin": 18.44
+ },
+ {
+  "mot": "y",
+  "debut": 18.46,
+  "fin": 18.48
+ },
+ {
+  "mot": "a",
+  "debut": 18.5,
+  "fin": 18.54
+ },
+ {
+  "mot": "plus",
+  "debut": 18.58,
+  "fin": 18.66
+ },
+ {
+  "mot": "de",
+  "debut": 18.68,
+  "fin": 18.74
+ },
+ {
+  "mot": "11",
+  "debut": 18.78,
+  "fin": 19.0
+ },
+ {
+  "mot": "ans,",
+  "debut": 19.06,
+  "fin": 19.2
+ },
+ {
+  "mot": "au",
+  "debut": 19.38,
+  "fin": 19.46
+ },
+ {
+  "mot": "tout",
+  "debut": 19.5,
+  "fin": 19.6
+ },
+ {
+  "mot": "début",
+  "debut": 19.64,
+  "fin": 19.82
+ },
+ {
+  "mot": "de",
+  "debut": 19.84,
+  "fin": 19.88
+ },
+ {
+  "mot": "Facebook.",
+  "debut": 19.92,
+  "fin": 20.34
+ },
+ {
+  "mot": "On",
+  "debut": 20.38,
+  "fin": 20.4
+ },
+ {
+  "mot": "avait",
+  "debut": 20.44,
+  "fin": 20.54
+ },
+ {
+  "mot": "besoin",
+  "debut": 20.58,
+  "fin": 20.72
+ },
+ {
+  "mot": "de",
+  "debut": 20.74,
+  "fin": 20.78
+ },
+ {
+  "mot": "quelqu'un",
+  "debut": 20.82,
+  "fin": 21.1
+ },
+ {
+  "mot": "pour",
+  "debut": 21.14,
+  "fin": 21.26
+ },
+ {
+  "mot": "faire,",
+  "debut": 21.32,
+  "fin": 21.48
+ },
+ {
+  "mot": "la",
+  "debut": 21.8,
+  "fin": 21.9
+ },
+ {
+  "mot": "pub",
+  "debut": 21.94,
+  "fin": 22.1
+ },
+ {
+  "mot": "de",
+  "debut": 22.44,
+  "fin": 22.5
+ },
+ {
+  "mot": "notre",
+  "debut": 22.54,
+  "fin": 22.76
+ },
+ {
+  "mot": "magasin.",
+  "debut": 22.8,
+  "fin": 23.2
+ },
+ {
+  "mot": "On",
+  "debut": 23.36,
+  "fin": 23.4
+ },
+ {
+  "mot": "n'avait",
+  "debut": 23.44,
+  "fin": 23.58
+ },
+ {
+  "mot": "pas",
+  "debut": 23.62,
+  "fin": 23.7
+ },
+ {
+  "mot": "encore",
+  "debut": 23.72,
+  "fin": 24.0
+ },
+ {
+  "mot": "de",
+  "debut": 24.32,
+  "fin": 24.4
+ },
+ {
+  "mot": "page",
+  "debut": 24.44,
+  "fin": 24.68
+ },
+ {
+  "mot": "et",
+  "debut": 24.74,
+  "fin": 24.78
+ },
+ {
+  "mot": "donc",
+  "debut": 24.82,
+  "fin": 24.92
+ },
+ {
+  "mot": "du",
+  "debut": 24.94,
+  "fin": 25.04
+ },
+ {
+  "mot": "coup,",
+  "debut": 25.08,
+  "fin": 25.16
+ },
+ {
+  "mot": "il",
+  "debut": 25.34,
+  "fin": 25.4
+ },
+ {
+  "mot": "fallait",
+  "debut": 25.44,
+  "fin": 25.58
+ },
+ {
+  "mot": "quelqu'un",
+  "debut": 25.62,
+  "fin": 25.86
+ },
+ {
+  "mot": "pour",
+  "debut": 25.9,
+  "fin": 26.02
+ },
+ {
+  "mot": "pouvoir",
+  "debut": 26.04,
+  "fin": 26.2
+ },
+ {
+  "mot": "la",
+  "debut": 26.24,
+  "fin": 26.32
+ },
+ {
+  "mot": "gérer.",
+  "debut": 26.38,
+  "fin": 26.66
+ },
+ {
+  "mot": "Et",
+  "debut": 26.78,
+  "fin": 26.82
+ },
+ {
+  "mot": "donc",
+  "debut": 26.84,
+  "fin": 26.96
+ },
+ {
+  "mot": "on",
+  "debut": 26.98,
+  "fin": 27.04
+ },
+ {
+  "mot": "a",
+  "debut": 27.1,
+  "fin": 27.14
+ },
+ {
+  "mot": "pris",
+  "debut": 27.18,
+  "fin": 27.28
+ },
+ {
+  "mot": "contact",
+  "debut": 27.32,
+  "fin": 27.62
+ },
+ {
+  "mot": "avec",
+  "debut": 27.66,
+  "fin": 27.78
+ },
+ {
+  "mot": "LOCALISY",
+  "debut": 27.82,
+  "fin": 28.4
+ },
+ {
+  "mot": "qui",
+  "debut": 28.48,
+  "fin": 28.66
+ },
+ {
+  "mot": "a",
+  "debut": 29.04,
+  "fin": 29.1
+ },
+ {
+  "mot": "créé",
+  "debut": 29.16,
+  "fin": 29.3
+ },
+ {
+  "mot": "notre",
+  "debut": 29.34,
+  "fin": 29.48
+ },
+ {
+  "mot": "première",
+  "debut": 29.5,
+  "fin": 29.84
+ },
+ {
+  "mot": "page",
+  "debut": 30.02,
+  "fin": 30.18
+ },
+ {
+  "mot": "Facebook.",
+  "debut": 30.22,
+  "fin": 30.68
+ },
+ {
+  "mot": "Après,",
+  "debut": 30.76,
+  "fin": 30.92
+ },
+ {
+  "mot": "il",
+  "debut": 30.94,
+  "fin": 30.98
+ },
+ {
+  "mot": "y",
+  "debut": 30.98,
+  "fin": 31.0
+ },
+ {
+  "mot": "a",
+  "debut": 31.02,
+  "fin": 31.04
+ },
+ {
+  "mot": "eu,",
+  "debut": 31.08,
+  "fin": 31.24
+ },
+ {
+  "mot": "du",
+  "debut": 31.44,
+  "fin": 31.52
+ },
+ {
+  "mot": "coup,",
+  "debut": 31.56,
+  "fin": 31.66
+ },
+ {
+  "mot": "la",
+  "debut": 31.72,
+  "fin": 31.82
+ },
+ {
+  "mot": "création",
+  "debut": 31.88,
+  "fin": 32.2
+ },
+ {
+  "mot": "du",
+  "debut": 32.32,
+  "fin": 32.399
+ },
+ {
+  "mot": "site",
+  "debut": 32.44,
+  "fin": 32.58
+ },
+ {
+  "mot": "Internet",
+  "debut": 32.64,
+  "fin": 33.04
+ },
+ {
+  "mot": "qui",
+  "debut": 33.08,
+  "fin": 33.12
+ },
+ {
+  "mot": "a",
+  "debut": 33.14,
+  "fin": 33.16
+ },
+ {
+  "mot": "été",
+  "debut": 33.18,
+  "fin": 33.32
+ },
+ {
+  "mot": "refait",
+  "debut": 33.66,
+  "fin": 33.88
+ },
+ {
+  "mot": "de",
+  "debut": 33.92,
+  "fin": 33.98
+ },
+ {
+  "mot": "A",
+  "debut": 34.02,
+  "fin": 34.04
+ },
+ {
+  "mot": "à",
+  "debut": 34.12,
+  "fin": 34.12
+ },
+ {
+  "mot": "Z",
+  "debut": 34.16,
+  "fin": 34.3
+ },
+ {
+  "mot": "par",
+  "debut": 34.34,
+  "fin": 34.44
+ },
+ {
+  "mot": "LOCALISY.",
+  "debut": 34.48,
+  "fin": 34.96
+ },
+ {
+  "mot": "Il",
+  "debut": 35.06,
+  "fin": 35.08
+ },
+ {
+  "mot": "y",
+  "debut": 35.1,
+  "fin": 35.1
+ },
+ {
+  "mot": "a",
+  "debut": 35.12,
+  "fin": 35.12
+ },
+ {
+  "mot": "aussi",
+  "debut": 35.14,
+  "fin": 35.28
+ },
+ {
+  "mot": "toutes",
+  "debut": 35.32,
+  "fin": 35.42
+ },
+ {
+  "mot": "les",
+  "debut": 35.44,
+  "fin": 35.52
+ },
+ {
+  "mot": "vidéos,",
+  "debut": 35.56,
+  "fin": 35.94
+ },
+ {
+  "mot": "les",
+  "debut": 35.98,
+  "fin": 36.08
+ },
+ {
+  "mot": "posts",
+  "debut": 36.12,
+  "fin": 36.3
+ },
+ {
+  "mot": "Instagram,",
+  "debut": 36.32,
+  "fin": 36.92
+ },
+ {
+  "mot": "Facebook",
+  "debut": 37.12,
+  "fin": 37.52
+ },
+ {
+  "mot": "pour",
+  "debut": 37.58,
+  "fin": 37.68
+ },
+ {
+  "mot": "communiquer,",
+  "debut": 37.72,
+  "fin": 38.14
+ },
+ {
+  "mot": "voilà,",
+  "debut": 38.4,
+  "fin": 38.56
+ },
+ {
+  "mot": "sur",
+  "debut": 38.64,
+  "fin": 38.72
+ },
+ {
+  "mot": "les",
+  "debut": 38.92,
+  "fin": 39.04
+ },
+ {
+  "mot": "offres",
+  "debut": 39.08,
+  "fin": 39.18
+ },
+ {
+  "mot": "du",
+  "debut": 39.2,
+  "fin": 39.26
+ },
+ {
+  "mot": "moment,",
+  "debut": 39.3,
+  "fin": 39.58
+ },
+ {
+  "mot": "sur",
+  "debut": 39.68,
+  "fin": 39.76
+ },
+ {
+  "mot": "ce",
+  "debut": 39.8,
+  "fin": 39.84
+ },
+ {
+  "mot": "qui",
+  "debut": 39.86,
+  "fin": 39.94
+ },
+ {
+  "mot": "se",
+  "debut": 39.96,
+  "fin": 40.0
+ },
+ {
+  "mot": "passe,",
+  "debut": 40.04,
+  "fin": 40.16
+ },
+ {
+  "mot": "etc.",
+  "debut": 40.22,
+  "fin": 40.32
+ },
+ {
+  "mot": "Chaque",
+  "debut": 40.8,
+  "fin": 40.96
+ },
+ {
+  "mot": "mois,",
+  "debut": 41.0,
+  "fin": 41.08
+ },
+ {
+  "mot": "il",
+  "debut": 41.12,
+  "fin": 41.14
+ },
+ {
+  "mot": "y",
+  "debut": 41.16,
+  "fin": 41.18
+ },
+ {
+  "mot": "a",
+  "debut": 41.2,
+  "fin": 41.2
+ },
+ {
+  "mot": "un",
+  "debut": 41.22,
+  "fin": 41.28
+ },
+ {
+  "mot": "responsable",
+  "debut": 41.3,
+  "fin": 41.76
+ },
+ {
+  "mot": "de",
+  "debut": 41.8,
+  "fin": 41.86
+ },
+ {
+  "mot": "chez",
+  "debut": 41.88,
+  "fin": 41.96
+ },
+ {
+  "mot": "LOCALISY",
+  "debut": 42.0,
+  "fin": 42.6
+ },
+ {
+  "mot": "qui",
+  "debut": 42.64,
+  "fin": 42.72
+ },
+ {
+  "mot": "vient",
+  "debut": 42.76,
+  "fin": 43.08
+ },
+ {
+  "mot": "et",
+  "debut": 43.18,
+  "fin": 43.32
+ },
+ {
+  "mot": "qui",
+  "debut": 43.68,
+  "fin": 43.76
+ },
+ {
+  "mot": "nous",
+  "debut": 43.8,
+  "fin": 43.88
+ },
+ {
+  "mot": "fait",
+  "debut": 43.92,
+  "fin": 44.0
+ },
+ {
+  "mot": "les",
+  "debut": 44.24,
+  "fin": 44.34
+ },
+ {
+  "mot": "comptes",
+  "debut": 44.38,
+  "fin": 44.58
+ },
+ {
+  "mot": "du",
+  "debut": 44.6,
+  "fin": 44.7
+ },
+ {
+  "mot": "mois,",
+  "debut": 44.74,
+  "fin": 45.02
+ },
+ {
+  "mot": "voir",
+  "debut": 45.12,
+  "fin": 45.24
+ },
+ {
+  "mot": "ce",
+  "debut": 45.38,
+  "fin": 45.42
+ },
+ {
+  "mot": "qui",
+  "debut": 45.44,
+  "fin": 45.48
+ },
+ {
+  "mot": "a",
+  "debut": 45.5,
+  "fin": 45.54
+ },
+ {
+  "mot": "marché,",
+  "debut": 45.58,
+  "fin": 45.82
+ },
+ {
+  "mot": "ce",
+  "debut": 45.88,
+  "fin": 45.9
+ },
+ {
+  "mot": "qui",
+  "debut": 45.92,
+  "fin": 45.94
+ },
+ {
+  "mot": "n'a",
+  "debut": 45.96,
+  "fin": 46.0
+ },
+ {
+  "mot": "pas",
+  "debut": 46.02,
+  "fin": 46.1
+ },
+ {
+  "mot": "marché.",
+  "debut": 46.14,
+  "fin": 46.52
+ },
+ {
+  "mot": "Et",
+  "debut": 46.54,
+  "fin": 46.64
+ },
+ {
+  "mot": "puis",
+  "debut": 46.66,
+  "fin": 46.74
+ },
+ {
+  "mot": "en",
+  "debut": 46.76,
+  "fin": 46.82
+ },
+ {
+  "mot": "fonction",
+  "debut": 46.86,
+  "fin": 47.18
+ },
+ {
+  "mot": "de",
+  "debut": 47.26,
+  "fin": 47.36
+ },
+ {
+  "mot": "ça,",
+  "debut": 47.42,
+  "fin": 47.5
+ },
+ {
+  "mot": "on",
+  "debut": 47.56,
+  "fin": 47.64
+ },
+ {
+  "mot": "réajuste.",
+  "debut": 47.68,
+  "fin": 48.08
+ }
+]

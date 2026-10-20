@@ -53,6 +53,8 @@ Un mot géant, en noir légèrement transparent, comme imprimé sur le mur. Seul
 
 - Figtree Light, en blanc, avec une ombre noire douce vers le bas à droite.
 - 1 à 4 mots à la fois (18 caractères maximum), sur une seule ligne.
+- On coupe aux bons endroits : un petit mot (« la », « des », « qui »…) ne finit jamais un sous-titre, il passe au suivant avec le mot qu'il annonce (« qui passent / la porte »).
+- Aucun sous-titre ne reste moins d'un quart de seconde : quand la personne parle vite, deux sous-titres courts sont réunis (jusqu'à 22 caractères).
 - Centrés, aux trois quarts de la hauteur de l'image (75 %), toujours au même endroit.
 - Une majuscule en début de phrase et la ponctuation gardée (points, virgules, guillemets).
 - Aucune animation : un groupe remplace l'autre d'un coup. Rien à l'écran pendant les silences.

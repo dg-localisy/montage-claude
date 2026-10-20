@@ -77,7 +77,7 @@ polices = sous_titres.dossier_polices_statiques("DOSSIER_TEMP/polices")
 # puis : ffmpeg -i video.mp4 -vf "subtitles=sous-titres.ass:fontsdir=DOSSIER_TEMP/polices" ...
 ```
 
-- Sous-titres normaux : `{"debut", "fin", "texte"}`, 1 à 4 mots (18 caractères maximum), ponctuation et majuscules gardées, changement instantané.
+- Sous-titres normaux : `{"debut", "fin", "texte"}`, 1 à 4 mots (18 caractères maximum), ponctuation et majuscules gardées, changement instantané. Le découpage est fait par `construireGroupes` (moteur/scripts/preparer.mjs) : un petit mot en fin de sous-titre plein passe au suivant, un sous-titre de moins de 0,25 s est fusionné avec le suivant (22 caractères au plus), et un sous-titre s'efface dès qu'une animation affiche les mots suivants.
 - Phrases fortes : `{"debut", "fin", "lignes": [[{"mot", "role", "debut"}, ...], ...]}` avec les rôles `liaison`, `liaison_gras`, `appui`, `fort`, `choc` (un seul `choc` par bloc). Chaque mot passe du flou au net quand il est prononcé.
 - Ne change ni la taille ni la position sans demande de l'utilisateur. Position actuelle : ligne de base à 1440 px (75 %, au plus bas de la zone sûre), 143 px plus bas que la première vidéo, à sa demande. Les temps des mots viennent de Scribe (`outils/elevenlabs.py`).
 

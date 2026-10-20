@@ -13,3 +13,6 @@ projets/*/masques/
 moteur/public/masques/
 # musique composée par outils/musique_douce.py (régénérable)
 projets/*/media/musique_douce.wav
+
+# rushs des clients (vidéos privées, jamais dans le dépôt)
+projets/*/rush/
