@@ -27,11 +27,11 @@ Durée visée : entre 30 et 60 secondes.
 Tous les témoignages suivent la même trame, inspirée de la vidéo INCENDIE et de la vidéo de référence (texte derrière la tête, écrans animés) :
 
 1. **L'accroche (0–3 s)** : la meilleure phrase du client, avec un riser qui monte jusqu'au résultat, puis le résultat chiffré en très grand derrière sa tête (« ×3 »). Un titre court (« CHIFFRE D'AFFAIRES ») sous le visage, juste au-dessus des sous-titres.
-2. **La présentation** : nom en grand et fonction en petit, sous le visage.
+2. **La présentation** : nom en grand et fonction en petit, **exactement à l'endroit des sous-titres** (le nom sur la ligne des sous-titres). Les sous-titres s'effacent pendant ce temps, sinon ça fait décalé.
 3. **Les chiffres du client** (agences, ventes…) qui défilent sous le visage.
 4. **L'histoire**, en sous-titres INCENDIE, avec une phrase forte toutes les 5 à 7 secondes.
 5. **Des plans de coupe en plein écran** sur ce qui est concret (la ville, une recherche Google, une poignée de main…), choisis par l'agence.
-6. **Un ou deux mots clés derrière sa tête** (« COMPÉTENTES », « RIEN »).
+6. **Un ou deux mots clés derrière sa tête**, seulement des mots forts et intéressants (un résultat, une idée clé : « ×3 », « COMPÉTENTES »). Pas un mot faible comme « rien » : celui-là reste en sous-titre normal.
 7. **Un écran animé** quand il parle d'un outil (fenêtre ChatGPT qui arrive en 3D, question tapée, curseur qui clique). Jamais de réponse inventée.
 8. **Une carte en verre dépoli devant lui** pour ce que fait LOCALISY : les éléments s'affichent un à un, un repère ▶ descend.
 9. **Des pastilles** pour une deuxième énumération (ce qu'il mesure, ce qu'il obtient).
@@ -41,7 +41,7 @@ Tous les témoignages suivent la même trame, inspirée de la vidéo INCENDIE et
 
 ## Le texte derrière la tête
 
-Un mot géant, en noir légèrement transparent, comme imprimé sur le mur. Les lettres apparaissent une à une, puis le client passe devant (il est détouré image par image).
+Un mot géant, en noir légèrement transparent, comme imprimé sur le mur. Seulement pour un mot fort et intéressant (résultat chiffré, idée clé), jamais pour un mot faible. Les lettres apparaissent une à une, puis le client passe devant (il est détouré image par image).
 
 **Il doit rester parfaitement lisible** : on le place au-dessus de la tête, et seules quelques mèches de cheveux passent devant le bas des lettres. Jamais le visage devant le cœur d'une lettre, sinon ça ne sert à rien. Et rien ne cache jamais le visage.
 
@@ -60,7 +60,7 @@ Un mot géant, en noir légèrement transparent, comme imprimé sur le mur. Les 
 **Les phrases fortes**, pour les passages importants (comme « donc on touche des humains » dans INCENDIE), environ une toutes les 5 à 7 secondes :
 
 - 2 lignes (3 au plus si elles tiennent dans l'écran), au même endroit que les sous-titres normaux, serrées mais aérées.
-- Des mots de tailles différentes : les petits mots de liaison (« des », « avec une ») en petit et en trait fin, les mots d'appui plus grands, et un seul mot choc en gras, en très grand (« agence », « évoluer », « LOCALISY »).
+- **Des lignes en quinconce et quelques mots en gras**, avec des écarts de taille modérés : les petits mots de liaison (« des », « avec une ») en trait fin, à peu près à la taille normale ; les autres mots un peu plus grands (environ 1,3 fois) ; les mots importants en gras (environ 1,4 fois : « agence », « évoluer », « LOCALISY »). Pas de mot deux fois plus gros que les autres.
 - Un petit mot placé avant un gros mot est remonté, comme un exposant.
 - Les lignes sont un peu décalées les unes par rapport aux autres, en escalier.
 - Chaque mot apparaît au moment où il est prononcé, en passant du flou au net. À la fin, tout le bloc se floute et disparaît.
@@ -92,7 +92,7 @@ Plus d'icônes (épingle, courbe, cible…) : on en a trop vu. À la place, un p
 
 ## Le son
 
-La voix passe avant tout. Dessous, une musique douce et un peu tendance (lo-fi : piano électrique, basse ronde, rythmique feutrée), à volume bas : environ 17 dB sous la voix, et encore 6 dB de moins quand le client parle. Faute d'accès aux banques de musique, elle est composée par l'outil (donc libre de droits) ; on peut aussi fournir un morceau. Elle démarre quand l'accroche tombe. Les bruitages sont brefs et doux, jamais agaçants : un petit « woutch » (un souffle d'un quart de seconde) quand un titre, une carte ou un plan de coupe arrive, un mini-woutch pour les chiffres et les pastilles, un toc feutré et grave pour les coches. Aucune note aiguë (pas de scintillement, de « pop », de tics ni de bips). Pas de bruitage sur les zooms. Exception voulue par l'agence : l'accroche monte avec un riser qui s'arrête net quand le résultat tombe (« ×3 »), suivi d'un coup sourd.
+La voix passe avant tout. **Toujours une musique de fond** (je préfère les vidéos avec musique) : douce et un peu tendance (lo-fi : piano électrique, basse ronde, rythmique feutrée), à volume bas, environ 17 dB sous la voix et encore 6 dB de moins quand le client parle. Faute d'accès aux banques de musique, elle est composée par l'outil (donc libre de droits) ; je peux aussi fournir un morceau. Elle démarre quand l'accroche tombe. Les bruitages sont brefs et doux, jamais agaçants : un petit « woutch » (un souffle d'un quart de seconde) quand un titre, une carte ou un plan de coupe arrive, un mini-woutch pour les chiffres et les pastilles, un toc feutré et grave pour les coches. Aucune note aiguë (pas de scintillement, de « pop », de tics ni de bips). Pas de bruitage sur les zooms. Exception voulue par l'agence : l'accroche monte avec un riser qui s'arrête net quand le résultat tombe (« ×3 »), suivi d'un coup sourd.
 
 Volume final : -14 LUFS, le niveau attendu par les réseaux sociaux.
 
@@ -147,6 +147,8 @@ Attention, « localisé » et « localiser » sont de vrais mots français. On �
 - [ ] Rien ne cache le visage du client : ni titre, ni chiffre, ni pastille.
 - [ ] Les sous-titres ont le rendu de la vidéo INCENDIE, à 75 % de la hauteur, avec des phrases fortes bien aérées sur les passages importants.
 - [ ] Aucun mot affiché en grand n'est répété dans les sous-titres.
+- [ ] La présentation (nom, fonction) est à l'endroit des sous-titres.
+- [ ] La musique de fond est là, à volume bas.
 - [ ] Tout texte derrière la tête est parfaitement lisible.
 - [ ] Orthographe et polices (Figtree uniquement) relues sur chaque texte.
 - [ ] LOCALISY est bien écrit partout.

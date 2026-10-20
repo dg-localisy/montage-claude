@@ -30,6 +30,19 @@ Ce dépôt sert à monter automatiquement les vidéos de l'agence LOCALISY (tém
 
 Repères de la charte : noir #000000, blanc #FFFFFF, et c'est tout : plus d'orange dans les vidéos (demande de l'utilisateur). Les mots importants ressortent en italique avec un relief noir (`mise_en_evidence` dans la charte). Formats 9:16 (1080×1920) et 4:5 (1080×1350). Son final à -14 LUFS, crête à -1 dBTP. LOCALISY s'écrit toujours en majuscules.
 
+## Préférences de l'utilisateur pour toutes les vidéos
+
+À appliquer par défaut à chaque nouveau témoignage (détails dans `MON-STYLE.md`) :
+- Noir et blanc uniquement, police Figtree, rien ne cache jamais le visage.
+- Sous-titres de la vidéo INCENDIE (`premiere_video`), à 75 % de la hauteur. Phrases fortes sur les passages importants : lignes en quinconce, quelques mots en gras, **écarts de taille modérés** (rôles `appui` et `fort` surtout, `choc` très rarement ; échelles dans la charte).
+- Pas de doublon : un mot affiché en grand n'est pas répété dans les sous-titres.
+- Présentation (nom + fonction) **à l'endroit des sous-titres**, qui s'effacent pendant ce temps (`remplace_temps` sur l'accroche de présentation).
+- Texte derrière la tête seulement pour un mot fort et intéressant (résultat, idée clé), parfaitement lisible ; jamais pour un mot faible (« rien » refusé).
+- Accroche : riser + résultat géant derrière la tête. Plans de coupe choisis par l'utilisateur. Carte en verre bien sous le visage.
+- **Toujours une musique de fond** douce et tendance, à volume bas (`outils/musique_douce.py`, ou un morceau fourni). L'utilisateur préfère la version avec musique.
+- Bruitages brefs, doux et variés. Pas de logo à la fin.
+- Livrer seulement le 9:16, sauf demande.
+
 ## Les outils
 
 ### Dérush automatique : `outils/derush.py`

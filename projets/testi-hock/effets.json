@@ -31,7 +31,7 @@
       },
       {
        "mot": "agence.",
-       "role": "choc"
+       "role": "fort"
       }
      ]
     ]
@@ -48,7 +48,7 @@
      [
       {
        "mot": "évoluer,",
-       "role": "choc"
+       "role": "fort"
       }
      ]
     ]
@@ -91,7 +91,7 @@
       },
       {
        "mot": "vite",
-       "role": "choc"
+       "role": "fort"
       }
      ]
     ]
@@ -108,7 +108,7 @@
      [
       {
        "mot": "LOCALISY",
-       "role": "choc"
+       "role": "fort"
       }
      ]
     ]
@@ -125,7 +125,7 @@
      [
       {
        "mot": "mesurer",
-       "role": "choc"
+       "role": "fort"
       },
       {
        "mot": "les leads.",
@@ -216,12 +216,11 @@
    "fin": 6.2,
    "surtitre": "Fondateur · L'Immobilière Hock",
    "titre": "Gary Hock",
-   "remplace": [
-    "Gary",
-    "Hock",
-    "fondateur",
-    "de",
-    "L'Immobilière"
+   "remplace_temps": [
+    [
+     3.68,
+     6.2
+    ]
    ]
   },
   {
@@ -298,17 +297,6 @@
    "fin": 25.85,
    "question": "Quelle agence immobilière choisir à Liège ?",
    "_note": "Animation façon ChatGPT demandée par l'utilisateur sur « tout ce qui est IA » : la question se tape et s'envoie, pas de réponse inventée."
-  },
-  {
-   "type": "texte_derriere",
-   "debut": 26.3,
-   "fin": 27.28,
-   "texte": "RIEN",
-   "taille": 300,
-   "y": 228,
-   "remplace": [
-    "rien"
-   ]
   },
   {
    "type": "plan_de_coupe",
