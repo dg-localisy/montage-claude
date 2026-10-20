@@ -123,9 +123,28 @@ const RECETTES = {
     '-af', 'highpass=f=1800,lowpass=f=7000'],
 };
 
-export function genererSons(dossier = path.join(RACINE, 'public', 'sons'), forcer = false) {
+// Sons fournis par l'utilisateur (charte → moteur.sons.fournis) : ils remplacent le son fabriqué du même nom.
+// Chaque son est coupé pour durer « duree_s » et finir à « fin_s » dans le fichier d'origine (ex. la coupure d'un riser),
+// avec une entrée en fondu ; puis ramené à -1 dBFS de crête comme les autres.
+function preparerFourni(nom, f, dossier, racineDepot) {
+  const source = path.join(racineDepot, f.fichier);
+  const brut = path.join(dossier, `${nom}.brut.wav`);
+  const sortie = path.join(dossier, `${nom}.wav`);
+  const debut = Math.max(0, f.fin_s - f.duree_s);
+  const duree = f.fin_s - debut;
+  ffmpeg(['-ss', debut.toFixed(3), '-t', duree.toFixed(3), '-i', source, '-af',
+    `afade=t=in:d=${f.fondu_entree_s ?? 0.15},afade=t=out:st=${(duree - 0.006).toFixed(3)}:d=0.006`, '-ac', '2', '-ar', String(SR), brut]);
+  const mesure = spawnSync('ffmpeg', ['-hide_banner', '-i', brut, '-af', 'volumedetect', '-f', 'null', '-'], {encoding: 'utf8'});
+  const m = (mesure.stderr || '').match(/max_volume:\s*(-?[\d.]+) dB/);
+  ffmpeg(['-i', brut, '-af', `volume=${(-1 - (m ? parseFloat(m[1]) : 0)).toFixed(2)}dB`, '-ac', '2', '-ar', String(SR), sortie]);
+  fs.rmSync(brut);
+}
+
+export function genererSons(dossier = path.join(RACINE, 'public', 'sons'), forcer = false, fournis = {}, racineDepot = path.resolve(RACINE, '..')) {
   fs.mkdirSync(dossier, {recursive: true});
+  for (const [nom, f] of Object.entries(fournis || {})) if (!nom.startsWith('_')) preparerFourni(nom, f, dossier, racineDepot);
   for (const [nom, recette] of Object.entries(RECETTES)) {
+    if (fournis && fournis[nom]) continue;
     const sortie = path.join(dossier, `${nom}.wav`);
     if (fs.existsSync(sortie) && !forcer) continue;
     const brut = path.join(dossier, `${nom}.brut.wav`);

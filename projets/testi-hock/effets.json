@@ -241,7 +241,8 @@
    "fin": 9.38,
    "fichier": "media/liege_vue_aerienne.mp4",
    "debut_clip": 0,
-   "_source": "Clip libre de droits choisi par l'utilisateur (vue aérienne de ville, 3840×2160), passage 1,0–2,8 s recadré en vertical. Sur « province de Liège »."
+   "_source": "Clip libre de droits choisi par l'utilisateur (vue aérienne de ville, 3840×2160), passage 1,0–2,8 s recadré en vertical. Sur « province de Liège ».",
+   "son_entree": "transition_oxid"
   },
   {
    "type": "chiffre",
@@ -296,7 +297,8 @@
    "debut": 23.4,
    "fin": 25.85,
    "question": "Quelle agence immobilière choisir à Liège ?",
-   "_note": "Animation façon ChatGPT demandée par l'utilisateur sur « tout ce qui est IA » : la question se tape et s'envoie, pas de réponse inventée."
+   "_note": "Animation façon ChatGPT demandée par l'utilisateur sur « tout ce qui est IA » : la question se tape et s'envoie, pas de réponse inventée.",
+   "son_entree": "transition_oxid"
   },
   {
    "type": "plan_de_coupe",

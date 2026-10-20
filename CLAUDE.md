@@ -41,6 +41,7 @@ Repères de la charte : noir #000000, blanc #FFFFFF, et c'est tout : plus d'oran
 - Accroche : riser + résultat géant derrière la tête. Plans de coupe choisis par l'utilisateur. Carte en verre bien sous le visage.
 - **Toujours une musique de fond** douce et tendance, à volume bas (`outils/musique_douce.py`, ou un morceau fourni). L'utilisateur préfère la version avec musique.
 - Bruitages brefs, doux et variés. Pas de logo à la fin.
+- Sons fournis par l'utilisateur dans `sons_fournis/` (déclarés dans la charte, `moteur.sons.fournis`) : le riser cinématique pour l'accroche (il remplace le riser fabriqué) et `transition_oxid`, son bruit de transition préféré, à mettre sur une ou deux transitions par vidéo (`"son_entree": "transition_oxid"` sur un `plan_de_coupe` ou un `ecran_chat`).
 - Livrer seulement le 9:16, sauf demande.
 
 ## Les outils

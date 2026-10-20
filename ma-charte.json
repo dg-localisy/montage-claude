@@ -646,15 +646,21 @@
         "woutch": 0.11,
         "woutch_court": 0.12,
         "tap": 0.25,
-        "riser": 0.2,
+        "riser": 0.13,
         "chute": 0.15,
         "swoosh": 0.1,
         "woutch_grave": 0.14,
         "pop_doux": 0.16,
         "impact_doux": 0.17,
-        "clic": 0.12
+        "clic": 0.12,
+        "transition_oxid": 0.25
       },
       "riser_duree_s": 2.0,
+      "fournis": {
+        "_note": "Sons fournis par l'utilisateur (dossier sons_fournis/ du dépôt) : ils remplacent le son fabriqué du même nom. fin_s = moment du fichier où le son doit finir (ex. coupure d'un riser), duree_s = durée gardée.",
+        "riser": {"fichier": "sons_fournis/riser_cinematique.mp3", "fin_s": 3.714, "duree_s": 2.0, "fondu_entree_s": 0.15, "origine": "Riser cinématique fourni par l'utilisateur (Pixabay, Dragon Studio, cinematic riser 03). Il monte puis s'arrête net : la coupure tombe pile sur l'accroche (« ×3 »)."},
+        "transition_oxid": {"fichier": "sons_fournis/transition_oxid.mp3", "fin_s": 1.272, "duree_s": 1.272, "fondu_entree_s": 0.005, "avance_s": 0.15, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, OxidVideos, transition sfx 2), qu'il aime bien. Sommet à 0,15 s : placé 0,15 s avant la coupe. À utiliser sur une ou deux transitions par vidéo (son_entree), pour varier."}
+      },
       "preferences": "Bruitages brefs et doux, jamais agaçants, et variés selon l'animation (demande de l'utilisateur) : riser + coup sourd pour l'accroche ; woutch (titre), woutch grave (présentation, carte en verre), swoosh ample (plans de coupe, écran qui arrive), mini-woutch (chiffres), petite bulle grave (pastilles), toc feutré (éléments de la carte), petit coup sourd (mot derrière la tête), frappes de clavier très douces et clic de souris (écran ChatGPT). Aucune note aiguë. Pas de bruitage sur les zooms."
     },
     "musique": {

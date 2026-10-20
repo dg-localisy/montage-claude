@@ -236,6 +236,8 @@ function sonsPour(e, M) {
   const v = M.sons.volumes;
   const s = (nom, debut, facteur = 1) => ({fichier: `sons/${nom}.wav`, debut: Math.max(0, debut), volume: +(v[nom] * facteur).toFixed(3), effet: e.type});
   const t = e._t || {};
+  // son d'entrée choisi pour cette animation (« son_entree », ex. un son fourni par l'utilisateur), sinon le son par défaut
+  const entree = (defaut, avance) => (e.son_entree ? s(e.son_entree, e.debut - ((M.sons.fournis || {})[e.son_entree]?.avance_s ?? 0.15)) : s(defaut, e.debut - avance));
   // Bruitages brefs et doux (demande de l'utilisateur) : woutch pour les entrées, mini-woutch pour les petits
   // éléments, toc feutré pour les coches. Aucun son sur les zooms.
   switch (e.type) {
@@ -245,9 +247,9 @@ function sonsPour(e, M) {
     case 'icone': return [s('woutch_court', e.debut)];
     case 'chiffre': return [s('woutch_court', t.comptage[0])];
     case 'liste': return e.temps.map((c) => s('pop_doux', c));
-    case 'plan_de_coupe': return [s('swoosh', e.debut - 0.18)];
+    case 'plan_de_coupe': return [entree('swoosh', 0.18)];
     // écran ChatGPT : il arrive (swoosh), quelques frappes de clavier très douces pendant la saisie, clic de souris sur « envoyer »
-    case 'ecran_chat': return [s('swoosh', e.debut - 0.12),
+    case 'ecran_chat': return [entree('swoosh', 0.12),
       ...Array.from({length: Math.floor(e.question.length / 3)}, (_, i) => s('frappe', t.frappe + (3 * i) / t.vitesse, i % 2 ? 0.6 : 0.9)),
       s('clic', t.envoi - 0.04)];
     // l'accroche principale monte avec un riser qui s'arrête net quand le chiffre tombe (« ×3 »), puis un coup sourd
@@ -281,7 +283,7 @@ export function preparer(cheminEffets) {
 
   copierPolices(charte);
   copierMarque(charte);
-  genererSons(path.join(PUBLIC, 'sons'));
+  genererSons(path.join(PUBLIC, 'sons'), false, M.sons.fournis, REPO);
 
   const rush = effetsJson.rush;
   const videoSource = chemin(rush.video);
