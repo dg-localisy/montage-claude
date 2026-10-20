@@ -135,10 +135,6 @@ function calerPhrasesFortes(blocs, mots) {
   });
 }
 
-const PETITS_MOTS = ['le', 'la', 'les', "l'", 'un', 'une', 'des', 'du', 'de', "d'", 'au', 'aux', 'à', 'en', 'et', 'ou', 'mais', 'sur', 'dans', 'pour', 'par', 'avec',
-  'sans', 'chez', 'qui', 'que', "qu'", 'ce', 'ces', 'cet', 'cette', 'mon', 'ma', 'mes', 'ton', 'ta', 'tes', 'son', 'sa', 'ses', 'notre', 'nos', 'votre', 'vos',
-  'leur', 'leurs', 'je', "j'", 'il', 'elle', 'on', 'nous', 'vous', 'ils', 'elles', 'ne', "n'", 'se', "s'", 'y'];
-
 export function construireGroupes(mots, regles) {
   const groupes = [];
   let courant = [];
@@ -147,42 +143,15 @@ export function construireGroupes(mots, regles) {
     if (courant.length) groupes.push({mots: courant, debut: courant[0].debut, fin: courant[courant.length - 1].fin});
     courant = [];
   };
-  // un sous-titre coupé parce qu'il est plein ne finit pas par un petit mot (« la », « des », « qui »…) :
-  // ce mot passe au sous-titre suivant, avec le mot qu'il annonce (« qui passent / la porte », pas « qui passent la / porte »)
-  const petits = new Set((regles.petits_mots || PETITS_MOTS).map(normaliser));
   for (const m of mots) {
     if (courant.length) {
       const dernier = courant[courant.length - 1];
-      if (m.debut - dernier.fin > regles.pause_coupure_s) pousser();
-      else if (courant.length >= regles.max_mots || texte([...courant, m]).length > regles.max_caracteres) {
-        const reporte = [];
-        while (courant.length > 1 && petits.has(normaliser(courant[courant.length - 1].texte))) reporte.unshift(courant.pop());
-        if (courant.every((x) => petits.has(normaliser(x.texte)))) {
-          // il ne resterait que des petits mots (« sur ») : tout passe ensemble au sous-titre suivant s'il reste lisible
-          courant.push(...reporte);
-          if (texte([...courant, m]).length > regles.max_caracteres + 4) pousser();
-        } else {
-          pousser();
-          courant = reporte;
-        }
-      }
+      if (courant.length >= regles.max_mots || texte([...courant, m]).length > regles.max_caracteres || m.debut - dernier.fin > regles.pause_coupure_s) pousser();
     }
     courant.push(m);
     if (/[.,!?;:…]$/.test(m.texte)) pousser();
   }
   pousser();
-  // un sous-titre qui resterait moins d'un quart de seconde (débit rapide) est fusionné avec le suivant, s'il reste court
-  const dureeMin = regles.duree_min_s ?? 0.25;
-  for (let i = 0; i < groupes.length - 1; i++) {
-    const g = groupes[i];
-    const s = groupes[i + 1];
-    const tous = [...g.mots, ...s.mots];
-    if (s.debut - g.debut < dureeMin && !/[.,!?;:…]$/.test(g.mots[g.mots.length - 1].texte) && s.debut - g.fin <= regles.pause_coupure_s
-      && texte(tous).length <= regles.max_caracteres + 4 && tous.length <= regles.max_mots + 1) {
-      groupes.splice(i, 2, {mots: tous, debut: g.debut, fin: s.fin});
-      i--;
-    }
-  }
   groupes.forEach((g, i) => {
     const suivant = groupes[i + 1];
     g.fin_affichage = Math.min(suivant ? suivant.debut : Infinity, g.fin + regles.maintien_apres_s);
@@ -222,8 +191,14 @@ function calculerTemps(e, M) {
     const n = e.texte.replace(/\s/g, '').length;
     t.lettres = Array.from({length: n}, (_, i) => e.debut + i * (e.intervalle ?? T.intervalle_lettres_s));
   }
-  if (e.type === 'carte_verre') {
+  if (e.type === 'carte_verre' || e.type === 'frise' || e.type === 'bilan') {
     t.items = e.items.map((_, i) => (e.temps && e.temps[i] !== undefined ? e.temps[i] : e.debut + 0.4 + i * 0.8));
+  }
+  if (e.type === 'titre_bandeau') {
+    t.lignes = e.lignes || decouperTitre(e.titre.toUpperCase(), 3, e.variante === 'nom' ? 22 : 13);
+  }
+  if (e.type === 'compteur') {
+    t.comptage = [e.debut + 0.15, e.debut + 0.15 + (e.duree_comptage ?? M.etiquettes.duree_comptage_s)];
   }
   if (e.type === 'ecran_chat') {
     // la question se tape assez vite pour laisser au moins reflexion_min_s à l'assistant qui « réfléchit »
@@ -284,8 +259,13 @@ function sonsPour(e, M) {
       ...Array.from({length: Math.floor(e.question.length / 3)}, (_, i) => s('frappe', t.frappe + (3 * i) / t.vitesse, i % 2 ? 0.6 : 0.9)),
       s('clic', t.envoi - 0.04)];
     // l'accroche principale monte avec un riser qui s'arrête net quand le chiffre tombe (« ×3 »), puis un coup sourd
-    case 'texte_derriere': return e.riser ? [s('riser', e.debut - M.sons.riser_duree_s), s('chute', e.debut)] : [s('impact_doux', e.debut)];
+    case 'texte_derriere': return e.riser ? [s('riser', e.debut - M.sons.riser_duree_s), s('chute', e.debut)] : [e.entree === 'montee' ? s('woutch_grave', e.debut) : s('impact_doux', e.debut)];
     case 'carte_verre': return [s('woutch_grave', e.debut - 0.05), ...t.items.map((c) => s('tap', c, 0.8))];
+    // famille « étiquettes » : d'autres sons que les cartes en verre et les pastilles, pour varier
+    case 'titre_bandeau': return e.variante === 'nom' ? [s('woutch_grave', e.debut, 0.8)] : [s('woutch', e.debut)];
+    case 'compteur': return [s('woutch_court', e.debut), s('tap', t.comptage[1], 0.7)];
+    case 'frise': return [s('woutch_grave', e.debut - 0.05), ...t.items.map((c) => s('pop_doux', c, 0.9))];
+    case 'bilan': return [...t.items.map((c) => s('tap', c, 0.8)), ...(e.barrer ? [s('woutch_court', e.barrer.temps, 0.8)] : [])];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
     case 'transition': return [entree('woutch', 0.13)];
     case 'carte_fin': return [s('woutch', e.debut)];

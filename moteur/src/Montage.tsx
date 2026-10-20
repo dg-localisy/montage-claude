@@ -7,6 +7,7 @@ import {Carte} from './couches/Carte';
 import {CarteVerre} from './couches/CarteVerre';
 import {Chiffre} from './couches/Chiffre';
 import {EcranChat} from './couches/EcranChat';
+import {Bilan, Compteur, Frise, TitreBandeau} from './couches/Etiquettes';
 import {GrandTitre} from './couches/GrandTitre';
 import {Icone} from './couches/Icone';
 import {Liste} from './couches/Liste';
@@ -46,6 +47,10 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
       {de('carte_verre').map((e: any) => <CarteVerre key={e.id} e={e} charte={charte} />)}
       {de('liste').map((e: any) => <Liste key={e.id} e={e} charte={charte} />)}
       {de('chiffre').map((e: any) => <Chiffre key={e.id} e={e} charte={charte} />)}
+      {de('frise').map((e: any) => <Frise key={e.id} e={e} charte={charte} />)}
+      {de('bilan').map((e: any) => <Bilan key={e.id} e={e} charte={charte} />)}
+      {de('compteur').map((e: any) => <Compteur key={e.id} e={e} charte={charte} />)}
+      {de('titre_bandeau').map((e: any) => <TitreBandeau key={e.id} e={e} charte={charte} />)}
       {de('grand_titre').map((e: any) => <GrandTitre key={e.id} e={e} charte={charte} />)}
       {de('accroche').map((e: any) => <Accroche key={e.id} e={e} charte={charte} projet={projet} />)}
       <SousTitres projet={projet} charte={charte} />

@@ -9,7 +9,7 @@ const valeurZoom = (z: Zoom, x: number, coupes: number[], duree: number) => {
   if (x < z.debut) return 1;
   const finMaintien = z.fin ?? coupes.find((c) => c > z.debut + z.duree) ?? duree;
   if (x < z.debut + z.duree) return lerp(1, z.a, easeInOut((x - z.debut) / z.duree));
-  if (x < finMaintien) return z.a;
+  if (x < finMaintien || (z.fin === undefined && finMaintien >= duree)) return z.a;
   if (z.fin !== undefined && x < z.fin + z.duree) return lerp(z.a, 1, easeInOut((x - z.fin) / z.duree));
   return 1;
 };
@@ -48,7 +48,8 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
   // pas de cadrage serré sur un plan où s'affiche une liste de pastilles ou une carte en verre (elle reste sous le menton)
   const listeSurLePlan = projet.effets.some((e: any) => e.type === 'liste' && e.debut < finPlan && e.fin > debutPlan);
   const verreSurLePlan = projet.effets.some((e: any) => e.type === 'carte_verre' && e.debut < finPlan && e.fin > debutPlan);
-  const cadrage = Math.min(cam.cadrages[k % cam.cadrages.length], listeSurLePlan ? M.liste.cadrage_max : Infinity, verreSurLePlan ? M.carte_verre.cadrage_max : Infinity);
+  const etiquettesSurLePlan = projet.effets.some((e: any) => (e.type === 'frise' || e.type === 'bilan') && e.debut < finPlan && e.fin > debutPlan);
+  const cadrage = Math.min(cam.cadrages[k % cam.cadrages.length], listeSurLePlan ? M.liste.cadrage_max : Infinity, verreSurLePlan ? M.carte_verre.cadrage_max : Infinity, etiquettesSurLePlan ? M.etiquettes.cadrage_max : Infinity);
   const decalage = cam.decalages_x[k % cam.decalages_x.length] * W;
   const avancee = 1 + cam.avancee * prog(t, debutPlan, finPlan);
 

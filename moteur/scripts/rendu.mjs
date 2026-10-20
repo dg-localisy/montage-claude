@@ -79,6 +79,10 @@ function instantsDeControle(projet) {
       case 'signature': ajouter(e.debut + 0.15, 'signature : fondu'); ajouter(Math.min(e.fin, projet.duree) - 0.05, 'signature'); break;
       case 'liste': (e.temps || []).forEach((x, i) => ajouter(x + 0.3, `pastille ${i + 1}`)); ajouter(Math.min(e.fin, projet.duree) - 0.3, 'pastilles : toutes'); break;
       case 'plan_de_coupe': ajouter(e.debut + 0.3, 'plan de coupe : début'); ajouter(e.fin - 0.2, 'plan de coupe : fin'); break;
+      case 'titre_bandeau': ajouter(e.debut + 0.15, 'bandeau : balayage'); ajouter(e.debut + 0.8, 'bandeau : posé'); break;
+      case 'compteur': ajouter((T.comptage[0] + T.comptage[1]) / 2, 'compteur : défile'); ajouter(T.comptage[1] + 0.4, 'compteur : arrivé'); break;
+      case 'frise': case 'bilan': (T.items || []).forEach((x, i) => ajouter(x + 0.35, `${e.type} ${i + 1}`)); ajouter(Math.min(e.fin, projet.duree) - 0.35, `${e.type} : complet`); if (e.barrer) ajouter(e.barrer.temps + 0.4, 'bilan : rayé'); break;
+      case 'texte_derriere': ajouter(e.debut + 0.12, 'texte derrière : entrée'); ajouter(e.debut + 0.7, 'texte derrière : posé'); break;
       case 'carte':
         ajouter(e.debut + 0.22, 'carte : réduction');
         if (e.animation === 'chat_ia') { ajouter((T.frappe + T.finFrappe) / 2, 'chat : frappe'); ajouter((T.points[0] + T.points[1]) / 2, 'chat : « écrit… »'); ajouter(T.finReponse + 0.2, 'chat : réponse'); }

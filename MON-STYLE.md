@@ -53,8 +53,6 @@ Un mot géant, en noir légèrement transparent, comme imprimé sur le mur. Seul
 
 - Figtree Light, en blanc, avec une ombre noire douce vers le bas à droite.
 - 1 à 4 mots à la fois (18 caractères maximum), sur une seule ligne.
-- On coupe aux bons endroits : un petit mot (« la », « des », « qui »…) ne finit jamais un sous-titre, il passe au suivant avec le mot qu'il annonce (« qui passent / la porte »).
-- Aucun sous-titre ne reste moins d'un quart de seconde : quand la personne parle vite, deux sous-titres courts sont réunis (jusqu'à 22 caractères).
 - Centrés, aux trois quarts de la hauteur de l'image (75 %), toujours au même endroit.
 - Une majuscule en début de phrase et la ponctuation gardée (points, virgules, guillemets).
 - Aucune animation : un groupe remplace l'autre d'un coup. Rien à l'écran pendant les silences.
@@ -77,6 +75,9 @@ Titres en Figtree Black, en MAJUSCULES, sous le visage, juste au-dessus des sous
 Les données clés sont en très grand (« chiffres grands écrans ») : un résultat comme « ×3 » ne doit jamais paraître léger. Les autres chiffres montent vite en compteur (une demi-seconde), de 0 jusqu'à la valeur, sous le visage. Tout est blanc ou noir.
 
 ## Écrans et cartes
+
+**Des cadres et des effets nouveaux à chaque vidéo** : on ne reprend pas ceux de la vidéo précédente, pour que chaque témoignage ait sa propre personnalité (toujours en noir et blanc, en Figtree). Les sous-titres, eux, ne changent jamais. Deux familles existent déjà : le verre dépoli (Gary) et les étiquettes noires (Cheminées Liégeois : titre en bandeaux, compteur à rouleaux, frise chronologique, bilan coché et rayé).
+
 
 - **Carte en verre dépoli** devant le client, bien sous le visage et au-dessus des sous-titres : verre sombre, bord blanc lumineux, légère perspective. Les éléments apparaissent quand ils sont dits.
 - **Écran animé** (interface en 3D sur fond sombre, curseur qui clique) pour un outil ou un site.

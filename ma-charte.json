@@ -691,6 +691,26 @@
       "ecart_px": 12,
       "description": "Pastilles sous le visage, une par élément, qui glissent quand elles sont dites et restent affichées.",
       "cadrage_max": 1.08
+    },
+    "etiquettes": {
+      "description": "Deuxième famille de cadres (créée pour le témoignage Cheminées Liégeois, l'utilisateur voulait des cadres et effets différents de ceux de Gary) : étiquettes noires à angles droits, texte blanc Figtree, barre blanche sur le bord gauche, dévoilées par un balayage de gauche à droite. Lisibles sur un vêtement clair. Types : titre_bandeau (accroche ; variante « nom » pour la présentation), compteur (chiffre à rouleaux + légende en étiquette blanche), frise (étapes d'une histoire), bilan (ce qui marche est coché, ce qui ne marche pas est rayé).",
+      "opacite_fond": 0.9,
+      "barre_px": 6,
+      "duree_balayage_s": 0.32,
+      "duree_sortie_s": 0.28,
+      "decalage_bandes_s": 0.12,
+      "ecart_bandes_px": 10,
+      "marge_sous_titres_px": 46,
+      "titre_taille_px": 82,
+      "nom_taille_px": 54,
+      "surtitre_taille_px": 26,
+      "compteur_taille_px": 140,
+      "compteur_y": 1150,
+      "legende_taille_px": 34,
+      "duree_comptage_s": 0.85,
+      "cadrage_max": 1.08,
+      "frise": {"x": 170, "y": 930, "titre_taille_px": 32, "texte_taille_px": 38, "etape_taille_px": 22, "hauteur_rangee_px": 88},
+      "bilan": {"y": 1010, "texte_taille_px": 46}
     }
   },
   "marque": {

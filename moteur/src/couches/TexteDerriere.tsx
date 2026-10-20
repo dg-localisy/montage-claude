@@ -19,6 +19,38 @@ export const TexteDerriere: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const hauteur = lignes.length * taille * T.interligne;
   let k = 0;
 
+  // entrée « impact » : tout le mot tombe d'un coup (léger zoom arrière + flou qui se dissipe), puis grossit très lentement
+  // entrée « montee » : le mot sort de derrière une ligne invisible (la tête), lettre après lettre, de bas en haut
+  if (e.entree === 'impact' || e.entree === 'montee') {
+    const impact = e.entree === 'impact';
+    const a = easeOut(prog(t, e.debut, e.debut + (impact ? 0.24 : 0.5)));
+    const derive = 1 + 0.02 * prog(t, e.debut, e.fin);
+    return (
+      <div
+        style={{
+          position: 'absolute', left: (e.x ?? W / 2) - W, width: 2 * W, top: (e.y ?? T.y) - hauteur / 2 - (impact ? 0 : taille * 0.2), height: impact ? undefined : hauteur + taille * 0.24,
+          overflow: impact ? 'visible' : 'hidden', textAlign: 'center', fontFamily: T.police, fontSize: taille, lineHeight: T.interligne, letterSpacing: `${T.interlettrage_em}em`,
+          color: e.couleur ?? T.couleur, opacity: (e.opacite ?? T.opacite) * (1 - sortie), whiteSpace: 'pre',
+          filter: sortie > 0 ? `blur(${(sortie * 10).toFixed(1)}px)` : 'none',
+        }}
+      >
+        <div style={{paddingTop: impact ? 0 : taille * 0.2, transform: `scale(${((impact ? 1.32 - 0.32 * a : 1) * derive).toFixed(4)})`, transformOrigin: '50% 60%',
+          opacity: impact ? Math.min(1, a * 3) : 1, filter: impact && a < 1 ? `blur(${((1 - a) * 16).toFixed(1)}px)` : 'none'}}>
+          {lignes.map((ligne, li) => (
+            <div key={li}>
+              {ligne.split('').map((ch, ci) => {
+                if (impact) return <span key={ci}>{ch}</span>;
+                const d = e.debut + ci * (e.intervalle ?? 0.04);
+                const m = easeOut(prog(t, d, d + 0.42));
+                return <span key={ci} style={{display: 'inline-block', transform: `translateY(${((1 - m) * 1.05 * taille).toFixed(1)}px)`}}>{ch === ' ' ? ' ' : ch}</span>;
+              })}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
