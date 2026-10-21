@@ -1,5 +1,5 @@
 {
-  "_aide": "Témoignage Black and Bike, version 2. Effets inspirés de la vidéo de référence « Claude Edit », variés à la demande de l'utilisateur (v2 : plus de pages blanches à code-barres ; mots empilés sur le buste, barre de recherche IA, barres avant/aujourd'hui, page sombre avec flèche, zooms sur certains passages), en noir et blanc et Figtree ; sous-titres INCENDIE inchangés. Temps en secondes, sur rush/rush_final.mp4 (rush client, hors git) = accroche « C'est un taux de fréquentation qui a doublé » (52,76–55,00 s du fichier reçu), puis tout le fichier reçu (décalage +2,24 s). Rendu : cd moteur && node scripts/rendu.mjs ../projets/black-and-bike/effets.json --nom black-and-bike --sans-4x5, puis outils/son_final.py. Mots : « ben » retirés, « un virgule cinq » écrit « 1,5 », LOCALISY corrigé. Pas d'objet dans les pages (l'utilisateur les fournira), pas de plan de coupe fourni.",
+  "_aide": "Témoignage Black and Bike, version 2. Effets inspirés de la vidéo de référence « Claude Edit », variés à la demande de l'utilisateur (v2 : plus de pages blanches à code-barres ; barre de recherche IA, barres avant/aujourd'hui, page sombre avec flèche, zooms sur certains passages), en noir et blanc et Figtree ; sous-titres INCENDIE inchangés. Temps en secondes, sur rush/rush_final.mp4 (rush client, hors git) = accroche « C'est un taux de fréquentation qui a doublé » (52,76–55,00 s du fichier reçu), puis tout le fichier reçu (décalage +2,24 s). Rendu : cd moteur && node scripts/rendu.mjs ../projets/black-and-bike/effets.json --nom black-and-bike --sans-4x5, puis outils/son_final.py. Mots : « ben » retirés, « un virgule cinq » écrit « 1,5 », LOCALISY corrigé. Pas d'objet dans les pages (l'utilisateur les fournira), pas de plan de coupe fourni.",
   "duree": 60.2,
   "fps": 25,
   "rush": {
@@ -26,6 +26,40 @@
           [
             {
               "mot": "convaincu",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 4.28,
+        "lignes": [
+          [
+            {
+              "mot": "on a vraiment besoin d'une",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "agence",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 7.12,
+        "lignes": [
+          [
+            {
+              "mot": "parce que le monde évolue",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "très vite.",
               "role": "fort"
             }
           ]
@@ -225,7 +259,6 @@
   "effets": [
     {"type": "mot_souligne", "debut": 0.0, "fin": 2.24, "contexte": "C'est un taux de", "mot": "fréquentation", "y": 1335, "taille": 120, "remplace_temps": [[0.0, 2.24]], "_note": "Accroche : le mot en italique souligné à l'endroit des sous-titres, pendant qu'il le dit."},
     {"type": "texte_derriere", "debut": 1.78, "fin": 2.22, "texte": "×2", "taille": 400, "y": 200, "couleur": "#FFFFFF", "opacite": 0.96, "ombre": true, "entree": "traverse", "x_arrivee": 430, "x_depart_sortie": 650, "duree_entree": 0.13, "duree_sortie": 0.13, "riser": "riser_pulsations", "riser_duree": 1.7, "_note": "×2 passe au-dessus de sa tête de gauche à droite sur « doublé » et disparaît avant la phrase suivante (v2 : plus rapide, demande de l'utilisateur)."},
-    {"type": "titre_empile", "debut": 4.24, "fin": 8.74, "remplace_temps": [[4.24, 8.74]], "lignes": [{"texte": "on a vraiment besoin", "style": "petit"}, {"texte": "d'une agence", "style": "grand"}, {"texte": "de marketing en plus,", "style": "petit"}, {"texte": "parce que le monde évolue", "style": "petit"}, {"texte": "très vite.", "style": "evidence"}], "_note": "Phrase empilée sur le buste (style « COLLEGE STUDENT » de la référence), au lieu de la page blanche."},
     {"type": "mot_souligne", "debut": 14.68, "fin": 15.7, "mot": "impossible pour nous", "y": 1335, "taille": 96, "remplace_temps": [[14.68, 15.7]], "_note": "« Traiter en interne est » reste en sous-titres ; seul « impossible pour nous » passe dans l'effet (demande de l'utilisateur)."},
     {"type": "zoom", "debut": 15.72, "a": 1.15, "duree": 0.05, "fin": 17.9},
     {"type": "etiquettes_flottantes", "debut": 29.2, "fin": 33.6, "contexte": "Ils optimisent", "items": ["Campagnes Google", "Contenus du site", "Réseaux sociaux"], "y": 1265, "taille": 46, "pas": 88, "remplace_temps": [[28.7, 33.62]], "_note": "Au niveau des sous-titres et plus grandes (v2, demande de l'utilisateur)."},
