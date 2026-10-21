@@ -733,6 +733,12 @@
       "source_px": 22,
       "flottantes": {"y": 960, "pas_px": 70, "x_gauche": 520, "x_droite": 560, "texte_px": 34},
       "mot_souligne": {"y": 1180, "taille_px": 138}
+    },
+    "graphiques": {
+      "description": "Quatrième famille (Black and Bike v2), pour varier les effets dans une même vidéo : titre_empile (phrase empilée sur le buste, petites et grandes lignes, comme « COLLEGE STUDENT » dans la vidéo de référence), barre_recherche (barre de recherche IA qui se tape au rythme de la voix), barres_comparees (avant / aujourd'hui, résultat au bout). Noir et blanc, Figtree.",
+      "empile": {"y": 1100, "petit_px": 42, "grand_px": 100, "ecart_px": 6},
+      "recherche": {"y": 1385, "largeur_px": 900, "hauteur_px": 120, "texte_px": 50, "invite": "Demander à l'IA…"},
+      "barres": {"y": 1060, "largeur_px": 760, "hauteur_px": 58, "pas_px": 130}
     }
   },
   "marque": {

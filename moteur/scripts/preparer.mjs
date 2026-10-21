@@ -221,6 +221,20 @@ function calculerTemps(e, M, mots = []) {
     });
     t.elements = elements;
   }
+  if (e.type === 'titre_empile') {
+    // chaque ligne s'écrit mot à mot au rythme de la voix (temps imposé possible par ligne)
+    const depart = {i: -1};
+    t.lignes = e.lignes.map((l) => ({...l, mots: l.temps !== undefined ? l.texte.split(/\s+/).map((mot, k) => ({mot, debut: l.temps + k * 0.08})) : calerTexte(l.texte, mots, e.debut - 0.4, e.fin + 0.3, depart)}));
+  }
+  if (e.type === 'barre_recherche') {
+    // le texte se tape entre le premier et le dernier mot dit
+    const cale = calerTexte(e.texte, mots, e.debut - 0.3, e.fin + 0.3, {i: -1}, Infinity);
+    t.frappe = e.frappe ?? cale[0].debut;
+    t.finFrappe = e.fin_frappe ?? Math.max(t.frappe + 0.5, cale[cale.length - 1].debut + 0.3);
+  }
+  if (e.type === 'barres_comparees') {
+    t.lignes = e.lignes.map((l, i) => l.temps ?? e.debut + 0.25 + 0.35 * i);
+  }
   if (e.type === 'etiquettes_flottantes') {
     // chaque étiquette arrive quand son premier mot est dit (dans l'ordre)
     const depart = {i: -1};
@@ -328,6 +342,9 @@ function sonsPour(e, M) {
     // pages plein écran : entrée avec un bruit de transition (son_entree pour un son fourni), petit toc quand le mot clé ou le « vs » arrive
     case 'page': return [entree('swoosh', 0.1), ...t.elements.filter((el) => el.type === 'cle' || el.type === 'vs' || el.type === 'appel').map((el) => s('tap', el.debut, 0.7))];
     case 'etiquettes_flottantes': return t.items.map((c) => s('tap', c, 0.55));
+    case 'titre_empile': return t.lignes.filter((l) => l.style === 'grand' || l.style === 'evidence').map((l) => s('woutch_court', l.mots[0].debut, 0.8));
+    case 'barre_recherche': return [s('woutch_grave', e.debut, 0.8), ...Array.from({length: Math.floor(e.texte.length / 2)}, (_, i) => s('frappe', t.frappe + (2 * i / e.texte.length) * (t.finFrappe - t.frappe), i % 2 ? 0.6 : 0.9)), s('clic', t.finFrappe + 0.05)];
+    case 'barres_comparees': return [...t.lignes.map((c) => s('tap', c, 0.7)), s('woutch_court', e.cle, 0.9)];
     case 'mot_souligne': return [s('woutch_court', t.mot, 0.8), ...(e.ensuite ? [s('woutch_court', t.ensuite, 0.7)] : [])];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
     case 'transition': return [entree('woutch', 0.13)];

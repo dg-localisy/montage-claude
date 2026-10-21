@@ -61,7 +61,7 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const flash = (c: number) => Math.max(0, 1 - Math.abs(t - c) / flashAvant);
   const f = Math.max(e.flash === false ? 0 : flash(e.debut), e.flash === false || derniere ? 0 : flash(e.fin));
   const avecImage = elements.some((el) => el.type === 'image');
-  const iVs = elements.findIndex((el) => el.type === 'vs');
+  const iVs = elements.findIndex((el) => el.type === 'vs' || el.type === 'fleche');
   const apresVs = iVs >= 0 ? elements.slice(iVs + 1).find((el) => el.debut !== undefined) : null;
   // les éléments avant le « vs » s'estompent quand la deuxième idée arrive
   const estompe = apresVs ? 1 - 0.62 * easeOut(prog(t, apresVs.debut - 0.1, apresVs.debut + 0.3)) : 1;
@@ -122,6 +122,19 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
           </div>
         );
       }
+      case 'fleche': {
+        // flèche vers le bas (« on y arrive ») : la tige descend, puis la pointe se pose
+        const v = easeInOut(prog(t, el.debut, el.debut + 0.3));
+        const pointe = easeOut(prog(t, el.debut + 0.18, el.debut + 0.38));
+        const h = el.hauteur ?? 150;
+        return (
+          <svg key={k} width={120} height={h} viewBox={`0 0 120 ${h}`} style={{overflow: 'visible'}}>
+            <line x1={60} y1={8} x2={60} y2={8 + (h - 36) * v} stroke={encre} strokeWidth={11} strokeLinecap="round" />
+            <path d={`M 22 ${h - 50} L 60 ${h - 12} L 98 ${h - 50}`} fill="none" stroke={encre} strokeWidth={11} strokeLinecap="round" strokeLinejoin="round"
+              opacity={pointe} transform={`translate(0 ${((1 - pointe) * -14).toFixed(1)})`} />
+          </svg>
+        );
+      }
       case 'image': {
         // objet fourni par l'utilisateur : passe du flou au net, flotte doucement, petite ombre au sol
         const a = easeOut(prog(t, el.debut, el.debut + 0.55));
@@ -145,7 +158,7 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
     <AbsoluteFill>
       {visible && (
         <AbsoluteFill style={{background: clair ? P.fond_clair : P.fond_sombre, filter: entree < 1 ? `blur(${((1 - entree) * 10).toFixed(1)}px)` : 'none', color: encre}}>
-          <div style={{position: 'absolute', top: P.code_barres_y, left: (W - 120) / 2, opacity: 0.85}}><CodeBarres graine={e.id + 3} couleur={encre} /></div>
+          {e.code_barres !== false && <div style={{position: 'absolute', top: P.code_barres_y, left: (W - 120) / 2, opacity: 0.85}}><CodeBarres graine={e.id + 3} couleur={encre} /></div>}
           {e.cote_gauche && (
             <div style={{position: 'absolute', left: 46, top: H * 0.47, transform: 'translate(-50%, -50%) rotate(-90deg)', fontFamily: 'Figtree SemiBold', fontSize: 18, letterSpacing: '0.32em',
               color: clair ? '#9a9a9a' : 'rgba(255,255,255,0.4)', whiteSpace: 'nowrap', textTransform: 'uppercase'}}>{e.cote_gauche}</div>
@@ -159,6 +172,18 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: avecImage || e.y ? 'flex-start' : 'center', gap: P.ecart_px, textAlign: 'center'}}>
             {elements.map(rendu)}
           </div>
+          {/* signature : nom du client, mise en forme épurée (trait, nom espacé, mention en italique fin) */}
+          {e.signature && (() => {
+            const s = easeOut(prog(t, e.signature.temps ?? e.debut + 0.5, (e.signature.temps ?? e.debut + 0.5) + 0.45));
+            return (
+              <div style={{position: 'absolute', left: 0, width: W, top: e.signature.y ?? P.source_y - 40, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, opacity: s,
+                transform: `translateY(${((1 - s) * 16).toFixed(1)}px)`}}>
+                <div style={{width: 70 * s, height: 2, background: encre, opacity: 0.6}} />
+                <div style={{fontFamily: 'Figtree Bold', fontSize: 30, letterSpacing: '0.34em', textTransform: 'uppercase', color: encre, marginRight: '-0.34em'}}>{e.signature.nom}</div>
+                {e.signature.mention && <div style={{fontFamily: 'Figtree Light Italic', fontSize: 28, color: clair ? '#555' : 'rgba(255,255,255,0.72)'}}>{e.signature.mention}</div>}
+              </div>
+            );
+          })()}
           {e.source && (
             <div style={{position: 'absolute', left: 120, width: W - 240, top: P.source_y, textAlign: 'center', fontFamily: 'Figtree Medium', fontSize: P.source_px, lineHeight: 1.35,
               color: clair ? '#7a7a7a' : 'rgba(255,255,255,0.5)', opacity: easeOut(prog(t, e.source_temps ?? e.debut + 0.6, (e.source_temps ?? e.debut + 0.6) + 0.4))}}>{e.source}</div>
@@ -199,12 +224,12 @@ export const EtiquettesFlottantes: React.FC<{e: any; charte: any}> = ({e, charte
         const estompe = i < enCours ? 1 - 0.45 * easeOut(prog(t, temps[i + 1], temps[i + 1] + 0.25)) : 1;
         const texte = typeof it === 'string' ? it : it.texte;
         return (
-          <div key={i} style={{position: 'absolute', top: y0 + i * F.pas_px, ...(gauche ? {right: W - F.x_gauche} : {left: F.x_droite}), display: 'flex', alignItems: 'center', gap: 12,
+          <div key={i} style={{position: 'absolute', top: y0 + i * (e.pas ?? F.pas_px), ...(gauche ? {right: W - F.x_gauche} : {left: F.x_droite}), display: 'flex', alignItems: 'center', gap: 12,
             padding: '11px 20px 11px 14px', borderRadius: 14, background: 'rgba(12,12,12,0.74)', border: '1.5px solid rgba(255,255,255,0.16)', boxShadow: '0 10px 30px rgba(0,0,0,0.35)',
             opacity: Math.min(1, a * 1.4) * estompe, transform: `translateX(${((1 - a) * (gauche ? -40 : 40)).toFixed(1)}px) scale(${(0.86 + 0.14 * a).toFixed(3)})`,
             filter: a < 0.95 ? `blur(${((1 - a) * 6).toFixed(1)}px)` : 'none'}}>
             <div style={{width: 18, height: 18, borderRadius: 5, border: '2.5px solid #fff', boxSizing: 'border-box'}} />
-            <div style={{fontFamily: 'Figtree SemiBold', fontSize: F.texte_px, color: '#fff', whiteSpace: 'nowrap', lineHeight: 1}}>{texte}</div>
+            <div style={{fontFamily: 'Figtree SemiBold', fontSize: e.taille ?? F.texte_px, color: '#fff', whiteSpace: 'nowrap', lineHeight: 1}}>{texte}</div>
           </div>
         );
       })}

@@ -85,6 +85,9 @@ function instantsDeControle(projet) {
       case 'texte_derriere': ajouter(e.debut + 0.12, 'texte derrière : entrée'); ajouter(e.debut + 0.7, 'texte derrière : posé'); break;
       case 'courbe_derriere': ajouter((e.debut + e.cle) / 2, 'courbe : tracé'); ajouter(e.cle + 0.1, 'courbe : résultat'); ajouter(e.cle + 0.6, 'courbe : posée'); break;
       case 'page': ajouter(e.debut + 0.04, 'page : flash d\'entrée'); (T.elements || []).filter((el) => el.texte || el.type === 'vs').forEach((el) => ajouter(el.debut + 0.4, `page : ${el.type}`)); ajouter(e.fin - 0.1, 'page : complète'); break;
+      case 'titre_empile': (T.lignes || []).forEach((l, i) => ajouter(l.mots[l.mots.length - 1].debut + 0.25, `empilé ${i + 1}`)); break;
+      case 'barre_recherche': ajouter((T.frappe + T.finFrappe) / 2, 'recherche : frappe'); ajouter(T.finFrappe + 0.15, 'recherche : tapée'); break;
+      case 'barres_comparees': ajouter(e.cle - 0.3, 'barres : remplissage'); ajouter(e.cle + 0.3, 'barres : résultat'); break;
       case 'etiquettes_flottantes': (T.items || []).forEach((x, i) => ajouter(x + 0.35, `étiquette ${i + 1}`)); break;
       case 'mot_souligne': ajouter(T.mot + 0.6, 'mot souligné'); if (T.ensuite) ajouter(T.ensuite + 0.5, 'mot remplacé'); break;
       case 'carte':

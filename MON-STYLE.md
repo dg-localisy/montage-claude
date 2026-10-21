@@ -54,6 +54,8 @@ Ce qu'on en reprend :
 
 Ce qu'on ne reprend pas : la couleur vert fluo, les autres polices, et ses sous-titres (les nôtres restent ceux de la vidéo INCENDIE).
 
+Retours sur Black and Bike : pas de page blanche à code-barres, et jamais la même mise en forme répétée dans une vidéo. On varie : mots empilés sur le buste, barre de recherche qui s'écrit, barres avant / aujourd'hui, page sombre avec une flèche, zooms courts sur certains passages. Le nom du client apparaît une seule fois, en signature épurée.
+
 ## Le texte derrière la tête
 
 Ce qui passe derrière la tête change d'une vidéo à l'autre : un mot qui s'écrit (Gary), un mot qui tombe (Cheminées Liégeois), le résultat qui traverse au-dessus de la tête de gauche à droite (Black and Bike)… ou une courbe de croissance qui se dessine derrière la personne.

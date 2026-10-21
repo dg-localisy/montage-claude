@@ -9,6 +9,7 @@ import {Chiffre} from './couches/Chiffre';
 import {EcranChat} from './couches/EcranChat';
 import {Bilan, Compteur, Frise, TitreBandeau} from './couches/Etiquettes';
 import {EtiquettesFlottantes, MotSouligne, Page} from './couches/Pages';
+import {BarreRecherche, BarresComparees, TitreEmpile} from './couches/Graphiques';
 import {GrandTitre} from './couches/GrandTitre';
 import {Icone} from './couches/Icone';
 import {Liste} from './couches/Liste';
@@ -58,6 +59,9 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
       {de('accroche').map((e: any) => <Accroche key={e.id} e={e} charte={charte} projet={projet} />)}
       {de('etiquettes_flottantes').map((e: any) => <EtiquettesFlottantes key={e.id} e={e} charte={charte} />)}
       {de('mot_souligne').map((e: any) => <MotSouligne key={e.id} e={e} charte={charte} />)}
+      {de('titre_empile').map((e: any) => <TitreEmpile key={e.id} e={e} charte={charte} />)}
+      {de('barre_recherche').map((e: any) => <BarreRecherche key={e.id} e={e} charte={charte} />)}
+      {de('barres_comparees').map((e: any) => <BarresComparees key={e.id} e={e} charte={charte} />)}
       {de('page').map((e: any) => <Page key={e.id} e={e} charte={charte} />)}
       <SousTitres projet={projet} charte={charte} />
       <Lumieres projet={projet} charte={charte} />
