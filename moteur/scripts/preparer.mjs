@@ -316,7 +316,7 @@ function sonsPour(e, M) {
       ...Array.from({length: Math.floor(e.question.length / 3)}, (_, i) => s('frappe', t.frappe + (3 * i) / t.vitesse, i % 2 ? 0.6 : 0.9)),
       s('clic', t.envoi - 0.04)];
     // l'accroche principale monte avec un riser qui s'arrête net quand le chiffre tombe (« ×3 »), puis un coup sourd
-    case 'texte_derriere': return e.riser ? [s('riser', e.debut - M.sons.riser_duree_s), s('chute', e.debut)] : [e.entree === 'montee' ? s('woutch_grave', e.debut) : s('impact_doux', e.debut)];
+    case 'texte_derriere': return e.riser ? [s(typeof e.riser === 'string' ? e.riser : 'riser', e.debut - (e.riser_duree ?? M.sons.riser_duree_s)), s('chute', e.debut)] : [e.entree === 'montee' ? s('woutch_grave', e.debut) : s('impact_doux', e.debut)];
     case 'carte_verre': return [s('woutch_grave', e.debut - 0.05), ...t.items.map((c) => s('tap', c, 0.8))];
     // famille « étiquettes » : d'autres sons que les cartes en verre et les pastilles, pour varier
     case 'titre_bandeau': return e.variante === 'nom' ? [s('woutch_grave', e.debut, 0.8)] : [s('woutch', e.debut)];

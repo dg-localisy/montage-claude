@@ -37,6 +37,13 @@ const RECETTES = {
     '-filter_complex', `[0:a]asendcmd=c='${montee(d, 250, 7000, 'highpass@h')}',highpass@h=f=250,lowpass=f=11000,afade=t=in:d=${d}:curve=exp[s];` +
       `[1:a]tremolo=f=12:d=0.35,lowpass=f=3000[o];[s][o]amix=inputs=2:duration=longest:normalize=0,afade=t=out:st=${(d - 0.025).toFixed(3)}:d=0.025[r]`,
     '-map', '[r]'],
+  // riser_aspire : autre riser (Cheminées Liégeois) : souffle aérien qui gonfle de plus en plus vite (comme une cymbale à l'envers)
+  // et accord doux qui monte dessous ; arrêt net au moment où le mot tombe (effet « reverse »), différent du riser cinématique
+  riser_aspire: (d = 1.6) => ['-f', 'lavfi', '-i', `anoisesrc=c=white:r=${SR}:d=${d}:a=0.6:seed=23`,
+    '-f', 'lavfi', '-i', `aevalsrc='(0.45*sin(2*PI*220*t)+0.35*sin(2*PI*329.6*t)+0.25*sin(2*PI*440*t)+0.12*sin(2*PI*659.3*t))*exp(4.2*(t-${d}))':s=${SR}:d=${d}`,
+    '-filter_complex', `[0:a]highpass=f=1800,lowpass=f=8500,volume='exp(5.2*(t-${d}))':eval=frame[n];[1:a]lowpass=f=2500,volume=0.8[o];` +
+      `[n][o]amix=inputs=2:normalize=0,aecho=0.8:0.45:35|80:0.25|0.15,afade=t=out:st=${(d - 0.012).toFixed(3)}:d=0.012[r]`,
+    '-map', '[r]'],
   // chute : coup sourd et rond quand l'accroche tombe (grave qui descend, sans claquement)
   chute: () => ['-f', 'lavfi', '-i', `aevalsrc='0.9*sin(2*PI*(62*t-16*t*t))*exp(-4.2*t)*(1-exp(-260*t))+0.18*(random(0)*2-1)*exp(-70*t)':s=${SR}:d=0.9`,
     '-af', 'lowpass=f=700'],

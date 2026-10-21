@@ -45,9 +45,12 @@ export const TitreBandeau: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const ecart = E.ecart_bandes_px;
   const emST = emDepuisAss(st.taille_ass);
   const hautST = st.position.ligne_de_base_y - 0.72 * emST;
-  // nom : centré sur la ligne des sous-titres ; titre : son dernier bandeau finit au-dessus des sous-titres
-  const bas = nom ? st.position.ligne_de_base_y - 0.36 * emST + hBande / 2 : hautST - E.marge_sous_titres_px;
-  const haut = bas - lignes.length * hBande - (lignes.length - 1) * ecart;
+  // nom, ou position « sous_titres » : le bloc est centré sur la ligne des sous-titres (qui s'effacent avec remplace_temps) ;
+  // sinon le dernier bandeau finit juste au-dessus des sous-titres
+  const surLaLigne = nom || e.position === 'sous_titres';
+  const total = lignes.length * hBande + (lignes.length - 1) * ecart;
+  const haut = surLaLigne ? st.position.ligne_de_base_y - 0.36 * emST - total / 2 : hautST - E.marge_sous_titres_px - total;
+  const Es = e.sortie_s !== undefined ? {...E, duree_sortie_s: e.sortie_s} : E;
   const surTaille = E.surtitre_taille_px;
 
   return (
@@ -59,7 +62,7 @@ export const TitreBandeau: React.FC<{e: any; charte: any}> = ({e, charte}) => {
         </div>
       )}
       {lignes.map((ligne, i) => (
-        <Etiquette key={i} t={t} a={e.debut + i * E.decalage_bandes_s} fin={e.fin - (lignes.length - 1 - i) * 0.06} E={E}>
+        <Etiquette key={i} t={t} a={e.temps_lignes?.[i] ?? e.debut + i * E.decalage_bandes_s} fin={e.fin - (lignes.length - 1 - i) * 0.04} E={Es}>
           <div style={{fontFamily: nom ? 'Figtree ExtraBold' : 'Figtree Black', fontSize: taille, lineHeight: `${hBande}px`, height: hBande, padding: `0 ${padH}px 0 ${padH + E.barre_px}px`,
             color: '#fff', letterSpacing: nom ? '0.05em' : '0.01em', whiteSpace: 'nowrap'}}>
             {ligne}
