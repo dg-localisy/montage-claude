@@ -657,6 +657,7 @@
         "clic": 0.12,
         "transition_oxid": 0.25,
         "riser_aspire": 0.25,
+        "riser_pulsations": 0.5,
         "transition_whoosh_oxid": 0.24,
         "transition_base": 0.2,
         "swoosh_universfield": 0.27

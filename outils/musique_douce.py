@@ -5,6 +5,8 @@ Styles :
              rythmique feutrée swinguée, léger « pompage », réverbération et grain de vinyle.
   acoustique (Cheminées Liégeois, ~96 BPM) : guitare pincée en arpèges droits en Ré majeur (Ré – La – Si m – Sol),
              nappe douce, basse sur 1 et 3, grosse caisse feutrée, claquements de doigts, shaker. Chaleureux et lumineux.
+  electro    (Black and Bike, ~112 BPM) : house douce en La mineur (La m – Fa – Do – Sol), nappe de synthé qui pompe,
+             synthé pincé syncopé, basse sur les contretemps, grosse caisse sur chaque temps. Dynamique et moderne.
 
 Usage :
     python3 outils/musique_douce.py SORTIE.wav --duree 48.16 --debut 4.62 --style acoustique [--bpm 96] [--graine 7]
@@ -252,7 +254,94 @@ def style_acoustique(a, rng):
     return signal.lfilter(b, a_, mix, axis=1)
 
 
-STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96)}
+def scie(f, duree, harmoniques=10, desaccord=0.0):
+    """Onde en dents de scie douce (somme de quelques harmoniques), éventuellement doublée et désaccordée (son de synthé large)."""
+    t = np.arange(int(duree * SR)) / SR
+    x = np.zeros_like(t)
+    for k in range(1, harmoniques + 1):
+        x += np.sin(2 * np.pi * k * f * t) / k
+        if desaccord:
+            x += np.sin(2 * np.pi * k * f * (1 + desaccord) * t + k) / k
+    return x / (2 if desaccord else 1)
+
+
+def style_electro(a, rng):
+    """Électro chill (Black and Bike) : house douce à ~112 BPM en La mineur (La m – Fa – Do – Sol). Nappe de synthé large
+    qui « pompe » sur la grosse caisse, petit synthé pincé en arpège syncopé, basse sur les contretemps, grosse caisse
+    feutrée sur chaque temps, charleston ouvert sur les contretemps, claquement doux sur 2 et 4. Dynamique et moderne."""
+    n = int(a.duree * SR)
+    temps = 60 / a.bpm
+    mesure = 4 * temps
+    accords = [  # (basse, nappe, notes du synthé pincé) en numéros MIDI
+        (45, [57, 60, 64], [69, 72, 76, 72]),   # La mineur
+        (41, [57, 60, 65], [69, 72, 77, 72]),   # Fa
+        (48, [55, 60, 64], [67, 72, 76, 72]),   # Do
+        (43, [55, 59, 62], [67, 71, 74, 71]),   # Sol
+    ]
+    nappe = np.zeros((2, n))
+    pince = np.zeros((2, n))
+    basse = np.zeros((2, n))
+    batterie = np.zeros((2, n))
+    kicks = []
+    nb_mesures = int(np.ceil((a.duree - a.debut) / mesure)) + 1
+    gc = grosse_caisse()
+    for m in range(nb_mesures):
+        t0 = a.debut + m * mesure
+        racine, accord, arpege = accords[m % 4]
+        # nappe : l'accord tenu toute la mesure, attaque et relâche lentes
+        d = mesure + 0.4
+        tt = np.arange(int(d * SR)) / SR
+        env = np.clip(tt / 0.35, 0, 1) * np.clip((d - tt) / 0.5, 0, 1)
+        for j, nn in enumerate(accord):
+            placer(nappe, 0.09 * env * scie(midi(nn), d, harmoniques=8, desaccord=0.004), t0, pan=-0.4 + 0.4 * j)
+        # synthé pincé : 16 doubles croches, on joue un motif syncopé (pas toutes les notes)
+        motif = [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0]
+        for k in range(16):
+            if not motif[k] or m == 0:
+                continue
+            nn = arpege[k % len(arpege)]
+            dd = 0.32
+            tt = np.arange(int(dd * SR)) / SR
+            son = scie(midi(nn), dd, harmoniques=6) * np.exp(-tt / 0.09) * (1 - np.exp(-tt / 0.003))
+            placer(pince, 0.14 * son, t0 + k * temps / 4, pan=0.3 if k % 2 else -0.3)
+        # basse : sur les contretemps (le « et » de chaque temps), ronde et courte
+        for k in range(4):
+            dd = temps * 0.45
+            tt = np.arange(int(dd * SR)) / SR
+            f = midi(racine)
+            son = (np.sin(2 * np.pi * f * tt) + 0.3 * np.sin(2 * np.pi * 2 * f * tt)) * np.clip((dd - tt) / 0.03, 0, 1) * (1 - np.exp(-tt / 0.005))
+            placer(basse, 0.3 * son, t0 + (k + 0.5) * temps)
+        # batterie (à partir de la 2e mesure) : grosse caisse sur chaque temps, charleston ouvert sur les contretemps, claquement sur 2 et 4
+        if m >= 1:
+            for k in range(4):
+                placer(batterie, 0.22 * gc, t0 + k * temps)
+                kicks.append(t0 + k * temps)
+                tt = np.arange(int(0.11 * SR)) / SR
+                bruit = rng.standard_normal(len(tt))
+                b, a_ = signal.butter(2, 7000 / (SR / 2), btype="high")
+                placer(batterie, 0.06 * signal.lfilter(b, a_, bruit) * np.exp(-tt / 0.045), t0 + (k + 0.5) * temps, pan=0.35)
+            for k in (1, 3):
+                placer(batterie, 0.18 * claquement(rng), t0 + k * temps + 0.006, pan=-0.1)
+    # pompage de la nappe et de la basse sur chaque grosse caisse (effet « house »)
+    gain = np.ones(n)
+    tt = np.arange(int(0.3 * SR)) / SR
+    creux = 1 - 0.55 * np.exp(-tt / 0.1)
+    for k in kicks:
+        a0 = int(k * SR)
+        b0 = min(n, a0 + len(creux))
+        if a0 < n:
+            gain[a0:b0] = np.minimum(gain[a0:b0], creux[: b0 - a0])
+    nappe = signal.sosfiltfilt(signal.butter(2, 1400 / (SR / 2), btype="low", output="sos"), nappe * gain, axis=1)
+    pince = reverb(signal.sosfiltfilt(signal.butter(2, 2200 / (SR / 2), btype="low", output="sos"), pince, axis=1), rng, duree=1.2, tau=0.4, mouille=0.25)
+    basse = signal.sosfiltfilt(signal.butter(2, 400 / (SR / 2), btype="low", output="sos"), basse * gain, axis=1)
+    mix = 0.9 * nappe + 0.9 * pince + 0.3 * basse + 0.65 * batterie
+    # place pour la voix : bande 1–4 kHz creusée ; pas d'infra-basses
+    mix = mix - 0.8 * signal.sosfiltfilt(signal.butter(2, [1000 / (SR / 2), 4000 / (SR / 2)], btype="band", output="sos"), mix, axis=1)
+    mix = signal.sosfiltfilt(signal.butter(2, 70 / (SR / 2), btype="high", output="sos"), mix, axis=1)
+    return signal.sosfiltfilt(signal.butter(1, 11000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
+
+
+STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112)}
 
 
 def main():
@@ -261,7 +350,7 @@ def main():
     p.add_argument("--duree", type=float, required=True)
     p.add_argument("--debut", type=float, default=0.0)
     p.add_argument("--style", choices=sorted(STYLES), default="lofi",
-                   help="lofi (Gary) ou acoustique (Cheminées Liégeois) : changer de style à chaque vidéo")
+                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike) : changer de style à chaque vidéo")
     p.add_argument("--bpm", type=float, default=None)
     p.add_argument("--graine", type=int, default=7)
     a = p.parse_args()

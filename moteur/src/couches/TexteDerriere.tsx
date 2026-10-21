@@ -1,5 +1,5 @@
 import React from 'react';
-import {useCurrentFrame, useVideoConfig} from 'remotion';
+import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {easeOut, prog} from '../temps';
 
 // Texte géant derrière la personne (comme « YES » ou « LEGAL » dans la vidéo de référence) :
@@ -19,6 +19,21 @@ export const TexteDerriere: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const hauteur = lignes.length * taille * T.interligne;
   let k = 0;
 
+  // entrée « rebond » : le mot surgit petit et rebondit jusqu'à sa taille (ressort), net en un instant
+  // ombre : true pour un texte clair sur un fond chargé (ex. plafond sombre avec des lumières)
+  const ombre = e.ombre ? '0 10px 50px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.35)' : 'none';
+  if (e.entree === 'rebond') {
+    const r = spring({frame: (t - e.debut) * fps, fps, config: {damping: 9, stiffness: 190, mass: 0.8}});
+    const net = easeOut(prog(t, e.debut, e.debut + 0.12));
+    return (
+      <div style={{position: 'absolute', left: (e.x ?? W / 2) - W, width: 2 * W, top: (e.y ?? T.y) - hauteur / 2, textAlign: 'center', fontFamily: T.police, fontSize: taille,
+        lineHeight: T.interligne, letterSpacing: `${T.interlettrage_em}em`, color: e.couleur ?? T.couleur, opacity: (e.opacite ?? T.opacite) * (1 - sortie) * net, whiteSpace: 'pre',
+        textShadow: ombre, transform: `scale(${(0.45 + 0.55 * r).toFixed(4)})`, transformOrigin: '50% 55%',
+        filter: net < 1 || sortie > 0 ? `blur(${((1 - net) * 14 + sortie * 10).toFixed(1)}px)` : 'none'}}>
+        {lignes.join('\n')}
+      </div>
+    );
+  }
   // entrée « impact » : tout le mot tombe d'un coup (léger zoom arrière + flou qui se dissipe), puis grossit très lentement
   // entrée « montee » : le mot sort de derrière une ligne invisible (la tête), lettre après lettre, de bas en haut
   if (e.entree === 'impact' || e.entree === 'montee') {

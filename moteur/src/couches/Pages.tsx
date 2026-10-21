@@ -46,9 +46,10 @@ const ligneDeMots = (t: number, mots: {mot: string; debut: number}[], clair: boo
 
 export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const frame = useCurrentFrame();
-  const {fps, width: W, height: H} = useVideoConfig();
+  const {fps, width: W, height: H, durationInFrames} = useVideoConfig();
   const t = frame / fps;
   const P = charte.moteur.pages;
+  const derniere = e.fin >= durationInFrames / fps - 0.05;
   const flashAvant = P.flash_s;
   if (t < e.debut - flashAvant || t > e.fin + flashAvant) return null;
   const clair = (e.fond ?? 'clair') === 'clair';
@@ -58,7 +59,7 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const entree = easeOut(prog(t, e.debut, e.debut + 0.3));
   // flash blanc (fuite de lumière en noir et blanc) sur la coupe d'entrée et de sortie
   const flash = (c: number) => Math.max(0, 1 - Math.abs(t - c) / flashAvant);
-  const f = Math.max(e.flash === false ? 0 : flash(e.debut), e.flash === false ? 0 : flash(e.fin));
+  const f = Math.max(e.flash === false ? 0 : flash(e.debut), e.flash === false || derniere ? 0 : flash(e.fin));
   const avecImage = elements.some((el) => el.type === 'image');
   const iVs = elements.findIndex((el) => el.type === 'vs');
   const apresVs = iVs >= 0 ? elements.slice(iVs + 1).find((el) => el.debut !== undefined) : null;

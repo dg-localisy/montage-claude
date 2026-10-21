@@ -1,0 +1,1057 @@
+[
+ {
+  "mot": "C'est",
+  "debut": 0.08,
+  "fin": 0.18
+ },
+ {
+  "mot": "un",
+  "debut": 0.2,
+  "fin": 0.3
+ },
+ {
+  "mot": "taux",
+  "debut": 0.34,
+  "fin": 0.44
+ },
+ {
+  "mot": "de",
+  "debut": 0.46,
+  "fin": 0.5
+ },
+ {
+  "mot": "fréquentation",
+  "debut": 0.54,
+  "fin": 1.32
+ },
+ {
+  "mot": "qui",
+  "debut": 1.36,
+  "fin": 1.5
+ },
+ {
+  "mot": "a",
+  "debut": 1.58,
+  "fin": 1.7
+ },
+ {
+  "mot": "doublé.",
+  "debut": 1.78,
+  "fin": 2.18
+ },
+ {
+  "mot": "Je",
+  "debut": 2.32,
+  "fin": 2.34
+ },
+ {
+  "mot": "suis",
+  "debut": 2.36,
+  "fin": 2.46
+ },
+ {
+  "mot": "vraiment",
+  "debut": 2.5,
+  "fin": 2.72
+ },
+ {
+  "mot": "convaincu",
+  "debut": 2.8,
+  "fin": 3.22
+ },
+ {
+  "mot": "qu'en",
+  "debut": 3.24,
+  "fin": 3.4
+ },
+ {
+  "mot": "2026,",
+  "debut": 3.5,
+  "fin": 4.22
+ },
+ {
+  "mot": "on",
+  "debut": 4.28,
+  "fin": 4.34
+ },
+ {
+  "mot": "a",
+  "debut": 4.38,
+  "fin": 4.5
+ },
+ {
+  "mot": "vraiment",
+  "debut": 4.54,
+  "fin": 4.84
+ },
+ {
+  "mot": "besoin",
+  "debut": 4.88,
+  "fin": 5.18
+ },
+ {
+  "mot": "d'une",
+  "debut": 5.2,
+  "fin": 5.34
+ },
+ {
+  "mot": "agence",
+  "debut": 5.4,
+  "fin": 5.8
+ },
+ {
+  "mot": "de",
+  "debut": 5.84,
+  "fin": 5.92
+ },
+ {
+  "mot": "marketing",
+  "debut": 5.96,
+  "fin": 6.46
+ },
+ {
+  "mot": "en",
+  "debut": 6.52,
+  "fin": 6.6
+ },
+ {
+  "mot": "plus,",
+  "debut": 6.72,
+  "fin": 6.96
+ },
+ {
+  "mot": "parce",
+  "debut": 7.12,
+  "fin": 7.3
+ },
+ {
+  "mot": "que",
+  "debut": 7.32,
+  "fin": 7.4
+ },
+ {
+  "mot": "le",
+  "debut": 7.42,
+  "fin": 7.46
+ },
+ {
+  "mot": "monde",
+  "debut": 7.52,
+  "fin": 7.7
+ },
+ {
+  "mot": "évolue",
+  "debut": 7.76,
+  "fin": 8.08
+ },
+ {
+  "mot": "très",
+  "debut": 8.28,
+  "fin": 8.46
+ },
+ {
+  "mot": "vite.",
+  "debut": 8.5,
+  "fin": 8.74
+ },
+ {
+  "mot": "On",
+  "debut": 8.78,
+  "fin": 8.9
+ },
+ {
+  "mot": "a",
+  "debut": 8.96,
+  "fin": 9.02
+ },
+ {
+  "mot": "besoin,",
+  "debut": 9.08,
+  "fin": 9.42
+ },
+ {
+  "mot": "parfois",
+  "debut": 9.68,
+  "fin": 9.92
+ },
+ {
+  "mot": "d'être",
+  "debut": 9.96,
+  "fin": 10.16
+ },
+ {
+  "mot": "accompagné",
+  "debut": 10.22,
+  "fin": 10.8
+ },
+ {
+  "mot": "avec",
+  "debut": 10.86,
+  "fin": 11.04
+ },
+ {
+  "mot": "des",
+  "debut": 11.06,
+  "fin": 11.16
+ },
+ {
+  "mot": "gens",
+  "debut": 11.18,
+  "fin": 11.32
+ },
+ {
+  "mot": "qui",
+  "debut": 11.36,
+  "fin": 11.42
+ },
+ {
+  "mot": "ont",
+  "debut": 11.46,
+  "fin": 11.58
+ },
+ {
+  "mot": "beaucoup",
+  "debut": 11.62,
+  "fin": 11.8
+ },
+ {
+  "mot": "plus",
+  "debut": 11.84,
+  "fin": 12.0
+ },
+ {
+  "mot": "de",
+  "debut": 12.02,
+  "fin": 12.12
+ },
+ {
+  "mot": "compétences",
+  "debut": 12.18,
+  "fin": 12.72
+ },
+ {
+  "mot": "dans",
+  "debut": 12.74,
+  "fin": 12.86
+ },
+ {
+  "mot": "chaque",
+  "debut": 12.92,
+  "fin": 13.16
+ },
+ {
+  "mot": "branche.",
+  "debut": 13.22,
+  "fin": 13.66
+ },
+ {
+  "mot": "Traiter",
+  "debut": 13.68,
+  "fin": 14.0
+ },
+ {
+  "mot": "en",
+  "debut": 14.04,
+  "fin": 14.14
+ },
+ {
+  "mot": "interne",
+  "debut": 14.2,
+  "fin": 14.5
+ },
+ {
+  "mot": "est",
+  "debut": 14.54,
+  "fin": 14.64
+ },
+ {
+  "mot": "impossible",
+  "debut": 14.7,
+  "fin": 15.1
+ },
+ {
+  "mot": "pour",
+  "debut": 15.14,
+  "fin": 15.3
+ },
+ {
+  "mot": "nous,",
+  "debut": 15.34,
+  "fin": 15.46
+ },
+ {
+  "mot": "donc",
+  "debut": 15.52,
+  "fin": 15.66
+ },
+ {
+  "mot": "voilà",
+  "debut": 15.72,
+  "fin": 15.94
+ },
+ {
+  "mot": "pourquoi",
+  "debut": 15.98,
+  "fin": 16.28
+ },
+ {
+  "mot": "on",
+  "debut": 16.32,
+  "fin": 16.42
+ },
+ {
+  "mot": "a",
+  "debut": 16.5,
+  "fin": 16.56
+ },
+ {
+  "mot": "eu",
+  "debut": 16.64,
+  "fin": 16.76
+ },
+ {
+  "mot": "besoin",
+  "debut": 16.98,
+  "fin": 17.28
+ },
+ {
+  "mot": "de",
+  "debut": 17.32,
+  "fin": 17.5
+ },
+ {
+  "mot": "LOCALISY.",
+  "debut": 17.56,
+  "fin": 18.12
+ },
+ {
+  "mot": "On",
+  "debut": 18.2,
+  "fin": 18.28
+ },
+ {
+  "mot": "essaye",
+  "debut": 18.34,
+  "fin": 18.58
+ },
+ {
+  "mot": "d'atteindre",
+  "debut": 18.619,
+  "fin": 18.98
+ },
+ {
+  "mot": "une",
+  "debut": 19.0,
+  "fin": 19.12
+ },
+ {
+  "mot": "croissance",
+  "debut": 19.16,
+  "fin": 19.7
+ },
+ {
+  "mot": "qui",
+  "debut": 19.76,
+  "fin": 19.8
+ },
+ {
+  "mot": "est",
+  "debut": 19.84,
+  "fin": 19.92
+ },
+ {
+  "mot": "de",
+  "debut": 20.34,
+  "fin": 20.38
+ },
+ {
+  "mot": "1,5",
+  "debut": 20.38,
+  "fin": 21.3
+ },
+ {
+  "mot": "chaque",
+  "debut": 21.36,
+  "fin": 21.54
+ },
+ {
+  "mot": "année.",
+  "debut": 21.6,
+  "fin": 21.92
+ },
+ {
+  "mot": "LOCALISY",
+  "debut": 22.08,
+  "fin": 22.6
+ },
+ {
+  "mot": "a",
+  "debut": 22.62,
+  "fin": 22.66
+ },
+ {
+  "mot": "vraiment",
+  "debut": 22.7,
+  "fin": 22.92
+ },
+ {
+  "mot": "restructuré",
+  "debut": 22.98,
+  "fin": 23.64
+ },
+ {
+  "mot": "notre",
+  "debut": 23.72,
+  "fin": 23.96
+ },
+ {
+  "mot": "site",
+  "debut": 24.32,
+  "fin": 24.5
+ },
+ {
+  "mot": "internet",
+  "debut": 24.56,
+  "fin": 25.1
+ },
+ {
+  "mot": "et",
+  "debut": 25.22,
+  "fin": 25.34
+ },
+ {
+  "mot": "maintenant,",
+  "debut": 25.54,
+  "fin": 25.9
+ },
+ {
+  "mot": "il",
+  "debut": 26.16,
+  "fin": 26.2
+ },
+ {
+  "mot": "y",
+  "debut": 26.24,
+  "fin": 26.24
+ },
+ {
+  "mot": "a",
+  "debut": 26.28,
+  "fin": 26.32
+ },
+ {
+  "mot": "un",
+  "debut": 26.34,
+  "fin": 26.44
+ },
+ {
+  "mot": "suivi",
+  "debut": 26.52,
+  "fin": 26.78
+ },
+ {
+  "mot": "journalier",
+  "debut": 26.84,
+  "fin": 27.3
+ },
+ {
+  "mot": "pour",
+  "debut": 27.38,
+  "fin": 27.5
+ },
+ {
+  "mot": "l'améliorer",
+  "debut": 27.54,
+  "fin": 27.98
+ },
+ {
+  "mot": "au",
+  "debut": 28.02,
+  "fin": 28.1
+ },
+ {
+  "mot": "fil",
+  "debut": 28.14,
+  "fin": 28.28
+ },
+ {
+  "mot": "du",
+  "debut": 28.32,
+  "fin": 28.42
+ },
+ {
+  "mot": "temps.",
+  "debut": 28.48,
+  "fin": 28.6
+ },
+ {
+  "mot": "Ils",
+  "debut": 28.74,
+  "fin": 28.82
+ },
+ {
+  "mot": "travaillent",
+  "debut": 28.86,
+  "fin": 29.08
+ },
+ {
+  "mot": "sur",
+  "debut": 29.12,
+  "fin": 29.2
+ },
+ {
+  "mot": "l'optimisation",
+  "debut": 29.24,
+  "fin": 29.98
+ },
+ {
+  "mot": "des",
+  "debut": 30.04,
+  "fin": 30.14
+ },
+ {
+  "mot": "campagnes",
+  "debut": 30.18,
+  "fin": 30.56
+ },
+ {
+  "mot": "Google,",
+  "debut": 30.62,
+  "fin": 31.1
+ },
+ {
+  "mot": "des",
+  "debut": 31.18,
+  "fin": 31.28
+ },
+ {
+  "mot": "contenus",
+  "debut": 31.34,
+  "fin": 31.7
+ },
+ {
+  "mot": "sur",
+  "debut": 31.74,
+  "fin": 31.86
+ },
+ {
+  "mot": "le",
+  "debut": 31.92,
+  "fin": 32.02
+ },
+ {
+  "mot": "site",
+  "debut": 32.06,
+  "fin": 32.22
+ },
+ {
+  "mot": "internet",
+  "debut": 32.28,
+  "fin": 32.72
+ },
+ {
+  "mot": "et",
+  "debut": 32.76,
+  "fin": 32.8
+ },
+ {
+  "mot": "des",
+  "debut": 32.84,
+  "fin": 32.9
+ },
+ {
+  "mot": "réseaux",
+  "debut": 32.94,
+  "fin": 33.18
+ },
+ {
+  "mot": "sociaux.",
+  "debut": 33.24,
+  "fin": 33.6
+ },
+ {
+  "mot": "Dernièrement,",
+  "debut": 33.7,
+  "fin": 34.18
+ },
+ {
+  "mot": "on",
+  "debut": 34.22,
+  "fin": 34.28
+ },
+ {
+  "mot": "a",
+  "debut": 34.32,
+  "fin": 34.38
+ },
+ {
+  "mot": "travaillé",
+  "debut": 34.44,
+  "fin": 34.7
+ },
+ {
+  "mot": "sur",
+  "debut": 34.76,
+  "fin": 34.84
+ },
+ {
+  "mot": "l'optimisation",
+  "debut": 34.88,
+  "fin": 35.64
+ },
+ {
+  "mot": "des",
+  "debut": 35.72,
+  "fin": 35.84
+ },
+ {
+  "mot": "contenus",
+  "debut": 35.9,
+  "fin": 36.3
+ },
+ {
+  "mot": "pour",
+  "debut": 36.34,
+  "fin": 36.4
+ },
+ {
+  "mot": "ressortir",
+  "debut": 36.46,
+  "fin": 36.96
+ },
+ {
+  "mot": "au",
+  "debut": 37.0,
+  "fin": 37.06
+ },
+ {
+  "mot": "mieux",
+  "debut": 37.12,
+  "fin": 37.3
+ },
+ {
+  "mot": "dans",
+  "debut": 37.34,
+  "fin": 37.44
+ },
+ {
+  "mot": "les",
+  "debut": 37.46,
+  "fin": 37.54
+ },
+ {
+  "mot": "recherches",
+  "debut": 37.6,
+  "fin": 38.14
+ },
+ {
+  "mot": "IA.",
+  "debut": 38.2,
+  "fin": 38.46
+ },
+ {
+  "mot": "C'est",
+  "debut": 38.56,
+  "fin": 38.64
+ },
+ {
+  "mot": "vraiment",
+  "debut": 38.68,
+  "fin": 38.88
+ },
+ {
+  "mot": "essentiel",
+  "debut": 38.94,
+  "fin": 39.54
+ },
+ {
+  "mot": "pour",
+  "debut": 39.58,
+  "fin": 39.7
+ },
+ {
+  "mot": "l'avenir",
+  "debut": 39.74,
+  "fin": 40.04
+ },
+ {
+  "mot": "sur",
+  "debut": 40.1,
+  "fin": 40.24
+ },
+ {
+  "mot": "le",
+  "debut": 40.28,
+  "fin": 40.34
+ },
+ {
+  "mot": "Web.",
+  "debut": 40.38,
+  "fin": 40.5
+ },
+ {
+  "mot": "On",
+  "debut": 40.58,
+  "fin": 40.64
+ },
+ {
+  "mot": "est",
+  "debut": 40.68,
+  "fin": 40.76
+ },
+ {
+  "mot": "du",
+  "debut": 40.82,
+  "fin": 40.88
+ },
+ {
+  "mot": "genre",
+  "debut": 40.92,
+  "fin": 41.1
+ },
+ {
+  "mot": "parfois",
+  "debut": 41.14,
+  "fin": 41.4
+ },
+ {
+  "mot": "à",
+  "debut": 41.44,
+  "fin": 41.46
+ },
+ {
+  "mot": "avoir",
+  "debut": 41.48,
+  "fin": 41.66
+ },
+ {
+  "mot": "des",
+  "debut": 41.7,
+  "fin": 41.8
+ },
+ {
+  "mot": "demandes",
+  "debut": 41.86,
+  "fin": 42.2
+ },
+ {
+  "mot": "de",
+  "debut": 42.24,
+  "fin": 42.32
+ },
+ {
+  "mot": "dernière",
+  "debut": 42.38,
+  "fin": 42.74
+ },
+ {
+  "mot": "minute.",
+  "debut": 42.78,
+  "fin": 43.16
+ },
+ {
+  "mot": "Ils",
+  "debut": 43.2,
+  "fin": 43.28
+ },
+ {
+  "mot": "sont",
+  "debut": 43.32,
+  "fin": 43.46
+ },
+ {
+  "mot": "hyper",
+  "debut": 43.5,
+  "fin": 43.74
+ },
+ {
+  "mot": "réactifs.",
+  "debut": 43.8,
+  "fin": 44.36
+ },
+ {
+  "mot": "C'est",
+  "debut": 44.4,
+  "fin": 44.5
+ },
+ {
+  "mot": "là",
+  "debut": 44.56,
+  "fin": 44.68
+ },
+ {
+  "mot": "où",
+  "debut": 44.76,
+  "fin": 44.88
+ },
+ {
+  "mot": "souvent,",
+  "debut": 44.94,
+  "fin": 45.18
+ },
+ {
+  "mot": "on",
+  "debut": 45.22,
+  "fin": 45.28
+ },
+ {
+  "mot": "voit",
+  "debut": 45.32,
+  "fin": 45.4
+ },
+ {
+  "mot": "la",
+  "debut": 45.44,
+  "fin": 45.56
+ },
+ {
+  "mot": "force",
+  "debut": 45.62,
+  "fin": 45.86
+ },
+ {
+  "mot": "aussi",
+  "debut": 45.9,
+  "fin": 46.1
+ },
+ {
+  "mot": "de",
+  "debut": 46.12,
+  "fin": 46.18
+ },
+ {
+  "mot": "LOCALISY.",
+  "debut": 46.2,
+  "fin": 46.9
+ },
+ {
+  "mot": "Ils",
+  "debut": 47.3,
+  "fin": 47.36
+ },
+ {
+  "mot": "vont",
+  "debut": 47.4,
+  "fin": 47.52
+ },
+ {
+  "mot": "mettre",
+  "debut": 47.58,
+  "fin": 47.76
+ },
+ {
+  "mot": "en",
+  "debut": 47.82,
+  "fin": 47.92
+ },
+ {
+  "mot": "place",
+  "debut": 47.96,
+  "fin": 48.22
+ },
+ {
+  "mot": "directement",
+  "debut": 48.24,
+  "fin": 48.68
+ },
+ {
+  "mot": "une",
+  "debut": 48.72,
+  "fin": 48.8
+ },
+ {
+  "mot": "stratégie",
+  "debut": 48.86,
+  "fin": 49.5
+ },
+ {
+  "mot": "pour",
+  "debut": 49.56,
+  "fin": 49.7
+ },
+ {
+  "mot": "pouvoir",
+  "debut": 49.74,
+  "fin": 50.0
+ },
+ {
+  "mot": "répondre",
+  "debut": 50.08,
+  "fin": 50.46
+ },
+ {
+  "mot": "rapidement",
+  "debut": 50.5,
+  "fin": 50.94
+ },
+ {
+  "mot": "à",
+  "debut": 51.0,
+  "fin": 51.02
+ },
+ {
+  "mot": "nos",
+  "debut": 51.08,
+  "fin": 51.16
+ },
+ {
+  "mot": "besoins.",
+  "debut": 51.22,
+  "fin": 51.74
+ },
+ {
+  "mot": "En",
+  "debut": 51.82,
+  "fin": 51.9
+ },
+ {
+  "mot": "termes",
+  "debut": 51.96,
+  "fin": 52.16
+ },
+ {
+  "mot": "de",
+  "debut": 52.2,
+  "fin": 52.28
+ },
+ {
+  "mot": "résultats",
+  "debut": 52.36,
+  "fin": 52.86
+ },
+ {
+  "mot": "en",
+  "debut": 52.92,
+  "fin": 53.0
+ },
+ {
+  "mot": "magasin,",
+  "debut": 53.04,
+  "fin": 53.52
+ },
+ {
+  "mot": "on",
+  "debut": 53.58,
+  "fin": 53.64
+ },
+ {
+  "mot": "a",
+  "debut": 53.68,
+  "fin": 53.72
+ },
+ {
+  "mot": "vraiment",
+  "debut": 53.78,
+  "fin": 54.04
+ },
+ {
+  "mot": "vu",
+  "debut": 54.08,
+  "fin": 54.16
+ },
+ {
+  "mot": "la",
+  "debut": 54.2,
+  "fin": 54.3
+ },
+ {
+  "mot": "différence.",
+  "debut": 54.36,
+  "fin": 54.84
+ },
+ {
+  "mot": "Donc",
+  "debut": 54.88,
+  "fin": 55.02
+ },
+ {
+  "mot": "c'est",
+  "debut": 55.08,
+  "fin": 55.18
+ },
+ {
+  "mot": "un",
+  "debut": 55.2,
+  "fin": 55.3
+ },
+ {
+  "mot": "taux",
+  "debut": 55.34,
+  "fin": 55.44
+ },
+ {
+  "mot": "de",
+  "debut": 55.46,
+  "fin": 55.5
+ },
+ {
+  "mot": "fréquentation",
+  "debut": 55.54,
+  "fin": 56.32
+ },
+ {
+  "mot": "qui",
+  "debut": 56.36,
+  "fin": 56.5
+ },
+ {
+  "mot": "a",
+  "debut": 56.58,
+  "fin": 56.7
+ },
+ {
+  "mot": "doublé,",
+  "debut": 56.78,
+  "fin": 57.18
+ },
+ {
+  "mot": "mais",
+  "debut": 57.28,
+  "fin": 57.38
+ },
+ {
+  "mot": "aussi",
+  "debut": 57.42,
+  "fin": 57.7
+ },
+ {
+  "mot": "au",
+  "debut": 57.74,
+  "fin": 57.8
+ },
+ {
+  "mot": "niveau",
+  "debut": 57.84,
+  "fin": 58.08
+ },
+ {
+  "mot": "des",
+  "debut": 58.12,
+  "fin": 58.24
+ },
+ {
+  "mot": "leads.",
+  "debut": 58.32,
+  "fin": 58.64
+ },
+ {
+  "mot": "C'est",
+  "debut": 58.68,
+  "fin": 58.78
+ },
+ {
+  "mot": "beaucoup",
+  "debut": 58.82,
+  "fin": 59.0
+ },
+ {
+  "mot": "plus",
+  "debut": 59.04,
+  "fin": 59.16
+ },
+ {
+  "mot": "qualitatif.",
+  "debut": 59.2,
+  "fin": 59.94
+ }
+]

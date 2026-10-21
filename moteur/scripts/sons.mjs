@@ -44,6 +44,14 @@ const RECETTES = {
     '-filter_complex', `[0:a]highpass=f=1800,lowpass=f=8500,volume='exp(5.2*(t-${d}))':eval=frame[n];[1:a]lowpass=f=2500,volume=0.8[o];` +
       `[n][o]amix=inputs=2:normalize=0,aecho=0.8:0.45:35|80:0.25|0.15,afade=t=out:st=${(d - 0.012).toFixed(3)}:d=0.012[r]`,
     '-map', '[r]'],
+  // riser_pulsations : troisième riser : pulsations graves et feutrées qui accélèrent (4 → 18 par seconde) en montant
+  // doucement de hauteur, avec un souffle qui s'ouvre vers l'aigu ; arrêt net quand le mot tombe
+  riser_pulsations: (d = 1.7) => ['-f', 'lavfi', '-i',
+    `aevalsrc='(sin(2*PI*(110*t+${(130 / (2 * d)).toFixed(3)}*t*t))+0.35*sin(4*PI*(110*t+${(130 / (2 * d)).toFixed(3)}*t*t)))*exp(-14*mod(${(4 * d / Math.log(4.5)).toFixed(4)}*(pow(4.5,t/${d})-1),1))*(0.06+0.94*pow(t/${d},1.6))':s=${SR}:d=${d}`,
+    '-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.5:seed=29`,
+    '-filter_complex', `[0:a]lowpass=f=1400[p];[1:a]asendcmd=c='${montee(d, 300, 6000, 'highpass@h')}',highpass@h=f=300,lowpass=f=9000,afade=t=in:d=${d}:curve=exp,volume=1.3[s];` +
+      `[p][s]amix=inputs=2:normalize=0,afade=t=out:st=${(d - 0.012).toFixed(3)}:d=0.012[r]`,
+    '-map', '[r]'],
   // chute : coup sourd et rond quand l'accroche tombe (grave qui descend, sans claquement)
   chute: () => ['-f', 'lavfi', '-i', `aevalsrc='0.9*sin(2*PI*(62*t-16*t*t))*exp(-4.2*t)*(1-exp(-260*t))+0.18*(random(0)*2-1)*exp(-70*t)':s=${SR}:d=0.9`,
     '-af', 'lowpass=f=700'],
