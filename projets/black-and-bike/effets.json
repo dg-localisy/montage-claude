@@ -1,5 +1,5 @@
 {
-  "_aide": "Témoignage Black and Bike, version 2. Effets inspirés de la vidéo de référence « Claude Edit », variés à la demande de l'utilisateur (v2 : plus de pages blanches à code-barres ; barre de recherche IA, barres avant/aujourd'hui, page sombre avec flèche, zooms sur certains passages), en noir et blanc et Figtree ; sous-titres INCENDIE inchangés. Temps en secondes, sur rush/rush_final.mp4 (rush client, hors git) = accroche « C'est un taux de fréquentation qui a doublé » (52,76–55,00 s du fichier reçu), puis tout le fichier reçu (décalage +2,24 s). Rendu : cd moteur && node scripts/rendu.mjs ../projets/black-and-bike/effets.json --nom black-and-bike --sans-4x5, puis outils/son_final.py. Mots : « ben » retirés, « un virgule cinq » écrit « 1,5 », LOCALISY corrigé. Pas d'objet dans les pages (l'utilisateur les fournira), pas de plan de coupe fourni.",
+  "_aide": "Témoignage Black and Bike, version 5 (v5 : zooms lents, sans à-coups). Effets inspirés de la vidéo de référence « Claude Edit », variés à la demande de l'utilisateur (v2 : plus de pages blanches à code-barres ; barre de recherche IA, barres avant/aujourd'hui, page sombre avec flèche, zooms sur certains passages), en noir et blanc et Figtree ; sous-titres INCENDIE inchangés. Temps en secondes, sur rush/rush_final.mp4 (rush client, hors git) = accroche « C'est un taux de fréquentation qui a doublé » (52,76–55,00 s du fichier reçu), puis tout le fichier reçu (décalage +2,24 s). Rendu : cd moteur && node scripts/rendu.mjs ../projets/black-and-bike/effets.json --nom black-and-bike --sans-4x5, puis outils/son_final.py. Mots : « ben » retirés, « un virgule cinq » écrit « 1,5 », LOCALISY corrigé. Pas d'objet dans les pages (l'utilisateur les fournira), pas de plan de coupe fourni.",
   "duree": 60.2,
   "fps": 25,
   "rush": {
@@ -226,30 +226,8 @@
       51.76,
       58.6
     ],
-    "cadrages": [
-      1.0,
-      1.0,
-      1.0,
-      1.08,
-      1.0,
-      1.12,
-      1.2,
-      1.0,
-      1.15,
-      1.06,
-      1.0,
-      1.18,
-      1.0,
-      1.1,
-      1.0,
-      1.18,
-      1.06,
-      1.0,
-      1.0,
-      1.04,
-      1.0
-    ],
-    "_cadrages": "Un cadrage par plan (coupes du vidéaste). Plans larges pour l'accroche (place pour ×2 au-dessus de la tête), sous les pages et sous les étiquettes ; cadrages plus serrés ailleurs pour le rythme (comme les recadrages de la vidéo de référence).",
+    "cadrages": [1.0, 1.0, 1.0, 1.08, 1.0, 1.06, 1.1, 1.0, 1.0, 1.06, 1.0, 1.08, 1.0, 1.1, 1.0, 1.1, 1.1, 1.0, 1.0, 1.0, 1.0],
+    "_cadrages": "Un cadrage par plan (coupes du vidéaste). Plans larges pour l'accroche (place pour ×2 au-dessus de la tête), sous les pages et sous les étiquettes ; cadrages un peu plus serrés ailleurs pour le rythme. v5 (demande de l'utilisateur : zooms trop agressifs) : 1,1 au plus, changements de cadre seulement sur les coupes.",
     "masques": "masques"
   },
   "ambiance": {
@@ -260,13 +238,12 @@
     {"type": "mot_souligne", "debut": 0.0, "fin": 2.24, "contexte": "C'est un taux de", "mot": "fréquentation", "y": 1340, "taille": 118, "remplace_temps": [[0.0, 2.24]], "_note": "Accroche : le mot en italique souligné à l'endroit des sous-titres, pendant qu'il le dit."},
     {"type": "texte_derriere", "debut": 1.78, "fin": 2.22, "texte": "×2", "taille": 400, "y": 200, "couleur": "#FFFFFF", "opacite": 0.96, "ombre": true, "entree": "traverse", "x_arrivee": 430, "x_depart_sortie": 650, "duree_entree": 0.13, "duree_sortie": 0.13, "riser": "riser_pulsations", "riser_duree": 1.7, "_note": "×2 passe au-dessus de sa tête de gauche à droite sur « doublé » et disparaît avant la phrase suivante (v2 : plus rapide, demande de l'utilisateur)."},
     {"type": "mot_souligne", "debut": 14.68, "fin": 15.7, "mot": "impossible pour nous", "y": 1350, "taille": 88, "remplace_temps": [[14.68, 15.7]], "_note": "« Traiter en interne est » reste en sous-titres ; seul « impossible pour nous » passe dans l'effet (demande de l'utilisateur)."},
-    {"type": "zoom", "debut": 15.72, "a": 1.15, "duree": 0.05, "fin": 17.9},
+    {"type": "zoom", "debut": 15.6, "a": 1.06, "duree": 1.3, "_note": "v5 : zoom lent (1,3 s), sans retour en arrière en pleine phrase : il revient à la coupe suivante (18,16 s), demande de l'utilisateur."},
     {"type": "etiquettes_flottantes", "debut": 29.2, "fin": 33.6, "contexte": "Ils optimisent", "items": ["Campagnes Google", "Contenus du site", "Réseaux sociaux"], "y": 1265, "taille": 46, "pas": 88, "remplace_temps": [[28.7, 33.62]], "_note": "Au niveau des sous-titres et plus grandes (v2, demande de l'utilisateur)."},
     {"type": "barre_recherche", "debut": 37.28, "fin": 38.54, "texte": "recherches IA", "fin_frappe": 38.26, "remplace_temps": [[37.28, 38.54]], "_note": "Barre de recherche IA qui se tape pendant qu'il dit « recherches IA », au lieu de la page blanche."},
-    {"type": "zoom", "debut": 37.6, "a": 1.14, "duree": 0.12, "fin": 38.42},
     {"type": "page", "debut": 41.7, "fin": 44.36, "fond": "sombre", "code_barres": false, "son_entree": "transition_oxid", "signature": {"nom": "Black and Bike", "temps": 42.3}, "elements": [{"type": "etiquette", "texte": "Des demandes de", "temps": 41.86}, {"type": "grand", "texte": "dernière minute.", "taille": 98}, {"type": "fleche"}, {"type": "grand", "texte": "Hyper réactifs.", "taille": 98}], "_note": "Flèche (on y arrive) au lieu de « vs » ; nom du client une seule fois, en signature (demande de l'utilisateur)."},
-    {"type": "zoom", "debut": 47.3, "a": 1.16, "duree": 0.05, "fin": 49.6},
-    {"type": "zoom", "debut": 53.58, "a": 1.12, "duree": 0.05, "fin": 54.84},
+    {"type": "zoom", "debut": 47.2, "a": 1.07, "duree": 1.5, "_note": "v5 : zoom lent, gardé jusqu'à la coupe de 51,76 s."},
+    {"type": "zoom", "debut": 53.5, "a": 1.06, "duree": 1.3, "_note": "v5 : zoom lent, gardé jusqu'à la coupe de 58,6 s (sous les barres, le visage reste dégagé)."},
     {"type": "barres_comparees", "debut": 54.86, "fin": 57.26, "titre": "Fréquentation en magasin", "lignes": [{"label": "Avant", "valeur": 0.4, "temps": 55.2}, {"label": "Aujourd'hui", "valeur": 0.8, "temps": 56.25, "duree": 0.53}], "cle": 56.78, "label": "×2", "remplace_temps": [[54.86, 57.26]], "_note": "Barres avant / aujourd'hui, le résultat ×2 surgit sur « doublé » (au lieu de la page blanche)."},
     {"type": "zoom", "debut": 58.7, "a": 1.06, "duree": 1.4}
   ]

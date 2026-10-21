@@ -78,7 +78,7 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 | `carte` | `debut`, `fin`, `animation` + champs ci-dessous | La vidéo se réduit en carte arrondie, l'animation joue à côté. |
 | `liste` | `debut`, `fin`, `items`, `temps`, `y` | Pastilles sous le visage, une par élément, qui glissent quand elles sont dites et restent affichées. Pas de cadrage serré pendant la liste. |
 | `plan_de_coupe` | `debut`, `fin`, `fichier`, `debut_clip` | Vidéo d'illustration (libre de droits) en plein écran, sans son : la voix continue. |
-| `zoom` | `debut`, `a`, `duree`, `fin` (facultatif) | Zoom avec flou de mouvement, sans bruitage. Éviter un zoom qui ressort aussitôt (moins d'1 s) : ça fait un à-coup. |
+| `zoom` | `debut`, `a`, `duree`, `fin` (facultatif) | Zoom avec flou de mouvement, sans bruitage. Sans `fin`, le zoom tient jusqu'à la coupe suivante (le retour se cache dans la coupe) : c'est le réglage conseillé. Zooms doux (demande de l'utilisateur) : `duree` 1 à 1,5 s et `a` 1,06 à 1,08 ; pas de zoom « coup de poing » (`duree` 0,05) suivi d'un `fin` en pleine phrase, ça fait zoomer puis dézoomer d'un coup. |
 | `transition` | `debut` (instant de la coupe), `style`, `duree` | `lumiere` (lumière colorée) ou `panoramique` (panoramique rapide). |
 | `carte_fin` | `debut`, `fin`, `nom`, `role` | Carte de fin. Si `nom` vaut « LOCALISY », c'est le logo qui s'affiche. |
 | `signature` | `debut`, `fin`, `y` (facultatifs) | Logo LOCALISY discret (charte `fin.signature`), par défaut sur les 2 dernières secondes. L'utilisateur n'en veut pas à la fin des témoignages : seulement sur demande. `y` remplace la hauteur de la charte pour une vidéo (ex. 1450, sous les sous-titres, si le visage est cadré haut). |

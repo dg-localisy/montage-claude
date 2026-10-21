@@ -18,7 +18,7 @@ Comptes qui m'inspirent : Creatical, agencepersonnelle, zenvyx.cuts.
 
 Une coupe toutes les 1,5 à 2,5 secondes. On retire les blancs et les « euh », en gardant un petit souffle autour des mots pour ne jamais les couper.
 
-Zoom très lent sur les phrases fortes. Petit zoom rapide sur un mot clé, mais jamais deux de suite.
+Zoom très lent sur les phrases fortes. **Les zooms restent doux** (retour de Black and Bike : « trop agressifs, ça zoome puis dézoome d'un coup ») : un zoom avance lentement (1 à 1,5 seconde, 6 à 7 % de plus) et ne revient jamais en arrière en pleine phrase ; il revient seulement sur une coupe du vidéaste, où le saut ne se voit pas. Les changements de cadre d'un plan à l'autre restent modérés (cadrage 1,1 au plus).
 
 Durée visée : entre 30 et 60 secondes.
 
@@ -81,7 +81,7 @@ Un mot géant, en noir légèrement transparent, comme imprimé sur le mur. Seul
 - 2 lignes (3 au plus si elles tiennent dans l'écran), au même endroit que les sous-titres normaux, serrées mais aérées.
 - **Des lignes en quinconce et quelques mots en gras**, avec des écarts de taille modérés : les petits mots de liaison (« des », « avec une ») en trait fin, à peu près à la taille normale ; les autres mots un peu plus grands (environ 1,3 fois) ; les mots importants en gras (environ 1,4 fois : « agence », « évoluer », « LOCALISY »). Pas de mot deux fois plus gros que les autres.
 - Un petit mot placé avant un gros mot est remonté, comme un exposant.
-- Les lignes sont un peu décalées les unes par rapport aux autres, en escalier.
+- Les lignes sont un peu décalées les unes par rapport aux autres, en escalier, mais **l'ensemble reste au milieu de l'image** : la 1re ligne, seule au début, est centrée, puis glisse doucement vers sa place quand la 2e arrive (retour de Black and Bike).
 - Chaque mot apparaît au moment où il est prononcé, en passant du flou au net. À la fin, tout le bloc se floute et disparaît.
 - Le sous-titre normal s'efface quand la phrase forte arrive : jamais les deux en même temps.
 
