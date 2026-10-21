@@ -8,7 +8,8 @@ import {easeInOut, easeOut, prog} from '../temps';
 //    objet au centre (image fournie par l'utilisateur) qui passe du flou au net, « vs » pour opposer deux idées,
 //    flash blanc à l'entrée et à la sortie. Elle remplace les sous-titres pendant qu'elle est affichée.
 //  - etiquettes_flottantes : étiquettes qui apparaissent en zigzag de chaque côté du buste (sous le visage).
-//  - mot_souligne : grand mot en italique sous le visage, souligné par un trait qui se dessine, remplaçable par un autre mot.
+//  - mot_souligne : grand mot en Figtree Bold (droit, comme les sous-titres ; demande de l'utilisateur) sous le visage, souligné par un trait qui se dessine,
+//    remplaçable par un autre mot ; petite ligne d'introduction en Figtree Light.
 
 // code-barres décoratif, toujours le même pour une page donnée
 const CodeBarres: React.FC<{graine: number; couleur: string}> = ({graine, couleur}) => {
@@ -256,10 +257,10 @@ export const MotSouligne: React.FC<{e: any; charte: any}> = ({e, charte}) => {
     return (
       <div style={{position: 'absolute', left: 0, width: W, top: 0, textAlign: 'center', opacity: a * opacite, transform: `translateY(${decal.toFixed(1)}px)`,
         filter: a * opacite < 0.98 ? `blur(${((1 - a * opacite) * 12).toFixed(1)}px)` : 'none'}}>
-        <span style={{position: 'relative', display: 'inline-block', fontFamily: 'Figtree Light Italic', fontSize: e.taille ?? M.taille_px, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.05,
-          textShadow: '0 6px 30px rgba(0,0,0,0.55)'}}>
+        <span style={{position: 'relative', display: 'inline-block', fontFamily: e.police ?? 'Figtree Bold', fontSize: e.taille ?? M.taille_px, color: '#fff', letterSpacing: '-0.01em', lineHeight: 1.05,
+          textShadow: '3px 5px 9px rgba(0,0,0,0.75)'}}>
           {texte}
-          <span style={{position: 'absolute', left: '4%', bottom: -6, height: 5, width: `${(92 * trait).toFixed(1)}%`, background: '#fff', borderRadius: 3, boxShadow: '0 2px 10px rgba(0,0,0,0.4)'}} />
+          <span style={{position: 'absolute', left: '4%', bottom: -Math.round((e.taille ?? M.taille_px) * 0.12), height: 5, width: `${(92 * trait).toFixed(1)}%`, background: '#fff', borderRadius: 3, boxShadow: '0 2px 10px rgba(0,0,0,0.4)'}} />
         </span>
       </div>
     );
@@ -267,8 +268,8 @@ export const MotSouligne: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   return (
     <div style={{position: 'absolute', left: 0, width: W, top: y, opacity: 1 - sortie}}>
       {e.contexte && (
-        <div style={{position: 'absolute', left: 0, width: W, top: -40, textAlign: 'center', fontFamily: 'Figtree Bold', fontSize: 24, letterSpacing: '0.26em', color: '#fff',
-          textTransform: 'uppercase', textShadow: '0 2px 12px rgba(0,0,0,0.8)', opacity: easeOut(prog(t, e.debut, e.debut + 0.3))}}>{e.contexte}</div>
+        <div style={{position: 'absolute', left: 0, width: W, top: -(e.contexte_taille ?? 54) - 8, textAlign: 'center', fontFamily: 'Figtree Light', fontSize: e.contexte_taille ?? 54, color: '#fff',
+          textShadow: '3px 4px 7px rgba(0,0,0,0.75)', opacity: easeOut(prog(t, e.debut, e.debut + 0.3))}}>{e.contexte}</div>
       )}
       {mot(e.mot, t1, 1 - change, -20 * change)}
       {e.ensuite && t2 !== undefined && mot(e.ensuite.mot, t2, change, 20 * (1 - change))}
