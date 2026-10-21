@@ -39,6 +39,21 @@ Tous les témoignages suivent la même trame, inspirée de la vidéo INCENDIE et
 
 **Pas de doublon** : un mot affiché en grand (titre, chiffre, mot derrière la tête, carte, pastilles) n'est pas répété dans les sous-titres.
 
+## La référence pour les prochains montages : la vidéo « Claude Edit »
+
+Vidéo envoyée par l'agence (interview de Jensen Huang, comparaison « Raw Video / Claude Edit ») : **c'est le modèle à suivre pour les effets des prochains montages**. On garde notre noir et blanc, Figtree et nos sous-titres INCENDIE ; les objets des pages sont fournis par l'agence.
+
+Ce qu'on en reprend :
+
+- **L'alternance personne / pages** : la personne parle, puis une page plein écran prend le relais sur une phrase clé (2 à 5 s), puis on revient à la personne. Environ une page toutes les 8 à 10 secondes. Pendant une page, la voix continue et les sous-titres s'effacent : c'est la page qui écrit la phrase.
+- **La page claire**, comme une page de magazine : fond papier gris très clair, petit code-barres en haut, petits textes verticaux sur les bords (nom du client, « LOCALISY · Témoignage »), la phrase qui s'écrit mot à mot au moment où elle est dite (petite ligne, puis grande ligne en italique fin), **le mot clé dans une boîte noire** avec un cadre de sélection en pointillés, **l'objet au centre** (image fournie) qui passe du flou au net et flotte doucement, une petite mention de la source en bas.
+- **La page sombre « l'un ou l'autre »** : petit titre espacé, première idée en très grand, un trait « vs » qui se dessine, la première idée s'estompe, la deuxième arrive (ex. « ce qui a marché » / « ce qui n'a pas marché »).
+- **Les étiquettes en zigzag** de chaque côté du buste pour une énumération (une à gauche, une à droite, en descendant), la dernière bien visible, les précédentes estompées.
+- **Le mot en italique souligné** sous le visage, avec une petite ligne au-dessus ; le trait se dessine, et le mot peut être remplacé par un autre.
+- **Un flash blanc** (lumière) pour entrer et sortir des pages. Idée à tester : finir la vidéo sur une page qui ressemble au début, pour que la vidéo tourne en boucle.
+
+Ce qu'on ne reprend pas : la couleur vert fluo, les autres polices, et ses sous-titres (les nôtres restent ceux de la vidéo INCENDIE).
+
 ## Le texte derrière la tête
 
 Un mot géant, en noir légèrement transparent, comme imprimé sur le mur. Seulement pour un mot fort et intéressant (résultat chiffré, idée clé), jamais pour un mot faible. Les lettres apparaissent une à une, puis le client passe devant (il est détouré image par image).

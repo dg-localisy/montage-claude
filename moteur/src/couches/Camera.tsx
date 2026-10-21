@@ -48,7 +48,7 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
   // pas de cadrage serré sur un plan où s'affiche une liste de pastilles ou une carte en verre (elle reste sous le menton)
   const listeSurLePlan = projet.effets.some((e: any) => e.type === 'liste' && e.debut < finPlan && e.fin > debutPlan);
   const verreSurLePlan = projet.effets.some((e: any) => e.type === 'carte_verre' && e.debut < finPlan && e.fin > debutPlan);
-  const etiquettesSurLePlan = projet.effets.some((e: any) => (e.type === 'frise' || e.type === 'bilan') && e.debut < finPlan && e.fin > debutPlan);
+  const etiquettesSurLePlan = projet.effets.some((e: any) => (e.type === 'frise' || e.type === 'bilan' || e.type === 'etiquettes_flottantes') && e.debut < finPlan && e.fin > debutPlan);
   const cadrage = Math.min(cam.cadrages[k % cam.cadrages.length], listeSurLePlan ? M.liste.cadrage_max : Infinity, verreSurLePlan ? M.carte_verre.cadrage_max : Infinity, etiquettesSurLePlan ? M.etiquettes.cadrage_max : Infinity);
   const decalage = cam.decalages_x[k % cam.decalages_x.length] * W;
   const avancee = 1 + cam.avancee * prog(t, debutPlan, finPlan);

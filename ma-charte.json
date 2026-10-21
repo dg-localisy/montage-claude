@@ -711,6 +711,26 @@
       "cadrage_max": 1.08,
       "frise": {"x": 170, "y": 930, "titre_taille_px": 32, "texte_taille_px": 38, "etape_taille_px": 22, "hauteur_rangee_px": 88},
       "bilan": {"y": 1010, "texte_taille_px": 46}
+    },
+    "pages": {
+      "description": "Troisième famille, inspirée de la vidéo de référence « Raw Video / Claude Edit » (interview Jensen Huang) envoyée par l'utilisateur, adaptée à la charte (noir et blanc, Figtree) : pages plein écran (papier clair ou fond sombre) où la phrase s'écrit au rythme de la voix, mot clé encadré avec cadre de sélection, objet fourni par l'utilisateur au centre, « vs » pour opposer deux idées, flash blanc à l'entrée et à la sortie ; étiquettes flottantes en zigzag sur le buste ; grand mot en italique souligné.",
+      "fond_clair": "radial-gradient(ellipse at 50% 42%, #FFFFFF 0%, #F2F2F2 55%, #E3E3E3 100%)",
+      "fond_sombre": "radial-gradient(ellipse at 50% 40%, #1E1E1E 0%, #0B0B0B 60%, #030303 100%)",
+      "flash_s": 0.22,
+      "code_barres_y": 150,
+      "contenu_y": 400,
+      "ecart_px": 34,
+      "etiquette_px": 24,
+      "petit_px": 46,
+      "italique_px": 118,
+      "grand_px": 132,
+      "cle_px": 112,
+      "appel_px": 64,
+      "image_hauteur_px": 560,
+      "source_y": 1620,
+      "source_px": 22,
+      "flottantes": {"y": 960, "pas_px": 70, "x_gauche": 520, "x_droite": 560, "texte_px": 34},
+      "mot_souligne": {"y": 1180, "taille_px": 138}
     }
   },
   "marque": {

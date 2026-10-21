@@ -175,8 +175,65 @@ function decouperTitre(titre, maxMots = 3, maxCar = 13) {
   return lignes.slice(0, 3);
 }
 
-function calculerTemps(e, M) {
+// Texte écrit au rythme de la voix (pages, mot souligné…) : chaque mot prend le temps où il est prononcé.
+// On avance dans les mots dits entre a et b ; un mot écrit qui n'a pas été dit tel quel prend le temps du précédent.
+function calerTexte(texte, mots, a, b, depart = {i: -1}, fenetre = 8) {
+  const ecrits = texte.trim().split(/\s+/).filter(Boolean);
+  // on part du premier mot dit après a (ou de là où le texte précédent s'est arrêté)
+  if (depart.i < 0 || mots[depart.i]?.debut < a - 0.01) {
+    const k = mots.findIndex((m) => m.debut >= a);
+    depart.i = (k < 0 ? mots.length : k) - 1;
+  }
+  let dernier = a;
+  return ecrits.map((mot) => {
+    const cible = normaliser(mot);
+    for (let j = depart.i + 1; j < mots.length && mots[j].debut <= b && j - depart.i <= fenetre; j++) {
+      if (normaliser(mots[j].texte) === cible) {
+        depart.i = j;
+        dernier = mots[j].debut;
+        return {mot, debut: dernier};
+      }
+    }
+    return {mot, debut: dernier};
+  });
+}
+
+function calculerTemps(e, M, mots = []) {
   const t = {};
+  // pages plein écran (claire ou sombre) : les éléments texte s'écrivent au rythme de la voix
+  if (e.type === 'page') {
+    const depart = {i: -1};
+    const elements = (e.elements || []).map((el) => ({...el}));
+    for (const el of elements) {
+      if (el.texte && el.type !== 'etiquette') {
+        el.mots = el.temps !== undefined
+          ? el.texte.split(/\s+/).map((mot, k) => ({mot, debut: el.temps + k * 0.08}))
+          : calerTexte(el.texte, mots, e.debut - 0.4, e.fin + 0.3, depart);
+        el.debut = el.mots[0].debut;
+      }
+    }
+    // éléments sans texte : l'image arrive tout de suite (du flou au net), le « vs » juste avant l'élément suivant
+    elements.forEach((el, k) => {
+      if (el.debut !== undefined) return;
+      const suivant = elements.slice(k + 1).find((x) => x.debut !== undefined);
+      if (el.type === 'image' || el.type === 'etiquette') el.debut = el.temps ?? e.debut + 0.05;
+      else el.debut = el.temps ?? (suivant ? suivant.debut - 0.35 : e.debut + 0.3);
+    });
+    t.elements = elements;
+  }
+  if (e.type === 'etiquettes_flottantes') {
+    // chaque étiquette arrive quand son premier mot est dit (dans l'ordre)
+    const depart = {i: -1};
+    t.items = e.items.map((it, i) => {
+      if (e.temps && e.temps[i] !== undefined) return e.temps[i];
+      const texte = typeof it === 'string' ? it : it.texte;
+      return calerTexte(texte.split(/\s+/)[0], mots, e.debut - 0.3, e.fin, depart, Infinity)[0].debut;
+    });
+  }
+  if (e.type === 'mot_souligne') {
+    t.mot = e.temps ?? calerTexte(e.mot.split(/\s+/)[0], mots, e.debut - 0.3, e.fin, {i: -1}, Infinity)[0].debut;
+    if (e.ensuite) t.ensuite = e.ensuite.temps ?? calerTexte(e.ensuite.mot.split(/\s+/)[0], mots, t.mot + 0.1, e.fin, {i: -1}, Infinity)[0].debut;
+  }
   if (e.type === 'accroche') {
     const presentation = e.variante === 'presentation';
     t.lignes = decouperTitre(e.titre.toUpperCase(), 3, presentation ? 18 : 13);
@@ -266,6 +323,10 @@ function sonsPour(e, M) {
     case 'compteur': return [s('woutch_court', e.debut), s('tap', t.comptage[1], 0.7)];
     case 'frise': return [s('woutch_grave', e.debut - 0.05), ...t.items.map((c) => s('pop_doux', c, 0.9))];
     case 'bilan': return [...t.items.map((c) => s('tap', c, 0.8)), ...(e.barrer ? [s('woutch_court', e.barrer.temps, 0.8)] : [])];
+    // pages plein écran : entrée avec un bruit de transition (son_entree pour un son fourni), petit toc quand le mot clé ou le « vs » arrive
+    case 'page': return [entree('swoosh', 0.1), ...t.elements.filter((el) => el.type === 'cle' || el.type === 'vs' || el.type === 'appel').map((el) => s('tap', el.debut, 0.7))];
+    case 'etiquettes_flottantes': return t.items.map((c) => s('tap', c, 0.55));
+    case 'mot_souligne': return [s('woutch_court', t.mot, 0.8), ...(e.ensuite ? [s('woutch_court', t.ensuite, 0.7)] : [])];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
     case 'transition': return [entree('woutch', 0.13)];
     case 'carte_fin': return [s('woutch', e.debut)];
@@ -322,7 +383,13 @@ export function preparer(cheminEffets) {
   // (titre, chiffre, texte derrière la tête, carte, pastilles), ne sont pas répétés dans les sous-titres normaux.
   //   remplace : ["mot", …] retirés s'ils sont prononcés pendant l'animation (ou jusqu'à 0,6 s avant) ;
   //   remplace_temps : [[debut, fin], …] tous les mots prononcés dans ces intervalles sont retirés.
-  const phrasesFortes = calerPhrasesFortes(st.phrases_fortes || [], mots);
+  for (const e of effets.filter((x) => x.type === 'page')) e.remplace_temps = [...(e.remplace_temps || []), [e.debut - 0.05, e.fin]];
+  const pages = effets.filter((x) => x.type === 'page');
+  const phrasesFortes = calerPhrasesFortes(st.phrases_fortes || [], mots).filter((b) => {
+    const cachee = pages.some((p) => b.debut < p.fin && b.fin > p.debut);
+    if (cachee) console.warn(`Phrase forte à ${b.debut.toFixed(2)} s retirée : elle tombe pendant une page plein écran.`);
+    return !cachee;
+  });
   const remplaces = effets.filter((e) => e.remplace).flatMap((e) => e.remplace.flatMap((r) => r.split(/\s+/)).map((r) => ({debut: e.debut - 0.6, fin: e.fin + 0.1, mot: normaliser(r)})));
   const intervalles = effets.filter((e) => e.remplace_temps).flatMap((e) => e.remplace_temps);
   const dansUnBloc = new Set(phrasesFortes.flatMap((b) => b.ids));
@@ -374,7 +441,15 @@ export function preparer(cheminEffets) {
     e.src = `media/plan_${e.id}${path.extname(f)}`;
     relier(f, path.join(PUBLIC, e.src));
   }
-  for (const e of effets) e._t = calculerTemps(e, M);
+  for (const e of effets.filter((x) => x.type === 'page')) {
+    (e.elements || []).forEach((el, k) => {
+      if (el.type !== 'image' || !el.fichier) return;
+      const f = chemin(el.fichier);
+      el.src = `media/page_${e.id}_${k}${path.extname(f)}`;
+      relier(f, path.join(PUBLIC, el.src));
+    });
+  }
+  for (const e of effets) e._t = calculerTemps(e, M, mots);
 
   const cam = effetsJson.camera || {};
   const camera = {

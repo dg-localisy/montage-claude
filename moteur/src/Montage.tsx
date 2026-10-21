@@ -8,6 +8,7 @@ import {CarteVerre} from './couches/CarteVerre';
 import {Chiffre} from './couches/Chiffre';
 import {EcranChat} from './couches/EcranChat';
 import {Bilan, Compteur, Frise, TitreBandeau} from './couches/Etiquettes';
+import {EtiquettesFlottantes, MotSouligne, Page} from './couches/Pages';
 import {GrandTitre} from './couches/GrandTitre';
 import {Icone} from './couches/Icone';
 import {Liste} from './couches/Liste';
@@ -53,6 +54,9 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
       {de('titre_bandeau').map((e: any) => <TitreBandeau key={e.id} e={e} charte={charte} />)}
       {de('grand_titre').map((e: any) => <GrandTitre key={e.id} e={e} charte={charte} />)}
       {de('accroche').map((e: any) => <Accroche key={e.id} e={e} charte={charte} projet={projet} />)}
+      {de('etiquettes_flottantes').map((e: any) => <EtiquettesFlottantes key={e.id} e={e} charte={charte} />)}
+      {de('mot_souligne').map((e: any) => <MotSouligne key={e.id} e={e} charte={charte} />)}
+      {de('page').map((e: any) => <Page key={e.id} e={e} charte={charte} />)}
       <SousTitres projet={projet} charte={charte} />
       <Lumieres projet={projet} charte={charte} />
       <Ambiance projet={projet} charte={charte} />
