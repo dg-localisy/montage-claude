@@ -22,6 +22,37 @@ export const TexteDerriere: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   // entrée « rebond » : le mot surgit petit et rebondit jusqu'à sa taille (ressort), net en un instant
   // ombre : true pour un texte clair sur un fond chargé (ex. plafond sombre avec des lumières)
   const ombre = e.ombre ? '0 10px 50px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.35)' : 'none';
+  // entrée « traverse » (Black and Bike, idée de l'utilisateur) : le mot passe au-dessus de la tête de gauche à droite.
+  // Il entre très vite par la gauche à « debut », glisse lentement au-dessus de la tête, puis file vers la droite à « fin ».
+  // Flou de vitesse horizontal pendant les passages rapides. Champs : x_arrivee, x_depart_sortie (centre du mot, en px).
+  if (e.entree === 'traverse') {
+    const xa = e.x_arrivee ?? 400;
+    const xb = e.x_depart_sortie ?? 680;
+    const entreeFin = e.debut + (e.duree_entree ?? 0.24);
+    const sortieDebut = e.fin - (e.duree_sortie ?? 0.32);
+    const pos = (x: number) => {
+      if (x < entreeFin) return -W * 0.45 + (xa + W * 0.45) * easeOut(prog(x, e.debut, entreeFin));
+      if (x < sortieDebut) return xa + (xb - xa) * prog(x, entreeFin, sortieDebut);
+      const p = prog(x, sortieDebut, e.fin);
+      return xb + (W * 1.5 - xb) * p * p * p;
+    };
+    const cx = pos(t);
+    const vitesse = Math.abs(pos(t + 1 / fps) - cx) * fps; // px par seconde
+    const flou = Math.min(40, vitesse / 260);
+    const id = `traverse-${e.id}`;
+    return (
+      <>
+        <svg width="0" height="0" style={{position: 'absolute'}}>
+          <defs><filter id={id} x="-30%" y="0%" width="160%" height="100%"><feGaussianBlur stdDeviation={`${flou.toFixed(1)} 0`} /></filter></defs>
+        </svg>
+        <div style={{position: 'absolute', left: cx - W, width: 2 * W, top: (e.y ?? T.y) - hauteur / 2, textAlign: 'center', fontFamily: T.police, fontSize: taille,
+          lineHeight: T.interligne, letterSpacing: `${T.interlettrage_em}em`, color: e.couleur ?? T.couleur, opacity: e.opacite ?? T.opacite, whiteSpace: 'pre',
+          textShadow: ombre, filter: flou > 0.6 ? `url(#${id})` : 'none'}}>
+          {lignes.join('\n')}
+        </div>
+      </>
+    );
+  }
   if (e.entree === 'rebond') {
     const r = spring({frame: (t - e.debut) * fps, fps, config: {damping: 9, stiffness: 190, mass: 0.8}});
     const net = easeOut(prog(t, e.debut, e.debut + 0.12));

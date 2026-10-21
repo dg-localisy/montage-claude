@@ -56,6 +56,8 @@ Ce qu'on ne reprend pas : la couleur vert fluo, les autres polices, et ses sous-
 
 ## Le texte derrière la tête
 
+Ce qui passe derrière la tête change d'une vidéo à l'autre : un mot qui s'écrit (Gary), un mot qui tombe (Cheminées Liégeois), le résultat qui traverse au-dessus de la tête de gauche à droite (Black and Bike)… ou une courbe de croissance qui se dessine derrière la personne.
+
 Un mot géant, en noir légèrement transparent, comme imprimé sur le mur. Seulement pour un mot fort et intéressant (résultat chiffré, idée clé), jamais pour un mot faible. Les lettres apparaissent une à une, puis le client passe devant (il est détouré image par image).
 
 **Il doit rester parfaitement lisible** : on le place au-dessus de la tête, et seules quelques mèches de cheveux passent devant le bas des lettres. Jamais le visage devant le cœur d'une lettre, sinon ça ne sert à rien. Et rien ne cache jamais le visage.

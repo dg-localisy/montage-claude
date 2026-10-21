@@ -85,7 +85,7 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
   );
 
   if (avantPlan) {
-    const derriere = projet.effets.some((e: any) => e.type === 'texte_derriere' && t >= e.debut - 0.02 && t <= e.fin + 0.02);
+    const derriere = projet.effets.some((e: any) => (e.type === 'texte_derriere' || e.type === 'courbe_derriere') && t >= e.debut - 0.02 && t <= e.fin + 0.02);
     if (!derriere || !cam.masques) return null;
     const masque = staticFile(`${cam.masques}/m_${String(frame).padStart(5, '0')}.png`);
     return (

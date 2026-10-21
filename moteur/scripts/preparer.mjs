@@ -318,6 +318,8 @@ function sonsPour(e, M) {
     // l'accroche principale monte avec un riser qui s'arrête net quand le chiffre tombe (« ×3 »), puis un coup sourd
     case 'texte_derriere': return e.riser ? [s(typeof e.riser === 'string' ? e.riser : 'riser', e.debut - (e.riser_duree ?? M.sons.riser_duree_s)), s('chute', e.debut)] : [e.entree === 'montee' ? s('woutch_grave', e.debut) : s('impact_doux', e.debut)];
     case 'carte_verre': return [s('woutch_grave', e.debut - 0.05), ...t.items.map((c) => s('tap', c, 0.8))];
+    // courbe derrière la tête : le riser accompagne le tracé et s'arrête net quand le résultat (« ×2 ») surgit, puis coup sourd
+    case 'courbe_derriere': return e.riser ? [s(typeof e.riser === 'string' ? e.riser : 'riser', e.cle - (e.riser_duree ?? M.sons.riser_duree_s)), s('chute', e.cle)] : [s('impact_doux', e.cle)];
     // famille « étiquettes » : d'autres sons que les cartes en verre et les pastilles, pour varier
     case 'titre_bandeau': return e.variante === 'nom' ? [s('woutch_grave', e.debut, 0.8)] : [s('woutch', e.debut)];
     case 'compteur': return [s('woutch_court', e.debut), s('tap', t.comptage[1], 0.7)];

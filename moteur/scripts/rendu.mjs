@@ -83,6 +83,7 @@ function instantsDeControle(projet) {
       case 'compteur': ajouter((T.comptage[0] + T.comptage[1]) / 2, 'compteur : défile'); ajouter(T.comptage[1] + 0.4, 'compteur : arrivé'); break;
       case 'frise': case 'bilan': (T.items || []).forEach((x, i) => ajouter(x + 0.35, `${e.type} ${i + 1}`)); ajouter(Math.min(e.fin, projet.duree) - 0.35, `${e.type} : complet`); if (e.barrer) ajouter(e.barrer.temps + 0.4, 'bilan : rayé'); break;
       case 'texte_derriere': ajouter(e.debut + 0.12, 'texte derrière : entrée'); ajouter(e.debut + 0.7, 'texte derrière : posé'); break;
+      case 'courbe_derriere': ajouter((e.debut + e.cle) / 2, 'courbe : tracé'); ajouter(e.cle + 0.1, 'courbe : résultat'); ajouter(e.cle + 0.6, 'courbe : posée'); break;
       case 'page': ajouter(e.debut + 0.04, 'page : flash d\'entrée'); (T.elements || []).filter((el) => el.texte || el.type === 'vs').forEach((el) => ajouter(el.debut + 0.4, `page : ${el.type}`)); ajouter(e.fin - 0.1, 'page : complète'); break;
       case 'etiquettes_flottantes': (T.items || []).forEach((x, i) => ajouter(x + 0.35, `étiquette ${i + 1}`)); break;
       case 'mot_souligne': ajouter(T.mot + 0.6, 'mot souligné'); if (T.ensuite) ajouter(T.ensuite + 0.5, 'mot remplacé'); break;

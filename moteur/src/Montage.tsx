@@ -16,6 +16,7 @@ import {PlanDeCoupe} from './couches/PlanDeCoupe';
 import {Sons} from './couches/Sons';
 import {SousTitres} from './couches/SousTitres';
 import {TexteDerriere} from './couches/TexteDerriere';
+import {CourbeDerriere} from './couches/CourbeDerriere';
 import {usePolices} from './polices';
 import {fondu} from './temps';
 
@@ -39,6 +40,7 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
     <AbsoluteFill style={{background: '#000'}}>
       <Camera projet={projet} charte={charte} />
       {de('texte_derriere').map((e: any) => <TexteDerriere key={e.id} e={e} charte={charte} />)}
+      {de('courbe_derriere').map((e: any) => <CourbeDerriere key={e.id} e={e} charte={charte} />)}
       <Camera projet={projet} charte={charte} avantPlan />
       {de('plan_de_coupe').map((e: any) => <PlanDeCoupe key={e.id} e={e} charte={charte} etalonnage={projet.ambiance.etalonnage} />)}
       {de('ecran_chat').map((e: any) => <EcranChat key={e.id} e={e} charte={charte} />)}
