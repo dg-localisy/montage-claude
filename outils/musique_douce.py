@@ -1,11 +1,13 @@
-"""Musique de fond originale (donc libre de droits) : lo-fi douce et tendance, ~84 BPM.
+"""Musique de fond originale (donc libre de droits), douce, sous la voix. Un style différent à chaque vidéo.
 
-Piano électrique (façon Rhodes) sur une boucle de 4 accords (Fa maj9 – Mi m7 – Ré m9 – Do maj9),
-basse ronde, rythmique feutrée (grosse caisse, claquement doux, charleston swingué), léger « pompage »
-sur la grosse caisse, réverbération et grain de vinyle. Le tout reste doux : la voix passe avant tout.
+Styles :
+  lofi       (Gary, ~84 BPM) : piano électrique façon Rhodes (Fa maj9 – Mi m7 – Ré m9 – Do maj9), basse ronde,
+             rythmique feutrée swinguée, léger « pompage », réverbération et grain de vinyle.
+  acoustique (Cheminées Liégeois, ~96 BPM) : guitare pincée en arpèges droits en Ré majeur (Ré – La – Si m – Sol),
+             nappe douce, basse sur 1 et 3, grosse caisse feutrée, claquements de doigts, shaker. Chaleureux et lumineux.
 
 Usage :
-    python3 outils/musique_douce.py SORTIE.wav --duree 53.93 --debut 2.08 [--bpm 84] [--graine 7]
+    python3 outils/musique_douce.py SORTIE.wav --duree 48.16 --debut 4.62 --style acoustique [--bpm 96] [--graine 7]
 --debut : la musique commence à ce moment (silence avant), par exemple quand l'accroche tombe.
 """
 import argparse
@@ -75,16 +77,8 @@ def reverb(x, rng, duree=1.4, tau=0.55, mouille=0.22):
     return x + mouille * humide
 
 
-def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("sortie")
-    p.add_argument("--duree", type=float, required=True)
-    p.add_argument("--debut", type=float, default=0.0)
-    p.add_argument("--bpm", type=float, default=84)
-    p.add_argument("--graine", type=int, default=7)
-    a = p.parse_args()
-    rng = np.random.default_rng(a.graine)
-
+def style_lofi(a, rng):
+    """Lo-fi (Gary) : piano électrique, basse ronde, rythmique feutrée swinguée, grain de vinyle."""
     n = int(a.duree * SR)
     temps = 60 / a.bpm
     mesure = 4 * temps
@@ -160,13 +154,129 @@ def main():
         i = rng.integers(0, n - 200)
         craq[:, i:i + 60] += rng.standard_normal(60) * 0.02 * np.exp(-np.arange(60) / 12)
     mix = mix + souffle + craq
+    return mix
+
+
+_cordes = {}
+
+
+def corde(f, rng, duree=2.4, brillance=0.35):
+    """Corde de guitare pincée (Karplus-Strong) : un petit bruit qui résonne à la fréquence f et s'éteint naturellement.
+    Mise en cache par hauteur (même note = même son, le calcul est long)."""
+    cle = (round(f, 2), duree, brillance)
+    if cle not in _cordes:
+        n = int(duree * SR)
+        N = int(round(SR / f))
+        x = np.zeros(n)
+        g = np.random.default_rng(int(f * 10)).standard_normal(N)
+        b, a_ = signal.butter(1, min(0.95, (1500 + 5000 * brillance) / (SR / 2)))
+        x[:N] = signal.lfilter(b, a_, g)
+        coef = np.zeros(N + 2)
+        coef[0], coef[N], coef[N + 1] = 1.0, -0.4985, -0.4985
+        y = signal.lfilter([1.0], coef, x)
+        y *= np.clip((duree - np.arange(n) / SR) / 0.3, 0, 1)
+        _cordes[cle] = y / (np.abs(y).max() + 1e-9)
+    return _cordes[cle] * (0.94 + 0.06 * rng.random())
+
+
+def style_acoustique(a, rng):
+    """Acoustique chaleureux (Cheminées Liégeois) : guitare pincée en arpèges droits (pas de swing), Ré majeur
+    (Ré – La – Si m – Sol), nappe douce, basse sur les temps 1 et 3, grosse caisse feutrée sur 1 et 3, petit claquement
+    de doigts sur 2 et 4, shaker en doubles croches. Plus vif et plus lumineux que le lo-fi, sans grain de vinyle."""
+    n = int(a.duree * SR)
+    temps = 60 / a.bpm
+    mesure = 4 * temps
+    accords = [  # (basse, cordes de la guitare, du grave à l'aigu) en numéros MIDI
+        (38, [50, 57, 62, 66]),       # Ré
+        (33, [45, 52, 57, 61, 64]),   # La
+        (35, [47, 54, 59, 62, 66]),   # Si mineur
+        (31, [43, 50, 55, 59, 62]),   # Sol
+    ]
+    motif = [0, 2, 1, 3, 2, 3, 1, 4]  # ordre des cordes pincées sur les 8 croches de la mesure
+    guitare = np.zeros((2, n))
+    nappe = np.zeros((2, n))
+    basse = np.zeros((2, n))
+    batterie = np.zeros((2, n))
+    nb_mesures = int(np.ceil((a.duree - a.debut) / mesure)) + 1
+    gc = grosse_caisse()
+    for m in range(nb_mesures):
+        t0 = a.debut + m * mesure
+        racine, cordes = accords[m % 4]
+        # guitare : arpège en croches (légèrement humanisé) ; toutes les 2 mesures, un accord gratté doucement sur le 1
+        for k, i in enumerate(motif):
+            nn = cordes[i % len(cordes)]
+            v = 0.3 if k % 2 == 0 else 0.22
+            placer(guitare, v * corde(midi(nn), rng), t0 + k * temps / 2 + 0.006 * rng.standard_normal(), pan=-0.35 + 0.14 * (i % 5))
+        if m % 2 == 0:
+            for j, nn in enumerate(cordes):
+                placer(guitare, 0.13 * corde(midi(nn), rng, duree=3.0, brillance=0.25), t0 + 0.014 * j, pan=0.25)
+        # nappe : l'accord tenu très doucement, attaque lente
+        t = np.arange(int(mesure * SR + 0.6 * SR)) / SR
+        env = np.clip(t / 0.7, 0, 1) * np.clip((t[-1] - t) / 0.6, 0, 1)
+        son = sum(np.sin(2 * np.pi * midi(nn + 12) * t) for nn in cordes[1:4]) / 3
+        placer(nappe, 0.07 * env * son, t0)
+        # basse : fondamentale sur le 1 et le 3, petite note de passage sur le « et » du 4
+        for decal, nn, v in [(0, racine, 0.22), (2 * temps, racine, 0.15), (3.5 * temps, racine + 7, 0.1)]:
+            t = np.arange(int(0.8 * SR)) / SR
+            f = midi(nn + 12)
+            son = (np.sin(2 * np.pi * f * t) + 0.25 * np.sin(2 * np.pi * 2 * f * t)) * np.exp(-t / 0.5) * (1 - np.exp(-t / 0.006))
+            placer(basse, v * son, t0 + decal)
+        # batterie (à partir de la 2e mesure) : grosse caisse feutrée sur 1 et 3, claquement de doigts sur 2 et 4, shaker
+        if m >= 1:
+            for decal in (0, 2 * temps):
+                placer(batterie, 0.18 * gc, t0 + decal)
+            for decal in (temps, 3 * temps):
+                tt = np.arange(int(0.12 * SR)) / SR
+                bruit = rng.standard_normal(len(tt))
+                b, a_ = signal.butter(2, [1500 / (SR / 2), 3800 / (SR / 2)], btype="band")
+                placer(batterie, 0.1 * signal.lfilter(b, a_, bruit) * np.exp(-tt / 0.03), t0 + decal, pan=-0.2)
+            for k in range(16):
+                tt = np.arange(int(0.05 * SR)) / SR
+                bruit = rng.standard_normal(len(tt))
+                b, a_ = signal.butter(2, 6500 / (SR / 2), btype="high")
+                v = 0.05 if k % 2 else 0.028
+                placer(batterie, v * signal.lfilter(b, a_, bruit) * np.exp(-tt / 0.018), t0 + k * temps / 4, pan=0.4)
+    guitare = reverb(guitare, rng, duree=1.0, tau=0.35, mouille=0.18)
+    # guitare chaude : aigus adoucis (filtre sans décalage dans le temps)
+    guitare = signal.sosfiltfilt(signal.butter(2, [160 / (SR / 2), 2600 / (SR / 2)], btype="band", output="sos"), guitare, axis=1)
+    b, a_ = signal.butter(2, 500 / (SR / 2), btype="low")
+    basse = signal.lfilter(b, a_, basse, axis=1)
+    b, a_ = signal.butter(2, 1800 / (SR / 2), btype="low")
+    nappe = signal.lfilter(b, a_, nappe, axis=1)
+    mix = 0.9 * guitare + 0.5 * nappe + 0.45 * basse + 0.7 * batterie
+    # place pour la voix : on creuse la bande 1–4 kHz (filtre sans décalage, sinon la soustraction ne creuse pas)
+    mix = mix - 0.8 * signal.sosfiltfilt(signal.butter(2, [1000 / (SR / 2), 4000 / (SR / 2)], btype="band", output="sos"), mix, axis=1)
+    b, a_ = signal.butter(2, 70 / (SR / 2), btype="high")
+    mix = signal.lfilter(b, a_, mix, axis=1)
+    b, a_ = signal.butter(1, 10000 / (SR / 2), btype="low")
+    return signal.lfilter(b, a_, mix, axis=1)
+
+
+STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96)}
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("sortie")
+    p.add_argument("--duree", type=float, required=True)
+    p.add_argument("--debut", type=float, default=0.0)
+    p.add_argument("--style", choices=sorted(STYLES), default="lofi",
+                   help="lofi (Gary) ou acoustique (Cheminées Liégeois) : changer de style à chaque vidéo")
+    p.add_argument("--bpm", type=float, default=None)
+    p.add_argument("--graine", type=int, default=7)
+    a = p.parse_args()
+    fabrique, bpm = STYLES[a.style]
+    a.bpm = a.bpm or bpm
+    rng = np.random.default_rng(a.graine)
+    n = int(a.duree * SR)
+    mix = fabrique(a, rng)
     # silence avant le début, entrée douce (0,4 s) et fondu final (2,5 s)
     t = np.arange(n) / SR
     env = np.clip((t - a.debut) / 0.4, 0, 1) * np.clip((a.duree - t) / 2.5, 0, 1)
     mix *= env
     mix /= np.abs(mix).max() + 1e-9
     wavfile.write(a.sortie, SR, (mix.T * 0.89).astype(np.float32))
-    print(f"Musique écrite : {a.sortie} ({a.duree:.1f} s, début à {a.debut:.2f} s, {a.bpm:.0f} BPM)")
+    print(f"Musique écrite : {a.sortie} (style {a.style}, {a.duree:.1f} s, début à {a.debut:.2f} s, {a.bpm:.0f} BPM)")
 
 
 if __name__ == "__main__":

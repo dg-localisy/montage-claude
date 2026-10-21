@@ -8,8 +8,8 @@
   },
   "musique": {
     "actif": true,
-    "fichier": "media/musique_douce.wav",
-    "_note": "Musique originale (outils/musique_douce.py --duree 48.16 --debut 4.62), lo-fi douce ; démarre quand INTERNET tombe."
+    "fichier": "media/musique_acoustique.wav",
+    "_note": "Musique originale, style acoustique (guitare pincée, Ré majeur, 96 BPM) : outils/musique_douce.py media/musique_acoustique.wav --duree 48.16 --debut 4.62 --style acoustique. Différente de celle de Gary (lo-fi), à la demande de l'utilisateur ; démarre quand INTERNET tombe."
   },
   "sous_titres": {
     "mode": "premiere_video",
