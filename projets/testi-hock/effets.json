@@ -324,7 +324,7 @@
    "items": [
     "Le ciblage",
     "La passerelle avec le site",
-    "La création de contenu",
+    "La création de contenu professionnel",
     "La visibilité dans ChatGPT"
    ],
    "temps": [
@@ -336,25 +336,10 @@
    "remplace_temps": [
     [
      34.85,
-     35.7
-    ],
-    [
-     37.1,
-     37.7
-    ],
-    [
-     37.75,
-     38.9
-    ],
-    [
-     38.9,
-     39.7
-    ],
-    [
-     42.45,
-     43.5
+     44.6
     ]
-   ]
+   ],
+   "_note": "Aucun sous-titre pendant la carte (ils se collaient dessous, demande de l'utilisateur) ; « professionnel » ajouté au 3e élément."
   },
   {
    "type": "zoom",
