@@ -70,6 +70,19 @@ polices = sous_titres.dossier_polices_statiques("DOSSIER_TEMP/polices")
 
 `python3 outils/generer_apercus.py` refait toutes les images de `apercus/` à partir de la charte. À relancer après chaque changement de la charte, puis à montrer à l'utilisateur pour validation.
 
+### Révélation « trou de serrure » : `outils/revelation_spot.py`
+
+Transforme une photo en vidéo de suspense : écran noir, un seul rond se promène lentement et montre la photo morceau par morceau. Pas de texte, pas de musique (piste son muette).
+
+```
+python3 outils/revelation_spot.py PHOTO.jpg --points "1020,1540 500,1470 540,1170 490,840 1000,715"
+```
+
+- `--points` : trajet du rond, en pixels de la photo ou en fractions (0 à 1). Choisis-les à la main en regardant la photo (une grille aide) : le trajet raconte mieux la scène. Sans `--points`, l'outil prend seul les zones les plus riches.
+- Autres options : `--duree` (10 s maximum), `--rayon` (0.14 de la largeur de la photo), `--fps`, `--sortie`, `--nom`.
+- Livrables : `NOM_9x16.mp4`, `NOM_4x5.mp4` (chaque format fabriqué à part, le rond reste toujours entier), `trajet.jpg`, `planche_9x16.jpg` et `planche_4x5.jpg` à regarder avant de livrer.
+- Le rond s'allume, ralentit sur chaque point, s'arrête sur le dernier puis s'éteint. Hors du rond, l'image source est à 0 ; seule la compression laisse quelques valeurs très faibles collées au bord.
+
 ### ElevenLabs : `outils/elevenlabs.py`
 
 `transcrire(fichier, langue="fr", cache_dir=...)` (Scribe, mis en cache), `mots(transcription)`, `voix()`, `synthese(texte, voice_id, sortie)`. Voix française pour les tests : Sarah, `EXAVITQu4vr4xnSDxMaL`, modèle `eleven_multilingual_v2`.
