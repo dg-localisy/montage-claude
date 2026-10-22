@@ -7,6 +7,9 @@ Styles :
              nappe douce, basse sur 1 et 3, grosse caisse feutrée, claquements de doigts, shaker. Chaleureux et lumineux.
   electro    (Black and Bike, ~112 BPM) : house douce en La mineur (La m – Fa – Do – Sol), nappe de synthé qui pompe,
              synthé pincé syncopé, basse sur les contretemps, grosse caisse sur chaque temps. Dynamique et moderne.
+  marimba    (DS Cleaning, ~100 BPM) : pop fraîche au marimba en Fa majeur (Fa – Ré m – Si♭ – Do), motif syncopé
+             aux baguettes, basse ronde « tropicale », claquements de doigts sur 2 et 4, shaker léger, nappe très douce.
+             Lumineux et propre.
 
 Usage :
     python3 outils/musique_douce.py SORTIE.wav --duree 48.16 --debut 4.62 --style acoustique [--bpm 96] [--graine 7]
@@ -341,7 +344,86 @@ def style_electro(a, rng):
     return signal.sosfiltfilt(signal.butter(1, 11000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
 
 
-STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112)}
+def lame(f, duree, vel, rng):
+    """Note de marimba : fondamentale ronde + harmonique 4 (deux octaves) très brève, attaque de baguette feutrée."""
+    t = np.arange(int(duree * SR)) / SR
+    tau = 0.42 * (330 / f) ** 0.6  # les lames aiguës s'éteignent plus vite
+    x = (np.sin(2 * np.pi * f * t) * np.exp(-t / tau)
+         + 0.16 * np.sin(2 * np.pi * 3.93 * f * t) * np.exp(-t / (tau * 0.18))
+         + 0.05 * np.sin(2 * np.pi * 9.2 * f * t) * np.exp(-t / 0.012))
+    return vel * x * (1 - np.exp(-t / 0.0015)) * (0.9 + 0.1 * rng.random())
+
+
+def style_marimba(a, rng):
+    """Pop marimba (DS Cleaning) : ~100 BPM en Fa majeur (Fa – Ré m – Si♭ – Do). Motif syncopé au marimba (deux voix),
+    basse ronde sur 1, le « et » de 2 et le « et » de 3, grosse caisse feutrée sur 1 et 3 (pas sur chaque temps, à la
+    différence de l'électro), claquements de doigts sur 2 et 4, shaker en doubles croches, nappe très douce dessous."""
+    n = int(a.duree * SR)
+    temps = 60 / a.bpm
+    mesure = 4 * temps
+    accords = [  # (basse, nappe, notes du marimba) en numéros MIDI
+        (41, [57, 60, 65], [65, 69, 72, 77, 72, 69]),   # Fa
+        (38, [57, 62, 65], [62, 65, 69, 74, 69, 65]),   # Ré mineur
+        (46, [58, 62, 65], [62, 65, 70, 74, 70, 65]),   # Si bémol
+        (48, [55, 60, 64], [64, 67, 72, 76, 72, 67]),   # Do
+    ]
+    marimba = np.zeros((2, n))
+    nappe = np.zeros((2, n))
+    basse = np.zeros((2, n))
+    batterie = np.zeros((2, n))
+    gc = grosse_caisse()
+    nb_mesures = int(np.ceil((a.duree - a.debut) / mesure)) + 1
+    motif = [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0]  # doubles croches jouées (syncopé, façon « tropical »)
+    for m in range(nb_mesures):
+        t0 = a.debut + m * mesure
+        racine, accord, arpege = accords[m % 4]
+        # nappe : accord tenu, très doux et sombre
+        d = mesure + 0.5
+        tt = np.arange(int(d * SR)) / SR
+        env = np.clip(tt / 0.6, 0, 1) * np.clip((d - tt) / 0.6, 0, 1)
+        for j, nn in enumerate(accord):
+            f = midi(nn)
+            placer(nappe, 0.05 * env * (np.sin(2 * np.pi * f * tt) + 0.2 * np.sin(2 * np.pi * 2.003 * f * tt)), t0, pan=-0.5 + 0.5 * j)
+        # marimba : motif syncopé, une voix aiguë et quelques notes graves en écho
+        i = 0
+        for k in range(16):
+            if not motif[k]:
+                continue
+            nn = arpege[i % len(arpege)]
+            i += 1
+            vel = 0.2 if k % 4 == 0 else 0.15
+            placer(marimba, lame(midi(nn), 0.9, vel, rng), t0 + k * temps / 4, pan=0.25 if i % 2 else -0.25)
+            if k in (0, 10):
+                placer(marimba, lame(midi(nn - 12), 1.1, 0.1, rng), t0 + k * temps / 4 + 0.005, pan=0.0)
+        # basse ronde : 1, « et » de 2, « et » de 3
+        for pos, dur in ((0, 0.9), (1.5, 0.4), (2.5, 0.8)):
+            dd = temps * dur
+            tt = np.arange(int(dd * SR)) / SR
+            f = midi(racine)
+            son = (np.sin(2 * np.pi * f * tt) + 0.25 * np.sin(2 * np.pi * 2 * f * tt)) * np.clip((dd - tt) / 0.04, 0, 1) * (1 - np.exp(-tt / 0.006))
+            placer(basse, 0.32 * son, t0 + pos * temps)
+        # batterie (à partir de la 2e mesure)
+        if m >= 1:
+            for k in (0, 2):
+                placer(batterie, 0.2 * gc, t0 + k * temps)
+            for k in (1, 3):
+                placer(batterie, 0.16 * claquement(rng), t0 + k * temps + 0.004, pan=0.15)
+            for k in range(16):
+                tt = np.arange(int(0.06 * SR)) / SR
+                bruit = rng.standard_normal(len(tt))
+                b_, a_ = signal.butter(2, 6000 / (SR / 2), btype="high")
+                placer(batterie, (0.09 if k % 2 else 0.045) * signal.lfilter(b_, a_, bruit) * np.exp(-tt / 0.02), t0 + k * temps / 4 + 0.008, pan=-0.35)
+    marimba = reverb(signal.sosfiltfilt(signal.butter(2, 5000 / (SR / 2), btype="low", output="sos"), marimba, axis=1), rng, duree=1.3, tau=0.45, mouille=0.3)
+    nappe = signal.sosfiltfilt(signal.butter(2, 900 / (SR / 2), btype="low", output="sos"), nappe, axis=1)
+    basse = signal.sosfiltfilt(signal.butter(2, 380 / (SR / 2), btype="low", output="sos"), basse, axis=1)
+    mix = 1.0 * marimba + 0.8 * nappe + 0.32 * basse + 0.6 * batterie
+    # place pour la voix : bande 1–4 kHz creusée ; pas d'infra-basses
+    mix = mix - 0.8 * signal.sosfiltfilt(signal.butter(2, [1000 / (SR / 2), 4000 / (SR / 2)], btype="band", output="sos"), mix, axis=1)
+    mix = signal.sosfiltfilt(signal.butter(2, 70 / (SR / 2), btype="high", output="sos"), mix, axis=1)
+    return signal.sosfiltfilt(signal.butter(1, 11000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
+
+
+STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112), "marimba": (style_marimba, 100)}
 
 
 def main():
@@ -350,7 +432,7 @@ def main():
     p.add_argument("--duree", type=float, required=True)
     p.add_argument("--debut", type=float, default=0.0)
     p.add_argument("--style", choices=sorted(STYLES), default="lofi",
-                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike) : changer de style à chaque vidéo")
+                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike), marimba (DS Cleaning) : changer de style à chaque vidéo")
     p.add_argument("--bpm", type=float, default=None)
     p.add_argument("--graine", type=int, default=7)
     a = p.parse_args()

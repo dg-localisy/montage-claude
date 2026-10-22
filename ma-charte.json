@@ -663,7 +663,8 @@
         "riser_pulsations": 0.5,
         "transition_whoosh_oxid": 0.24,
         "transition_base": 0.2,
-        "swoosh_universfield": 0.27
+        "swoosh_universfield": 0.27,
+        "riser_inverse": 0.27
       },
       "riser_duree_s": 2.0,
       "fournis": {
@@ -742,6 +743,13 @@
       "empile": {"y": 1100, "petit_px": 42, "grand_px": 100, "ecart_px": 6},
       "recherche": {"y": 1385, "largeur_px": 900, "hauteur_px": 120, "texte_px": 50, "invite": "Demander à l'IA…"},
       "barres": {"y": 1060, "largeur_px": 760, "hauteur_px": 58, "pas_px": 130}
+    },
+    "bureau": {
+      "description": "Cinquième famille (DS Cleaning), « bureau » : objets du quotidien d'un chef d'entreprise, en noir et blanc et Figtree. chapitre (repère « 01 — AVANT » écrit sur le mur au-dessus de la tête), tampon (tampon encreur blanc qui claque sous le visage), ticket (ticket de caisse qui se déroule sous le visage, lignes imprimées au rythme de la voix), choix (carte blanche à deux options façon sondage, sans pourcentage inventé, l'option dont il parle encadrée de noir).",
+      "chapitre": {"y": 214, "couleur": "#0B0B0B", "numero_px": 30, "texte_px": 56, "trait_px": 80},
+      "tampon": {"y": 1150, "texte_px": 92, "angle_deg": -7, "bord_px": 7},
+      "ticket": {"y": 1015, "largeur_px": 740, "entete_px": 56, "entete_texte_px": 38, "ligne_px": 38, "petit_px": 27, "total_px": 66, "hauteurs": {"ligne": 70, "petit": 42, "tirets": 34, "total": 90}},
+      "choix": {"y": 1040, "largeur_px": 900, "titre_px": 24, "option_px": 42, "sous_px": 30, "ou_px": 24}
     }
   },
   "marque": {

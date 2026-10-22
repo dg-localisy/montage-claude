@@ -52,6 +52,14 @@ const RECETTES = {
     '-filter_complex', `[0:a]lowpass=f=1400[p];[1:a]asendcmd=c='${montee(d, 300, 6000, 'highpass@h')}',highpass@h=f=300,lowpass=f=9000,afade=t=in:d=${d}:curve=exp,volume=1.3[s];` +
       `[p][s]amix=inputs=2:normalize=0,afade=t=out:st=${(d - 0.012).toFixed(3)}:d=0.012[r]`,
     '-map', '[r]'],
+  // riser_inverse : quatrième riser (DS Cleaning), court : un accord de Fa majeur (piano feutré + souffle de cymbale)
+  // joué à l'envers, qui gonfle vite et s'arrête net quand le résultat tombe. Tonal, différent des souffles et des pulsations.
+  riser_inverse: (d = 0.85) => ['-f', 'lavfi', '-i',
+    `aevalsrc='(0.5*sin(2*PI*174.6*t)+0.4*sin(2*PI*220*t)+0.35*sin(2*PI*261.6*t)+0.25*sin(2*PI*349.2*t)+0.1*sin(2*PI*523.3*t)+0.12*sin(2*PI*349.2*t)*exp(-9*t))*exp(-4.2*t)*(1-exp(-300*t))':s=${SR}:d=${d}`,
+    '-f', 'lavfi', '-i', `anoisesrc=c=pink:r=${SR}:d=${d}:a=0.5:seed=31`,
+    '-filter_complex', `[1:a]highpass=f=2500,lowpass=f=7000,volume='0.6*exp(-5*t)':eval=frame[n];[0:a]lowpass=f=3000[o];` +
+      `[o][n]amix=inputs=2:normalize=0,aecho=0.8:0.5:60|130:0.3|0.18,areverse,afade=t=out:st=${(d - 0.012).toFixed(3)}:d=0.012[r]`,
+    '-map', '[r]'],
   // chute : coup sourd et rond quand l'accroche tombe (grave qui descend, sans claquement)
   chute: () => ['-f', 'lavfi', '-i', `aevalsrc='0.9*sin(2*PI*(62*t-16*t*t))*exp(-4.2*t)*(1-exp(-260*t))+0.18*(random(0)*2-1)*exp(-70*t)':s=${SR}:d=0.9`,
     '-af', 'lowpass=f=700'],

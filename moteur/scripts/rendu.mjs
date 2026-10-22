@@ -89,6 +89,10 @@ function instantsDeControle(projet) {
       case 'barre_recherche': ajouter((T.frappe + T.finFrappe) / 2, 'recherche : frappe'); ajouter(T.finFrappe + 0.15, 'recherche : tapée'); break;
       case 'barres_comparees': ajouter(e.cle - 0.3, 'barres : remplissage'); ajouter(e.cle + 0.3, 'barres : résultat'); break;
       case 'etiquettes_flottantes': (T.items || []).forEach((x, i) => ajouter(x + 0.35, `étiquette ${i + 1}`)); break;
+      case 'chapitre': ajouter(e.debut + 0.2, 'chapitre : entrée'); ajouter(e.debut + 0.9, 'chapitre : posé'); break;
+      case 'tampon': ajouter(T.coup - 0.06, 'tampon : chute'); ajouter(T.coup + 0.3, 'tampon : posé'); break;
+      case 'ticket': (T.lignes || []).filter((l) => l.type !== 'tirets').forEach((l, i) => ajouter(l.debut + 0.35, `ticket ${i + 1}`)); ajouter(e.fin - 0.5, 'ticket : complet'); ajouter(e.fin - 0.2, 'ticket : rentre'); break;
+      case 'choix': ajouter(e.debut + 0.3, 'choix : entrée'); (T.options || []).forEach((o, i) => { ajouter(o.mots[o.mots.length - 1].debut + 0.3, `choix : option ${i + 1}`); if (o.sous) ajouter(o.sous[o.sous.length - 1].debut + 0.3, `choix : détail ${i + 1}`); }); break;
       case 'mot_souligne': ajouter(T.mot + 0.6, 'mot souligné'); if (T.ensuite) ajouter(T.ensuite + 0.5, 'mot remplacé'); break;
       case 'carte':
         ajouter(e.debut + 0.22, 'carte : réduction');

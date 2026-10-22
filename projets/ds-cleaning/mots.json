@@ -1,0 +1,892 @@
+[
+ {
+  "mot": "On",
+  "debut": 0.04,
+  "fin": 0.1
+ },
+ {
+  "mot": "a",
+  "debut": 0.16,
+  "fin": 0.22
+ },
+ {
+  "mot": "fait",
+  "debut": 0.26,
+  "fin": 0.34
+ },
+ {
+  "mot": "quand",
+  "debut": 0.38,
+  "fin": 0.48
+ },
+ {
+  "mot": "même",
+  "debut": 0.48,
+  "fin": 0.6
+ },
+ {
+  "mot": "fois",
+  "debut": 0.66,
+  "fin": 0.82
+ },
+ {
+  "mot": "quatre",
+  "debut": 0.88,
+  "fin": 1.38
+ },
+ {
+  "mot": "grâce",
+  "debut": 1.44,
+  "fin": 1.62
+ },
+ {
+  "mot": "au",
+  "debut": 1.66,
+  "fin": 1.7
+ },
+ {
+  "mot": "référencement",
+  "debut": 1.74,
+  "fin": 2.34
+ },
+ {
+  "mot": "et",
+  "debut": 2.44,
+  "fin": 2.68
+ },
+ {
+  "mot": "au",
+  "debut": 2.72,
+  "fin": 2.76
+ },
+ {
+  "mot": "nouveau",
+  "debut": 2.8,
+  "fin": 2.96
+ },
+ {
+  "mot": "site",
+  "debut": 3.0,
+  "fin": 3.12
+ },
+ {
+  "mot": "internet",
+  "debut": 3.16,
+  "fin": 3.46
+ },
+ {
+  "mot": "que",
+  "debut": 3.48,
+  "fin": 3.52
+ },
+ {
+  "mot": "Localizy",
+  "debut": 3.58,
+  "fin": 3.98
+ },
+ {
+  "mot": "nous",
+  "debut": 4.019,
+  "fin": 4.1
+ },
+ {
+  "mot": "ont",
+  "debut": 4.12,
+  "fin": 4.22
+ },
+ {
+  "mot": "fait.",
+  "debut": 4.26,
+  "fin": 4.44
+ },
+ {
+  "mot": "Avant,",
+  "debut": 4.62,
+  "fin": 4.8
+ },
+ {
+  "mot": "avant",
+  "debut": 4.86,
+  "fin": 4.98
+ },
+ {
+  "mot": "que",
+  "debut": 5.02,
+  "fin": 5.06
+ },
+ {
+  "mot": "je",
+  "debut": 5.12,
+  "fin": 5.54
+ },
+ {
+  "mot": "travaille",
+  "debut": 5.58,
+  "fin": 5.78
+ },
+ {
+  "mot": "avec",
+  "debut": 5.82,
+  "fin": 5.94
+ },
+ {
+  "mot": "Localizy,",
+  "debut": 6.14,
+  "fin": 6.56
+ },
+ {
+  "mot": "comme",
+  "debut": 6.62,
+  "fin": 6.72
+ },
+ {
+  "mot": "on",
+  "debut": 6.74,
+  "fin": 6.8
+ },
+ {
+  "mot": "dit",
+  "debut": 6.86,
+  "fin": 6.96
+ },
+ {
+  "mot": "encore,",
+  "debut": 7.02,
+  "fin": 7.28
+ },
+ {
+  "mot": "c'est",
+  "debut": 7.38,
+  "fin": 7.94
+ },
+ {
+  "mot": "l'ancien",
+  "debut": 8.039,
+  "fin": 8.68
+ },
+ {
+  "mot": "entrepreneur",
+  "debut": 8.74,
+  "fin": 9.32
+ },
+ {
+  "mot": "qui",
+  "debut": 9.36,
+  "fin": 9.42
+ },
+ {
+  "mot": "était",
+  "debut": 9.48,
+  "fin": 9.74
+ },
+ {
+  "mot": "au",
+  "debut": 10.16,
+  "fin": 10.26
+ },
+ {
+  "mot": "four",
+  "debut": 10.36,
+  "fin": 10.58
+ },
+ {
+  "mot": "et",
+  "debut": 10.66,
+  "fin": 11.18
+ },
+ {
+  "mot": "au",
+  "debut": 11.2,
+  "fin": 11.26
+ },
+ {
+  "mot": "moulin,",
+  "debut": 11.3,
+  "fin": 11.5
+ },
+ {
+  "mot": "qui",
+  "debut": 11.56,
+  "fin": 11.66
+ },
+ {
+  "mot": "faisait",
+  "debut": 11.68,
+  "fin": 11.82
+ },
+ {
+  "mot": "un",
+  "debut": 11.86,
+  "fin": 11.92
+ },
+ {
+  "mot": "peu",
+  "debut": 11.96,
+  "fin": 12.04
+ },
+ {
+  "mot": "tout",
+  "debut": 12.2,
+  "fin": 12.38
+ },
+ {
+  "mot": "et",
+  "debut": 12.8,
+  "fin": 13.2
+ },
+ {
+  "mot": "à",
+  "debut": 13.26,
+  "fin": 13.28
+ },
+ {
+  "mot": "la",
+  "debut": 13.3,
+  "fin": 13.36
+ },
+ {
+  "mot": "fois",
+  "debut": 13.4,
+  "fin": 13.54
+ },
+ {
+  "mot": "rien.",
+  "debut": 13.58,
+  "fin": 13.8
+ },
+ {
+  "mot": "Avoir",
+  "debut": 14.04,
+  "fin": 14.22
+ },
+ {
+  "mot": "un",
+  "debut": 14.28,
+  "fin": 14.34
+ },
+ {
+  "mot": "commercial",
+  "debut": 14.38,
+  "fin": 14.76
+ },
+ {
+  "mot": "aussi",
+  "debut": 14.78,
+  "fin": 14.94
+ },
+ {
+  "mot": "en",
+  "debut": 14.98,
+  "fin": 15.02
+ },
+ {
+  "mot": "interne,",
+  "debut": 15.08,
+  "fin": 15.38
+ },
+ {
+  "mot": "c'était",
+  "debut": 15.42,
+  "fin": 15.64
+ },
+ {
+  "mot": "un",
+  "debut": 15.72,
+  "fin": 15.9
+ },
+ {
+  "mot": "budget",
+  "debut": 15.94,
+  "fin": 16.2
+ },
+ {
+  "mot": "qui",
+  "debut": 16.219,
+  "fin": 16.28
+ },
+ {
+  "mot": "était",
+  "debut": 16.32,
+  "fin": 16.54
+ },
+ {
+  "mot": "hyper",
+  "debut": 16.58,
+  "fin": 16.82
+ },
+ {
+  "mot": "cher.",
+  "debut": 16.86,
+  "fin": 17.1
+ },
+ {
+  "mot": "Donc",
+  "debut": 17.14,
+  "fin": 17.28
+ },
+ {
+  "mot": "en",
+  "debut": 17.5,
+  "fin": 17.58
+ },
+ {
+  "mot": "faisant",
+  "debut": 17.62,
+  "fin": 17.8
+ },
+ {
+  "mot": "un",
+  "debut": 17.82,
+  "fin": 17.86
+ },
+ {
+  "mot": "peu",
+  "debut": 17.9,
+  "fin": 17.96
+ },
+ {
+  "mot": "le",
+  "debut": 18.0,
+  "fin": 18.06
+ },
+ {
+  "mot": "calcul,",
+  "debut": 18.1,
+  "fin": 18.36
+ },
+ {
+  "mot": "je",
+  "debut": 18.38,
+  "fin": 18.42
+ },
+ {
+  "mot": "me",
+  "debut": 18.44,
+  "fin": 18.5
+ },
+ {
+  "mot": "suis",
+  "debut": 18.54,
+  "fin": 18.64
+ },
+ {
+  "mot": "dit",
+  "debut": 18.68,
+  "fin": 18.8
+ },
+ {
+  "mot": ":",
+  "debut": 19.06,
+  "fin": 19.06
+ },
+ {
+  "mot": "Je",
+  "debut": 19.12,
+  "fin": 19.16
+ },
+ {
+  "mot": "vais",
+  "debut": 19.18,
+  "fin": 19.26
+ },
+ {
+  "mot": "quand",
+  "debut": 19.3,
+  "fin": 19.4
+ },
+ {
+  "mot": "même",
+  "debut": 19.4,
+  "fin": 19.46
+ },
+ {
+  "mot": "essayer",
+  "debut": 19.5,
+  "fin": 19.7
+ },
+ {
+  "mot": "avec",
+  "debut": 19.74,
+  "fin": 19.9
+ },
+ {
+  "mot": "eux.",
+  "debut": 19.94,
+  "fin": 20.02
+ },
+ {
+  "mot": "Concrètement,",
+  "debut": 20.14,
+  "fin": 20.7
+ },
+ {
+  "mot": "depuis",
+  "debut": 20.8,
+  "fin": 21.0
+ },
+ {
+  "mot": "qu'on",
+  "debut": 21.02,
+  "fin": 21.12
+ },
+ {
+  "mot": "a",
+  "debut": 21.16,
+  "fin": 21.22
+ },
+ {
+  "mot": "commencé,",
+  "debut": 21.26,
+  "fin": 21.62
+ },
+ {
+  "mot": "c'est",
+  "debut": 21.74,
+  "fin": 22.02
+ },
+ {
+  "mot": "exactement",
+  "debut": 22.18,
+  "fin": 22.86
+ },
+ {
+  "mot": "ce",
+  "debut": 22.94,
+  "fin": 22.98
+ },
+ {
+  "mot": "qu'il",
+  "debut": 23.0,
+  "fin": 23.1
+ },
+ {
+  "mot": "m'a",
+  "debut": 23.14,
+  "fin": 23.22
+ },
+ {
+  "mot": "raconté,",
+  "debut": 23.26,
+  "fin": 23.68
+ },
+ {
+  "mot": "c'est",
+  "debut": 24.02,
+  "fin": 24.1
+ },
+ {
+  "mot": "ce",
+  "debut": 24.12,
+  "fin": 24.16
+ },
+ {
+  "mot": "qui",
+  "debut": 24.18,
+  "fin": 24.24
+ },
+ {
+  "mot": "se",
+  "debut": 24.26,
+  "fin": 24.3
+ },
+ {
+  "mot": "passe,",
+  "debut": 24.34,
+  "fin": 24.56
+ },
+ {
+  "mot": "voire",
+  "debut": 24.8,
+  "fin": 24.92
+ },
+ {
+  "mot": "même",
+  "debut": 24.98,
+  "fin": 25.08
+ },
+ {
+  "mot": "en",
+  "debut": 25.12,
+  "fin": 25.18
+ },
+ {
+  "mot": "mieux.",
+  "debut": 25.22,
+  "fin": 25.34
+ },
+ {
+  "mot": "J'ai",
+  "debut": 25.58,
+  "fin": 25.66
+ },
+ {
+  "mot": "investi",
+  "debut": 25.68,
+  "fin": 26.06
+ },
+ {
+  "mot": "2 000",
+  "debut": 26.12,
+  "fin": 26.34
+ },
+ {
+  "mot": "euros",
+  "debut": 26.38,
+  "fin": 26.58
+ },
+ {
+  "mot": "par",
+  "debut": 26.62,
+  "fin": 26.76
+ },
+ {
+  "mot": "mois",
+  "debut": 26.8,
+  "fin": 26.96
+ },
+ {
+  "mot": "chez",
+  "debut": 27.14,
+  "fin": 27.26
+ },
+ {
+  "mot": "Localizy",
+  "debut": 27.3,
+  "fin": 27.78
+ },
+ {
+  "mot": "et",
+  "debut": 28.2,
+  "fin": 28.38
+ },
+ {
+  "mot": "j'ai",
+  "debut": 28.58,
+  "fin": 28.68
+ },
+ {
+  "mot": "un",
+  "debut": 28.72,
+  "fin": 28.76
+ },
+ {
+  "mot": "retour",
+  "debut": 28.8,
+  "fin": 29.28
+ },
+ {
+  "mot": "entre",
+  "debut": 29.34,
+  "fin": 29.48
+ },
+ {
+  "mot": "25",
+  "debut": 29.52,
+  "fin": 29.9
+ },
+ {
+  "mot": "et",
+  "debut": 29.92,
+  "fin": 29.98
+ },
+ {
+  "mot": "30 000",
+  "debut": 30.02,
+  "fin": 30.42
+ },
+ {
+  "mot": "de",
+  "debut": 30.5,
+  "fin": 30.56
+ },
+ {
+  "mot": "récurrence",
+  "debut": 30.6,
+  "fin": 30.98
+ },
+ {
+  "mot": "par",
+  "debut": 31.02,
+  "fin": 31.12
+ },
+ {
+  "mot": "mois",
+  "debut": 31.14,
+  "fin": 31.24
+ },
+ {
+  "mot": "qui",
+  "debut": 31.28,
+  "fin": 31.36
+ },
+ {
+  "mot": "rentre.",
+  "debut": 31.4,
+  "fin": 31.6
+ },
+ {
+  "mot": "La",
+  "debut": 31.68,
+  "fin": 31.76
+ },
+ {
+  "mot": "question",
+  "debut": 31.8,
+  "fin": 32.06
+ },
+ {
+  "mot": "que",
+  "debut": 32.1,
+  "fin": 32.18
+ },
+ {
+  "mot": "je",
+  "debut": 32.2,
+  "fin": 32.24
+ },
+ {
+  "mot": "me",
+  "debut": 32.28,
+  "fin": 32.4
+ },
+ {
+  "mot": "pose,",
+  "debut": 32.439,
+  "fin": 32.7
+ },
+ {
+  "mot": "c'est",
+  "debut": 32.98,
+  "fin": 33.08
+ },
+ {
+  "mot": "de",
+  "debut": 33.12,
+  "fin": 33.22
+ },
+ {
+  "mot": "voir",
+  "debut": 33.28,
+  "fin": 33.52
+ },
+ {
+  "mot": "si",
+  "debut": 33.72,
+  "fin": 33.82
+ },
+ {
+  "mot": "je",
+  "debut": 33.88,
+  "fin": 34.0
+ },
+ {
+  "mot": "vais",
+  "debut": 34.04,
+  "fin": 34.26
+ },
+ {
+  "mot": "plutôt",
+  "debut": 34.28,
+  "fin": 34.6
+ },
+ {
+  "mot": "investir",
+  "debut": 34.66,
+  "fin": 35.24
+ },
+ {
+  "mot": "un",
+  "debut": 35.32,
+  "fin": 35.38
+ },
+ {
+  "mot": "peu",
+  "debut": 35.42,
+  "fin": 35.56
+ },
+ {
+  "mot": "plus",
+  "debut": 35.6,
+  "fin": 35.88
+ },
+ {
+  "mot": "chez",
+  "debut": 36.04,
+  "fin": 36.14
+ },
+ {
+  "mot": "Localizy",
+  "debut": 36.18,
+  "fin": 36.72
+ },
+ {
+  "mot": "pour",
+  "debut": 36.78,
+  "fin": 37.02
+ },
+ {
+  "mot": "essayer",
+  "debut": 37.14,
+  "fin": 37.38
+ },
+ {
+  "mot": "d'avoir",
+  "debut": 37.42,
+  "fin": 37.66
+ },
+ {
+  "mot": "beaucoup",
+  "debut": 37.7,
+  "fin": 37.92
+ },
+ {
+  "mot": "plus",
+  "debut": 37.96,
+  "fin": 38.1
+ },
+ {
+  "mot": "de",
+  "debut": 38.14,
+  "fin": 38.24
+ },
+ {
+  "mot": "clients",
+  "debut": 38.28,
+  "fin": 38.62
+ },
+ {
+  "mot": "plutôt",
+  "debut": 38.66,
+  "fin": 38.92
+ },
+ {
+  "mot": "qu'investir",
+  "debut": 38.94,
+  "fin": 39.6
+ },
+ {
+  "mot": "à",
+  "debut": 39.66,
+  "fin": 39.8
+ },
+ {
+  "mot": "engager",
+  "debut": 39.88,
+  "fin": 40.64
+ },
+ {
+  "mot": "et",
+  "debut": 40.7,
+  "fin": 40.76
+ },
+ {
+  "mot": "à",
+  "debut": 40.82,
+  "fin": 40.88
+ },
+ {
+  "mot": "mettre",
+  "debut": 40.92,
+  "fin": 41.1
+ },
+ {
+  "mot": "en",
+  "debut": 41.16,
+  "fin": 41.26
+ },
+ {
+  "mot": "place",
+  "debut": 41.28,
+  "fin": 41.46
+ },
+ {
+  "mot": "une",
+  "debut": 41.5,
+  "fin": 41.56
+ },
+ {
+  "mot": "équipe",
+  "debut": 41.6,
+  "fin": 41.82
+ },
+ {
+  "mot": "commerciale",
+  "debut": 41.86,
+  "fin": 42.38
+ },
+ {
+  "mot": "qui",
+  "debut": 42.46,
+  "fin": 42.56
+ },
+ {
+  "mot": "va",
+  "debut": 42.6,
+  "fin": 42.66
+ },
+ {
+  "mot": "peut-être",
+  "debut": 42.74,
+  "fin": 43.02
+ },
+ {
+  "mot": "me",
+  "debut": 43.06,
+  "fin": 43.16
+ },
+ {
+  "mot": "coûter",
+  "debut": 43.18,
+  "fin": 43.58
+ },
+ {
+  "mot": "beaucoup",
+  "debut": 43.62,
+  "fin": 43.84
+ },
+ {
+  "mot": "plus",
+  "debut": 43.88,
+  "fin": 44.28
+ },
+ {
+  "mot": "avec",
+  "debut": 44.34,
+  "fin": 44.5
+ },
+ {
+  "mot": "tous",
+  "debut": 44.54,
+  "fin": 44.6
+ },
+ {
+  "mot": "les",
+  "debut": 44.64,
+  "fin": 44.72
+ },
+ {
+  "mot": "problèmes",
+  "debut": 44.76,
+  "fin": 45.02
+ },
+ {
+  "mot": "qu'il",
+  "debut": 45.04,
+  "fin": 45.08
+ },
+ {
+  "mot": "y",
+  "debut": 45.1,
+  "fin": 45.1
+ },
+ {
+  "mot": "a",
+  "debut": 45.12,
+  "fin": 45.14
+ },
+ {
+  "mot": "derrière.",
+  "debut": 45.18,
+  "fin": 45.44
+ }
+]

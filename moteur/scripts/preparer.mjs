@@ -248,6 +248,40 @@ function calculerTemps(e, M, mots = []) {
     t.mot = e.temps ?? calerTexte(e.mot.split(/\s+/)[0], mots, e.debut - 0.3, e.fin, {i: -1}, Infinity)[0].debut;
     if (e.ensuite) t.ensuite = e.ensuite.temps ?? calerTexte(e.ensuite.mot.split(/\s+/)[0], mots, t.mot + 0.1, e.fin, {i: -1}, Infinity)[0].debut;
   }
+  // famille « bureau » (DS Cleaning)
+  if (e.type === 'tampon') {
+    t.coup = e.temps ?? calerTexte(e.texte.split(/\s+/)[0], mots, e.debut - 0.3, e.fin, {i: -1}, Infinity)[0].debut;
+  }
+  if (e.type === 'ticket') {
+    // chaque ligne s'imprime quand ses premiers mots sont dits (« dit »), ou à « temps » ; « total » : morceaux écrits au rythme de la voix
+    const H = M.bureau.ticket.hauteurs;
+    // un mot dit peut contenir une espace (« 2 000 ») : on cherche d'abord le mot entier, puis mot à mot
+    const entier = (dit) => mots.find((m) => normaliser(m.texte) === normaliser(dit) && m.debut >= e.debut - 0.3 && m.debut <= e.fin + 0.3);
+    const quand = (dit, temps, defaut) => temps ?? (dit ? (entier(dit)?.debut ?? calerTexte(dit, mots, e.debut - 0.3, e.fin + 0.3, {i: -1}, Infinity)[0].debut) : defaut);
+    let precedent = e.debut + 0.3;
+    t.lignes = e.lignes.map((l) => {
+      const r = {...l, hauteur: l.hauteur ?? H[l.type] ?? 50};
+      if (l.type === 'total') r.mots = l.morceaux.map((m) => ({mot: m.texte, debut: quand(m.dit, m.temps, null)}));
+      r.debut = r.mots ? r.mots.find((m) => m.debut !== null)?.debut ?? precedent : quand(l.dit, l.temps, precedent);
+      if (r.mots) r.mots.forEach((m, k) => { if (m.debut === null) m.debut = k ? r.mots[k - 1].debut : r.debut; });
+      if (l.montant) r.montant_debut = quand(l.montant_dit, l.montant_temps, r.debut);
+      precedent = r.debut;
+      return r;
+    });
+  }
+  if (e.type === 'choix') {
+    // options et sous-textes écrits mot à mot au rythme de la voix, dans l'ordre ; « ou » quand « ou_dit » est prononcé
+    const depart = {i: -1};
+    t.options = [];
+    e.options.forEach((o, k) => {
+      if (k === 1) t.ou = e.ou_temps ?? (e.ou_dit ? calerTexte(e.ou_dit, mots, e.debut - 0.3, e.fin, depart, 12)[0].debut : null);
+      const opt = {mots: calerTexte(o.texte, mots, e.debut - 0.3, e.fin + 0.3, depart, 12)};
+      if (o.temps !== undefined) opt.mots = o.texte.split(/\s+/).map((mot, j) => ({mot, debut: o.temps + 0.08 * j}));
+      if (o.sous) opt.sous = calerTexte(o.sous, mots, e.debut - 0.3, e.fin + 0.3, depart, 12);
+      t.options.push(opt);
+    });
+    if (t.ou === null || t.ou === undefined) t.ou = t.options[1] ? t.options[1].mots[0].debut - 0.4 : e.fin;
+  }
   if (e.type === 'accroche') {
     const presentation = e.variante === 'presentation';
     t.lignes = decouperTitre(e.titre.toUpperCase(), 3, presentation ? 18 : 13);
@@ -346,6 +380,10 @@ function sonsPour(e, M) {
     case 'barre_recherche': return [s('woutch_grave', e.debut, 0.8), ...Array.from({length: Math.floor(e.texte.length / 2)}, (_, i) => s('frappe', t.frappe + (2 * i / e.texte.length) * (t.finFrappe - t.frappe), i % 2 ? 0.6 : 0.9)), s('clic', t.finFrappe + 0.05)];
     case 'barres_comparees': return [...t.lignes.map((c) => s('tap', c, 0.7)), s('woutch_court', e.cle, 0.9)];
     case 'mot_souligne': return [s('woutch_court', t.mot, 0.8), ...(e.ensuite ? [s('woutch_court', t.ensuite, 0.7)] : [])];
+    case 'chapitre': return [s('woutch_court', e.debut, 0.7)];
+    case 'tampon': return [s('woutch_court', t.coup - 0.1, 0.5), s('impact_doux', t.coup)];
+    case 'ticket': return [entree('woutch_grave', 0.05), ...t.lignes.filter((l) => l.type !== 'tirets').map((l) => s('tap', l.debut, 0.5))];
+    case 'choix': return [entree('woutch', 0.1), ...t.options.map((o) => s('tap', o.mots[0].debut, 0.6))];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
     case 'transition': return [entree('woutch', 0.13)];
     case 'carte_fin': return [s('woutch', e.debut)];

@@ -10,6 +10,7 @@ import {EcranChat} from './couches/EcranChat';
 import {Bilan, Compteur, Frise, TitreBandeau} from './couches/Etiquettes';
 import {EtiquettesFlottantes, MotSouligne, Page} from './couches/Pages';
 import {BarreRecherche, BarresComparees, TitreEmpile} from './couches/Graphiques';
+import {Chapitre, Choix, Tampon, Ticket} from './couches/Bureau';
 import {GrandTitre} from './couches/GrandTitre';
 import {Icone} from './couches/Icone';
 import {Liste} from './couches/Liste';
@@ -63,6 +64,10 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
       {de('barre_recherche').map((e: any) => <BarreRecherche key={e.id} e={e} charte={charte} />)}
       {de('barres_comparees').map((e: any) => <BarresComparees key={e.id} e={e} charte={charte} />)}
       {de('page').map((e: any) => <Page key={e.id} e={e} charte={charte} />)}
+      {de('chapitre').map((e: any) => <Chapitre key={e.id} e={e} charte={charte} />)}
+      {de('tampon').map((e: any) => <Tampon key={e.id} e={e} charte={charte} />)}
+      {de('ticket').map((e: any) => <Ticket key={e.id} e={e} charte={charte} />)}
+      {de('choix').map((e: any) => <Choix key={e.id} e={e} charte={charte} />)}
       <SousTitres projet={projet} charte={charte} />
       <Lumieres projet={projet} charte={charte} />
       <Ambiance projet={projet} charte={charte} />
