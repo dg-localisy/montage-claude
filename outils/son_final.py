@@ -162,20 +162,28 @@ def main():
     mix *= 10 ** (gain / 20)
     tmp = Path(a.sortie).with_suffix(".mix.wav")
     wavfile.write(tmp, SR, mix.T.astype(np.float32))
-    filtre = "anull"
-    if crete_vraie(mix) > CRETE_MAX:
-        filtre = f"alimiter=limit={10 ** ((CRETE_MAX - 0.3) / 20):.4f}:attack=5:release=50:level=disabled"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(a.video), "-i", str(tmp), "-map", "0:v", "-map", "1:a",
-                    "-c:v", "copy", "-af", filtre, "-c:a", "aac", "-b:a", "256k", "-ar", str(SR),
-                    "-movflags", "+faststart", str(a.sortie)], check=True)
+    # limiteur si besoin ; l'encodage AAC peut faire dépasser un peu la crête : on mesure le fichier livré et,
+    # s'il dépasse encore, on recommence avec un limiteur plus strict (3 essais au plus)
+    marge = 0.3
+    besoin = crete_vraie(mix) > CRETE_MAX
+    for essai in range(4):
+        filtre = f"alimiter=limit={10 ** ((CRETE_MAX - marge) / 20):.4f}:attack=5:release=50:level=disabled" if besoin else "anull"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(a.video), "-i", str(tmp), "-map", "0:v", "-map", "1:a",
+                        "-c:v", "copy", "-af", filtre, "-c:a", "aac", "-b:a", "256k", "-ar", str(SR),
+                        "-movflags", "+faststart", str(a.sortie)], check=True)
+        # 3. vérification sur le fichier livré (mesure ffmpeg ebur128, indépendante)
+        sortie = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(a.sortie), "-af", "ebur128=peak=true", "-f", "null", "-"],
+                                capture_output=True, text=True).stderr
+        resume = sortie[sortie.rfind("Summary:"):]
+        integre = float(resume.split("I:")[1].split("LUFS")[0])
+        crete = float(resume.split("Peak:")[1].split("dBFS")[0])
+        if crete <= CRETE_MAX + 0.05:
+            break
+        if besoin:
+            marge += (crete - CRETE_MAX) + 0.2
+        besoin = True
     tmp.unlink()
 
-    # 3. vérification sur le fichier livré (mesure ffmpeg ebur128, indépendante)
-    sortie = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(a.sortie), "-af", "ebur128=peak=true", "-f", "null", "-"],
-                            capture_output=True, text=True).stderr
-    resume = sortie[sortie.rfind("Summary:"):]
-    integre = float(resume.split("I:")[1].split("LUFS")[0])
-    crete = float(resume.split("Peak:")[1].split("dBFS")[0])
     rapport = {"lufs_integre": integre, "crete_vraie_dbtp": crete, "gain_applique_db": round(gain, 1),
                "effets_avant": avant, "effets_apres": apres, "baisses_db": [round(g, 1) for g in gains], "musique": info_musique,
                "ok": abs(integre - CIBLE_LUFS) <= 0.5 and crete <= CRETE_MAX + 0.1 and all(x["ecart_db"] <= ECART_MAX for x in apres)}
