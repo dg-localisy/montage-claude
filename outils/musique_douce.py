@@ -10,6 +10,9 @@ Styles :
   marimba    (DS Cleaning, ~100 BPM) : pop fraîche au marimba en Fa majeur (Fa – Ré m – Si♭ – Do), motif syncopé
              aux baguettes, basse ronde « tropicale », claquements de doigts sur 2 et 4, shaker léger, nappe très douce.
              Lumineux et propre.
+  piano      (TS, ~120 BPM en demi-temps) : piano acoustique pop en Sol majeur (Sol – Ré – Mi m – Do), accords
+             syncopés main droite, basses en octaves main gauche, batterie en demi-temps (grosse caisse
+             syncopée, caisse claire feutrée sur le 3e temps), charleston léger, basse ronde. Positif et posé.
 
 Usage :
     python3 outils/musique_douce.py SORTIE.wav --duree 48.16 --debut 4.62 --style acoustique [--bpm 96] [--graine 7]
@@ -423,7 +426,78 @@ def style_marimba(a, rng):
     return signal.sosfiltfilt(signal.butter(1, 11000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
 
 
-STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112), "marimba": (style_marimba, 100)}
+def note_piano_acoustique(f, duree, vel, rng):
+    """Piano acoustique : partiels légèrement inharmoniques (cordes), attaque de marteau, extinction plus rapide dans l'aigu."""
+    t = np.arange(int(duree * SR)) / SR
+    B = 0.0004  # inharmonicité
+    tau = 2.2 * (110 / f) ** 0.5
+    x = np.zeros_like(t)
+    for k, a in enumerate([1.0, 0.55, 0.32, 0.2, 0.12, 0.07, 0.04], start=1):
+        fk = k * f * np.sqrt(1 + B * k * k)
+        if fk > 9000:
+            break
+        x += a * np.sin(2 * np.pi * fk * t + rng.random()) * np.exp(-t * k ** 0.7 / tau)
+    marteau = rng.standard_normal(len(t)) * np.exp(-t / 0.006) * 0.08
+    x = (x + marteau) * (1 - np.exp(-t / 0.0015))
+    return vel * x * (0.9 + 0.1 * rng.random())
+
+
+def style_piano(a, rng):
+    """Piano pop (TS) : ~120 BPM en demi-temps, Sol majeur (Sol – Ré – Mi m – Do). Accords syncopés au piano acoustique,
+    basses en octaves, grosse caisse syncopée (1, « et » de 2, 3+), caisse claire feutrée sur le 3e temps seulement
+    (demi-temps : différent de l'électro et du marimba), charleston en croches, basse ronde. Positif et posé."""
+    n = int(a.duree * SR)
+    temps = 60 / a.bpm
+    mesure = 4 * temps
+    accords = [  # (basse, accord main droite) en numéros MIDI
+        (43, [59, 62, 67, 71]),   # Sol
+        (38, [57, 62, 66, 69]),   # Ré
+        (40, [59, 64, 67, 71]),   # Mi mineur
+        (36, [60, 64, 67, 72]),   # Do
+    ]
+    piano = np.zeros((2, n))
+    basse = np.zeros((2, n))
+    batterie = np.zeros((2, n))
+    gc = grosse_caisse()
+    nb_mesures = int(np.ceil((a.duree - a.debut) / mesure)) + 1
+    rythme = [0, 1.5, 2.5, 3.5]  # accords : 1, « et » de 2, « et » de 3, « et » de 4
+    for m in range(nb_mesures):
+        t0 = a.debut + m * mesure
+        racine, accord = accords[m % 4]
+        for i, pos in enumerate(rythme):
+            vel = 0.16 if i == 0 else 0.11
+            for j, nn in enumerate(accord):
+                placer(piano, note_piano_acoustique(midi(nn), 1.6, vel * (1 - 0.08 * j), rng), t0 + pos * temps + 0.004 * j, pan=-0.2 + 0.13 * j)
+        # main gauche : octave grave sur 1 et 3
+        for pos in (0, 2):
+            placer(piano, note_piano_acoustique(midi(racine + 12), 2.0, 0.13, rng), t0 + pos * temps, pan=-0.3)
+            placer(piano, note_piano_acoustique(midi(racine + 24), 2.0, 0.07, rng), t0 + pos * temps + 0.003, pan=-0.3)
+        # basse ronde : 1 et « et » de 2
+        for pos, dur in ((0, 1.3), (1.5, 1.4)):
+            dd = temps * dur
+            tt = np.arange(int(dd * SR)) / SR
+            f = midi(racine)
+            son = (np.sin(2 * np.pi * f * tt) + 0.2 * np.sin(2 * np.pi * 2 * f * tt)) * np.clip((dd - tt) / 0.05, 0, 1) * (1 - np.exp(-tt / 0.006))
+            placer(basse, 0.3 * son, t0 + pos * temps)
+        if m >= 1:
+            for pos in (0, 1.5, 2.75):
+                placer(batterie, 0.2 * gc, t0 + pos * temps)
+            placer(batterie, 0.17 * claquement(rng), t0 + 2 * temps + 0.005, pan=0.1)
+            for k in range(8):
+                tt = np.arange(int(0.07 * SR)) / SR
+                bruit = rng.standard_normal(len(tt))
+                b_, a_ = signal.butter(2, 6500 / (SR / 2), btype="high")
+                placer(batterie, (0.07 if k % 2 else 0.045) * signal.lfilter(b_, a_, bruit) * np.exp(-tt / 0.025), t0 + k * temps / 2 + 0.006, pan=0.35)
+    piano = reverb(signal.sosfiltfilt(signal.butter(2, 4500 / (SR / 2), btype="low", output="sos"), piano, axis=1), rng, duree=1.6, tau=0.55, mouille=0.28)
+    basse = signal.sosfiltfilt(signal.butter(2, 380 / (SR / 2), btype="low", output="sos"), basse, axis=1)
+    mix = 1.0 * piano + 0.3 * basse + 0.6 * batterie
+    # place pour la voix : bande 1–4 kHz creusée ; pas d'infra-basses
+    mix = mix - 0.8 * signal.sosfiltfilt(signal.butter(2, [1000 / (SR / 2), 4000 / (SR / 2)], btype="band", output="sos"), mix, axis=1)
+    mix = signal.sosfiltfilt(signal.butter(2, 70 / (SR / 2), btype="high", output="sos"), mix, axis=1)
+    return signal.sosfiltfilt(signal.butter(1, 11000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
+
+
+STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112), "marimba": (style_marimba, 100), "piano": (style_piano, 120)}
 
 
 def main():
@@ -432,7 +506,7 @@ def main():
     p.add_argument("--duree", type=float, required=True)
     p.add_argument("--debut", type=float, default=0.0)
     p.add_argument("--style", choices=sorted(STYLES), default="lofi",
-                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike), marimba (DS Cleaning) : changer de style à chaque vidéo")
+                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike), marimba (DS Cleaning), piano (TS) : changer de style à chaque vidéo")
     p.add_argument("--bpm", type=float, default=None)
     p.add_argument("--graine", type=int, default=7)
     a = p.parse_args()
