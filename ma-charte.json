@@ -343,8 +343,7 @@
         ]
       },
       "centrer_bloc": true,
-      "glisse_recentrage_ms": 220,
-      "centrage": "Les lignes gardent leur quinconce entre elles, mais l'ensemble des lignes visibles est toujours au milieu de l'image (à 5 px près). Une 1re ligne seule est au centre ; quand la ligne suivante arrive, elle glisse en 220 ms vers sa place (demande de l'utilisateur, Black and Bike : « pas centré, surtout quand il n'y a qu'une ligne »).",
+      "centrage": "Aucun mot ne bouge une fois apparu (demande de l'utilisateur : pas de texte qui glisse pour se recentrer). La 1re ligne, seule au début, est au centre ; chaque ligne suivante garde son décalage en quinconce par rapport à la 1re tant que les lignes visibles restent centrées (à 5 px près), sinon elle se centre aussi (demande de l'utilisateur, Black and Bike : « pas centré, surtout quand il n'y a qu'une ligne »).",
       "centre_vertical_y": 1370,
       "animation_entree": {
         "description": "Chaque mot apparaît au moment où il est prononcé : très flou et semi-transparent, net en 100 ms.",

@@ -57,20 +57,12 @@ def entete():
     )
 
 
-def _paire(debut, fin, pos_tags, texte, anim_texte="", anim_ombre="", depuis=None):
-    """Deux lignes : l'ombre (calque 0, copie noire décalée et floutée) puis le texte blanc (calque 1).
-    depuis = (x_depart, duree_ms) : le texte glisse horizontalement de x_depart à x au début de l'événement."""
+def _paire(debut, fin, pos_tags, texte, anim_texte="", anim_ombre=""):
+    """Deux lignes : l'ombre (calque 0, copie noire décalée et floutée) puis le texte blanc (calque 1)."""
     x, y, base = pos_tags
-    dx, dy = OMBRE['decalage_x_px'], OMBRE['decalage_y_px']
-
-    def place(ox, oy):
-        if depuis:
-            return f"\\move({depuis[0] + ox:.1f},{y + oy:.1f},{x + ox:.1f},{y + oy:.1f},0,{depuis[1]})"
-        return f"\\pos({x + ox:.1f},{y + oy:.1f})"
-
-    ombre = (f"{{{base}{place(dx, dy)}"
+    ombre = (f"{{{base}\\pos({x + OMBRE['decalage_x_px']:.1f},{y + OMBRE['decalage_y_px']:.1f})"
              f"\\1c&H000000&\\3c&H000000&\\bord{OMBRE['epaisseur_px']}\\blur{OMBRE['flou']}{anim_ombre}}}")
-    blanc = f"{{{base}{place(0, 0)}{anim_texte}}}"
+    blanc = f"{{{base}\\pos({x:.1f},{y:.1f}){anim_texte}}}"
     return [f"Dialogue: 0,{_t(debut)},{_t(fin)},ST,,0,0,0,,{ombre}{texte}",
             f"Dialogue: 1,{_t(debut)},{_t(fin)},ST,,0,0,0,,{blanc}{texte}"]
 
@@ -117,67 +109,41 @@ def _mise_en_page(bloc):
     haut = bases[0] - 0.72 * lignes[0]["taille"] * EM_PAR_TAILLE  # haut des majuscules de la 1re ligne
     decal_y = FORTES["centre_vertical_y"] - (haut + bases[-1]) / 2
     decal_x = FORTES["decalage_lignes_px"].get(str(len(lignes)), [0] * len(lignes))
-
-    # Centrage (remarque de l'utilisateur : « pas centré, surtout quand il n'y a qu'une ligne ») :
-    # les lignes apparaissent l'une après l'autre. À chaque étape, les lignes déjà visibles gardent leur décalage
-    # en quinconce les unes par rapport aux autres, mais leur ensemble est remis au milieu de l'image.
-    # Une 1re ligne seule est donc au centre ; quand la ligne suivante arrive, elle glisse doucement vers sa place.
-    def recentre(n):
-        if not FORTES.get("centrer_bloc", True):
-            return decal_x[:n]
-        vues = list(zip(lignes[:n], decal_x[:n]))
-        gauche = min(540 + dx - l["largeur"] / 2 for l, dx in vues)
-        droite = max(540 + dx + l["largeur"] / 2 for l, dx in vues)
-        return [dx + 540 - (gauche + droite) / 2 for dx in decal_x[:n]]
-
-    etapes = [min(m["debut"] for m in l["mots"]) for l in lignes]  # moment où chaque ligne commence
-    decal_par_etape = [recentre(n + 1) for n in range(len(lignes))]
+    # Centrage sans aucun mouvement (demandes de l'utilisateur : « pas centré, surtout quand il n'y a qu'une ligne »,
+    # puis « ne mets pas de texte qui bouge pour le recentrer ») : chaque mot reste là où il apparaît.
+    # La 1re ligne, seule au début, est au centre. Chaque ligne suivante garde son décalage en quinconce par rapport
+    # à la 1re tant que l'ensemble des lignes visibles reste centré ; une ligne plus large que le bloc se centre.
+    if FORTES.get("centrer_bloc", True):
+        relatif = [d - decal_x[0] for d in decal_x]
+        decal_x = [0.0]
+        demi = lignes[0]["largeur"] / 2  # le bloc visible reste symétrique : de -demi à +demi autour du centre
+        for k in range(1, len(lignes)):
+            marge = max(0.0, demi - lignes[k]["largeur"] / 2)
+            decal_x.append(max(-marge, min(marge, relatif[k])))
+            demi = max(demi, lignes[k]["largeur"] / 2)
 
     places = []
-    for li, (ligne, base) in enumerate(zip(lignes, bases)):
+    for ligne, base, dx in zip(lignes, bases, decal_x):
+        x0 = 540 + dx - ligne["largeur"] / 2
         for m in ligne["mots"]:
-            # positions x successives du mot : une par étape où il est visible (temps de début, x)
-            xs = []
-            for e in range(li, len(lignes)):
-                x = 540 + decal_par_etape[e][li] - ligne["largeur"] / 2 + m["x_rel"]
-                t = max(m["debut"], etapes[e]) if e > li else m["debut"]
-                if xs and t <= m["debut"]:
-                    xs[-1] = (m["debut"], x)  # la ligne suivante a commencé avant ce mot : il apparaît déjà à la bonne place
-                else:
-                    xs.append((t, x))
-            places.append({**m, "x": xs[-1][1], "positions": xs, "base": base + decal_y - m["remonte"]})
+            places.append({**m, "x": x0 + m["x_rel"], "base": base + decal_y - m["remonte"]})
     return places
 
 
 def evenements_bloc(bloc):
     ent, sor = FORTES["animation_entree"], FORTES["animation_sortie"]
-    glisse = FORTES.get("glisse_recentrage_ms", 220)
+    alpha0 = f"&H{round((1 - ent['opacite_depart']) * 255):02X}&"
     lignes = []
     for m in _mise_en_page(bloc):
+        debut, fin = m["debut"], bloc["fin"]
+        duree = round((fin - debut) * 1000)
+        sortie = f"\\t({max(0, duree - sor['duree_ms'])},{duree},\\alpha&HFF&\\blur{ent['flou_depart']})"
+        anim_t = f"\\alpha{alpha0}\\blur{ent['flou_depart']}\\t(0,{ent['duree_ms']},\\alpha&H00&\\blur0){sortie}"
+        anim_o = (f"\\alpha&HC0&\\t(0,{ent['duree_ms']},\\alpha&H00&\\blur{OMBRE['flou']})"
+                  f"\\t({max(0, duree - sor['duree_ms'])},{duree},\\alpha&HFF&)")
         y_ass = m["base"] + DESCENTE_PAR_TAILLE * m["taille"]
         base = f"\\an1\\fn{m['police']}\\fs{m['taille']}"
-        pos = m["positions"]
-        # un événement par étape : le mot glisse de sa place précédente à la nouvelle quand une ligne arrive
-        for j, (debut, x) in enumerate(pos):
-            fin = pos[j + 1][0] if j + 1 < len(pos) else bloc["fin"]
-            if fin <= debut:
-                continue
-            duree = round((fin - debut) * 1000)
-            ecoule = round((debut - m["debut"]) * 1000)  # temps déjà passé depuis l'apparition du mot
-            reste = ent["duree_ms"] - ecoule
-            if reste > 0:  # apparition (flou -> net) encore en cours
-                p = ecoule / ent["duree_ms"]
-                a_t = round((1 - ent["opacite_depart"]) * 255 * (1 - p))
-                a_o = round(0xC0 * (1 - p))
-                anim_t = f"\\alpha&H{a_t:02X}&\\blur{ent['flou_depart'] * (1 - p):.1f}\\t(0,{reste},\\alpha&H00&\\blur0)"
-                anim_o = f"\\alpha&H{a_o:02X}&\\t(0,{reste},\\alpha&H00&\\blur{OMBRE['flou']})"
-            else:
-                anim_t = anim_o = ""
-            if j == len(pos) - 1:  # disparition à la fin du bloc
-                anim_t += f"\\t({max(0, duree - sor['duree_ms'])},{duree},\\alpha&HFF&\\blur{ent['flou_depart']})"
-                anim_o += f"\\t({max(0, duree - sor['duree_ms'])},{duree},\\alpha&HFF&)"
-            depuis = (pos[j - 1][1], min(glisse, duree)) if j else None
-            lignes += _paire(debut, fin, (x, y_ass, base), m["mot"], anim_t, anim_o, depuis)
+        lignes += _paire(debut, fin, (m["x"], y_ass, base), m["mot"], anim_t, anim_o)
     return lignes
 
 
