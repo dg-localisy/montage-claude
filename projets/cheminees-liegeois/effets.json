@@ -1,21 +1,21 @@
 {
-  "_aide": "Témoignage Cheminées Liégeois, version 2, nouveaux cadres « étiquettes » demandés par l'utilisateur (plans de coupe fournis par l'utilisateur : flammes, poêle, insert, téléphone). Temps en secondes, sur rush/rush_final.mp4 (rush client, hors git). Rush final = sa meilleure phrase en premier (« En 2026… d'Internet. », 4,72–9,88 s du fichier reçu), puis 0–4,48 s, puis 10,0 s jusqu'à la fin, sans « sur, euh » (38,96–39,56 s). Rendu : cd moteur && node scripts/rendu.mjs ../projets/cheminees-liegeois/effets.json --nom cheminees --sans-4x5, puis outils/son_final.py. Mots : tous les mots dits sauf les « ben » et les mots répétés (la, de, les, qui), « Chemines et Joie » corrigé en « Cheminées Liégeois », « quatre » écrit « 4 ». Pas de clip de réunion fourni : 40,8–42,6 reste sans plan de coupe.",
-  "duree": 48.16,
+  "_aide": "Témoignage Cheminées Liégeois, version 5 : charte de Gary à 100 % (demande de l'utilisateur : mêmes animations, polices et tailles que la vidéo de Gary ; plus de fonds noirs). Rush : rush/rush_v5.mp4 = rush_final.mp4 sans « En 2026, » (coupé à 0,80 s, dans le silence avant « la majorité » : une vidéo qui parle de 2026 aurait l'air dépassée en 2027). Tous les temps sont donc 0,80 s plus tôt que dans la v4 ; masques_v5 = masques décalés de 20 images. Rendu : cd moteur && node scripts/rendu.mjs ../projets/cheminees-liegeois/effets.json --nom cheminees-v5 --sans-4x5, puis outils/son_final.py.",
+  "duree": 47.36,
   "fps": 25,
   "rush": {
-    "video": "rush/rush_final.mp4",
+    "video": "rush/rush_v5.mp4",
     "mots": "mots.json"
   },
   "musique": {
     "actif": true,
     "fichier": "media/musique_acoustique.wav",
-    "_note": "Musique originale, style acoustique (guitare pincée, Ré majeur, 96 BPM) : outils/musique_douce.py media/musique_acoustique.wav --duree 48.16 --debut 4.62 --style acoustique. Différente de celle de Gary (lo-fi), à la demande de l'utilisateur ; démarre quand INTERNET tombe."
+    "_note": "Musique originale, style acoustique (guitare pincée, Ré majeur, 96 BPM) : outils/musique_douce.py media/musique_acoustique.wav --duree 47.36 --debut 3.82 --style acoustique. Démarre quand INTERNET tombe."
   },
   "sous_titres": {
     "mode": "premiere_video",
     "phrases_fortes": [
       {
-        "debut": 6.14,
+        "debut": 5.34,
         "lignes": [
           [
             {
@@ -36,7 +36,7 @@
         ]
       },
       {
-        "debut": 18.4,
+        "debut": 17.6,
         "lignes": [
           [
             {
@@ -53,7 +53,7 @@
         ]
       },
       {
-        "debut": 21.8,
+        "debut": 21.0,
         "lignes": [
           [
             {
@@ -74,7 +74,7 @@
         ]
       },
       {
-        "debut": 44.24,
+        "debut": 43.44,
         "lignes": [
           [
             {
@@ -95,8 +95,8 @@
         ]
       },
       {
-        "debut": 46.76,
-        "fin": 48.16,
+        "debut": 45.96,
+        "fin": 47.36,
         "lignes": [
           [
             {
@@ -124,70 +124,241 @@
       0.3
     ],
     "coupes": [
-      2.8,
-      5.16,
-      9.64,
-      14.6,
-      16.92,
-      19.32,
-      20.36,
-      23.2,
-      24.6,
-      26.72,
-      28.4,
-      30.68,
-      31.72,
-      33.04,
-      35.0,
-      37.56,
-      38.6,
-      40.72,
-      42.56
+      2.0,
+      4.36,
+      8.84,
+      13.8,
+      16.12,
+      18.52,
+      19.56,
+      22.4,
+      23.8,
+      25.92,
+      27.6,
+      29.88,
+      30.92,
+      32.24,
+      34.2,
+      36.76,
+      37.8,
+      39.92,
+      41.76
     ],
     "cadrages": [
       1.0,
       1.06,
       1.0,
-      1.18,
+      1.1,
       1.0,
-      1.12,
-      1.24,
+      1.1,
+      1.1,
       1.08,
-      1.18,
+      1.1,
       1.0,
-      1.24,
-      1.0,
-      1.0,
+      1.1,
       1.0,
       1.0,
       1.0,
       1.0,
-      1.12,
-      1.24,
+      1.0,
+      1.0,
+      1.1,
+      1.1,
       1.08
     ],
-    "_cadrages": "Un cadrage par plan (coupes du vidéaste + raccords). Plans larges (1.0–1.06) quand un mot géant est au-dessus de la tête (INTERNET, LEADER) pour lui laisser la place ; la carte en verre limite seule ses plans à 1.0.",
-    "masques": "masques"
+    "_cadrages": "Un cadrage par plan (coupes du vidéaste + raccords), 1,1 au plus (zooms doux). Plans larges quand un mot géant est au-dessus de la tête (INTERNET, LEADER) ; la carte en verre et les pastilles limitent seules leurs plans.",
+    "masques": "masques_v5"
   },
   "ambiance": {
     "grain": 0.06,
     "etalonnage": true
   },
   "effets": [
-    {"type": "titre_bandeau", "debut": 0.9, "fin": 2.12, "position": "sous_titres", "titre": "La majorité des clients", "lignes": ["LA MAJORITÉ", "DES CLIENTS"], "temps_lignes": [0.92, 1.45], "sortie_s": 0.15, "remplace_temps": [[0.9, 2.1]], "_note": "Seulement pendant qu'elle le dit, à la place des sous-titres (demande de l'utilisateur) : une ligne quand elle dit « la majorité », l'autre sur « des clients »."},
-    {"type": "texte_derriere", "debut": 4.62, "fin": 6.05, "texte": "INTERNET", "taille": 210, "y": 210, "riser": "riser_aspire", "remplace": ["d'Internet."], "_note": "Riser « aspiré » (autre riser demandé par l'utilisateur) qui gonfle jusqu'à « d'Internet », puis le mot tombe d'un coup au-dessus de la tête.", "entree": "impact", "riser_duree": 1.6},
-    {"type": "zoom", "debut": 6.1, "a": 1.08, "duree": 3.4, "_note": "Avancée lente (pas de zoom rapide comme chez Gary)."},
-    {"type": "titre_bandeau", "variante": "nom", "debut": 9.64, "fin": 11.3, "titre": "Cheminées Liégeois", "remplace_temps": [[9.62, 11.3]], "_note": "Présentation (pas de nom de personne, choix de l'utilisateur) : bandeau noir à l'endroit des sous-titres."},
-    {"type": "compteur", "debut": 11.05, "fin": 12.85, "duree_comptage": 0.5, "valeur": 60, "prefixe": "+", "legende": "ans d'existence", "remplace_temps": [[11.15, 11.93]]},
-    {"type": "plan_de_coupe", "debut": 12.85, "fin": 13.62, "fichier": "media/flammes.mp4", "debut_clip": 0, "son_entree": "transition_whoosh_oxid", "_source": "Clip libre de droits fourni par l'utilisateur (Pexels 17063218, flammes, vertical 2160×3840), passage 2,0–3,2 s. Sur « des cheminées »."},
-    {"type": "plan_de_coupe", "debut": 13.62, "fin": 14.02, "fichier": "media/poele.mp4", "debut_clip": 0, "son": false, "_source": "Clip fourni par l'utilisateur (Pexels 12756381, poêle à bois), passage 3,0–3,8 s recadré en vertical sur le poêle. Sur « des poêles »."},
-    {"type": "plan_de_coupe", "debut": 14.02, "fin": 14.6, "fichier": "media/insert.mp4", "debut_clip": 0, "son": false, "_source": "Clip fourni par l'utilisateur (Pexels 5870955, insert encastré), passage 2,0–3,0 s recadré en vertical sur l'insert. Sur « et des inserts »."},
-    {"type": "texte_derriere", "debut": 14.68, "fin": 15.95, "texte": "LEADER", "taille": 265, "y": 215, "intervalle": 0.04, "remplace": ["Leader"], "entree": "montee"},
-    {"type": "compteur", "debut": 15.95, "fin": 17.9, "duree_comptage": 0.45, "valeur": 4, "legende": "points de vente", "remplace_temps": [[16.05, 16.95]]},
-    {"type": "zoom", "debut": 24.7, "a": 1.07, "duree": 1.9, "_note": "Avancée lente."},
-    {"type": "frise", "debut": 27.6, "fin": 38.35, "titre": "Avec LOCALISY", "items": [{"etape": "Au début", "texte": "Notre première page Facebook"}, {"etape": "Après", "texte": "Le site internet, refait de A à Z"}, {"etape": "Aussi", "texte": "Les vidéos"}, {"texte": "Les posts Instagram et Facebook"}], "temps": [29.34, 31.72, 35.44, 35.98], "remplace_temps": [[27.62, 30.7], [31.7, 35.0], [35.04, 37.55]], "_note": "Frise chronologique (nouveau cadre) : l'histoire de la collaboration, étape par étape. « par LOCALISY » n'est pas répété dans les sous-titres (on le sait déjà)."},
-    {"type": "plan_de_coupe", "debut": 38.4, "fin": 40.72, "fichier": "media/telephone.mp4", "debut_clip": 0, "son_entree": "swoosh_universfield", "_source": "Clip fourni par l'utilisateur (Pexels 7986487, téléphone qu'on fait défiler), passage 2,0–4,6 s recadré en vertical sur les mains. Sur « les offres du moment, ce qui se passe »."},
-    {"type": "bilan", "debut": 45.3, "fin": 48.16, "items": [{"texte": "Ce qui a marché", "marque": "coche"}, {"texte": "Ce qui n'a pas marché"}], "temps": [45.38, 45.88], "barrer": {"index": 1, "temps": 46.2}, "remplace_temps": [[45.1, 46.74]], "_note": "Bilan : ce qui a marché est coché ; ce qui n'a pas marché est rayé dès qu'il apparaît (demande de l'utilisateur)."},
-    {"type": "zoom", "debut": 45.3, "a": 1.06, "duree": 2.8}
+    {
+      "type": "accroche",
+      "debut": 0.0,
+      "fin": 1.3,
+      "titre": "La majorité des clients",
+      "sur_la_ligne": true,
+      "delai_titre": 0.04,
+      "lettres_par_s": 30,
+      "son": false,
+      "remplace_temps": [
+        [
+          0.0,
+          1.3
+        ]
+      ],
+      "_note": "Titre tapé de Gary (charte), posé sur la ligne des sous-titres et seulement pendant qu'elle le dit (demande de l'utilisateur)."
+    },
+    {
+      "type": "texte_derriere",
+      "debut": 3.82,
+      "fin": 5.25,
+      "texte": "INTERNET",
+      "taille": 210,
+      "y": 210,
+      "riser": "riser_aspire",
+      "remplace": [
+        "d'Internet."
+      ],
+      "_note": "Riser « aspiré » (autre riser demandé par l'utilisateur) qui gonfle jusqu'à « d'Internet », puis le mot tombe d'un coup au-dessus de la tête.",
+      "entree": "impact",
+      "riser_duree": 1.6
+    },
+    {
+      "type": "zoom",
+      "debut": 5.3,
+      "a": 1.08,
+      "duree": 3.4,
+      "_note": "Avancée lente (pas de zoom rapide comme chez Gary)."
+    },
+    {
+      "type": "accroche",
+      "debut": 8.84,
+      "fin": 10.25,
+      "titre": "Cheminées Liégeois",
+      "remplace_temps": [
+        [
+          8.84,
+          10.25
+        ]
+      ],
+      "_note": "Présentation de Gary (charte) à l'endroit des sous-titres ; pas de nom de personne (choix de l'utilisateur)."
+    },
+    {
+      "type": "chiffre",
+      "debut": 10.25,
+      "fin": 12.05,
+      "valeur": 60,
+      "prefixe": "+",
+      "legende": "ans d'existence",
+      "remplace_temps": [
+        [
+          10.35,
+          11.13
+        ]
+      ]
+    },
+    {
+      "type": "plan_de_coupe",
+      "debut": 12.05,
+      "fin": 12.82,
+      "fichier": "media/flammes.mp4",
+      "debut_clip": 0,
+      "son_entree": "transition_whoosh_oxid",
+      "_source": "Clip libre de droits fourni par l'utilisateur (Pexels 17063218, flammes, vertical 2160×3840), passage 2,0–3,2 s. Sur « des cheminées »."
+    },
+    {
+      "type": "plan_de_coupe",
+      "debut": 12.82,
+      "fin": 13.22,
+      "fichier": "media/poele.mp4",
+      "debut_clip": 0,
+      "son": false,
+      "_source": "Clip fourni par l'utilisateur (Pexels 12756381, poêle à bois), passage 3,0–3,8 s recadré en vertical sur le poêle. Sur « des poêles »."
+    },
+    {
+      "type": "plan_de_coupe",
+      "debut": 13.22,
+      "fin": 13.8,
+      "fichier": "media/insert.mp4",
+      "debut_clip": 0,
+      "son": false,
+      "_source": "Clip fourni par l'utilisateur (Pexels 5870955, insert encastré), passage 2,0–3,0 s recadré en vertical sur l'insert. Sur « et des inserts »."
+    },
+    {
+      "type": "texte_derriere",
+      "debut": 13.88,
+      "fin": 15.15,
+      "texte": "LEADER",
+      "taille": 265,
+      "y": 215,
+      "intervalle": 0.04,
+      "remplace": [
+        "Leader"
+      ],
+      "entree": "montee"
+    },
+    {
+      "type": "chiffre",
+      "debut": 15.15,
+      "fin": 17.1,
+      "valeur": 4,
+      "legende": "points de vente",
+      "remplace_temps": [
+        [
+          15.25,
+          16.15
+        ]
+      ]
+    },
+    {
+      "type": "zoom",
+      "debut": 23.9,
+      "a": 1.07,
+      "duree": 1.9,
+      "_note": "Avancée lente."
+    },
+    {
+      "type": "carte_verre",
+      "debut": 26.8,
+      "fin": 37.55,
+      "titre": "Avec LOCALISY",
+      "items": [
+        "Notre première page Facebook",
+        "Le site internet, refait de A à Z",
+        "Les vidéos",
+        "Les posts Instagram et Facebook"
+      ],
+      "temps": [
+        28.54,
+        30.92,
+        34.64,
+        35.18
+      ],
+      "remplace_temps": [
+        [
+          26.82,
+          37.55
+        ]
+      ],
+      "_note": "Carte en verre de Gary (charte) à la place de la frise à étiquettes noires. Aucun sous-titre pendant la carte."
+    },
+    {
+      "type": "plan_de_coupe",
+      "debut": 37.6,
+      "fin": 39.92,
+      "fichier": "media/telephone.mp4",
+      "debut_clip": 0,
+      "son_entree": "swoosh_universfield",
+      "_source": "Clip fourni par l'utilisateur (Pexels 7986487, téléphone qu'on fait défiler), passage 2,0–4,6 s recadré en vertical sur les mains. Sur « les offres du moment, ce qui se passe »."
+    },
+    {
+      "type": "zoom",
+      "debut": 44.5,
+      "a": 1.06,
+      "duree": 2.8
+    },
+    {
+      "type": "liste",
+      "debut": 44.5,
+      "fin": 46.0,
+      "items": [
+        "Ce qui a marché",
+        "Ce qui n'a pas marché"
+      ],
+      "temps": [
+        44.58,
+        45.08
+      ],
+      "remplace_temps": [
+        [
+          44.3,
+          45.96
+        ]
+      ],
+      "_note": "Pastilles de Gary (charte) à la place du bilan à étiquettes noires ; elles s'effacent juste avant la dernière phrase forte (sinon elle se colle dessous)."
+    }
   ]
 }

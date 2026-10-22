@@ -16,7 +16,8 @@ export const miseEnPageAccroche = (e: any, charte: any) => {
   // haut des majuscules des sous-titres (capitales de Figtree ≈ 0,72 em)
   const hautSousTitres = st.position.ligne_de_base_y - 0.72 * emDepuisAss(st.taille_ass);
   // présentation (nom + fonction) : le nom se pose sur la ligne des sous-titres, qui s'effacent pendant ce temps
-  const surLaLigne = presentation && A.presentation_a_la_place_des_sous_titres;
+  // « sur_la_ligne » : un titre d'ouverture posé lui aussi sur la ligne des sous-titres (ex. « La majorité des clients »)
+  const surLaLigne = (presentation && A.presentation_a_la_place_des_sous_titres) || e.sur_la_ligne === true;
   const bas = surLaLigne ? st.position.ligne_de_base_y : hautSousTitres - A.marge_sous_titres_px; // bas des lettres de la dernière ligne
   const premiere = bas - (n - 1) * ecart - 0.42 * em; // centre des majuscules de la première ligne
   const hautTitre = premiere - 0.37 * em;

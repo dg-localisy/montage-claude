@@ -664,12 +664,16 @@
         "transition_whoosh_oxid": 0.24,
         "transition_base": 0.2,
         "swoosh_universfield": 0.27,
-        "riser_inverse": 0.27
+        "riser_inverse": 0.27,
+        "riser_court": 0.13,
+        "riser_flash": 0.13
       },
       "riser_duree_s": 2.0,
       "fournis": {
         "_note": "Sons fournis par l'utilisateur (dossier sons_fournis/ du dépôt) : ils remplacent le son fabriqué du même nom. fin_s = moment du fichier où le son doit finir (ex. coupure d'un riser), duree_s = durée gardée.",
         "riser": {"fichier": "sons_fournis/riser_cinematique.mp3", "fin_s": 3.714, "duree_s": 2.0, "fondu_entree_s": 0.15, "origine": "Riser cinématique fourni par l'utilisateur (Pixabay, Dragon Studio, cinematic riser 03). Il monte puis s'arrête net : la coupure tombe pile sur l'accroche (« ×3 »)."},
+        "riser_court": {"fichier": "sons_fournis/riser_cinematique.mp3", "fin_s": 3.714, "duree_s": 1.7, "fondu_entree_s": 0.1, "origine": "Le riser cinématique de Gary (celui que l'utilisateur préfère), raccourci à 1,7 s par le début : même son, même arrêt net. Pour un résultat dit vers 1,7–2 s (Black and Bike : riser_duree 1.7)."},
+        "riser_flash": {"fichier": "sons_fournis/riser_cinematique.mp3", "fin_s": 3.714, "duree_s": 0.85, "fondu_entree_s": 0.05, "origine": "Le riser cinématique de Gary, raccourci à 0,85 s (seulement la fin, la plus intense) : pour un résultat dit dans la première seconde (DS Cleaning : riser_duree 0.85)."},
         "transition_oxid": {"fichier": "sons_fournis/transition_oxid.mp3", "fin_s": 1.272, "duree_s": 1.272, "fondu_entree_s": 0.005, "avance_s": 0.15, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, OxidVideos, transition sfx 2), qu'il aime bien. Sommet à 0,15 s : placé 0,15 s avant la coupe. À utiliser sur une ou deux transitions par vidéo (son_entree), pour varier."},
         "transition_whoosh_oxid": {"fichier": "sons_fournis/transition_whoosh_oxid.mp3", "fin_s": 1.2, "duree_s": 1.2, "fondu_entree_s": 0.005, "avance_s": 0.1, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, OxidVideos, transition sfx whoosh). Souffle très bref et net, sommet à 0,1 s : placé 0,1 s avant la coupe."},
         "transition_base": {"fichier": "sons_fournis/transition_base.mp3", "fin_s": 1.698, "duree_s": 1.278, "fondu_entree_s": 0.03, "avance_s": 0.33, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, Trading Nation, transition base). Le silence du début est retiré (on garde à partir de 0,42 s) ; souffle plus ample avec un peu de corps, sommet 0,33 s après le début."},

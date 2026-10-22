@@ -20,8 +20,10 @@ export function lireCharte() {
 function relier(source, cible) {
   fs.mkdirSync(path.dirname(cible), {recursive: true});
   if (fs.existsSync(cible)) {
+    // déjà le même fichier (lien) : rien à faire. Sinon on remplace toujours : deux vidéos ont des fichiers de même nom
+    // (masques m_00000.png…), et une simple comparaison de taille pouvait garder celui d'une autre vidéo.
     const a = fs.statSync(source), b = fs.statSync(cible);
-    if (a.size === b.size && a.mtimeMs <= b.mtimeMs) return;
+    if (a.ino === b.ino && a.dev === b.dev) return;
     fs.rmSync(cible);
   }
   try {
@@ -285,8 +287,9 @@ function calculerTemps(e, M, mots = []) {
   if (e.type === 'accroche') {
     const presentation = e.variante === 'presentation';
     t.lignes = decouperTitre(e.titre.toUpperCase(), 3, presentation ? 18 : 13);
-    t.titre = e.debut + M.accroche.delai_titre_s;
-    t.vitesse = M.accroche.lettres_par_s * (presentation ? 1.25 : 1);
+    // délai et vitesse de frappe réglables pour un titre qui doit s'écrire pendant qu'il est dit (même animation, plus rapide)
+    t.titre = e.debut + (e.delai_titre ?? M.accroche.delai_titre_s);
+    t.vitesse = (e.lettres_par_s ?? M.accroche.lettres_par_s) * (presentation ? 1.25 : 1);
     const n = t.lignes.join(' ').length;
     t.finFrappe = t.titre + n / t.vitesse;
   }

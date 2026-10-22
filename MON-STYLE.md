@@ -39,7 +39,10 @@ Tous les témoignages suivent la même trame, inspirée de la vidéo INCENDIE et
 
 **Pas de doublon** : un mot affiché en grand (titre, chiffre, mot derrière la tête, carte, pastilles) n'est pas répété dans les sous-titres.
 
-## La référence pour les prochains montages : la vidéo « Claude Edit »
+## La vidéo « Claude Edit » (inspiration passée, plus utilisée)
+
+**Depuis le 22/10/2026, la référence est la vidéo de Gary** : toutes les vidéos reprennent exactement ses animations, ses polices et ses tailles (voir « Écrans et cartes »). Les effets ci-dessous (pages, étiquettes en zigzag, mot souligné) ne s'utilisent plus, sauf demande.
+
 
 Vidéo envoyée par l'agence (interview de Jensen Huang, comparaison « Raw Video / Claude Edit ») : **c'est le modèle à suivre pour les effets des prochains montages**. On garde notre noir et blanc, Figtree et nos sous-titres INCENDIE ; les objets des pages sont fournis par l'agence.
 
@@ -54,7 +57,7 @@ Ce qu'on en reprend :
 
 Ce qu'on ne reprend pas : la couleur vert fluo, les autres polices, et ses sous-titres (les nôtres restent ceux de la vidéo INCENDIE).
 
-Retours sur Black and Bike : pas de page blanche à code-barres, et jamais la même mise en forme répétée dans une vidéo. On varie : mots empilés sur le buste, barre de recherche qui s'écrit, barres avant / aujourd'hui, page sombre avec une flèche, zooms courts sur certains passages. Le nom du client apparaît une seule fois, en signature épurée.
+Retours sur Black and Bike, toujours valables : le nom du client apparaît une seule fois, sans « client de LOCALISY » ; un effet ne garde que les mots qui le méritent ; un résultat affiché en grand disparaît quand la personne passe à la suite.
 
 ## Le texte derrière la tête
 
@@ -95,7 +98,7 @@ Les données clés sont en très grand (« chiffres grands écrans ») : un rés
 
 ## Écrans et cartes
 
-**Des cadres et des effets nouveaux à chaque vidéo** : on ne reprend pas ceux de la vidéo précédente, pour que chaque témoignage ait sa propre personnalité (toujours en noir et blanc, en Figtree). Les sous-titres, eux, ne changent jamais. Familles déjà utilisées : le verre dépoli (Gary), les étiquettes noires (Cheminées Liégeois : titre en bandeaux, compteur à rouleaux, frise chronologique, bilan coché et rayé), les pages et graphiques (Black and Bike : mot souligné, barre de recherche, barres avant / aujourd'hui, page sombre avec flèche) et le « bureau » (DS Cleaning : repères de chapitre « 01 — AVANT » écrits sur le mur, tampon encreur « HYPER CHER », ticket de caisse qui s'imprime au rythme de la voix, carte à deux choix façon sondage, sans résultat inventé).
+**La charte de Gary à 100 %** : chaque vidéo utilise exactement les mêmes animations, polices et tailles que la vidéo de Gary : titre d'accroche tapé, présentation nom + fonction sur la ligne des sous-titres, chiffres qui défilent, écran ChatGPT avec une question concrète (« Quelle agence immobilière choisir à Liège ? », « Quel vélo de route acheter en Belgique ? »), carte en verre dépoli pour une liste, pastilles, plans de coupe. Plus de fonds noirs sur les textes, de pages, de mots soulignés, de barres ni de nouveaux cadres : la musique et ce qui passe derrière la tête sont les seules choses qui changent d'une vidéo à l'autre. Les sous-titres ne changent jamais.
 
 
 - **Carte en verre dépoli** devant le client, bien sous le visage et au-dessus des sous-titres : verre sombre, bord blanc lumineux, légère perspective. Les éléments apparaissent quand ils sont dits.
@@ -114,7 +117,7 @@ Plus d'icônes (épingle, courbe, cible…) : on en a trop vu. À la place, un p
 
 ## Le son
 
-La voix passe avant tout. **Toujours une musique de fond** (je préfère les vidéos avec musique), **différente à chaque vidéo** (lo-fi au piano électrique pour Gary, acoustique à la guitare pincée pour Cheminées Liégeois, électro chill pour Black and Bike, pop au marimba pour DS Cleaning, un autre style pour la suivante ; Epidemic Sound sert d'inspiration) : douce et un peu tendance, à volume bas, environ 17 dB sous la voix et encore 6 dB de moins quand le client parle. Faute d'accès aux banques de musique, elle est composée par l'outil (donc libre de droits) ; je peux aussi fournir un morceau. Elle démarre quand l'accroche tombe. Les bruitages sont brefs et doux, jamais agaçants : un petit « woutch » (un souffle d'un quart de seconde) quand un titre, une carte ou un plan de coupe arrive, un mini-woutch pour les chiffres et les pastilles, un toc feutré et grave pour les coches. Aucune note aiguë (pas de scintillement, de « pop », de tics ni de bips). Pas de bruitage sur les zooms. Exception voulue par l'agence : l'accroche monte avec un riser qui s'arrête net quand le résultat tombe (« ×3 »), suivi d'un coup sourd. Le riser change à chaque vidéo : celui que j'ai fourni (riser cinématique, Gary), le riser « aspiré » (un souffle qui gonfle et s'arrête net, Cheminées Liégeois), des pulsations graves qui accélèrent (Black and Bike), un accord de piano joué à l'envers, court (DS Cleaning), puis un nouveau pour la suivante ; toujours un peu sous la voix. Mes bruits de transition (dossier `sons_fournis/`) reviennent sur une ou deux transitions par vidéo, en changeant de l'une à l'autre : mon préféré (OxidVideos, `transition_oxid`), un souffle très bref (`transition_whoosh_oxid`), un souffle plus ample (`transition_base`) et un swoosh qui monte et passe (`swoosh_universfield`).
+La voix passe avant tout. **Toujours une musique de fond** (je préfère les vidéos avec musique), **différente à chaque vidéo** (lo-fi au piano électrique pour Gary, acoustique à la guitare pincée pour Cheminées Liégeois, électro chill pour Black and Bike, pop au marimba pour DS Cleaning, un autre style pour la suivante ; Epidemic Sound sert d'inspiration) : douce et un peu tendance, à volume bas, environ 17 dB sous la voix et encore 6 dB de moins quand le client parle. Faute d'accès aux banques de musique, elle est composée par l'outil (donc libre de droits) ; je peux aussi fournir un morceau. Elle démarre quand l'accroche tombe. Les bruitages sont brefs et doux, jamais agaçants : un petit « woutch » (un souffle d'un quart de seconde) quand un titre, une carte ou un plan de coupe arrive, un mini-woutch pour les chiffres et les pastilles, un toc feutré et grave pour les coches. Aucune note aiguë (pas de scintillement, de « pop », de tics ni de bips). Pas de bruitage sur les zooms. Exception voulue par l'agence : l'accroche monte avec un riser qui s'arrête net quand le résultat tombe (« ×3 »), suivi d'un coup sourd. Le riser, c'est celui que j'ai fourni (riser cinématique, Gary) : je l'adore. Si le résultat arrive très tôt, on en garde seulement la fin (1,7 s pour Black and Bike, 0,85 s pour DS Cleaning). Cheminées Liégeois garde son riser « aspiré ». Toujours un peu sous la voix. Mes bruits de transition (dossier `sons_fournis/`) reviennent sur une ou deux transitions par vidéo, en changeant de l'une à l'autre : mon préféré (OxidVideos, `transition_oxid`), un souffle très bref (`transition_whoosh_oxid`), un souffle plus ample (`transition_base`) et un swoosh qui monte et passe (`swoosh_universfield`).
 
 Volume final : -14 LUFS, le niveau attendu par les réseaux sociaux.
 
