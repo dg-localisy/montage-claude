@@ -1,5 +1,5 @@
 {
-  "_aide": "Témoignage Black and Bike, version 6 : charte de Gary à 100 % (demande de l'utilisateur : mêmes animations, polices et tailles que la vidéo de Gary). Riser de Gary raccourci à 1,7 s (riser_court) ; titre tapé « Fréquentation » au lieu du mot souligné ; présentation « Black and Bike » à l'endroit des sous-titres ; « impossible pour nous » en phrase forte ; carte en verre « Ils optimisent » ; écran ChatGPT « Quel vélo de route acheter en Belgique ? » ; plus de page sombre ; ×2 final en chiffre. Temps en secondes, sur rush/rush_final.mp4 (rush client, hors git) = accroche « C'est un taux de fréquentation qui a doublé » (52,76–55,00 s du fichier reçu), puis tout le fichier reçu (décalage +2,24 s). Rendu : cd moteur && node scripts/rendu.mjs ../projets/black-and-bike/effets.json --nom black-and-bike-v6 --sans-4x5, puis outils/son_final.py.",
+  "_aide": "Témoignage Black and Bike, version 7 (v7 : page sombre à flèche remise à 0:43, demande de l'utilisateur) ; v6 : charte de Gary à 100 % (demande de l'utilisateur : mêmes animations, polices et tailles que la vidéo de Gary). Riser de Gary raccourci à 1,7 s (riser_court) ; titre tapé « Fréquentation » au lieu du mot souligné ; présentation « Black and Bike » à l'endroit des sous-titres ; « impossible pour nous » en phrase forte ; carte en verre « Ils optimisent » ; écran ChatGPT « Quel vélo de route acheter en Belgique ? » ;  ×2 final en chiffre. Temps en secondes, sur rush/rush_final.mp4 (rush client, hors git) = accroche « C'est un taux de fréquentation qui a doublé » (52,76–55,00 s du fichier reçu), puis tout le fichier reçu (décalage +2,24 s). Rendu : cd moteur && node scripts/rendu.mjs ../projets/black-and-bike/effets.json --nom black-and-bike-v6 --sans-4x5, puis outils/son_final.py.",
   "duree": 60.2,
   "fps": 25,
   "rush": {
@@ -132,23 +132,6 @@
           [
             {
               "mot": "essentiel",
-              "role": "fort"
-            }
-          ]
-        ]
-      },
-      {
-        "debut": 43.2,
-        "lignes": [
-          [
-            {
-              "mot": "Ils sont",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "hyper réactifs.",
               "role": "fort"
             }
           ]
@@ -354,6 +337,35 @@
       "question": "Quel vélo de route acheter en Belgique ?",
       "son_entree": "transition_oxid",
       "_note": "Même animation que Gary (« Quelle agence immobilière choisir à Liège ? »), demandée par l'utilisateur ; la question se tape et s'envoie, pas de réponse inventée."
+    },
+    {
+      "type": "page",
+      "debut": 41.7,
+      "fin": 44.36,
+      "fond": "sombre",
+      "code_barres": false,
+      "son_entree": "transition_oxid",
+      "elements": [
+        {
+          "type": "etiquette",
+          "texte": "Des demandes de",
+          "temps": 41.86
+        },
+        {
+          "type": "grand",
+          "texte": "dernière minute.",
+          "taille": 98
+        },
+        {
+          "type": "fleche"
+        },
+        {
+          "type": "grand",
+          "texte": "Hyper réactifs.",
+          "taille": 98
+        }
+      ],
+      "_note": "Page sombre à flèche remise à la demande de l'utilisateur (« on adore la partie à 0:43, garde-la ») ; sans signature : le nom du client est déjà dans la présentation à 0:02."
     },
     {
       "type": "zoom",

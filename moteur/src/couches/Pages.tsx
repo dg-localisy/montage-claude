@@ -76,7 +76,8 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
             opacity: easeOut(prog(t, el.debut, el.debut + 0.3)) * avant}}>{el.texte}</div>
         );
       case 'petit':
-        return <div key={k} style={{fontFamily: 'Figtree Medium', fontSize: P.petit_px, lineHeight: 1.25, opacity: avant, maxWidth: 860}}>{ligneDeMots(t, el.mots, clair)}</div>;
+        // « largeur » (px) : pour choisir où le texte passe à la ligne (lignes équilibrées, pas de mot seul en bas)
+        return <div key={k} style={{fontFamily: 'Figtree Medium', fontSize: P.petit_px, lineHeight: 1.25, opacity: avant, maxWidth: el.largeur ?? 860}}>{ligneDeMots(t, el.mots, clair)}</div>;
       case 'italique':
         return (
           <div key={k} style={{fontFamily: 'Figtree Light Italic', fontSize: el.taille ?? P.italique_px, lineHeight: 1.02, letterSpacing: '-0.025em', opacity: avant, maxWidth: 960}}>
@@ -85,7 +86,7 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
         );
       case 'grand':
         return (
-          <div key={k} style={{fontFamily: 'Figtree Black', fontSize: el.taille ?? P.grand_px, lineHeight: 0.95, letterSpacing: '-0.02em', textTransform: 'uppercase', opacity: avant}}>
+          <div key={k} style={{fontFamily: 'Figtree Black', fontSize: el.taille ?? P.grand_px, lineHeight: 0.95, letterSpacing: '-0.02em', textTransform: 'uppercase', opacity: avant, maxWidth: el.largeur}}>
             {ligneDeMots(t, el.mots, clair, 14)}
           </div>
         );
@@ -130,7 +131,7 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
         const h = el.hauteur ?? 150;
         return (
           <svg key={k} width={120} height={h} viewBox={`0 0 120 ${h}`} style={{overflow: 'visible'}}>
-            <line x1={60} y1={8} x2={60} y2={8 + (h - 36) * v} stroke={encre} strokeWidth={11} strokeLinecap="round" />
+            <line x1={60} y1={8} x2={60} y2={8 + (h - 36) * v} stroke={encre} strokeWidth={11} strokeLinecap="round" opacity={v > 0.02 ? 1 : 0} />
             <path d={`M 22 ${h - 50} L 60 ${h - 12} L 98 ${h - 50}`} fill="none" stroke={encre} strokeWidth={11} strokeLinecap="round" strokeLinejoin="round"
               opacity={pointe} transform={`translate(0 ${((1 - pointe) * -14).toFixed(1)})`} />
           </svg>

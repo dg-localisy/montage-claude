@@ -32,7 +32,7 @@ export const Chiffre: React.FC<{e: any; charte: any}> = ({e, charte}) => {
         {e.suffixe && <span style={{color: accent}}>{e.suffixe}</span>}
       </div>
       {e.legende && (
-        <div style={{fontFamily: 'Figtree Medium', fontSize: 46, color: 'rgba(255,255,255,0.88)', marginTop: -8, textShadow: '0 4px 20px rgba(0,0,0,0.6)'}}>{e.legende}</div>
+        <div style={{fontFamily: 'Figtree Medium', fontSize: 46, lineHeight: 1.15, whiteSpace: 'pre-line', color: 'rgba(255,255,255,0.88)', marginTop: -8, textShadow: '0 4px 20px rgba(0,0,0,0.6)'}}>{e.legende}</div>
       )}
     </div>
   );

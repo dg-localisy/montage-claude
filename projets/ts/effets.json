@@ -1,5 +1,5 @@
 {
-  "_aide": "Témoignage TS Nutrition Coaching, version 1, charte de Gary à 100 % (mêmes animations, polices et tailles que la vidéo de Gary). Rush : rush/rush_v1.mp4 = fichier reçu sans le « de, » répété du début (images 14 à 27 retirées, 0,56–1,12 s, coupe dans les silences, vérifiée par transcription) ; masques_v1 = masques décalés de 14 images après la coupe. Rendu : cd moteur && node scripts/rendu.mjs ../projets/ts/effets.json --nom ts-v1 --sans-4x5, puis outils/son_final.py. Mots : « cent » écrit « 100 », LOCALISY corrigé.",
+  "_aide": "Témoignage TS Nutrition Coaching, version 2 (v2 : page sombre à flèche de Black and Bike sur « commande en ligne → e-commerce », demande de l'utilisateur), charte de Gary à 100 % (mêmes animations, polices et tailles que la vidéo de Gary). Rush : rush/rush_v1.mp4 = fichier reçu sans le « de, » répété du début (images 14 à 27 retirées, 0,56–1,12 s, coupe dans les silences, vérifiée par transcription) ; masques_v1 = masques décalés de 14 images après la coupe. Rendu : cd moteur && node scripts/rendu.mjs ../projets/ts/effets.json --nom ts-v1 --sans-4x5, puis outils/son_final.py. Mots : « cent » écrit « 100 », LOCALISY corrigé.",
   "duree": 47.68,
   "fps": 25,
   "rush": {
@@ -14,20 +14,156 @@
   "sous_titres": {
     "mode": "premiere_video",
     "phrases_fortes": [
-      {"debut": 2.9, "lignes": [[{"mot": "demandes", "role": "fort"}], [{"mot": "dans la soirée.", "role": "appui"}]]},
-      {"debut": 7.42, "lignes": [[{"mot": "collaborer avec", "role": "appui"}], [{"mot": "pas mal de", "role": "liaison"}, {"mot": "médecins,", "role": "fort"}]]},
-      {"debut": 14.08, "lignes": [[{"mot": "pas très", "role": "liaison"}], [{"mot": "professionnel.", "role": "fort"}]]},
-      {"debut": 16.64, "lignes": [[{"mot": "une épicerie", "role": "appui"}], [{"mot": "diététique.", "role": "fort"}]]},
-      {"debut": 24.28, "lignes": [[{"mot": "une commande", "role": "appui"}], [{"mot": "en ligne.", "role": "fort"}]]},
-      {"debut": 30.58, "lignes": [[{"mot": "garder notre rythme", "role": "liaison"}], [{"mot": "de clientèle", "role": "fort"}]]},
-      {"debut": 34.56, "lignes": [[{"mot": "chaque mois,", "role": "appui"}], [{"mot": "LOCALISY", "role": "fort"}]]},
-      {"debut": 46.3, "fin": 47.68, "lignes": [[{"mot": "en se basant sur", "role": "liaison"}], [{"mot": "la concurrence.", "role": "fort"}]]}
+      {
+        "debut": 2.9,
+        "lignes": [
+          [
+            {
+              "mot": "demandes",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "dans la soirée.",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 7.42,
+        "lignes": [
+          [
+            {
+              "mot": "collaborer avec",
+              "role": "appui"
+            }
+          ],
+          [
+            {
+              "mot": "pas mal de",
+              "role": "liaison"
+            },
+            {
+              "mot": "médecins,",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 14.08,
+        "lignes": [
+          [
+            {
+              "mot": "pas très",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "professionnel.",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 16.64,
+        "lignes": [
+          [
+            {
+              "mot": "une épicerie",
+              "role": "appui"
+            }
+          ],
+          [
+            {
+              "mot": "diététique.",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 30.58,
+        "lignes": [
+          [
+            {
+              "mot": "garder notre rythme",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "de clientèle",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 34.56,
+        "lignes": [
+          [
+            {
+              "mot": "chaque mois,",
+              "role": "appui"
+            }
+          ],
+          [
+            {
+              "mot": "LOCALISY",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 46.3,
+        "fin": 47.68,
+        "lignes": [
+          [
+            {
+              "mot": "en se basant sur",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "la concurrence.",
+              "role": "fort"
+            }
+          ]
+        ]
+      }
     ]
   },
   "camera": {
-    "visage": [0.57, 0.32],
-    "coupes": [0.56, 3.88, 6.68, 14.92, 23.12, 29.96, 44.8],
-    "cadrages": [1.06, 1.0, 1.08, 1.0, 1.06, 1.0, 1.0, 1.04],
+    "visage": [
+      0.57,
+      0.32
+    ],
+    "coupes": [
+      0.56,
+      3.88,
+      6.68,
+      14.92,
+      23.12,
+      29.96,
+      44.8
+    ],
+    "cadrages": [
+      1.06,
+      1.0,
+      1.08,
+      1.0,
+      1.06,
+      1.0,
+      1.0,
+      1.04
+    ],
     "_cadrages": "Un cadrage par plan (coupes du vidéaste + la coupe du bégaiement à 0,56 s), 1,1 au plus (zooms doux). Plans larges sous 100 et E-COMMERCE (au-dessus de la tête) et sous la carte en verre.",
     "masques": "masques_v1"
   },
@@ -36,14 +172,148 @@
     "etalonnage": true
   },
   "effets": [
-    {"type": "accroche", "debut": 1.1, "fin": 2.6, "titre": "Avant-après", "delai_titre": 0.05, "lettres_par_s": 30, "son": false, "remplace": ["avant-après"], "_note": "Titre tapé de Gary, pendant qu'il dit « un avant-après »."},
-    {"type": "texte_derriere", "debut": 2.68, "fin": 3.86, "texte": "100", "taille": 360, "y": 205, "x": 590, "couleur": "#FFFFFF", "ombre": true, "entree": "rebond", "riser": true, "remplace": ["100"], "_note": "Riser de Gary (2 s) jusqu'à « cent », puis 100 rebondit derrière sa tête (fond sombre : blanc avec ombre) ; nouvelle entrée après lettres, impact, traverse et montée."},
-    {"type": "accroche", "debut": 3.9, "fin": 5.56, "titre": "TS Nutrition Coaching", "remplace_temps": [[3.88, 5.56]], "_note": "Présentation de Gary à l'endroit des sous-titres (nom lu sur le polo du client), pendant « J'ai connu LOCALISY »."},
-    {"type": "zoom", "debut": 6.9, "a": 1.06, "duree": 1.3},
-    {"type": "liste", "debut": 9.9, "fin": 14.0, "items": ["Nos cartes de visite", "Notre site internet", "Les réseaux sociaux"], "temps": [10.04, 10.84, 12.66], "remplace_temps": [[9.95, 13.54]], "_note": "Pastilles de Gary ; elles s'effacent avant la phrase forte « pas très professionnel »."},
-    {"type": "zoom", "debut": 16.9, "a": 1.07, "duree": 1.4},
-    {"type": "texte_derriere", "debut": 28.42, "fin": 29.9, "texte": "E-COMMERCE", "taille": 140, "y": 280, "couleur": "#FFFFFF", "ombre": true, "intervalle": 0.035, "remplace": ["e-commerce"], "_note": "Mot clé lettre par lettre derrière la tête, comme COMPÉTENTES chez Gary (blanc avec ombre sur le fond sombre)."},
-    {"type": "carte_verre", "debut": 37.3, "fin": 46.28, "titre": "Acquisition client", "items": ["Via Google", "Via des formulaires", "Les algorithmes des réseaux sociaux", "L'évolution du marché"], "temps": [39.08, 39.92, 42.56, 45.0], "remplace_temps": [[37.3, 46.28]], "_note": "Carte en verre de Gary : ce que LOCALISY optimise chaque mois ; aucun sous-titre pendant la carte ; elle s'efface avant la dernière phrase forte."},
-    {"type": "zoom", "debut": 45.0, "a": 1.06, "duree": 1.3}
+    {
+      "type": "accroche",
+      "debut": 1.1,
+      "fin": 2.6,
+      "titre": "Avant-après",
+      "delai_titre": 0.05,
+      "lettres_par_s": 30,
+      "son": false,
+      "remplace": [
+        "avant-après"
+      ],
+      "_note": "Titre tapé de Gary, pendant qu'il dit « un avant-après »."
+    },
+    {
+      "type": "texte_derriere",
+      "debut": 2.68,
+      "fin": 3.86,
+      "texte": "100",
+      "taille": 360,
+      "y": 205,
+      "x": 590,
+      "couleur": "#FFFFFF",
+      "ombre": true,
+      "entree": "rebond",
+      "riser": true,
+      "remplace": [
+        "100"
+      ],
+      "_note": "Riser de Gary (2 s) jusqu'à « cent », puis 100 rebondit derrière sa tête (fond sombre : blanc avec ombre) ; nouvelle entrée après lettres, impact, traverse et montée."
+    },
+    {
+      "type": "accroche",
+      "debut": 3.9,
+      "fin": 5.56,
+      "titre": "TS Nutrition Coaching",
+      "remplace_temps": [
+        [
+          3.88,
+          5.56
+        ]
+      ],
+      "_note": "Présentation de Gary à l'endroit des sous-titres (nom lu sur le polo du client), pendant « J'ai connu LOCALISY »."
+    },
+    {
+      "type": "zoom",
+      "debut": 6.9,
+      "a": 1.06,
+      "duree": 1.3
+    },
+    {
+      "type": "liste",
+      "debut": 9.9,
+      "fin": 14.0,
+      "items": [
+        "Nos cartes de visite",
+        "Notre site internet",
+        "Les réseaux sociaux"
+      ],
+      "temps": [
+        10.04,
+        10.84,
+        12.66
+      ],
+      "remplace_temps": [
+        [
+          9.95,
+          13.54
+        ]
+      ],
+      "_note": "Pastilles de Gary ; elles s'effacent avant la phrase forte « pas très professionnel »."
+    },
+    {
+      "type": "zoom",
+      "debut": 16.9,
+      "a": 1.07,
+      "duree": 1.4
+    },
+    {
+      "type": "page",
+      "debut": 24.2,
+      "fin": 29.92,
+      "fond": "sombre",
+      "code_barres": false,
+      "son_entree": "transition_oxid",
+      "elements": [
+        {
+          "type": "etiquette",
+          "texte": "Ils ont sollicité",
+          "temps": 24.25
+        },
+        {
+          "type": "grand",
+          "texte": "une commande en ligne.",
+          "taille": 98,
+          "largeur": 870
+        },
+        {
+          "type": "petit",
+          "texte": "on a demandé d'implémenter sur notre site",
+          "largeur": 640
+        },
+        {
+          "type": "fleche"
+        },
+        {
+          "type": "grand",
+          "texte": "un e-commerce.",
+          "taille": 98
+        }
+      ],
+      "_note": "Page sombre à flèche, comme à 0:43 dans Black and Bike (demande de l'utilisateur, qui l'adore) : le besoin des clients, la flèche, la solution. Remplace E-COMMERCE derrière la tête et la phrase forte « une commande en ligne » (pas de doublon)."
+    },
+    {
+      "type": "carte_verre",
+      "debut": 37.3,
+      "fin": 46.28,
+      "titre": "Acquisition client",
+      "items": [
+        "Via Google",
+        "Via des formulaires",
+        "Les algorithmes des réseaux sociaux",
+        "L'évolution du marché"
+      ],
+      "temps": [
+        39.08,
+        39.92,
+        42.56,
+        45.0
+      ],
+      "remplace_temps": [
+        [
+          37.3,
+          46.28
+        ]
+      ],
+      "_note": "Carte en verre de Gary : ce que LOCALISY optimise chaque mois ; aucun sous-titre pendant la carte ; elle s'efface avant la dernière phrase forte."
+    },
+    {
+      "type": "zoom",
+      "debut": 45.0,
+      "a": 1.06,
+      "duree": 1.3
+    }
   ]
 }

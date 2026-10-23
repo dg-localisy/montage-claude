@@ -257,14 +257,14 @@
       "de": 25,
       "prefixe": "25–",
       "suffixe": " k€",
-      "legende": "de récurrence par mois",
+      "legende": "de chiffre d'affaires\nde récurrence par mois",
       "remplace_temps": [
         [
           29.4,
           31.6
         ]
       ],
-      "_note": "Chiffre de Gary (charte) : ce qui rentre (« entre 25 et 30 000 »), en k€ pour garder la taille de la charte."
+      "_note": "Chiffre de Gary (charte) : ce qui rentre (« entre 25 et 30 000 de récurrence »), en k€ pour garder la taille de la charte. Légende sur deux lignes (v3, demande de l'utilisateur : « de chiffre d'affaires de récurrence par mois »)."
     },
     {
       "type": "carte_verre",
