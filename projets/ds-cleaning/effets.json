@@ -1,5 +1,5 @@
 {
-  "_aide": "Témoignage DS Cleaning, version 2 : charte de Gary à 100 % (demande de l'utilisateur : mêmes animations, polices et tailles que la vidéo de Gary). Riser de Gary raccourci à 0,85 s (riser_flash) car le résultat (« fois quatre ») est dit dès 0,88 s ; titre tapé « Référencement » ; présentation « DS Cleaning » à l'endroit des sous-titres ; chiffres qui défilent (2 000 € investis, 25–30 k€ de retour) ; carte en verre « La question » ; phrases fortes. Temps en secondes sur rush/rush_recu.mp4 (fichier reçu, déjà monté par le vidéaste, hors git). Rendu : cd moteur && node scripts/rendu.mjs ../projets/ds-cleaning/effets.json --nom ds-cleaning-v2 --sans-4x5, puis outils/son_final.py. Mots : « deux mille » écrit « 2 000 », « vingt-cinq » « 25 », « trente mille » « 30 000 », LOCALISY corrigé.",
+  "_aide": "Témoignage DS Cleaning, version 4 (v3 : légende « de chiffre d'affaires de récurrence par mois » ; v4 : riser « souffle » court, choix A de l'utilisateur) ; v2 : charte de Gary à 100 % (demande de l'utilisateur : mêmes animations, polices et tailles que la vidéo de Gary). Riser de Gary raccourci à 0,85 s (riser_flash) car le résultat (« fois quatre ») est dit dès 0,88 s ; titre tapé « Référencement » ; présentation « DS Cleaning » à l'endroit des sous-titres ; chiffres qui défilent (2 000 € investis, 25–30 k€ de retour) ; carte en verre « La question » ; phrases fortes. Temps en secondes sur rush/rush_recu.mp4 (fichier reçu, déjà monté par le vidéaste, hors git). Rendu : cd moteur && node scripts/rendu.mjs ../projets/ds-cleaning/effets.json --nom ds-cleaning-v2 --sans-4x5, puis outils/son_final.py. Mots : « deux mille » écrit « 2 000 », « vingt-cinq » « 25 », « trente mille » « 30 000 », LOCALISY corrigé.",
   "duree": 45.52,
   "fps": 25,
   "rush": {
@@ -188,13 +188,13 @@
       "x": 430,
       "entree": "montee",
       "intervalle": 0.07,
-      "riser": "riser_flash",
+      "riser": "riser_aspire_court",
       "riser_duree": 0.85,
       "remplace": [
         "fois",
         "quatre"
       ],
-      "_note": "×4 sort de derrière sa tête sur « fois quatre » ; riser de Gary raccourci à 0,85 s (le résultat est dit dès 0,88 s) ; disparaît quand il passe à la suite."
+      "_note": "×4 sort de derrière sa tête sur « fois quatre » ; riser « souffle » court (0,85 s, l'aspiré de Cheminées raccourci), choisi par l'utilisateur parmi 3 essais (A) ; disparaît quand il passe à la suite."
     },
     {
       "type": "accroche",

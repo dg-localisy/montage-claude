@@ -55,7 +55,7 @@ Les chemins sont relatifs au fichier. Exemple complet : `essai/effets.json`.
 
 ### Les animations (`effets`)
 
-**Charte (22/10/2026)** : toutes les vidéos n'utilisent que les animations de la vidéo de Gary : `accroche`, `texte_derriere`, `chiffre`, `ecran_chat`, `carte_verre`, `liste`, `plan_de_coupe`, `zoom` (doux), avec les phrases fortes et les sous-titres INCENDIE, plus la page sombre à flèche (`page`, `fond: "sombre"`, `code_barres: false`, éléments `etiquette` / `grand` / `petit` / `fleche` / `grand`, `largeur` en px pour choisir où le texte passe à la ligne), que l'utilisateur adore. `chiffre` : `legende` accepte `\n` pour deux lignes. Les autres lignes du tableau restent disponibles mais sont hors charte : ne pas les utiliser sans demande.
+**Charte (22/10/2026)** : toutes les vidéos n'utilisent que les animations de la vidéo de Gary : `accroche`, `texte_derriere`, `chiffre`, `ecran_chat`, `carte_verre`, `liste`, `plan_de_coupe`, `zoom` (doux), avec les phrases fortes et les sous-titres INCENDIE, plus la page sombre à flèche (`page`, `fond: "sombre"`, `code_barres: false`, éléments `etiquette` / `grand` / `petit` / `fleche` / `grand`, `largeur` en px pour choisir où le texte passe à la ligne), que l'utilisateur adore. `chiffre` : `legende` accepte `\n` pour deux lignes. `liste` : `numeros: false` pour des pastilles sans numéro. Les autres lignes du tableau restent disponibles mais sont hors charte : ne pas les utiliser sans demande.
 
 | type | champs | rôle |
 |---|---|---|

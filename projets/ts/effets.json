@@ -1,5 +1,5 @@
 {
-  "_aide": "Témoignage TS Nutrition Coaching, version 2 (v2 : page sombre à flèche de Black and Bike sur « commande en ligne → e-commerce », demande de l'utilisateur), charte de Gary à 100 % (mêmes animations, polices et tailles que la vidéo de Gary). Rush : rush/rush_v1.mp4 = fichier reçu sans le « de, » répété du début (images 14 à 27 retirées, 0,56–1,12 s, coupe dans les silences, vérifiée par transcription) ; masques_v1 = masques décalés de 14 images après la coupe. Rendu : cd moteur && node scripts/rendu.mjs ../projets/ts/effets.json --nom ts-v1 --sans-4x5, puis outils/son_final.py. Mots : « cent » écrit « 100 », LOCALISY corrigé.",
+  "_aide": "Témoignage TS Nutrition Coaching, version 3 (v3, demandes de l'utilisateur : pastilles sans numéro, réseaux sociaux en phrase forte, plans de coupe fournis pour le e-commerce, Google et les formulaires ; la page sombre de la v2 est remplacée par le plan de coupe), charte de Gary à 100 % (mêmes animations, polices et tailles que la vidéo de Gary). Rush : rush/rush_v1.mp4 = fichier reçu sans le « de, » répété du début (images 14 à 27 retirées, 0,56–1,12 s, coupe dans les silences, vérifiée par transcription) ; masques_v1 = masques décalés de 14 images après la coupe. Rendu : cd moteur && node scripts/rendu.mjs ../projets/ts/effets.json --nom ts-v1 --sans-4x5, puis outils/son_final.py. Mots : « cent » écrit « 100 », LOCALISY corrigé.",
   "duree": 47.68,
   "fps": 25,
   "rush": {
@@ -53,6 +53,23 @@
         ]
       },
       {
+        "debut": 12.22,
+        "lignes": [
+          [
+            {
+              "mot": "passer par les",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "réseaux sociaux.",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
         "debut": 14.08,
         "lignes": [
           [
@@ -81,6 +98,23 @@
           [
             {
               "mot": "diététique.",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 24.28,
+        "lignes": [
+          [
+            {
+              "mot": "une commande",
+              "role": "appui"
+            }
+          ],
+          [
+            {
+              "mot": "en ligne.",
               "role": "fort"
             }
           ]
@@ -224,24 +258,23 @@
     {
       "type": "liste",
       "debut": 9.9,
-      "fin": 14.0,
+      "fin": 12.2,
       "items": [
         "Nos cartes de visite",
-        "Notre site internet",
-        "Les réseaux sociaux"
+        "Notre site internet"
       ],
       "temps": [
         10.04,
-        10.84,
-        12.66
+        10.84
       ],
       "remplace_temps": [
         [
           9.95,
-          13.54
+          11.7
         ]
       ],
-      "_note": "Pastilles de Gary ; elles s'effacent avant la phrase forte « pas très professionnel »."
+      "_note": "Pastilles de Gary, sans numéro (ce n'est pas un ordre, demande de l'utilisateur) ; seulement les cartes de visite et le site internet. « Les réseaux sociaux » passe en phrase forte juste après.",
+      "numeros": false
     },
     {
       "type": "zoom",
@@ -250,64 +283,52 @@
       "duree": 1.4
     },
     {
-      "type": "page",
-      "debut": 24.2,
-      "fin": 29.92,
-      "fond": "sombre",
-      "code_barres": false,
+      "type": "plan_de_coupe",
+      "debut": 25.94,
+      "fin": 29.96,
+      "fichier": "media/commande_en_ligne.mp4",
+      "debut_clip": 0,
       "son_entree": "transition_oxid",
-      "elements": [
-        {
-          "type": "etiquette",
-          "texte": "Ils ont sollicité",
-          "temps": 24.25
-        },
-        {
-          "type": "grand",
-          "texte": "une commande en ligne.",
-          "taille": 98,
-          "largeur": 870
-        },
-        {
-          "type": "petit",
-          "texte": "on a demandé d'implémenter sur notre site",
-          "largeur": 640
-        },
-        {
-          "type": "fleche"
-        },
-        {
-          "type": "grand",
-          "texte": "un e-commerce.",
-          "taille": 98
-        }
-      ],
-      "_note": "Page sombre à flèche, comme à 0:43 dans Black and Bike (demande de l'utilisateur, qui l'adore) : le besoin des clients, la flèche, la solution. Remplace E-COMMERCE derrière la tête et la phrase forte « une commande en ligne » (pas de doublon)."
+      "_source": "Clip fourni par l'utilisateur (7191370, paiement en ligne sur ordinateur avec une carte bancaire, 2560×1080), recadré en vertical sur les mains, la carte et le clavier. Sur « on a demandé d'implémenter sur notre site un e-commerce pour pouvoir faire des commandes », jusqu'à la coupe de 29,96 s (remplace la page sombre, demande de l'utilisateur)."
+    },
+    {
+      "type": "plan_de_coupe",
+      "debut": 38.64,
+      "fin": 39.92,
+      "fichier": "media/recherche_google.mp4",
+      "debut_clip": 0,
+      "son_entree": "swoosh_universfield",
+      "_source": "Clip fourni par l'utilisateur (4549682, page Google), passage 0,3–1,8 s : la barre de recherche est encore vide (le texte s'écrit à partir de 3,3 s, l'utilisateur ne veut pas qu'on le voie). Recadré en vertical sur le logo. Sur « que ce soit via Google »."
+    },
+    {
+      "type": "plan_de_coupe",
+      "debut": 39.92,
+      "fin": 41.42,
+      "fichier": "media/formulaire.mp4",
+      "debut_clip": 0,
+      "son": false,
+      "_source": "Clip fourni par l'utilisateur (7821798, main qui remplit un formulaire, vertical), passage 0,2–2,0 s. Sur « via des formulaires, etc. »."
     },
     {
       "type": "carte_verre",
-      "debut": 37.3,
+      "debut": 41.42,
       "fin": 46.28,
-      "titre": "Acquisition client",
+      "titre": "En se basant sur",
       "items": [
-        "Via Google",
-        "Via des formulaires",
         "Les algorithmes des réseaux sociaux",
         "L'évolution du marché"
       ],
       "temps": [
-        39.08,
-        39.92,
         42.56,
         45.0
       ],
       "remplace_temps": [
         [
-          37.3,
+          41.42,
           46.28
         ]
       ],
-      "_note": "Carte en verre de Gary : ce que LOCALISY optimise chaque mois ; aucun sous-titre pendant la carte ; elle s'efface avant la dernière phrase forte."
+      "_note": "Carte en verre de Gary après les deux plans de coupe (Google, formulaires) ; elle s'efface avant la dernière phrase forte « la concurrence »."
     },
     {
       "type": "zoom",

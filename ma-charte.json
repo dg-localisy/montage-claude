@@ -665,7 +665,8 @@
         "swoosh_universfield": 0.27,
         "riser_inverse": 0.27,
         "riser_court": 0.13,
-        "riser_flash": 0.13
+        "riser_flash": 0.13,
+        "riser_aspire_court": 0.38
       },
       "riser_duree_s": 2.0,
       "fournis": {
