@@ -44,6 +44,8 @@ const RECETTES = {
     '-filter_complex', `[0:a]highpass=f=1800,lowpass=f=8500,volume='exp(5.2*(t-${d}))':eval=frame[n];[1:a]lowpass=f=2500,volume=0.8[o];` +
       `[n][o]amix=inputs=2:normalize=0,aecho=0.8:0.45:35|80:0.25|0.15,afade=t=out:st=${(d - 0.012).toFixed(3)}:d=0.012[r]`,
     '-map', '[r]'],
+  // riser_inverse_long : l'accord de piano joué à l'envers en 1,7 s (Black and Bike, v9)
+  riser_inverse_long: () => RECETTES.riser_inverse(1.7),
   // riser_aspire_court : le riser « aspiré » de Cheminées en 0,85 s, pour un résultat dit dans la première seconde (DS Cleaning)
   riser_aspire_court: () => RECETTES.riser_aspire(0.85),
   // riser_pulsations : troisième riser : pulsations graves et feutrées qui accélèrent (4 → 18 par seconde) en montant

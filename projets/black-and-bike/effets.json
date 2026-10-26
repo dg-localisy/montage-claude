@@ -1,5 +1,5 @@
 {
-  "_aide": "Témoignage Black and Bike, version 8 (v8 : plan de coupe « graphique qui monte » sur la croissance de 1,5 ; v7 : page sombre à flèche remise à 0:43, demandes de l'utilisateur) ; v6 : charte de Gary à 100 % (demande de l'utilisateur : mêmes animations, polices et tailles que la vidéo de Gary). Riser de Gary raccourci à 1,7 s (riser_court) ; titre tapé « Fréquentation » au lieu du mot souligné ; présentation « Black and Bike » à l'endroit des sous-titres ; « impossible pour nous » en phrase forte ; carte en verre « Ils optimisent » ; écran ChatGPT « Quel vélo de route acheter en Belgique ? » ;  ×2 final en chiffre. Temps en secondes, sur rush/rush_final.mp4 (rush client, hors git) = accroche « C'est un taux de fréquentation qui a doublé » (52,76–55,00 s du fichier reçu), puis tout le fichier reçu (décalage +2,24 s). Rendu : cd moteur && node scripts/rendu.mjs ../projets/black-and-bike/effets.json --nom black-and-bike-v6 --sans-4x5, puis outils/son_final.py.",
+  "_aide": "Témoignage Black and Bike, version 9 (v9 : riser « accord à l'envers » ; v8 : plan de coupe « graphique qui monte » sur la croissance de 1,5 ; v7 : page sombre à flèche remise à 0:43, demandes de l'utilisateur) ; v6 : charte de Gary à 100 % (demande de l'utilisateur : mêmes animations, polices et tailles que la vidéo de Gary). Riser de Gary raccourci à 1,7 s (riser_court) ; titre tapé « Fréquentation » au lieu du mot souligné ; présentation « Black and Bike » à l'endroit des sous-titres ; « impossible pour nous » en phrase forte ; carte en verre « Ils optimisent » ; écran ChatGPT « Quel vélo de route acheter en Belgique ? » ;  ×2 final en chiffre. Temps en secondes, sur rush/rush_final.mp4 (rush client, hors git) = accroche « C'est un taux de fréquentation qui a doublé » (52,76–55,00 s du fichier reçu), puis tout le fichier reçu (décalage +2,24 s). Rendu : cd moteur && node scripts/rendu.mjs ../projets/black-and-bike/effets.json --nom black-and-bike-v6 --sans-4x5, puis outils/son_final.py.",
   "duree": 60.2,
   "fps": 25,
   "rush": {
@@ -283,9 +283,9 @@
       "x_depart_sortie": 650,
       "duree_entree": 0.13,
       "duree_sortie": 0.13,
-      "riser": "riser_court",
+      "riser": "riser_inverse_long",
       "riser_duree": 1.7,
-      "_note": "×2 passe au-dessus de sa tête de gauche à droite sur « doublé » (idée de l'utilisateur) ; riser de Gary raccourci à 1,7 s (demande de l'utilisateur : « reprends un riser similaire à Hock »)."
+      "_note": "×2 passe au-dessus de sa tête de gauche à droite sur « doublé » (idée de l'utilisateur) ; v9 : nouveau riser, accord de piano joué à l'envers en 1,7 s (demande de l'utilisateur : « change le riser de Black and Bike »)."
     },
     {
       "type": "accroche",
