@@ -1,0 +1,36 @@
+{
+  "_aide": "Podcast « Maman ne sait pas ce que je fais » (studio de podcast LOCALISY). Style de la vidéo INCENDIE (demande de l'utilisateur) : seulement les sous-titres INCENDIE avec les mots importants en phrases fortes ; aucun autre texte (pas de cadre, de carte en verre, de présentation ni de mot derrière la tête). La vidéo reçue a déjà ses zooms et sa musique de fond : aucun zoom ni recadrage ajouté (cadrage 1, avancée 0), pas de musique, pas d'étalonnage, de grain ni de vignette. Plans de coupe fournis par l'utilisateur, recadrés en vertical. Nouvelle transition fabriquée à la demande de l'utilisateur : « zoom_flou » (plongée floue + éclair blanc bref, le plan suivant arrive agrandi et se pose), sur l'entrée des deux séries de plans de coupe. Rendu : cd moteur && node scripts/rendu.mjs ../projets/maman/effets.json --nom maman-v1 --sans-4x5, puis sous-titres incrustés et outils/son_final.py.",
+  "duree": 23.04,
+  "fps": 25,
+  "rush": {"video": "rush/rush.mp4", "mots": "mots.json"},
+  "musique": {"actif": false, "_note": "La vidéo reçue contient déjà sa musique de fond (utilisateur)."},
+  "sous_titres": {
+    "mode": "premiere_video",
+    "phrases_fortes": [
+      {"debut": 1.3, "lignes": [[{"mot": "ma mère", "role": "fort"}], [{"mot": "sait pas", "role": "liaison_gras"}], [{"mot": "ce que je fais", "role": "appui"}]]},
+      {"debut": 5.72, "lignes": [[{"mot": "très très", "role": "liaison"}], [{"mot": "éloignée.", "role": "fort"}]]},
+      {"debut": 9.82, "lignes": [[{"mot": "tellement", "role": "liaison"}], [{"mot": "vaste,", "role": "fort"}]]},
+      {"debut": 14.42, "lignes": [[{"mot": "tellement de", "role": "liaison"}], [{"mot": "casquettes", "role": "fort"}], [{"mot": "différentes", "role": "appui"}]]},
+      {"debut": 20.38, "lignes": [[{"mot": "un peu", "role": "liaison"}], [{"mot": "incapable", "role": "fort"}], [{"mot": "d'expliquer", "role": "appui"}]]}
+    ]
+  },
+  "camera": {
+    "visage": [0.5, 0.25],
+    "coupes": [3.16, 4.64, 8.52, 12.4, 15.72, 19.28],
+    "cadrages": [1.0],
+    "decalages_x": [0],
+    "avancee": 0,
+    "_cadrages": "Coupes du vidéaste détectées image par image. Aucun recadrage ni avancée : les zooms sont déjà dans la vidéo reçue."
+  },
+  "ambiance": {"grain": 0, "vignette": 0, "etalonnage": false},
+  "effets": [
+    {"type": "transition", "style": "zoom_flou", "debut": 9.36, "duree": 0.5, "son_entree": "transition_whoosh_oxid", "_note": "Nouvelle transition (demande de l'utilisateur) : entrée de la 1re série de plans de coupe, sur « métier »."},
+    {"type": "plan_de_coupe", "debut": 9.36, "fin": 10.4, "fichier": "media/camera.mp4", "debut_clip": 0, "son": false, "_source": "Clip fourni (8089525, mains sur l'objectif d'une caméra), passage 0,8–2,2 s recadré sur les mains et l'objectif. Sur « un métier qui est tellement » (vidéaste)."},
+    {"type": "plan_de_coupe", "debut": 10.4, "fin": 11.24, "fichier": "media/code.mp4", "debut_clip": 0, "son": false, "_source": "Clip fourni (14519720, code à l'écran), passage 4,0–5,2 s. Sur « vaste, avec des métiers » (développeur)."},
+    {"type": "plan_de_coupe", "debut": 11.24, "fin": 12.4, "fichier": "media/retouche.mp4", "debut_clip": 0, "son": false, "_source": "Clip fourni (15162385, retouche photo à l'ordinateur, vertical), passage 2,0–3,5 s, recadré sous le clap du haut. Sur « tellement différents », jusqu'à la coupe du vidéaste (12,40 s)."},
+    {"type": "transition", "style": "zoom_flou", "debut": 16.18, "duree": 0.5, "son_entree": "transition_oxid", "_note": "Même transition, autre son : entrée de la 2e série de plans de coupe, sur « le commercial »."},
+    {"type": "plan_de_coupe", "debut": 16.18, "fin": 17.02, "fichier": "media/poignee.mp4", "debut_clip": 0, "son": false, "_source": "Clip fourni (8426051, poignée de main), passage 2,4–3,6 s. Sur « le commercial »."},
+    {"type": "plan_de_coupe", "debut": 17.02, "fin": 17.78, "fichier": "media/reunion.mp4", "debut_clip": 0, "son": false, "_source": "Clip fourni (3205674, équipe autour d'une table), passage 2,5–3,6 s. Sur « la gestion d'équipe »."},
+    {"type": "plan_de_coupe", "debut": 17.78, "fin": 19.28, "fichier": "media/plannings.mp4", "debut_clip": 0, "son": false, "_source": "Clip fourni (6781564, main qui écrit dans un carnet), passage 0–1,8 s recadré sur le carnet : écriture illisible, la feuille « Business summary » reste hors champ. Sur « des plannings, etc. », jusqu'à la coupe du vidéaste (19,28 s)."}
+  ]
+}

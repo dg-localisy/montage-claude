@@ -28,6 +28,28 @@ export const Lumieres: React.FC<{projet: any; charte: any}> = ({projet, charte})
   );
 };
 
+// Transition « zoom flou » : l'image plonge en avant en se floutant, un éclair blanc bref cache la coupe,
+// puis le plan suivant arrive agrandi et flou et se pose en douceur. Noir et blanc, rien de coloré.
+// Renvoie l'échelle, le flou et l'éclat à appliquer aux couches vidéo à l'instant t.
+export const zoomFlou = (t: number, transitions: any[]) => {
+  for (const tr of transitions) {
+    if (tr.style !== 'zoom_flou') continue;
+    const avant = tr.duree * 0.42; // la plongée est plus courte que l'arrivée
+    const apres = tr.duree - avant;
+    const force = tr.force ?? 0.22;
+    const eclat = 0.4 * Math.exp(-Math.pow((t - tr.debut) / 0.045, 2));
+    if (t >= tr.debut - avant && t < tr.debut) {
+      const u = prog(t, tr.debut - avant, tr.debut);
+      return {echelle: 1 + force * Math.pow(u, 3), flou: 18 * u * u, lumiere: 1 + 0.25 * Math.pow(u, 3), eclat};
+    }
+    if (t >= tr.debut && t < tr.debut + apres) {
+      const v = easeOut(prog(t, tr.debut, tr.debut + apres));
+      return {echelle: 1 + force * (1 - v), flou: 18 * Math.pow(1 - v, 2), lumiere: 1 + 0.25 * Math.pow(1 - v, 3), eclat};
+    }
+  }
+  return null;
+};
+
 // Grain de film, vignette et barre de chapitres.
 export const Ambiance: React.FC<{projet: any; charte: any}> = ({projet, charte}) => {
   const frame = useCurrentFrame();
