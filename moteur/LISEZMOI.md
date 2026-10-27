@@ -103,6 +103,8 @@ Chaque animation (sauf les zooms) déclenche un son bref et doux : `woutch` (tit
 
 Sons fournis par l'utilisateur : fichiers du dossier `sons_fournis/`, déclarés dans la charte (`moteur.sons.fournis` : `fichier`, `fin_s`, `duree_s`, `fondu_entree_s`, `avance_s`, et un volume dans `moteur.sons.volumes`). Un son fourni qui porte le nom d'un son fabriqué le remplace (ex. `riser`). Les bruits de transition (`transition_oxid`, `transition_whoosh_oxid`, `transition_base`, `swoosh_universfield`) se choisissent avec `"son_entree": "NOM"` sur un `plan_de_coupe`, un `ecran_chat` ou une `transition` : le son démarre `avance_s` secondes avant l'animation, pour que son sommet tombe sur la coupe. Pour en ajouter un : copier le fichier dans `sons_fournis/`, mesurer le moment de son sommet, le déclarer, puis égaliser son volume sur les autres (sonie momentanée maximale identique).
 
+Phrase forte avec `fin` imposée : elle peut rester après le mot suivant ; le sous-titre normal qui commencerait pendant ce temps attend qu'elle s'efface (`remplace_temps` sur un effet pour retirer des mots plutôt que de les afficher trop brièvement).
+
 ## Organisation
 
 - `scripts/preparer.mjs` : toute la logique (groupes de sous-titres, temps des animations, sons). Écrit `public/projet.json`.

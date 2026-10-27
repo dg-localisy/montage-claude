@@ -38,6 +38,25 @@
         ]
       },
       {
+        "debut": 2.32,
+        "fin": 3.36,
+        "lignes": [
+          [
+            {
+              "mot": "que j'écrivais",
+              "role": "appui"
+            }
+          ],
+          [
+            {
+              "mot": "pas.",
+              "role": "fort"
+            }
+          ]
+        ],
+        "_note": "Chute de l'accroche mise en évidence (demande de l'utilisateur). Reste jusqu'à 3,36 s, pendant et après l'éclair, pour que « pas. » se lise ; « Il y a quelque » (dit pendant l'éclair) n'a pas de sous-titre à part, le suivant commence à « chose que peu de »."
+      },
+      {
         "debut": 5.6,
         "lignes": [
           [
@@ -216,7 +235,21 @@
       "son": false,
       "_note": "Éclair blanc après l'accroche, sur la coupe de 2,92 s (demande de l'utilisateur : d'abord un jeu de lumière pour le suspense à la place du riser, puis « je n'aime pas que l'image s'assombrisse, laisse juste l'éclair » : ni assombrissement ni rai de lumière). Le plan suivant arrive surexposé et légèrement flou, puis se pose. Sans son, sans zoom.",
       "assombrir": false,
-      "rai": false
+      "rai": false,
+      "remplace_temps": [
+        [
+          2.97,
+          3.35
+        ]
+      ]
+    },
+    {
+      "type": "son",
+      "nom": "riser_court",
+      "debut": 2.92,
+      "facteur": 1.26,
+      "chute": false,
+      "_note": "Riser de Gary en 1,7 s (essai « B » choisi par l'utilisateur parmi 3) : il monte dès « un mois de salaire » et culmine sur l'éclair de 2,92 s. Sans coup sourd. Volume ×1,26 pour être au niveau des autres essais (-4 dB sous la voix)."
     },
     {
       "type": "transition",

@@ -133,7 +133,7 @@ function calerPhrasesFortes(blocs, mots) {
     const suivant = mots[k];
     const fin = b.fin ?? Math.min(dernier ? dernier.fin + 0.45 : b.debut + 2, suivant ? suivant.debut - 0.02 : Infinity);
     const ids = mots.slice(Math.max(0, k0), Math.max(0, k)).map((m) => m.id);
-    return {...b, debut: lignes[0][0].debut, lignes, fin, ids};
+    return {...b, debut: lignes[0][0].debut, lignes, fin, ids, fin_imposee: b.fin !== undefined};
   });
 }
 
@@ -467,6 +467,11 @@ export function preparer(cheminEffets) {
   if (premiereVideo) {
     const arrets = [...intervalles.map(([a]) => a), ...mots.filter(masque).map((m) => m.debut)];
     for (const g of groupes) for (const a of arrets) if (a > g.debut) g.fin_affichage = Math.min(g.fin_affichage, a);
+  }
+  // une phrase forte dont la fin est imposée (« fin » dans effets.json) peut rester après le mot suivant : le sous-titre
+  // normal qui commencerait pendant ce temps attend qu'elle s'efface (jamais les deux en même temps)
+  if (premiereVideo) for (const b of phrasesFortes.filter((x) => x.fin_imposee)) {
+    for (const g of groupes) if (g.debut >= b.debut && g.debut < b.fin) g.debut = b.fin;
   }
   function groups() { return groupes; }
 
