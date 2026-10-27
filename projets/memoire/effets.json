@@ -1,5 +1,5 @@
 {
-  "_aide": "Podcast « 1 mois de salaire dans un mémoire » (studio de podcast LOCALISY, fond bleu). Style de la vidéo INCENDIE, comme « Maman » : seulement les sous-titres INCENDIE avec les mots importants en phrases fortes ; aucun autre texte. La vidéo reçue est un plan fixe avec quelques coupes (pas de zoom) et sans musique : musique originale ajoutée (style bossa), zooms faits comme ceux de la vidéo INCENDIE (plus marqués, demande de l'utilisateur), d'abord calés sur le vidéaste de « Maman » (demande de l'utilisateur, mesurés sur Maman : cadrages serrés ×1,3 à ×1,5 en coupe franche entre deux phrases, petits zooms de ×1,1 en 0,5 s, lente avancée dans chaque plan, jamais de recul en pleine phrase). Un seul plan de coupe (prise de notes, sur « un mémoire à faire »), avec une nouvelle transition « rotation ».",
+  "_aide": "Podcast « 1 mois de salaire dans un mémoire » (studio de podcast LOCALISY, fond bleu). Style de la vidéo INCENDIE, comme « Maman » : seulement les sous-titres INCENDIE avec les mots importants en phrases fortes ; aucun autre texte. La vidéo reçue est un plan fixe avec quelques coupes (pas de zoom) et sans musique : musique originale ajoutée (style bossa), cadres fixes marqués comme la vidéo INCENDIE (pas de zoom qui bouge, demande de l'utilisateur), jeu de lumière après l'accroche (demande de l'utilisateur, mesurés sur Maman : cadrages serrés ×1,3 à ×1,5 en coupe franche entre deux phrases, petits zooms de ×1,1 en 0,5 s, lente avancée dans chaque plan, jamais de recul en pleine phrase). Un seul plan de coupe (prise de notes, sur « un mémoire à faire »), avec une nouvelle transition « rotation ».",
   "duree": 29.08,
   "fps": 25,
   "rush": {
@@ -154,14 +154,17 @@
       11.84,
       12.4,
       12.88,
+      14.24,
       16.24,
       16.72,
       17.56,
+      18.7,
       20.32,
       21.76,
       22.84,
       24.12,
       24.68,
+      25.84,
       27.2,
       28.08
     ],
@@ -179,22 +182,25 @@
       1.5,
       1.22,
       1.0,
+      1.22,
+      1.22,
+      1.45,
       1.0,
       1.45,
       1.0,
       1.22,
-      1.0,
       1.5,
       1.22,
       1.0,
       1.22,
+      1.0,
       1.5
     ],
     "decalages_x": [
       0
     ],
-    "avancee": 0.04,
-    "_cadrages": "Zooms à la manière de la vidéo INCENDIE (demande de l'utilisateur : « des zooms un peu plus conséquents, comme la vidéo de Guillaume » ; mesurés sur INCENDIE : large 1,0, moyen 1,22 à 1,26, serré 1,55 à 1,77, changement toutes les 1 à 2 s en coupe franche). Chaque changement de cadre tombe PILE sur une coupe du vidéaste (le rush est déjà dérushé : petites coupes détectées image par image, 0,68 ; 2,92 ; 3,76 ; 5,40 ; 6,16 ; 7,36 ; 8,24 ; 9,48 ; 10,92 ; 11,84 ; 12,40 ; 12,88 ; 16,24 ; 16,72 ; 17,56 ; 20,32 ; 21,76 ; 22,84 ; 24,12 ; 24,68 ; 27,20 ; 28,08) : elles sont ainsi cachées, et jamais deux sauts d'image coup sur coup (v2 : changements de cadre 2 images après les coupes de 11,84 et 12,88 → « bug de zoom » vu par l'utilisateur). Large 1,0, moyen 1,22, serré 1,45 à 1,5 (rush 1080p), lente avancée de 4 % par plan, petits zooms de 1,12 sur certains plans larges. Plans : 0.0 s ×1.0 « Au final, » | 0.68 s ×1.5 « j'ai dépensé un mois de salaire pour un mémoire que j'écrivais pas. » | 2.92 s ×1.0 « Il y a quelque chose » | 3.76 s ×1.22 « que peu de gens savent, c'est que j'ai eu » | 5.4 s ×1.0 « mon diplôme » | 6.16 s ×1.5 « deux ans après avoir commencé » | 7.36 s ×1.22 « à travailler. » | 8.24 s ×1.0 « Pour resituer l'histoire, » | 9.48 s ×1.22 « je fais mon stage de fin d'études, » | 10.92 s ×1.0 « on me propose un job, » | 11.84 s ×1.5 « je dis oui » | 12.4 s ×1.22 « tout de suite. » | 12.88 s ×1.0 « Sauf que dans l'intervalle, pendant le stage, j'avais… (plan de coupe à 15,32) » | 16.24 s ×1.0 « (sous le plan de coupe) » | 16.72 s ×1.45 « Quand on a travaillé » | 17.56 s ×1.0 « huit ou neuf heures sur la journée, on n'a pas spécialement envie de » | 20.32 s ×1.22 « se remettre à son bureau pour » | 21.76 s ×1.0 « écrire un mémoire de fin d'études, » | 22.84 s ×1.5 « même si je traînais une casserole » | 24.12 s ×1.22 « derrière moi. » | 24.68 s ×1.0 « Ça m'a permis de me développer dans le travail et dans l'entreprise. » | 27.2 s ×1.22 « À refaire, je referais » | 28.08 s ×1.5 « exactement la même chose »"
+    "avancee": 0,
+    "_cadrages": "Cadres FIXES (demande de l'utilisateur : « je n'aime pas les effets de zoom qui bougent, je préfère des zooms fixes ») : aucune avancée ni zoom animé, seulement des changements de cadre nets. Marqués comme la vidéo INCENDIE : large 1,0, moyen 1,22, serré 1,45 à 1,5 (rush 1080p), changement toutes les 1 à 2 s. Chaque changement tombe pile sur une coupe du vidéaste (rush déjà dérushé, petites coupes détectées image par image : 0,68 ; 2,92 ; 3,76 ; 5,40 ; 6,16 ; 7,36 ; 8,24 ; 9,48 ; 10,92 ; 11,84 ; 12,40 ; 12,88 ; 16,24 ; 16,72 ; 17,56 ; 20,32 ; 21,76 ; 22,84 ; 24,12 ; 24,68 ; 27,20 ; 28,08), ou, là où il n'y en a pas, entre deux mots loin de toute coupe (14,24 ; 18,70 ; 25,84 : ils remplacent les petits zooms animés). Plans : 0.0 s ×1.0 « Au final, » | 0.68 s ×1.5 « j'ai dépensé un mois de salaire pour un mémoire que j'écrivais pas. » | 2.92 s ×1.0 « Il y a quelque chose (jeu de lumière à la coupe) » | 3.76 s ×1.22 « que peu de gens savent, c'est que j'ai eu » | 5.4 s ×1.0 « mon diplôme » | 6.16 s ×1.5 « deux ans après avoir commencé » | 7.36 s ×1.22 « à travailler. » | 8.24 s ×1.0 « Pour resituer l'histoire, » | 9.48 s ×1.22 « je fais mon stage de fin d'études, » | 10.92 s ×1.0 « on me propose un job, » | 11.84 s ×1.5 « je dis oui » | 12.4 s ×1.22 « tout de suite. » | 12.88 s ×1.0 « Sauf que dans l'intervalle, » | 14.24 s ×1.22 « pendant le stage, j'avais… (plan de coupe à 15,32) » | 16.24 s ×1.22 « (sous le plan de coupe) » | 16.72 s ×1.45 « Quand on a travaillé » | 17.56 s ×1.0 « huit ou neuf heures sur la journée, » | 18.7 s ×1.45 « on n'a pas spécialement envie de » | 20.32 s ×1.0 « se remettre à son bureau pour » | 21.76 s ×1.22 « écrire un mémoire de fin d'études, » | 22.84 s ×1.5 « même si je traînais une casserole » | 24.12 s ×1.22 « derrière moi. » | 24.68 s ×1.0 « Ça m'a permis de me développer » | 25.84 s ×1.22 « dans le travail et dans l'entreprise. » | 27.2 s ×1.0 « À refaire, je referais » | 28.08 s ×1.5 « exactement la même chose »"
   },
   "ambiance": {
     "grain": 0,
@@ -202,6 +208,14 @@
     "etalonnage": false
   },
   "effets": [
+    {
+      "type": "transition",
+      "style": "lumiere_blanche",
+      "debut": 2.92,
+      "duree": 1.0,
+      "son": false,
+      "_note": "Jeu de lumière après l'accroche pour créer le suspense (demande de l'utilisateur, à la place du riser dont il n'a pas aimé le bruit) : l'image s'assombrit sur « que j'écrivais pas », éclair blanc et rai de lumière sur la coupe de 2,92 s, plan suivant surexposé qui se pose. Sans son, sans zoom."
+    },
     {
       "type": "transition",
       "style": "rotation",
@@ -219,34 +233,6 @@
       "debut_clip": 0,
       "son": false,
       "_source": "Clip fourni (4769550, prise de notes à côté d'un livre), passage 9,0–10,8 s recadré sur la main qui écrit : le texte du livre reste flou (illisible). Seul plan de coupe de la vidéo (demande de l'utilisateur : point 4 uniquement). Sur « ce qu'on appelle un mémoire à faire », jusqu'à la coupe du vidéaste de 16,72 s."
-    },
-    {
-      "type": "son",
-      "nom": "riser_flash",
-      "debut": 2.92,
-      "chute": true,
-      "_note": "Riser de Gary (version courte, 0,85 s) qui culmine à la fin de l'accroche, sur la coupe de 2,92 s, puis coup sourd : comme le riser après l'accroche de la vidéo INCENDIE (demande de l'utilisateur ; dans INCENDIE il monte ~0,6 s jusqu'à la transition de 5,07 s)."
-    },
-    {
-      "type": "zoom",
-      "debut": 14.24,
-      "a": 1.12,
-      "duree": 0.5,
-      "_note": "« pendant le stage », tient jusqu'à 16,24 (sous le plan de coupe)."
-    },
-    {
-      "type": "zoom",
-      "debut": 18.92,
-      "a": 1.12,
-      "duree": 0.5,
-      "_note": "« pas spécialement envie », tient jusqu'à 20,32."
-    },
-    {
-      "type": "zoom",
-      "debut": 25.84,
-      "a": 1.12,
-      "duree": 0.5,
-      "_note": "« dans le travail et dans l'entreprise », tient jusqu'à 27,20."
     }
   ]
 }

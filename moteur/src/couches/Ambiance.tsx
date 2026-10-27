@@ -38,6 +38,11 @@ export const zoomFlou = (t: number, transitions: any[], W = 1080, H = 1920) => {
       if (r) return r;
       continue;
     }
+    if (tr.style === 'lumiere_blanche') {
+      const r = lumiereBlanche(t, tr);
+      if (r) return r;
+      continue;
+    }
     if (tr.style !== 'zoom_flou') continue;
     const avant = tr.duree * 0.42; // la plongée est plus courte que l'arrivée
     const apres = tr.duree - avant;
@@ -76,6 +81,58 @@ const rotationFloue = (t: number, tr: any, W: number, H: number) => {
     rot = -angle * p;
   } else return null;
   return {echelle: Math.max(1 + 0.12 * p, couvre(rot)), rotation: rot, flou: 16 * p * p, lumiere: 1 + 0.08 * p, eclat: 0, origine: '50% 50%'};
+};
+
+// Jeu de lumière « suspense » (vidéo « mémoire », après l'accroche) : sans zoom ni mouvement de l'image.
+// L'image s'assombrit sur les derniers mots (les bords se referment), puis un éclair blanc et un rai de lumière
+// traversent l'image sur la coupe, le plan suivant arrive surexposé et légèrement flou, et se pose. Blanc seulement.
+const lumiereBlanche = (t: number, tr: any) => {
+  const avant = tr.duree * 0.45;
+  const apres = tr.duree - avant;
+  const eclat = 0.8 * Math.exp(-Math.pow((t - tr.debut) / 0.06, 2));
+  if (t >= tr.debut - avant && t < tr.debut) {
+    const u = prog(t, tr.debut - avant, tr.debut);
+    return {echelle: 1, flou: 3 * u * u, lumiere: 1 - 0.45 * Math.pow(u, 1.5), eclat};
+  }
+  if (t >= tr.debut && t < tr.debut + apres) {
+    const v = easeOut(prog(t, tr.debut, tr.debut + apres));
+    return {echelle: 1, flou: 8 * Math.pow(1 - v, 2), lumiere: 1 + 0.35 * (1 - v), eclat};
+  }
+  return null;
+};
+
+// Rai de lumière blanche et bords qui se referment, pour le jeu de lumière « suspense » (style lumiere_blanche).
+export const RaiDeLumiere: React.FC<{projet: any}> = ({projet}) => {
+  const frame = useCurrentFrame();
+  const {fps, width: W, height: H} = useVideoConfig();
+  const t = frame / fps;
+  return (
+    <>
+      {projet.transitions
+        .filter((tr: any) => tr.style === 'lumiere_blanche' && t >= tr.debut - tr.duree * 0.45 && t < tr.debut + tr.duree * 0.55)
+        .map((tr: any, i: number) => {
+          const avant = tr.duree * 0.45;
+          // bords qui se referment avant la coupe (suspense), puis s'ouvrent d'un coup
+          const fermeture = t < tr.debut ? Math.pow(prog(t, tr.debut - avant, tr.debut), 1.5) : 0;
+          // rai de lumière : une large bande blanche en diagonale qui traverse l'image de gauche à droite
+          const p = prog(t, tr.debut - 0.1, tr.debut + tr.duree * 0.55);
+          const force = Math.pow(Math.sin(Math.PI * p), 0.6);
+          const x = lerp(-0.4, 1.4, p) * 100; // vitesse constante : on le voit traverser après l'éclair
+          return (
+            <React.Fragment key={i}>
+              {fermeture > 0.01 && (
+                <div style={{position: 'absolute', inset: 0, opacity: fermeture,
+                  background: 'radial-gradient(ellipse 70% 55% at 50% 38%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.55) 75%, rgba(0,0,0,0.85) 100%)'}} />
+              )}
+              {force > 0.01 && (
+                <div style={{position: 'absolute', inset: 0, mixBlendMode: 'screen', opacity: force,
+                  background: `linear-gradient(115deg, rgba(255,255,255,0) ${x - 26}%, rgba(255,255,255,0.22) ${x - 10}%, rgba(255,255,255,0.8) ${x}%, rgba(255,255,255,0.22) ${x + 10}%, rgba(255,255,255,0) ${x + 26}%)`}} />
+              )}
+            </React.Fragment>
+          );
+        })}
+    </>
+  );
 };
 
 // Grain de film, vignette et barre de chapitres.

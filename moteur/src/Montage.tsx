@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Accroche} from './couches/Accroche';
-import {Ambiance, CarteFin, Lumieres, Signature, zoomFlou} from './couches/Ambiance';
+import {Ambiance, CarteFin, Lumieres, RaiDeLumiere, Signature, zoomFlou} from './couches/Ambiance';
 import {Camera} from './couches/Camera';
 import {Carte} from './couches/Carte';
 import {CarteVerre} from './couches/CarteVerre';
@@ -76,6 +76,7 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
       {de('choix').map((e: any) => <Choix key={e.id} e={e} charte={charte} />)}
       <SousTitres projet={projet} charte={charte} />
       <Lumieres projet={projet} charte={charte} />
+      <RaiDeLumiere projet={projet} />
       <Ambiance projet={projet} charte={charte} />
       {de('signature').map((e: any) => <Signature key={e.id} e={e} charte={charte} />)}
       {de('carte_fin').map((e: any) => <CarteFin key={e.id} e={e} charte={charte} />)}
