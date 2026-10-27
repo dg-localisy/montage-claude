@@ -9,8 +9,8 @@
     "phrases_fortes": [
       {"debut": 1.3, "lignes": [[{"mot": "ma mère", "role": "fort"}], [{"mot": "sait pas", "role": "liaison_gras"}], [{"mot": "ce que je fais", "role": "appui"}]]},
       {"debut": 5.72, "lignes": [[{"mot": "très très", "role": "liaison"}], [{"mot": "éloignée.", "role": "fort"}]]},
-      {"debut": 9.82, "lignes": [[{"mot": "tellement", "role": "liaison"}], [{"mot": "vaste,", "role": "fort"}]]},
-      {"debut": 14.42, "lignes": [[{"mot": "tellement de", "role": "liaison"}], [{"mot": "casquettes", "role": "fort"}], [{"mot": "différentes", "role": "appui"}]]},
+      {"debut": 11.24, "fin": 12.4, "lignes": [[{"mot": "tellement", "role": "liaison"}], [{"mot": "différents", "role": "fort"}]], "_note": "Sur la retouche photo, jusqu'à la coupe (12,40 s). « tellement vaste » ne restait que 0,24 s à l'écran (« avec » suit aussitôt)."},
+      {"debut": 14.42, "lignes": [[{"mot": "tellement de", "role": "liaison"}], [{"mot": "casquettes", "role": "fort"}], [{"mot": "différentes", "role": "liaison"}]]},
       {"debut": 20.38, "lignes": [[{"mot": "un peu", "role": "liaison"}], [{"mot": "incapable", "role": "fort"}], [{"mot": "d'expliquer", "role": "appui"}]]}
     ]
   },
