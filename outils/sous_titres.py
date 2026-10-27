@@ -99,9 +99,14 @@ def _mise_en_page(bloc):
 
     # lignes de base, serrées ; si un petit mot est remonté (exposant) sur la ligne du dessous,
     # on écarte juste assez pour qu'il ne touche pas la ligne du dessus (l'utilisateur les trouvait collés)
+    # Même blanc visible entre deux lignes, quelle que soit leur taille : sous un gros mot, une petite ligne
+    # remonte (l'utilisateur trouvait « ma mère / sait pas » trop écartés). Entre deux lignes de même taille,
+    # ou d'une petite vers une grande, rien ne change : 0,82 × la plus grande taille.
+    haut_maj = 0.72 * EM_PAR_TAILLE
     bases = [0.0]
     for a, b in zip(lignes, lignes[1:]):
-        ecart = FORTES["interligne_facteur"] * max(a["taille"], b["taille"])
+        grande = max(a["taille"], b["taille"])
+        ecart = haut_maj * b["taille"] + (FORTES["interligne_facteur"] - haut_maj) * grande
         for m in b["mots"]:
             if m["remonte"] > 0:
                 ecart = max(ecart, m["remonte"] + 0.72 * m["taille"] * EM_PAR_TAILLE + FORTES.get("marge_exposant_em", 0.2) * a["taille"] * EM_PAR_TAILLE)
