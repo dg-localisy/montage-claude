@@ -29,7 +29,7 @@ export type Props = {projet: any; charte: any};
 export const Montage: React.FC<Props> = ({projet, charte}) => {
   usePolices(charte);
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
+  const {fps, width: W, height: H} = useVideoConfig();
   const t = frame / fps;
   const effets = projet.effets;
   const de = (type: string) => effets.filter((e: any) => e.type === type);
@@ -39,11 +39,11 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
   const voile = Math.max(0, ...libres.map((e: any) => fondu(t, e.debut, e.fin, 0.2)));
 
   // transition « zoom flou » : s'applique à toutes les couches vidéo (personne, plans de coupe, écrans)
-  const zf = zoomFlou(t, projet.transitions);
+  const zf: any = zoomFlou(t, projet.transitions, W, H);
 
   return (
     <AbsoluteFill style={{background: '#000'}}>
-      <AbsoluteFill style={zf ? {transform: `scale(${zf.echelle})`, transformOrigin: '50% 40%', filter: `blur(${zf.flou.toFixed(2)}px) brightness(${zf.lumiere.toFixed(3)})`} : undefined}>
+      <AbsoluteFill style={zf ? {transform: `scale(${zf.echelle})` + (zf.rotation ? ` rotate(${zf.rotation.toFixed(3)}deg)` : ''), transformOrigin: zf.origine ?? '50% 40%', filter: `blur(${zf.flou.toFixed(2)}px) brightness(${zf.lumiere.toFixed(3)})`} : undefined}>
         <Camera projet={projet} charte={charte} />
         {de('texte_derriere').map((e: any) => <TexteDerriere key={e.id} e={e} charte={charte} />)}
         {de('courbe_derriere').map((e: any) => <CourbeDerriere key={e.id} e={e} charte={charte} />)}

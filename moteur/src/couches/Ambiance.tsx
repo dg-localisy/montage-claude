@@ -31,8 +31,13 @@ export const Lumieres: React.FC<{projet: any; charte: any}> = ({projet, charte})
 // Transition « zoom flou » : l'image plonge en avant en se floutant, un éclair blanc bref cache la coupe,
 // puis le plan suivant arrive agrandi et flou et se pose en douceur. Noir et blanc, rien de coloré.
 // Renvoie l'échelle, le flou et l'éclat à appliquer aux couches vidéo à l'instant t.
-export const zoomFlou = (t: number, transitions: any[]) => {
+export const zoomFlou = (t: number, transitions: any[], W = 1080, H = 1920) => {
   for (const tr of transitions) {
+    if (tr.style === 'rotation') {
+      const r = rotationFloue(t, tr, W, H);
+      if (r) return r;
+      continue;
+    }
     if (tr.style !== 'zoom_flou') continue;
     const avant = tr.duree * 0.42; // la plongée est plus courte que l'arrivée
     const apres = tr.duree - avant;
@@ -48,6 +53,29 @@ export const zoomFlou = (t: number, transitions: any[]) => {
     }
   }
   return null;
+};
+
+// Transition « rotation » (vidéo « mémoire », pour changer du zoom flou) : l'image tourne d'un coup dans le sens
+// des aiguilles d'une montre en se floutant, puis le plan suivant arrive en finissant le tour et se pose droit.
+// Toujours assez agrandie pour que les coins ne laissent jamais voir de noir. Noir et blanc, sans éclair.
+const rotationFloue = (t: number, tr: any, W: number, H: number) => {
+  const avant = tr.duree * 0.45;
+  const apres = tr.duree - avant;
+  const angle = tr.angle ?? 10;
+  const couvre = (deg: number) => {
+    const a = (Math.abs(deg) * Math.PI) / 180;
+    return Math.cos(a) + (Math.max(W, H) / Math.min(W, H)) * Math.sin(a) + 0.01;
+  };
+  let rot = 0;
+  let p = 0; // force de l'effet (0 → 1 sur la coupe)
+  if (t >= tr.debut - avant && t < tr.debut) {
+    p = Math.pow(prog(t, tr.debut - avant, tr.debut), 2);
+    rot = angle * p;
+  } else if (t >= tr.debut && t < tr.debut + apres) {
+    p = 1 - easeOut(prog(t, tr.debut, tr.debut + apres));
+    rot = -angle * p;
+  } else return null;
+  return {echelle: Math.max(1 + 0.12 * p, couvre(rot)), rotation: rot, flou: 16 * p * p, lumiere: 1 + 0.08 * p, eclat: 0, origine: '50% 50%'};
 };
 
 // Grain de film, vignette et barre de chapitres.
