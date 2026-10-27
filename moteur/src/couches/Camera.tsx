@@ -55,7 +55,10 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
 
   const zoom = (x: number) => cam.zooms.reduce((acc: number, z: Zoom) => acc * valeurZoom(z, x, coupes, projet.duree), 1);
   const z = zoom(t);
-  const vitesseZoom = (zoom(t + 1 / fps) - z) * fps;
+  // vitesse du zoom (pour son flou de mouvement), jamais mesurée à travers une coupe : sinon le zoom qui retombe
+  // à 1 sur la coupe passe pour un mouvement très rapide et l'image d'avant se dédouble (saut d'image en trop)
+  const coupeProche = coupes.some((c) => c > t - 0.5 / fps && c <= t + 1.5 / fps);
+  const vitesseZoom = coupeProche ? 0 : (zoom(t + 1 / fps) - z) * fps;
 
   const titres = projet.effets.filter((e: any) => e.type === 'grand_titre');
   const g = Math.max(0, ...titres.map((e: any) => fondu(t, e.debut - 0.12, e.fin, 0.22)));
