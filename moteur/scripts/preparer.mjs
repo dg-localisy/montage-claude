@@ -470,8 +470,17 @@ export function preparer(cheminEffets) {
   }
   // une phrase forte dont la fin est imposée (« fin » dans effets.json) peut rester après le mot suivant : le sous-titre
   // normal qui commencerait pendant ce temps attend qu'elle s'efface (jamais les deux en même temps)
+  // il reste affiché au moins 0,33 s : au besoin, le sous-titre d'après commence un peu plus tard
   if (premiereVideo) for (const b of phrasesFortes.filter((x) => x.fin_imposee)) {
-    for (const g of groupes) if (g.debut >= b.debut && g.debut < b.fin) g.debut = b.fin;
+    groupes.forEach((g, i) => {
+      if (!(g.debut >= b.debut && g.debut < b.fin)) return;
+      g.debut = b.fin;
+      const suivant = groupes[i + 1];
+      if (g.fin_affichage - g.debut < 0.33) {
+        g.fin_affichage = g.debut + 0.33;
+        if (suivant && suivant.debut < g.fin_affichage) suivant.debut = g.fin_affichage;
+      }
+    });
   }
   function groups() { return groupes; }
 

@@ -39,7 +39,7 @@
       },
       {
         "debut": 2.32,
-        "fin": 3.36,
+        "fin": 3.17,
         "lignes": [
           [
             {
@@ -54,7 +54,7 @@
             }
           ]
         ],
-        "_note": "Chute de l'accroche mise en évidence (demande de l'utilisateur). Reste jusqu'à 3,36 s, pendant et après l'éclair, pour que « pas. » se lise ; « Il y a quelque » (dit pendant l'éclair) n'a pas de sous-titre à part, le suivant commence à « chose que peu de »."
+        "_note": "Chute de l'accroche mise en évidence (demande de l'utilisateur). Reste nette jusqu'après l'éclair (s'efface de 3,05 à 3,17 s). « Il y a quelque » s'affiche ensuite (3,17–3,50, demande de l'utilisateur), puis « chose que peu de » avec 0,14 s de retard."
       },
       {
         "debut": 5.6,
@@ -235,13 +235,7 @@
       "son": false,
       "_note": "Éclair blanc après l'accroche, sur la coupe de 2,92 s (demande de l'utilisateur : d'abord un jeu de lumière pour le suspense à la place du riser, puis « je n'aime pas que l'image s'assombrisse, laisse juste l'éclair » : ni assombrissement ni rai de lumière). Le plan suivant arrive surexposé et légèrement flou, puis se pose. Sans son, sans zoom.",
       "assombrir": false,
-      "rai": false,
-      "remplace_temps": [
-        [
-          2.97,
-          3.35
-        ]
-      ]
+      "rai": false
     },
     {
       "type": "son",
