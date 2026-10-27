@@ -388,6 +388,9 @@ function sonsPour(e, M) {
     case 'ticket': return [entree('woutch_grave', 0.05), ...t.lignes.filter((l) => l.type !== 'tirets').map((l) => s('tap', l.debut, 0.5))];
     case 'choix': return [entree('woutch', 0.1), ...t.options.map((o) => s('tap', o.mots[0].debut, 0.6))];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
+    // son seul, sans image (ex. riser à la fin de l'accroche, comme dans la vidéo INCENDIE) : « debut » = moment où il
+    // culmine ; un riser démarre « duree » secondes avant (durée du son fourni par défaut) ; « chute » ajoute le coup sourd
+    case 'son': return [s(e.nom, e.debut - (e.duree ?? (M.sons.fournis || {})[e.nom]?.duree_s ?? 0), e.facteur ?? 1), ...(e.chute ? [s('chute', e.debut)] : [])];
     case 'transition': return [entree('woutch', 0.13)];
     case 'carte_fin': return [s('woutch', e.debut)];
     case 'carte': {

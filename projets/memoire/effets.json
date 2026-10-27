@@ -144,17 +144,24 @@
     "coupes": [
       0.68,
       2.92,
-      4.96,
+      3.76,
+      5.4,
       6.16,
-      8.28,
-      9.54,
-      11.92,
-      12.96,
-      16.76,
-      18.7,
-      20.2,
+      7.36,
+      8.24,
+      9.48,
+      10.92,
+      11.84,
+      12.4,
+      12.88,
+      16.24,
+      16.72,
+      17.56,
+      20.32,
+      21.76,
       22.84,
-      24.76,
+      24.12,
+      24.68,
       27.2,
       28.08
     ],
@@ -163,15 +170,22 @@
       1.5,
       1.0,
       1.22,
+      1.0,
       1.5,
+      1.22,
       1.0,
       1.22,
+      1.0,
       1.5,
+      1.22,
+      1.0,
       1.0,
       1.45,
+      1.0,
       1.22,
       1.0,
       1.5,
+      1.22,
       1.0,
       1.22,
       1.5
@@ -180,7 +194,7 @@
       0
     ],
     "avancee": 0.04,
-    "_cadrages": "Zooms à la manière de la vidéo INCENDIE (demande de l'utilisateur : « des zooms un peu plus conséquents, comme la vidéo de Guillaume » ; mesurés sur INCENDIE : large 1,0, moyen 1,22 à 1,26, serré 1,55 à 1,77, changement toutes les 1 à 2 s en coupe franche). Ici : large 1,0, moyen 1,22, serré 1,45 à 1,5 (le rush est en 1080p), changements entre deux phrases (coupes du vidéaste 0,68 ; 2,92 ; 6,16 ; 22,84 ; 27,20 et coupes ajoutées), lente avancée de 4 % par plan, petits zooms de 1,12 sur certains plans larges. Plans : 0.0 s ×1.0 « Au final, » | 0.68 s ×1.5 « j'ai dépensé un mois de salaire pour un mémoire que j'écrivais pas. » | 2.92 s ×1.0 « Il y a quelque chose que peu de gens savent, » | 4.96 s ×1.22 « c'est que j'ai eu mon diplôme » | 6.16 s ×1.5 « deux ans après avoir commencé à travailler. » | 8.28 s ×1.0 « Pour resituer l'histoire, » | 9.54 s ×1.22 « je fais mon stage de fin d'études, on me propose un job, » | 11.92 s ×1.5 « je dis oui tout de suite. » | 12.96 s ×1.0 « Sauf que dans l'intervalle, pendant le stage, j'avais… (plan de coupe à 15,32) » | 16.76 s ×1.45 « Quand on a travaillé huit ou neuf heures sur la journée, » | 18.7 s ×1.22 « on n'a pas spécialement envie » | 20.2 s ×1.0 « de se remettre à son bureau pour écrire un mémoire de fin d'études, » | 22.84 s ×1.5 « même si je traînais une casserole derrière moi. » | 24.76 s ×1.0 « Ça m'a permis de me développer dans le travail et dans l'entreprise. » | 27.2 s ×1.22 « À refaire, je referais » | 28.08 s ×1.5 « exactement la même chose »"
+    "_cadrages": "Zooms à la manière de la vidéo INCENDIE (demande de l'utilisateur : « des zooms un peu plus conséquents, comme la vidéo de Guillaume » ; mesurés sur INCENDIE : large 1,0, moyen 1,22 à 1,26, serré 1,55 à 1,77, changement toutes les 1 à 2 s en coupe franche). Chaque changement de cadre tombe PILE sur une coupe du vidéaste (le rush est déjà dérushé : petites coupes détectées image par image, 0,68 ; 2,92 ; 3,76 ; 5,40 ; 6,16 ; 7,36 ; 8,24 ; 9,48 ; 10,92 ; 11,84 ; 12,40 ; 12,88 ; 16,24 ; 16,72 ; 17,56 ; 20,32 ; 21,76 ; 22,84 ; 24,12 ; 24,68 ; 27,20 ; 28,08) : elles sont ainsi cachées, et jamais deux sauts d'image coup sur coup (v2 : changements de cadre 2 images après les coupes de 11,84 et 12,88 → « bug de zoom » vu par l'utilisateur). Large 1,0, moyen 1,22, serré 1,45 à 1,5 (rush 1080p), lente avancée de 4 % par plan, petits zooms de 1,12 sur certains plans larges. Plans : 0.0 s ×1.0 « Au final, » | 0.68 s ×1.5 « j'ai dépensé un mois de salaire pour un mémoire que j'écrivais pas. » | 2.92 s ×1.0 « Il y a quelque chose » | 3.76 s ×1.22 « que peu de gens savent, c'est que j'ai eu » | 5.4 s ×1.0 « mon diplôme » | 6.16 s ×1.5 « deux ans après avoir commencé » | 7.36 s ×1.22 « à travailler. » | 8.24 s ×1.0 « Pour resituer l'histoire, » | 9.48 s ×1.22 « je fais mon stage de fin d'études, » | 10.92 s ×1.0 « on me propose un job, » | 11.84 s ×1.5 « je dis oui » | 12.4 s ×1.22 « tout de suite. » | 12.88 s ×1.0 « Sauf que dans l'intervalle, pendant le stage, j'avais… (plan de coupe à 15,32) » | 16.24 s ×1.0 « (sous le plan de coupe) » | 16.72 s ×1.45 « Quand on a travaillé » | 17.56 s ×1.0 « huit ou neuf heures sur la journée, on n'a pas spécialement envie de » | 20.32 s ×1.22 « se remettre à son bureau pour » | 21.76 s ×1.0 « écrire un mémoire de fin d'études, » | 22.84 s ×1.5 « même si je traînais une casserole » | 24.12 s ×1.22 « derrière moi. » | 24.68 s ×1.0 « Ça m'a permis de me développer dans le travail et dans l'entreprise. » | 27.2 s ×1.22 « À refaire, je referais » | 28.08 s ×1.5 « exactement la même chose »"
   },
   "ambiance": {
     "grain": 0,
@@ -200,25 +214,32 @@
     {
       "type": "plan_de_coupe",
       "debut": 15.32,
-      "fin": 16.76,
+      "fin": 16.72,
       "fichier": "media/memoire.mp4",
       "debut_clip": 0,
       "son": false,
-      "_source": "Clip fourni (4769550, prise de notes à côté d'un livre), passage 9,0–10,8 s recadré sur la main qui écrit : le texte du livre reste flou (illisible). Seul plan de coupe de la vidéo (demande de l'utilisateur : point 4 uniquement). Sur « ce qu'on appelle un mémoire à faire », jusqu'au changement de cadre de 16,76 s."
+      "_source": "Clip fourni (4769550, prise de notes à côté d'un livre), passage 9,0–10,8 s recadré sur la main qui écrit : le texte du livre reste flou (illisible). Seul plan de coupe de la vidéo (demande de l'utilisateur : point 4 uniquement). Sur « ce qu'on appelle un mémoire à faire », jusqu'à la coupe du vidéaste de 16,72 s."
+    },
+    {
+      "type": "son",
+      "nom": "riser_flash",
+      "debut": 2.92,
+      "chute": true,
+      "_note": "Riser de Gary (version courte, 0,85 s) qui culmine à la fin de l'accroche, sur la coupe de 2,92 s, puis coup sourd : comme le riser après l'accroche de la vidéo INCENDIE (demande de l'utilisateur ; dans INCENDIE il monte ~0,6 s jusqu'à la transition de 5,07 s)."
     },
     {
       "type": "zoom",
       "debut": 14.24,
       "a": 1.12,
       "duree": 0.5,
-      "_note": "« pendant le stage », tient jusqu'à 16,76 (sous le plan de coupe)."
+      "_note": "« pendant le stage », tient jusqu'à 16,24 (sous le plan de coupe)."
     },
     {
       "type": "zoom",
-      "debut": 21.5,
+      "debut": 18.92,
       "a": 1.12,
       "duree": 0.5,
-      "_note": "« écrire un mémoire », tient jusqu'à 22,84."
+      "_note": "« pas spécialement envie », tient jusqu'à 20,32."
     },
     {
       "type": "zoom",
