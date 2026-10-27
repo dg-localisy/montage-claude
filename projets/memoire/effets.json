@@ -214,7 +214,9 @@
       "debut": 2.92,
       "duree": 1.0,
       "son": false,
-      "_note": "Jeu de lumière après l'accroche pour créer le suspense (demande de l'utilisateur, à la place du riser dont il n'a pas aimé le bruit) : l'image s'assombrit sur « que j'écrivais pas », éclair blanc et rai de lumière sur la coupe de 2,92 s, plan suivant surexposé qui se pose. Sans son, sans zoom."
+      "_note": "Éclair blanc après l'accroche, sur la coupe de 2,92 s (demande de l'utilisateur : d'abord un jeu de lumière pour le suspense à la place du riser, puis « je n'aime pas que l'image s'assombrisse, laisse juste l'éclair » : ni assombrissement ni rai de lumière). Le plan suivant arrive surexposé et légèrement flou, puis se pose. Sans son, sans zoom.",
+      "assombrir": false,
+      "rai": false
     },
     {
       "type": "transition",

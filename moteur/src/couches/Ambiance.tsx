@@ -92,6 +92,8 @@ const lumiereBlanche = (t: number, tr: any) => {
   const eclat = 0.8 * Math.exp(-Math.pow((t - tr.debut) / 0.06, 2));
   if (t >= tr.debut - avant && t < tr.debut) {
     const u = prog(t, tr.debut - avant, tr.debut);
+    // assombrir: false → l'image ne s'assombrit pas avant l'éclair (vidéo « mémoire », demande de l'utilisateur)
+    if (tr.assombrir === false) return {echelle: 1, flou: 0, lumiere: 1, eclat};
     return {echelle: 1, flou: 3 * u * u, lumiere: 1 - 0.45 * Math.pow(u, 1.5), eclat};
   }
   if (t >= tr.debut && t < tr.debut + apres) {
@@ -113,10 +115,10 @@ export const RaiDeLumiere: React.FC<{projet: any}> = ({projet}) => {
         .map((tr: any, i: number) => {
           const avant = tr.duree * 0.45;
           // bords qui se referment avant la coupe (suspense), puis s'ouvrent d'un coup
-          const fermeture = t < tr.debut ? Math.pow(prog(t, tr.debut - avant, tr.debut), 1.5) : 0;
+          const fermeture = t < tr.debut && tr.assombrir !== false ? Math.pow(prog(t, tr.debut - avant, tr.debut), 1.5) : 0;
           // rai de lumière : une large bande blanche en diagonale qui traverse l'image de gauche à droite
           const p = prog(t, tr.debut - 0.1, tr.debut + tr.duree * 0.55);
-          const force = Math.pow(Math.sin(Math.PI * p), 0.6);
+          const force = tr.rai === false ? 0 : Math.pow(Math.sin(Math.PI * p), 0.6); // rai: false → éclair seul
           const x = lerp(-0.4, 1.4, p) * 100; // vitesse constante : on le voit traverser après l'éclair
           return (
             <React.Fragment key={i}>
