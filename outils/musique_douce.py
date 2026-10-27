@@ -13,6 +13,9 @@ Styles :
   piano      (TS, ~120 BPM en demi-temps) : piano acoustique pop en Sol majeur (Sol – Ré – Mi m – Do), accords
              syncopés main droite, basses en octaves main gauche, batterie en demi-temps (grosse caisse
              syncopée, caisse claire feutrée sur le 3e temps), charleston léger, basse ronde. Positif et posé.
+  bossa      (vidéo « 1 mois de salaire dans un mémoire », ~124 BPM) : bossa nova douce en Do majeur jazzy
+             (Do maj7 – La m7 – Ré m7 – Sol 13), guitare nylon sur la clave bossa, contrebasse en rythme pointé,
+             shaker très doux, surdo feutré. Chaleureux, ambiance café.
 
 Usage :
     python3 outils/musique_douce.py SORTIE.wav --duree 48.16 --debut 4.62 --style acoustique [--bpm 96] [--graine 7]
@@ -68,6 +71,8 @@ def charleston(rng):
 
 def placer(piste, son, debut, gain=1.0, pan=0.0):
     a = int(round(debut * SR))
+    if a < 0:  # note légèrement avancée (humanisation) au tout début de la musique
+        son, a = son[-a:], 0
     if a >= piste.shape[1]:
         return
     b = min(piste.shape[1], a + len(son))
@@ -497,7 +502,78 @@ def style_piano(a, rng):
     return signal.sosfiltfilt(signal.butter(1, 11000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
 
 
-STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112), "marimba": (style_marimba, 100), "piano": (style_piano, 120)}
+def contrebasse(f, duree, rng):
+    """Contrebasse pincée : fondamentale ronde, un peu d'harmonique 2 au début, attaque du doigt, extinction naturelle."""
+    t = np.arange(int(duree * SR)) / SR
+    x = (np.sin(2 * np.pi * f * t) + 0.35 * np.sin(2 * np.pi * 2 * f * t) * np.exp(-t / 0.18)
+         + 0.1 * np.sin(2 * np.pi * 3 * f * t) * np.exp(-t / 0.08))
+    env = np.exp(-t / 0.55) * (1 - np.exp(-t / 0.005)) * np.clip((duree - t) / 0.04, 0, 1)
+    return x * env * (0.93 + 0.07 * rng.random())
+
+
+def style_bossa(a, rng):
+    """Bossa nova douce (vidéo « mémoire », ~124 BPM) : guitare nylon (cordes pincées très chaudes, accords courts
+    sur le rythme de la clave bossa : croches 1, 4, 7 puis 11 et 13 sur deux mesures), Do majeur jazzy
+    (Do maj7 – La m7 – Ré m7 – Sol 13), contrebasse en rythme pointé (fondamentale, quinte), shaker très doux en
+    doubles croches, surdo feutré sur les temps 1 et 3, petite nappe. Chaleureux, posé, ambiance café ; différent
+    du lo-fi, de l'acoustique, de l'électro, du marimba et du piano."""
+    n = int(a.duree * SR)
+    temps = 60 / a.bpm
+    mesure = 4 * temps
+    accords = [  # (basse, voicing de la guitare) en numéros MIDI
+        (36, [52, 55, 59, 64]),   # Do maj7 (Mi Sol Si Mi)
+        (33, [52, 55, 60, 64]),   # La m7 (Mi Sol Do Mi)
+        (38, [53, 57, 60, 65]),   # Ré m7 (Fa La Do Fa)
+        (31, [53, 57, 59, 64]),   # Sol 13 (Fa La Si Mi)
+    ]
+    clave = [0, 3, 6, 10, 12]  # positions en croches sur deux mesures
+    guitare = np.zeros((2, n))
+    basse = np.zeros((2, n))
+    nappe = np.zeros((2, n))
+    batterie = np.zeros((2, n))
+    gc = grosse_caisse()
+    nb_mesures = int(np.ceil((a.duree - a.debut) / mesure)) + 1
+    for m in range(nb_mesures):
+        t0 = a.debut + m * mesure
+        racine, accord = accords[m % 4]
+        # guitare nylon : le pouce joue la basse sur 1 et 3, les doigts pincent l'accord sur la clave
+        for pos in (0, 2):
+            placer(guitare, 0.2 * corde(midi(racine + 12 + (7 if pos == 2 else 0)), rng, duree=1.2, brillance=0.1), t0 + pos * temps, pan=-0.15)
+        for c in clave:
+            if c // 8 == m % 2:
+                tc = t0 + (c % 8) * temps / 2
+                for j, nn in enumerate(accord):
+                    placer(guitare, 0.12 * corde(midi(nn), rng, duree=0.55, brillance=0.12), tc + 0.007 * j + 0.004 * rng.standard_normal(), pan=-0.05 + 0.1 * j)
+        # contrebasse : fondamentale (1), quinte (« et » de 2), quinte (3), fondamentale (« et » de 4)
+        for pos, nn, dur, v in ((0, racine, 1.4, 0.32), (1.5, racine + 7, 0.45, 0.2), (2, racine + 7, 1.4, 0.26), (3.5, racine, 0.45, 0.18)):
+            placer(basse, v * contrebasse(midi(nn), dur * temps, rng), t0 + pos * temps)
+        # nappe très douce : l'accord tenu une octave plus haut, attaque lente
+        t = np.arange(int(mesure * SR + 0.6 * SR)) / SR
+        env = np.clip(t / 0.9, 0, 1) * np.clip((t[-1] - t) / 0.6, 0, 1)
+        son = sum(np.sin(2 * np.pi * midi(nn + 12) * t) for nn in accord[:3]) / 3
+        placer(nappe, 0.05 * env * son, t0)
+        # percussions (à partir de la 2e mesure) : surdo feutré sur 1 et 3, shaker en doubles croches
+        if m >= 1:
+            for pos in (0, 2):
+                placer(batterie, (0.16 if pos == 0 else 0.11) * gc, t0 + pos * temps)
+            for k in range(16):
+                tt = np.arange(int(0.06 * SR)) / SR
+                bruit = rng.standard_normal(len(tt))
+                b_, a_ = signal.butter(2, 6000 / (SR / 2), btype="high")
+                v = 0.055 if k % 4 == 2 else (0.035 if k % 2 else 0.025)
+                placer(batterie, v * signal.lfilter(b_, a_, bruit) * np.exp(-tt / 0.02), t0 + k * temps / 4 + 0.004 * rng.standard_normal(), pan=0.35)
+    guitare = reverb(guitare, rng, duree=1.2, tau=0.4, mouille=0.2)
+    guitare = signal.sosfiltfilt(signal.butter(2, [120 / (SR / 2), 2400 / (SR / 2)], btype="band", output="sos"), guitare, axis=1)
+    basse = signal.sosfiltfilt(signal.butter(2, 420 / (SR / 2), btype="low", output="sos"), basse, axis=1)
+    nappe = signal.sosfiltfilt(signal.butter(2, 1500 / (SR / 2), btype="low", output="sos"), nappe, axis=1)
+    mix = 1.0 * guitare + 0.35 * basse + 0.4 * nappe + 0.6 * batterie
+    # place pour la voix : bande 1–4 kHz creusée ; pas d'infra-basses
+    mix = mix - 0.8 * signal.sosfiltfilt(signal.butter(2, [1000 / (SR / 2), 4000 / (SR / 2)], btype="band", output="sos"), mix, axis=1)
+    mix = signal.sosfiltfilt(signal.butter(2, 70 / (SR / 2), btype="high", output="sos"), mix, axis=1)
+    return signal.sosfiltfilt(signal.butter(1, 10000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
+
+
+STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112), "marimba": (style_marimba, 100), "piano": (style_piano, 120), "bossa": (style_bossa, 124)}
 
 
 def main():
@@ -506,7 +582,7 @@ def main():
     p.add_argument("--duree", type=float, required=True)
     p.add_argument("--debut", type=float, default=0.0)
     p.add_argument("--style", choices=sorted(STYLES), default="lofi",
-                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike), marimba (DS Cleaning), piano (TS) : changer de style à chaque vidéo")
+                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike), marimba (DS Cleaning), piano (TS), bossa (mémoire) : changer de style à chaque vidéo")
     p.add_argument("--bpm", type=float, default=None)
     p.add_argument("--graine", type=int, default=7)
     a = p.parse_args()

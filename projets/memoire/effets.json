@@ -1,0 +1,30 @@
+{
+  "_aide": "Podcast « 1 mois de salaire dans un mémoire » (studio de podcast LOCALISY, fond bleu). Style de la vidéo INCENDIE, comme « Maman » : seulement les sous-titres INCENDIE avec les mots importants en phrases fortes ; aucun autre texte. La vidéo reçue est un plan fixe avec quelques coupes (pas de zoom) et sans musique : musique originale ajoutée (style bossa), cadrages alternés aux coupes et zooms doux. Plans de coupe : demandés à l'utilisateur.",
+  "duree": 29.08,
+  "fps": 25,
+  "rush": {"video": "rush/rush.mp4", "mots": "mots.json"},
+  "musique": {"actif": true, "fichier": "media/musique_bossa.wav", "_note": "Musique originale, style bossa (bossa nova douce, guitare nylon, contrebasse, Do majeur jazzy, 124 BPM) : outils/musique_douce.py media/musique_bossa.wav --duree 29.08 --debut 0 --style bossa. 6e style, différent de Gary (lofi), Cheminées (acoustique), Black and Bike (electro), DS Cleaning (marimba) et TS (piano) ; Maman avait déjà sa musique."},
+  "sous_titres": {
+    "mode": "premiere_video",
+    "phrases_fortes": [
+      {"debut": 1.22, "lignes": [[{"mot": "un mois", "role": "fort"}], [{"mot": "de salaire", "role": "appui"}], [{"mot": "pour un mémoire", "role": "liaison"}]]},
+      {"debut": 5.6, "lignes": [[{"mot": "mon diplôme", "role": "fort"}], [{"mot": "deux ans après", "role": "appui"}]]},
+      {"debut": 11.92, "lignes": [[{"mot": "je dis", "role": "liaison"}], [{"mot": "oui", "role": "fort"}], [{"mot": "tout de suite.", "role": "appui"}]]},
+      {"debut": 18.92, "lignes": [[{"mot": "pas spécialement", "role": "liaison"}], [{"mot": "envie", "role": "fort"}]]},
+      {"debut": 23.6, "lignes": [[{"mot": "une", "role": "liaison"}], [{"mot": "casserole", "role": "fort"}], [{"mot": "derrière moi.", "role": "appui"}]]},
+      {"debut": 28.08, "lignes": [[{"mot": "exactement", "role": "fort"}], [{"mot": "la même chose", "role": "appui"}]]}
+    ]
+  },
+  "camera": {
+    "visage": [0.47, 0.24],
+    "coupes": [0.68, 2.92, 6.16, 22.84, 27.2],
+    "cadrages": [1.08, 1.0, 1.08, 1.0, 1.0, 1.08],
+    "decalages_x": [0],
+    "avancee": 0,
+    "_cadrages": "Plan fixe du vidéaste avec des coupes franches (détectées image par image) : cadrage alterné aux coupes pour les cacher (1,08 au plus) ; le long plan (6,16–22,84 s) reste large avec un zoom doux à 12,96 s, et le plan suivant repart large (1,0 après 1,07)."
+  },
+  "ambiance": {"grain": 0, "vignette": 0, "etalonnage": false},
+  "effets": [
+    {"type": "zoom", "debut": 12.96, "a": 1.07, "duree": 1.3, "_note": "Zoom doux sur « Sauf que », tient jusqu'à la coupe suivante (22,84 s)."}
+  ]
+}
