@@ -111,7 +111,7 @@ Les données clés sont en très grand (« chiffres grands écrans ») : un rés
 
 Coupes nettes entre les plans du client, sans effet. Un glissement rapide pour passer aux cartes et aux chiffres. Pas de fondus enchaînés ni de transitions fantaisie.
 
-Vidéos du studio de podcast (style INCENDIE) : seulement les sous-titres et les mots importants en évidence, des plans de coupe, et une transition nouvelle pour changer un peu. Pour « Maman ne sait pas ce que je fais » : le « zoom flou » (l'image plonge en avant en se floutant, un éclair blanc bref, le plan suivant arrive flou et se pose), en noir et blanc. Si la vidéo reçue a déjà ses zooms et sa musique, on n'en ajoute pas. Sinon, zooms comme mon vidéaste : cadre large puis serré en alternance, changé net entre deux phrases, une lente avancée, de petits zooms rapides, et jamais de recul en pleine phrase.
+Vidéos du studio de podcast (style INCENDIE) : seulement les sous-titres et les mots importants en évidence, des plans de coupe, et une transition nouvelle pour changer un peu. Pour « Maman ne sait pas ce que je fais » : le « zoom flou » (l'image plonge en avant en se floutant, un éclair blanc bref, le plan suivant arrive flou et se pose), en noir et blanc. Si la vidéo reçue a déjà ses zooms et sa musique, on n'en ajoute pas. Sinon, zooms bien marqués comme dans la vidéo de Guillaume (INCENDIE) : cadre large, moyen et très serré en alternance, changé net entre deux phrases toutes les une à deux secondes, une lente avancée, de petits zooms rapides, et jamais de recul en pleine phrase. Une transition nouvelle à chaque vidéo (zoom flou pour Maman, rotation pour mémoire).
 
 ## Pas de pictos
 
