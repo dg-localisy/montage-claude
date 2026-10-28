@@ -1,5 +1,5 @@
 {
-  "_aide": "Témoignage TS Nutrition Coaching, version 3 (v3, demandes de l'utilisateur : pastilles sans numéro, réseaux sociaux en phrase forte, plans de coupe fournis pour le e-commerce, Google et les formulaires ; la page sombre de la v2 est remplacée par le plan de coupe), charte de Gary à 100 % (mêmes animations, polices et tailles que la vidéo de Gary). Rush : rush/rush_v1.mp4 = fichier reçu sans le « de, » répété du début (images 14 à 27 retirées, 0,56–1,12 s, coupe dans les silences, vérifiée par transcription) ; masques_v1 = masques décalés de 14 images après la coupe. Rendu : cd moteur && node scripts/rendu.mjs ../projets/ts/effets.json --nom ts-v1 --sans-4x5, puis outils/son_final.py. Mots : « cent » écrit « 100 », LOCALISY corrigé.",
+  "_aide": "Témoignage TS Nutrition Coaching, version 3 (v3, demandes de l'utilisateur : pastilles sans numéro, réseaux sociaux en phrase forte, plans de coupe fournis pour le e-commerce, Google et les formulaires ; la page sombre de la v2 est remplacée par le plan de coupe), charte de Gary à 100 % (mêmes animations, polices et tailles que la vidéo de Gary). Rush : rush/rush_v1.mp4 = fichier reçu sans le « de, » répété du début (images 14 à 27 retirées, 0,56–1,12 s, coupe dans les silences, vérifiée par transcription) ; masques_v1 = masques décalés de 14 images après la coupe. Rendu : cd moteur && node scripts/rendu.mjs ../projets/ts/effets.json --nom ts-v1 --sans-4x5, puis outils/son_final.py. Mots : « cent » écrit « 100 », LOCALISY corrigé, « passer » corrigé en « passait » (« avant tout passait par les réseaux sociaux », relevé par l'utilisateur ; v4).",
   "duree": 47.68,
   "fps": 25,
   "rush": {
@@ -57,7 +57,7 @@
         "lignes": [
           [
             {
-              "mot": "passer par les",
+              "mot": "passait par les",
               "role": "liaison"
             }
           ],
