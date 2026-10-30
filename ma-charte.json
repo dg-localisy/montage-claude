@@ -451,7 +451,10 @@
         "Localisie",
         "Localysie",
         "Local easy",
-        "Locale isy"
+        "Locale isy",
+        "Localized",
+        "Localised",
+        "Localize"
       ],
       "verifier_a_l_oreille": [
         "localisé",
@@ -668,7 +671,8 @@
         "riser_flash": 0.13,
         "riser_aspire_court": 0.38,
         "riser_inverse_long": 0.31,
-        "riser_impact": 0.183
+        "riser_impact": 0.183,
+        "riser_sub": 0.13
       },
       "riser_duree_s": 2.0,
       "fournis": {
@@ -679,6 +683,7 @@
         "transition_oxid": {"fichier": "sons_fournis/transition_oxid.mp3", "fin_s": 1.272, "duree_s": 1.272, "fondu_entree_s": 0.005, "avance_s": 0.15, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, OxidVideos, transition sfx 2), qu'il aime bien. Sommet à 0,15 s : placé 0,15 s avant la coupe. À utiliser sur une ou deux transitions par vidéo (son_entree), pour varier."},
         "transition_whoosh_oxid": {"fichier": "sons_fournis/transition_whoosh_oxid.mp3", "fin_s": 1.2, "duree_s": 1.2, "fondu_entree_s": 0.005, "avance_s": 0.1, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, OxidVideos, transition sfx whoosh). Souffle très bref et net, sommet à 0,1 s : placé 0,1 s avant la coupe."},
         "transition_base": {"fichier": "sons_fournis/transition_base.mp3", "fin_s": 1.698, "duree_s": 1.278, "fondu_entree_s": 0.03, "avance_s": 0.33, "origine": "Bruit de transition fourni par l'utilisateur (Pixabay, Trading Nation, transition base). Le silence du début est retiré (on garde à partir de 0,42 s) ; souffle plus ample avec un peu de corps, sommet 0,33 s après le début."},
+        "riser_sub": {"fichier": "sons_fournis/riser_sub.mp3", "fin_s": 6.024, "duree_s": 6.024, "fondu_entree_s": 0.005, "avance_s": 2.02, "origine": "Riser cinématique avec sub fourni par l'utilisateur pour la vidéo « De stagiaire à associé » de Loïs (Pixabay, dbsound, cinematic riser with sub 04). Monte pendant 2 s, coup de basse (sub) net à 2,02 s (avance_s), tenu jusqu'à 3,5 s puis s'éteint vers 6 s. Avec {\"type\": \"son\", \"nom\": \"riser_sub\", \"debut\": MOMENT_DU_COUP}."},
         "riser_impact": {"fichier": "sons_fournis/riser_impact.mp3", "fin_s": 5.088, "duree_s": 5.088, "fondu_entree_s": 0.005, "avance_s": 2.653, "origine": "Riser + impact fourni par l'utilisateur pour la vidéo « 1 mois de salaire » de Loïs (Pixabay, alexis_gaming_cam, 360 riser impact). Monte pendant 2,6 s, impact au sommet à 2,653 s (avance_s), puis traîne jusqu'à 5,09 s. Avec {\"type\": \"son\", \"nom\": \"riser_impact\", \"debut\": MOMENT_DE_L_IMPACT}."},
         "swoosh_universfield": {"fichier": "sons_fournis/swoosh_universfield.mp3", "fin_s": 1.056, "duree_s": 0.906, "fondu_entree_s": 0.03, "avance_s": 0.35, "origine": "Swoosh fourni par l'utilisateur (Pixabay, Universfield, swoosh 015). Le silence du début est retiré (on garde à partir de 0,15 s) ; swoosh qui monte et passe, sommet 0,35 s après le début."}
       },

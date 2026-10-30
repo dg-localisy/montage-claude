@@ -1,0 +1,381 @@
+{
+  "_aide": "Podcast « De stagiaire à associé » de Loïs (studio de podcast LOCALISY, fond orange ; 3e vidéo de Loïs après « Maman » et « 1 mois de salaire »). Style de la vidéo INCENDIE : sous-titres INCENDIE et phrases fortes seulement, aucun autre texte. Rush 720×1280 (agrandi en 1080×1920). Le vidéaste a fait ses propres zooms sur les 28 premières secondes (gardés) ; ensuite image fixe : cadres fixes ajoutés au rythme d'INCENDIE (large 1,0 / moyen 1,2 / serré 1,4, changés sur les coupes du vidéaste ou entre deux mots). Accroche : un seul cadre, riser fourni par l'utilisateur (coup de basse sur « associé »), éclair blanc à la coupe de 3,24 s. Musique originale, style pizzicato. Pas encore de plan de coupe (liste proposée à l'utilisateur).",
+  "duree": 107.2,
+  "fps": 25,
+  "rush": {
+    "video": "rush/rush.mp4",
+    "mots": "mots.json"
+  },
+  "musique": {
+    "actif": true,
+    "fichier": "media/musique_pizzicato.wav",
+    "_note": "Musique originale, style pizzicato (pop inspirante aux cordes pincées, La majeur, 108 BPM) : outils/musique_douce.py media/musique_pizzicato.wav --duree 107.2 --debut 3.24 --style pizzicato. 7e style, différent de toutes les vidéos précédentes ; démarre sur l'éclair, quand l'accroche tombe."
+  },
+  "sous_titres": {
+    "mode": "premiere_video",
+    "phrases_fortes": [
+      {
+        "debut": 1.16,
+        "lignes": [
+          [
+            {
+              "mot": "comme",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "stagiaire",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "il y a neuf ans",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 2.76,
+        "lignes": [
+          [
+            {
+              "mot": "je suis",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "associé.",
+              "role": "fort"
+            }
+          ]
+        ],
+        "fin": 3.42,
+        "_note": "Chute de l'accroche, reste pendant l'éclair de 3,24 s ; « Je suis arrivé » s'affiche ensuite (au moins 0,33 s)."
+      },
+      {
+        "debut": 5.88,
+        "lignes": [
+          [
+            {
+              "mot": "le premier",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "devant la porte.",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 18.04,
+        "lignes": [
+          [
+            {
+              "mot": "livré",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "à moi-même",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 23.64,
+        "lignes": [
+          [
+            {
+              "mot": "sa",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "débrouillardise",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "et son autonomie.",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 26.44,
+        "lignes": [
+          [
+            {
+              "mot": "du tout l'intention",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "de prendre",
+              "role": "appui"
+            }
+          ],
+          [
+            {
+              "mot": "des parts,",
+              "role": "fort"
+            }
+          ]
+        ],
+        "_note": "« prendre / des parts » seul ne restait que 0,46 s : bloc élargi à « du tout l'intention » (sans laisser « tout » seul une fraction de seconde)."
+      },
+      {
+        "debut": 34.18,
+        "lignes": [
+          [
+            {
+              "mot": "d'intégrer",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "le capital",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 38.88,
+        "lignes": [
+          [
+            {
+              "mot": "J'ai assez vite",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "dit oui.",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 45.08,
+        "lignes": [
+          [
+            {
+              "mot": "caractère",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "et d'ambition",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 68.24,
+        "lignes": [
+          [
+            {
+              "mot": "je veux",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "ta place",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "un jour.",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 78.08,
+        "lignes": [
+          [
+            {
+              "mot": "de se donner",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "à fond.",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 84.2,
+        "lignes": [
+          [
+            {
+              "mot": "sans les prendre",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "personnellement.",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 106.06,
+        "lignes": [
+          [
+            {
+              "mot": "quand il faut,",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "il faut.",
+              "role": "fort"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "camera": {
+    "visage": [
+      0.55,
+      0.225
+    ],
+    "coupes": [
+      28.44,
+      31.84,
+      33.28,
+      36.4,
+      38.84,
+      39.92,
+      42.0,
+      43.51,
+      45.04,
+      46.74,
+      49.16,
+      51.2,
+      54.24,
+      55.76,
+      58.12,
+      60.6,
+      63.34,
+      64.92,
+      67.68,
+      69.48,
+      71.68,
+      72.84,
+      75.72,
+      77.44,
+      79.15,
+      80.32,
+      81.44,
+      84.04,
+      85.58,
+      88.68,
+      92.04,
+      94.68,
+      97.6,
+      99.03,
+      101.32,
+      102.6,
+      105.24
+    ],
+    "cadrages": [
+      1.0,
+      1.0,
+      1.2,
+      1.4,
+      1.0,
+      1.4,
+      1.0,
+      1.2,
+      1.0,
+      1.4,
+      1.2,
+      1.0,
+      1.2,
+      1.4,
+      1.0,
+      1.2,
+      1.0,
+      1.4,
+      1.0,
+      1.4,
+      1.0,
+      1.2,
+      1.4,
+      1.0,
+      1.4,
+      1.2,
+      1.0,
+      1.2,
+      1.4,
+      1.0,
+      1.2,
+      1.4,
+      1.0,
+      1.2,
+      1.4,
+      1.0,
+      1.2,
+      1.4
+    ],
+    "decalages_x": [
+      0
+    ],
+    "avancee": 0,
+    "_cadrages": "Cadres FIXES (préférence de l'utilisateur), rythme de la vidéo INCENDIE. 0–28,44 s : cadres et zooms du vidéaste gardés (cadrage 1). Ensuite : changements sur les coupes du vidéaste (détectées image par image) ou entre deux mots loin de toute coupe. Plans : 0.0 s ×1.0 « accroche et début : cadres et zooms du vidéaste gardés tels quels (jusqu'à sa coupe de 28,44 s) » | 28.44 s ×1.0 « prendre à charge des plus gros projets, des plus gros clients. Pourquoi pas gérer une équipe. » | 31.84 s ×1.2 « Puis un jour, je crois que naturellement, » | 33.28 s ×1.4 « Guillaume m'a proposé d'intégrer le capital de l'entreprise et prendre des parts, » | 36.4 s ×1.0 « ce qui en fait devenait la suite logique. » | 38.84 s ×1.4 « J'ai assez vite dit oui. » | 39.92 s ×1.0 « L'évolution que j'ai eue par rapport à un autre stagiaire, » | 42.0 s ×1.2 « elle s'est faite simplement. » | 43.51 s ×1.0 « Je pense que c'est une question de » | 45.04 s ×1.4 « caractère et d'ambition » | 46.74 s ×1.2 « plus que de compétences techniques pures et dures. » | 49.16 s ×1.0 « Le management, il n'y a pas vraiment » | 51.2 s ×1.2 « d'échelle la plus dure au niveau du nombre de personnes. » | 54.24 s ×1.4 « Je pense que le plus dur quand même, ça reste de » | 55.76 s ×1.0 « gérer les caractères qui peuvent être différents du nôtre, » | 58.12 s ×1.2 « puisque chacun a son background, chacun a son histoire. » | 60.6 s ×1.0 « Et de se dire : « Ok, cette personne-là, elle ne pense pas spécialement comme moi, » | 63.34 s ×1.4 « elle ne fait pas attention aux mêmes choses que moi. » » | 64.92 s ×1.0 « C'est déjà arrivé qu'un stagiaire arrive et me dise : » | 67.68 s ×1.4 « « Moi, Loïs, je veux ta place un jour. » » | 69.48 s ×1.0 « En vrai, ça me fait d'abord sourire » | 71.68 s ×1.2 « parce que je trouve ça chouette, » | 72.84 s ×1.4 « parce que ça montre qu'il a envie de progresser, qu'il a de l'ambition. » | 75.72 s ×1.0 « Moi, ce que je lui conseille, c'est » | 77.44 s ×1.4 « simplement de se donner à fond. » | 79.15 s ×1.2 « Ça, c'est le plus important. » | 80.32 s ×1.0 « C'est super important aussi » | 81.44 s ×1.2 « d'accepter les remarques et les critiques » | 84.04 s ×1.4 « sans les prendre personnellement. » | 85.58 s ×1.0 « Évidemment, si elles sont dites de manière constructive et bienveillante. » | 88.68 s ×1.2 « Et aussi, il ne faut pas spécialement toujours se dire : » | 92.04 s ×1.4 « « À dix-huit heures, je ferme mon ordi et c'est fini. » » | 94.68 s ×1.0 « Parce que ça m'est déjà arrivé, même en tant que stagiaire, » | 97.6 s ×1.2 « de rester plus tard, de travailler » | 99.03 s ×1.4 « parfois un petit peu le soir ou un petit peu le week-end, » | 101.32 s ×1.0 « même si évidemment, il faut » | 102.6 s ×1.2 « respecter la vie privée de chacun et les loisirs. » | 105.24 s ×1.4 « Mais parfois, quand il faut, il faut. »"
+  },
+  "ambiance": {
+    "grain": 0,
+    "vignette": 0,
+    "etalonnage": false
+  },
+  "effets": [
+    {
+      "type": "transition",
+      "style": "lumiere_blanche",
+      "debut": 3.24,
+      "duree": 1.0,
+      "son": false,
+      "assombrir": false,
+      "rai": false,
+      "_note": "Éclair blanc après l'accroche (comme « 1 mois de salaire », validé), sur la coupe du vidéaste de 3,24 s."
+    },
+    {
+      "type": "son",
+      "nom": "riser_sub",
+      "debut": 3.24,
+      "facteur": 1.26,
+      "_note": "Riser fourni par l'utilisateur pour cette vidéo : il monte pendant « il y a neuf ans et aujourd'hui, je suis associé » et son coup de basse (2,02 s dans le fichier) tombe pile sur l'éclair. Volume ×1,26 comme les risers de mémoire."
+    }
+  ]
+}

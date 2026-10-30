@@ -16,6 +16,9 @@ Styles :
   bossa      (vidéo « 1 mois de salaire dans un mémoire », ~124 BPM) : bossa nova douce en Do majeur jazzy
              (Do maj7 – La m7 – Ré m7 – Sol 13), guitare nylon sur la clave bossa, contrebasse en rythme pointé,
              shaker très doux, surdo feutré. Chaleureux, ambiance café.
+  pizzicato  (vidéo « De stagiaire à associé », ~108 BPM) : pop inspirante en La majeur (La – Fa♯ m – Ré – Mi),
+             cordes pincées en croches, basse pincée, glockenspiel très doux, nappe de cordes, grosse caisse
+             feutrée et claquements de mains. Positif, idée de progression.
 
 Usage :
     python3 outils/musique_douce.py SORTIE.wav --duree 48.16 --debut 4.62 --style acoustique [--bpm 96] [--graine 7]
@@ -573,7 +576,78 @@ def style_bossa(a, rng):
     return signal.sosfiltfilt(signal.butter(1, 10000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
 
 
-STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112), "marimba": (style_marimba, 100), "piano": (style_piano, 120), "bossa": (style_bossa, 124)}
+def pizz(f, duree, vel, rng):
+    """Corde pincée façon pizzicato (violon, alto) : corps court et rond, petite attaque d'archet, pas de résonance longue."""
+    t = np.arange(int(duree * SR)) / SR
+    x = (np.sin(2 * np.pi * f * t) + 0.45 * np.sin(2 * np.pi * 2 * f * t) * np.exp(-t / 0.08)
+         + 0.2 * np.sin(2 * np.pi * 3 * f * t) * np.exp(-t / 0.05) + 0.08 * np.sin(2 * np.pi * 4.02 * f * t) * np.exp(-t / 0.03))
+    env = np.exp(-t / (0.22 * (440 / f) ** 0.3)) * (1 - np.exp(-t / 0.003))
+    return vel * x * env * (0.9 + 0.1 * rng.random())
+
+
+def cloche(f, duree, vel):
+    """Glockenspiel doux : partiels de lame métallique (1, 2,76, 5,4), extinction lente."""
+    t = np.arange(int(duree * SR)) / SR
+    x = np.sin(2 * np.pi * f * t) + 0.25 * np.sin(2 * np.pi * 2.76 * f * t) * np.exp(-t / 0.25) + 0.08 * np.sin(2 * np.pi * 5.4 * f * t) * np.exp(-t / 0.08)
+    return vel * x * np.exp(-t / 0.9) * (1 - np.exp(-t / 0.002))
+
+
+def style_pizzicato(a, rng):
+    """Pop inspirante en pizzicato (vidéo « De stagiaire à associé », ~108 BPM) : La majeur (La – Fa♯ m – Ré – Mi),
+    cordes pincées en croches qui montent et descendent l'accord, basse pincée sur 1 et 3, glockenspiel très doux une
+    note par mesure, nappe de cordes tenues, grosse caisse feutrée sur 1 et 3, claquement de mains sur 2 et 4 à partir
+    de la 3e mesure. Positif, qui avance, idée de progression ; différent du lo-fi, de l'acoustique, de l'électro, du
+    marimba, du piano et de la bossa."""
+    n = int(a.duree * SR)
+    temps = 60 / a.bpm
+    mesure = 4 * temps
+    accords = [  # (basse, notes de l'accord) en numéros MIDI
+        (45, [57, 61, 64, 69]),   # La
+        (42, [54, 57, 61, 66]),   # Fa# mineur
+        (38, [57, 62, 66, 69]),   # Ré
+        (40, [56, 59, 64, 68]),   # Mi
+    ]
+    motif = [0, 1, 2, 3, 2, 1, 2, 3]  # croches : l'accord monte puis redescend
+    cordes = np.zeros((2, n))
+    basse = np.zeros((2, n))
+    nappe = np.zeros((2, n))
+    batterie = np.zeros((2, n))
+    gc = grosse_caisse()
+    nb_mesures = int(np.ceil((a.duree - a.debut) / mesure)) + 1
+    for m in range(nb_mesures):
+        t0 = a.debut + m * mesure
+        racine, accord = accords[m % 4]
+        for k, i in enumerate(motif):
+            v = 0.2 if k % 2 == 0 else 0.14
+            placer(cordes, pizz(midi(accord[i] + 12), 0.5, v, rng), t0 + k * temps / 2 + 0.004 * rng.standard_normal(), pan=-0.3 + 0.2 * i)
+        for pos in (0, 2):
+            placer(basse, pizz(midi(racine), 0.9, 0.32, rng), t0 + pos * temps, pan=-0.1)
+        if m >= 1:
+            placer(cordes, cloche(midi(accord[-1] + 24), 1.6, 0.05), t0 + 3.5 * temps, pan=0.35)
+        # nappe : cordes tenues, entrée lente
+        t = np.arange(int(mesure * SR + 0.6 * SR)) / SR
+        env = np.clip(t / 1.0, 0, 1) * np.clip((t[-1] - t) / 0.6, 0, 1)
+        vib = 1 + 0.003 * np.sin(2 * np.pi * 5 * t)
+        son = sum(np.sin(2 * np.pi * midi(nn) * t * vib) + 0.3 * np.sin(4 * np.pi * midi(nn) * t * vib) for nn in accord[:3]) / 3
+        placer(nappe, 0.05 * env * son, t0)
+        if m >= 1:
+            for pos in (0, 2):
+                placer(batterie, 0.17 * gc, t0 + pos * temps)
+        if m >= 2:
+            for pos in (1, 3):
+                placer(batterie, 0.12 * claquement(rng), t0 + pos * temps + 0.004, pan=0.15)
+    cordes = reverb(cordes, rng, duree=1.4, tau=0.45, mouille=0.25)
+    cordes = signal.sosfiltfilt(signal.butter(2, [150 / (SR / 2), 5000 / (SR / 2)], btype="band", output="sos"), cordes, axis=1)
+    basse = signal.sosfiltfilt(signal.butter(2, 400 / (SR / 2), btype="low", output="sos"), basse, axis=1)
+    nappe = signal.sosfiltfilt(signal.butter(2, 1800 / (SR / 2), btype="low", output="sos"), nappe, axis=1)
+    mix = 1.0 * cordes + 0.35 * basse + 0.45 * nappe + 0.55 * batterie
+    # place pour la voix : bande 1–4 kHz creusée ; pas d'infra-basses
+    mix = mix - 0.8 * signal.sosfiltfilt(signal.butter(2, [1000 / (SR / 2), 4000 / (SR / 2)], btype="band", output="sos"), mix, axis=1)
+    mix = signal.sosfiltfilt(signal.butter(2, 70 / (SR / 2), btype="high", output="sos"), mix, axis=1)
+    return signal.sosfiltfilt(signal.butter(1, 10000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
+
+
+STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112), "marimba": (style_marimba, 100), "piano": (style_piano, 120), "bossa": (style_bossa, 124), "pizzicato": (style_pizzicato, 108)}
 
 
 def main():
@@ -582,7 +656,7 @@ def main():
     p.add_argument("--duree", type=float, required=True)
     p.add_argument("--debut", type=float, default=0.0)
     p.add_argument("--style", choices=sorted(STYLES), default="lofi",
-                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike), marimba (DS Cleaning), piano (TS), bossa (mémoire) : changer de style à chaque vidéo")
+                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike), marimba (DS Cleaning), piano (TS), bossa (mémoire), pizzicato (stagiaire → associé) : changer de style à chaque vidéo")
     p.add_argument("--bpm", type=float, default=None)
     p.add_argument("--graine", type=int, default=7)
     a = p.parse_args()
