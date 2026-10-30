@@ -115,8 +115,18 @@ def piste_musique(projet, dossier_public, voix, n):
     return x, {"gain_db": round(gain_db, 1), "sous_la_voix_db": m["sous_la_voix_db"], "baisse_quand_je_parle_db": m["baisse_quand_je_parle_db"]}
 
 
-def mesurer_effets(voix, effets, projet):
-    """Pour chaque effet : sa sonie maximale seule, et celle de la voix autour (±2 s, hors silences)."""
+def durees_sons(projet, dossier_sons):
+    """Durée (s) de chaque fichier son du projet, lue dans l'en-tête du wav."""
+    durees = []
+    for s in projet["sons"]:
+        sr, y = wavfile.read(Path(dossier_sons) / Path(s["fichier"]).name, mmap=True)
+        durees.append(len(y) / sr)
+    return durees
+
+
+def mesurer_effets(voix, effets, projet, durees=None):
+    """Pour chaque effet : sa sonie maximale seule, sur toute sa durée (un riser culmine à la fin), et celle de la voix
+    autour de ce maximum (±2 s, hors silences)."""
     pv, tv = puissances_blocs(voix)
     pe, te = puissances_blocs(effets)
     lv, le = lufs(pv), lufs(pe)
@@ -124,11 +134,13 @@ def mesurer_effets(voix, effets, projet):
     lignes = []
     for i, s in enumerate(projet["sons"]):
         t0 = s["debut"]
-        zone = (te >= t0 - 0.2) & (te <= t0 + 0.8)
+        d = max(0.8, durees[i]) if durees else 0.8
+        zone = (te >= t0 - 0.2) & (te <= t0 + d)
         effet = float(le[zone].max()) if zone.any() else -70.0
-        autour = (tv >= t0 - 2) & (tv <= t0 + 2) & (lv > ref_globale - 15)
+        t_pic = float(te[zone][int(np.argmax(le[zone]))]) if zone.any() else t0
+        autour = (tv >= t_pic - 2) & (tv <= t_pic + 2) & (lv > ref_globale - 15)
         voix_ref = float(np.median(lv[autour])) if autour.sum() >= 3 else ref_globale
-        lignes.append({"n": i, "son": Path(s["fichier"]).stem, "effet": s.get("effet", ""), "temps_s": round(t0, 2),
+        lignes.append({"n": i, "son": Path(s["fichier"]).stem, "effet": s.get("effet", ""), "temps_s": round(t0, 2), "pic_s": round(t_pic, 2),
                        "effet_lufs": round(effet, 1), "voix_lufs": round(voix_ref, 1), "ecart_db": round(effet - voix_ref, 1)})
     return lignes
 
@@ -150,10 +162,11 @@ def main():
 
     # 1. mesure des effets tels que le moteur les a réglés, puis baisse de ceux qui dépassent +6 dB
     effets = piste_effets(projet, a.sons, n)
-    avant = mesurer_effets(voix, effets, projet)
+    durees = durees_sons(projet, a.sons)
+    avant = mesurer_effets(voix, effets, projet, durees)
     gains = [min(0.0, ECART_MAX - 0.5 - x["ecart_db"]) if x["ecart_db"] > ECART_MAX - 0.5 else 0.0 for x in avant]
     effets = piste_effets(projet, a.sons, n, gains)
-    apres = mesurer_effets(voix, effets, projet)
+    apres = mesurer_effets(voix, effets, projet, durees)
 
     # 2. musique de fond (facultative), puis mélange, gain unique pour atteindre -14 LUFS et limiteur doux si besoin
     musique, info_musique = (None, None) if a.sans_musique else piste_musique(projet, Path(a.sons).parent, voix, n)
@@ -191,7 +204,7 @@ def main():
     print(f"Sonie intégrée : {integre} LUFS (cible {CIBLE_LUFS}), crête vraie : {crete} dBTP")
     pire = max(apres, key=lambda x: x["ecart_db"]) if apres else None
     if pire:
-        print(f"Effet le plus fort : {pire['son']} à {pire['temps_s']} s, {pire['ecart_db']:+} dB par rapport à la voix")
+        print(f"Effet le plus fort : {pire['son']} à {pire.get('pic_s', pire['temps_s'])} s, {pire['ecart_db']:+} dB par rapport à la voix")
     print(f"Effets baissés : {sum(1 for g in gains if g < 0)} sur {len(gains)}")
     print("OK" if rapport["ok"] else "À VÉRIFIER")
 

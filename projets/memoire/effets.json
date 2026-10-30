@@ -215,11 +215,10 @@
     },
     {
       "type": "son",
-      "nom": "riser_court",
+      "nom": "riser_impact",
       "debut": 2.92,
-      "facteur": 1.26,
-      "chute": false,
-      "_note": "Riser de Gary en 1,7 s (essai « B » choisi par l'utilisateur parmi 3) : il monte dès « un mois de salaire » et culmine sur l'éclair de 2,92 s. Sans coup sourd. Volume ×1,26 pour être au niveau des autres essais (-4 dB sous la voix)."
+      "_note": "Riser + impact fourni par l'utilisateur pour cette vidéo de Loïs (remplace le riser B de Gary) : il monte pendant toute l'accroche et son impact tombe pile sur l'éclair blanc de 2,92 s (sommet du fichier à 2,653 s, donc départ à 0,27 s). Volume : même sonie maximale que le riser B qu'il remplace (charte 0,183, égalisé sur riser_court ; ×1,26 comme le B).",
+      "facteur": 1.26
     },
     {
       "type": "transition",

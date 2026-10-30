@@ -390,7 +390,8 @@ function sonsPour(e, M) {
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
     // son seul, sans image (ex. riser à la fin de l'accroche, comme dans la vidéo INCENDIE) : « debut » = moment où il
     // culmine ; un riser démarre « duree » secondes avant (durée du son fourni par défaut) ; « chute » ajoute le coup sourd
-    case 'son': return [s(e.nom, e.debut - (e.duree ?? (M.sons.fournis || {})[e.nom]?.duree_s ?? 0), e.facteur ?? 1), ...(e.chute ? [s('chute', e.debut)] : [])];
+    // un son fourni avec « avance_s » (moment de son sommet, ex. l'impact d'un riser) est calé pour que ce sommet tombe sur « debut »
+    case 'son': { const f = (M.sons.fournis || {})[e.nom]; return [s(e.nom, e.debut - (e.duree ?? f?.avance_s ?? f?.duree_s ?? 0), e.facteur ?? 1), ...(e.chute ? [s('chute', e.debut)] : [])]; }
     case 'transition': return [entree('woutch', 0.13)];
     case 'carte_fin': return [s('woutch', e.debut)];
     case 'carte': {
