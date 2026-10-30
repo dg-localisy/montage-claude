@@ -1,0 +1,159 @@
+{
+  "_aide": "Extrait 2/3 du podcast « De stagiaire à associé » (Loïs) : le jour où Guillaume lui a proposé d'être associé. Rush coupé à l'image près dans projets/associe/rush/rush.mp4, images 634 à 1228 (25.36–49.16 s), aux coupes du vidéaste. Même style que la vidéo complète (sous-titres INCENDIE, phrases fortes, cadres fixes, éclair blanc après l'accroche, riser fourni riser_sub, musique pizzicato). Accroche : « De base, je n'avais pas du tout l'intention de prendre des parts, »",
+  "duree": 23.8,
+  "fps": 25,
+  "rush": {
+    "video": "rush/rush.mp4",
+    "mots": "mots.json"
+  },
+  "musique": {
+    "actif": true,
+    "fichier": "media/musique_pizzicato.wav",
+    "_note": "Musique originale, style pizzicato (celle de la vidéo complète) : outils/musique_douce.py media/musique_pizzicato.wav --duree 23.8 --debut 2.4 --style pizzicato. Démarre sur l'éclair."
+  },
+  "sous_titres": {
+    "mode": "premiere_video",
+    "phrases_fortes": [
+      {
+        "debut": 1.08,
+        "lignes": [
+          [
+            {
+              "mot": "du tout l'intention",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "de prendre",
+              "role": "appui"
+            }
+          ],
+          [
+            {
+              "mot": "des parts,",
+              "role": "fort"
+            }
+          ]
+        ],
+        "fin": 2.6,
+        "_note": "Chute de l'accroche, reste pendant l'éclair de 2,40 s."
+      },
+      {
+        "debut": 8.82,
+        "lignes": [
+          [
+            {
+              "mot": "d'intégrer",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "le capital",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 13.52,
+        "lignes": [
+          [
+            {
+              "mot": "J'ai assez vite",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "dit oui.",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 19.72,
+        "lignes": [
+          [
+            {
+              "mot": "caractère",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "et d'ambition",
+              "role": "appui"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "camera": {
+    "visage": [
+      0.55,
+      0.225
+    ],
+    "coupes": [
+      1.32,
+      2.4,
+      3.08,
+      6.48,
+      7.92,
+      11.04,
+      13.48,
+      14.56,
+      16.64,
+      18.15,
+      19.68,
+      21.38
+    ],
+    "cadrages": [
+      1.36,
+      1.19,
+      1.0,
+      1.0,
+      1.2,
+      1.4,
+      1.0,
+      1.4,
+      1.0,
+      1.2,
+      1.0,
+      1.4,
+      1.2
+    ],
+    "decalages_x": [
+      0
+    ],
+    "avancee": 0,
+    "_cadrages": "Cadres FIXES, rythme de la vidéo INCENDIE, un seul cadre pendant l'accroche. Plans : 0.0 s ×1.36 et 1.32 s ×1.19 « accroche : un seul cadre serré (≈ ×1,4 à l'écran), le zoom du vidéaste de 1,32 s est compensé » | 2.40 s ×1.0 « éclair : retour au cadre du vidéaste (≈ ×1,15) » | 3.08 s ×1.0 « coupe du vidéaste : plan large » | 6.48 s ×1.2 | 7.92 s ×1.4 | 11.04 s ×1.0 | 13.48 s ×1.4 « J'ai assez vite dit oui. » | 14.56 s ×1.0 | 16.64 s ×1.2 | 18.15 s ×1.0 | 19.68 s ×1.4 « caractère et d'ambition » | 21.38 s ×1.2"
+  },
+  "ambiance": {
+    "grain": 0,
+    "vignette": 0,
+    "etalonnage": false
+  },
+  "effets": [
+    {
+      "type": "transition",
+      "style": "lumiere_blanche",
+      "debut": 2.4,
+      "duree": 1.0,
+      "son": false,
+      "assombrir": false,
+      "rai": false,
+      "_note": "Éclair blanc à la fin de l'accroche (2.4 s)."
+    },
+    {
+      "type": "son",
+      "nom": "riser_sub",
+      "debut": 2.4,
+      "facteur": 1.26,
+      "_note": "Riser fourni (riser_sub) : son coup de basse (2,02 s dans le fichier) tombe pile sur l'éclair de 2.4 s. Volume ×1,26."
+    }
+  ]
+}

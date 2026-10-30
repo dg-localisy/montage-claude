@@ -1,0 +1,502 @@
+[
+ {
+  "mot": "J'ai",
+  "debut": 0.08,
+  "fin": 0.18
+ },
+ {
+  "mot": "commencé",
+  "debut": 0.22,
+  "fin": 0.56
+ },
+ {
+  "mot": "chez",
+  "debut": 0.6,
+  "fin": 0.7
+ },
+ {
+  "mot": "Localized",
+  "debut": 0.74,
+  "fin": 1.12
+ },
+ {
+  "mot": "comme",
+  "debut": 1.16,
+  "fin": 1.26
+ },
+ {
+  "mot": "stagiaire",
+  "debut": 1.32,
+  "fin": 1.62
+ },
+ {
+  "mot": "il",
+  "debut": 1.66,
+  "fin": 1.7
+ },
+ {
+  "mot": "y",
+  "debut": 1.72,
+  "fin": 1.74
+ },
+ {
+  "mot": "a",
+  "debut": 1.76,
+  "fin": 1.78
+ },
+ {
+  "mot": "neuf",
+  "debut": 1.84,
+  "fin": 2.0
+ },
+ {
+  "mot": "ans",
+  "debut": 2.06,
+  "fin": 2.18
+ },
+ {
+  "mot": "et",
+  "debut": 2.3,
+  "fin": 2.38
+ },
+ {
+  "mot": "aujourd'hui,",
+  "debut": 2.42,
+  "fin": 2.7
+ },
+ {
+  "mot": "je",
+  "debut": 2.76,
+  "fin": 2.76
+ },
+ {
+  "mot": "suis",
+  "debut": 2.78,
+  "fin": 2.86
+ },
+ {
+  "mot": "associé.",
+  "debut": 2.92,
+  "fin": 3.22
+ },
+ {
+  "mot": "Je",
+  "debut": 3.28,
+  "fin": 3.28
+ },
+ {
+  "mot": "suis",
+  "debut": 3.3,
+  "fin": 3.4
+ },
+ {
+  "mot": "arrivé",
+  "debut": 3.48,
+  "fin": 4.04
+ },
+ {
+  "mot": "le",
+  "debut": 4.2,
+  "fin": 4.48
+ },
+ {
+  "mot": "lundi",
+  "debut": 4.54,
+  "fin": 4.72
+ },
+ {
+  "mot": "matin.",
+  "debut": 4.76,
+  "fin": 5.08
+ },
+ {
+  "mot": "Je",
+  "debut": 5.2,
+  "fin": 5.26
+ },
+ {
+  "mot": "me",
+  "debut": 5.28,
+  "fin": 5.32
+ },
+ {
+  "mot": "souviens",
+  "debut": 5.36,
+  "fin": 5.52
+ },
+ {
+  "mot": "que",
+  "debut": 5.54,
+  "fin": 5.58
+ },
+ {
+  "mot": "j'étais",
+  "debut": 5.6,
+  "fin": 5.86
+ },
+ {
+  "mot": "le",
+  "debut": 5.88,
+  "fin": 6.1
+ },
+ {
+  "mot": "premier",
+  "debut": 6.12,
+  "fin": 6.4
+ },
+ {
+  "mot": "devant",
+  "debut": 6.42,
+  "fin": 6.56
+ },
+ {
+  "mot": "la",
+  "debut": 6.6,
+  "fin": 6.7
+ },
+ {
+  "mot": "porte.",
+  "debut": 6.72,
+  "fin": 6.96
+ },
+ {
+  "mot": "Au",
+  "debut": 7.1,
+  "fin": 7.16
+ },
+ {
+  "mot": "début,",
+  "debut": 7.24,
+  "fin": 7.52
+ },
+ {
+  "mot": "je",
+  "debut": 7.56,
+  "fin": 7.62
+ },
+ {
+  "mot": "crois",
+  "debut": 7.66,
+  "fin": 7.8
+ },
+ {
+  "mot": "comme",
+  "debut": 7.94,
+  "fin": 8.08
+ },
+ {
+  "mot": "toute",
+  "debut": 8.26,
+  "fin": 8.38
+ },
+ {
+  "mot": "nouvelle",
+  "debut": 8.42,
+  "fin": 8.68
+ },
+ {
+  "mot": "personne,",
+  "debut": 8.72,
+  "fin": 9.04
+ },
+ {
+  "mot": "on",
+  "debut": 9.1,
+  "fin": 9.2
+ },
+ {
+  "mot": "ne",
+  "debut": 9.26,
+  "fin": 9.26
+ },
+ {
+  "mot": "sait",
+  "debut": 9.3,
+  "fin": 9.52
+ },
+ {
+  "mot": "pas",
+  "debut": 9.54,
+  "fin": 9.66
+ },
+ {
+  "mot": "trop",
+  "debut": 9.68,
+  "fin": 9.84
+ },
+ {
+  "mot": "quoi",
+  "debut": 9.88,
+  "fin": 10.04
+ },
+ {
+  "mot": "faire,",
+  "debut": 10.1,
+  "fin": 10.42
+ },
+ {
+  "mot": "on",
+  "debut": 10.48,
+  "fin": 10.54
+ },
+ {
+  "mot": "ne",
+  "debut": 10.6,
+  "fin": 10.6
+ },
+ {
+  "mot": "sait",
+  "debut": 10.64,
+  "fin": 10.82
+ },
+ {
+  "mot": "pas",
+  "debut": 10.88,
+  "fin": 11.04
+ },
+ {
+  "mot": "ce",
+  "debut": 11.08,
+  "fin": 11.16
+ },
+ {
+  "mot": "qu'on",
+  "debut": 11.18,
+  "fin": 11.32
+ },
+ {
+  "mot": "attend",
+  "debut": 11.4,
+  "fin": 11.64
+ },
+ {
+  "mot": "de",
+  "debut": 11.7,
+  "fin": 11.74
+ },
+ {
+  "mot": "nous.",
+  "debut": 11.8,
+  "fin": 11.96
+ },
+ {
+  "mot": "Tout",
+  "debut": 12.08,
+  "fin": 12.16
+ },
+ {
+  "mot": "ce",
+  "debut": 12.18,
+  "fin": 12.22
+ },
+ {
+  "mot": "qui",
+  "debut": 12.24,
+  "fin": 12.28
+ },
+ {
+  "mot": "était",
+  "debut": 12.32,
+  "fin": 12.54
+ },
+ {
+  "mot": "onboarding,",
+  "debut": 12.6,
+  "fin": 13.34
+ },
+ {
+  "mot": "accueil",
+  "debut": 13.54,
+  "fin": 13.9
+ },
+ {
+  "mot": "des",
+  "debut": 13.94,
+  "fin": 14.04
+ },
+ {
+  "mot": "nouveaux,",
+  "debut": 14.06,
+  "fin": 14.4
+ },
+ {
+  "mot": "etc.,",
+  "debut": 14.44,
+  "fin": 14.58
+ },
+ {
+  "mot": "ce",
+  "debut": 14.58,
+  "fin": 14.58
+ },
+ {
+  "mot": "n'était",
+  "debut": 14.58,
+  "fin": 15.1
+ },
+ {
+  "mot": "pas",
+  "debut": 15.14,
+  "fin": 15.24
+ },
+ {
+  "mot": "du",
+  "debut": 15.42,
+  "fin": 15.54
+ },
+ {
+  "mot": "tout",
+  "debut": 15.58,
+  "fin": 15.74
+ },
+ {
+  "mot": "comme",
+  "debut": 15.8,
+  "fin": 15.98
+ },
+ {
+  "mot": "aujourd'hui.",
+  "debut": 16.02,
+  "fin": 16.46
+ },
+ {
+  "mot": "Donc",
+  "debut": 16.52,
+  "fin": 16.7
+ },
+ {
+  "mot": "j'ai",
+  "debut": 16.8,
+  "fin": 16.98
+ },
+ {
+  "mot": "été",
+  "debut": 17.02,
+  "fin": 17.3
+ },
+ {
+  "mot": "un",
+  "debut": 17.36,
+  "fin": 17.48
+ },
+ {
+  "mot": "peu",
+  "debut": 17.5,
+  "fin": 17.66
+ },
+ {
+  "mot": "plus",
+  "debut": 17.7,
+  "fin": 17.86
+ },
+ {
+  "mot": "livré",
+  "debut": 18.04,
+  "fin": 18.46
+ },
+ {
+  "mot": "à",
+  "debut": 18.52,
+  "fin": 18.58
+ },
+ {
+  "mot": "moi-même",
+  "debut": 18.64,
+  "fin": 19.1
+ },
+ {
+  "mot": "que",
+  "debut": 19.22,
+  "fin": 19.34
+ },
+ {
+  "mot": "le",
+  "debut": 19.62,
+  "fin": 19.68
+ },
+ {
+  "mot": "serait",
+  "debut": 19.76,
+  "fin": 20.14
+ },
+ {
+  "mot": "un",
+  "debut": 20.22,
+  "fin": 20.3
+ },
+ {
+  "mot": "stagiaire",
+  "debut": 20.4,
+  "fin": 20.96
+ },
+ {
+  "mot": "actuellement,",
+  "debut": 21.02,
+  "fin": 21.54
+ },
+ {
+  "mot": "mais",
+  "debut": 21.62,
+  "fin": 21.76
+ },
+ {
+  "mot": "c'est",
+  "debut": 21.82,
+  "fin": 21.92
+ },
+ {
+  "mot": "aussi",
+  "debut": 21.94,
+  "fin": 22.16
+ },
+ {
+  "mot": "chouette,",
+  "debut": 22.18,
+  "fin": 22.44
+ },
+ {
+  "mot": "ça",
+  "debut": 22.48,
+  "fin": 22.56
+ },
+ {
+  "mot": "permet",
+  "debut": 22.68,
+  "fin": 22.96
+ },
+ {
+  "mot": "de",
+  "debut": 23.04,
+  "fin": 23.1
+ },
+ {
+  "mot": "développer",
+  "debut": 23.14,
+  "fin": 23.58
+ },
+ {
+  "mot": "sa",
+  "debut": 23.64,
+  "fin": 23.74
+ },
+ {
+  "mot": "débrouillardise",
+  "debut": 23.78,
+  "fin": 24.36
+ },
+ {
+  "mot": "et",
+  "debut": 24.4,
+  "fin": 24.46
+ },
+ {
+  "mot": "son",
+  "debut": 24.5,
+  "fin": 24.68
+ },
+ {
+  "mot": "autonomie.",
+  "debut": 24.72,
+  "fin": 25.3
+ }
+]

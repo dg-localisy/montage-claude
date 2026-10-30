@@ -1,0 +1,352 @@
+[
+ {
+  "mot": "Le",
+  "debut": 0.2,
+  "fin": 0.4
+ },
+ {
+  "mot": "management,",
+  "debut": 0.46,
+  "fin": 0.78
+ },
+ {
+  "mot": "il",
+  "debut": 0.88,
+  "fin": 0.92
+ },
+ {
+  "mot": "n'y",
+  "debut": 0.92,
+  "fin": 0.96
+ },
+ {
+  "mot": "a",
+  "debut": 0.96,
+  "fin": 0.98
+ },
+ {
+  "mot": "pas",
+  "debut": 1.14,
+  "fin": 1.3
+ },
+ {
+  "mot": "vraiment",
+  "debut": 1.38,
+  "fin": 1.92
+ },
+ {
+  "mot": "d'échelle",
+  "debut": 2.14,
+  "fin": 2.8
+ },
+ {
+  "mot": "la",
+  "debut": 2.86,
+  "fin": 2.92
+ },
+ {
+  "mot": "plus",
+  "debut": 3.02,
+  "fin": 3.18
+ },
+ {
+  "mot": "dure",
+  "debut": 3.24,
+  "fin": 3.46
+ },
+ {
+  "mot": "au",
+  "debut": 3.5,
+  "fin": 3.56
+ },
+ {
+  "mot": "niveau",
+  "debut": 3.62,
+  "fin": 3.92
+ },
+ {
+  "mot": "du",
+  "debut": 3.96,
+  "fin": 4.08
+ },
+ {
+  "mot": "nombre",
+  "debut": 4.14,
+  "fin": 4.42
+ },
+ {
+  "mot": "de",
+  "debut": 4.46,
+  "fin": 4.58
+ },
+ {
+  "mot": "personnes.",
+  "debut": 4.62,
+  "fin": 5.06
+ },
+ {
+  "mot": "Je",
+  "debut": 5.12,
+  "fin": 5.12
+ },
+ {
+  "mot": "pense",
+  "debut": 5.14,
+  "fin": 5.28
+ },
+ {
+  "mot": "que",
+  "debut": 5.3,
+  "fin": 5.34
+ },
+ {
+  "mot": "le",
+  "debut": 5.38,
+  "fin": 5.44
+ },
+ {
+  "mot": "plus",
+  "debut": 5.48,
+  "fin": 5.56
+ },
+ {
+  "mot": "dur",
+  "debut": 5.6,
+  "fin": 5.72
+ },
+ {
+  "mot": "quand",
+  "debut": 5.76,
+  "fin": 5.84
+ },
+ {
+  "mot": "même,",
+  "debut": 5.88,
+  "fin": 5.96
+ },
+ {
+  "mot": "ça",
+  "debut": 6.04,
+  "fin": 6.12
+ },
+ {
+  "mot": "reste",
+  "debut": 6.16,
+  "fin": 6.4
+ },
+ {
+  "mot": "de",
+  "debut": 6.44,
+  "fin": 6.62
+ },
+ {
+  "mot": "gérer",
+  "debut": 6.66,
+  "fin": 6.8
+ },
+ {
+  "mot": "les",
+  "debut": 6.84,
+  "fin": 6.92
+ },
+ {
+  "mot": "caractères",
+  "debut": 6.96,
+  "fin": 7.36
+ },
+ {
+  "mot": "qui",
+  "debut": 7.4,
+  "fin": 7.5
+ },
+ {
+  "mot": "peuvent",
+  "debut": 7.52,
+  "fin": 7.66
+ },
+ {
+  "mot": "être",
+  "debut": 7.7,
+  "fin": 7.8
+ },
+ {
+  "mot": "différents",
+  "debut": 7.84,
+  "fin": 8.42
+ },
+ {
+  "mot": "du",
+  "debut": 8.48,
+  "fin": 8.58
+ },
+ {
+  "mot": "nôtre,",
+  "debut": 8.62,
+  "fin": 8.9
+ },
+ {
+  "mot": "puisque",
+  "debut": 8.96,
+  "fin": 9.24
+ },
+ {
+  "mot": "chacun",
+  "debut": 9.44,
+  "fin": 9.8
+ },
+ {
+  "mot": "a",
+  "debut": 9.86,
+  "fin": 9.96
+ },
+ {
+  "mot": "son",
+  "debut": 10.04,
+  "fin": 10.18
+ },
+ {
+  "mot": "background,",
+  "debut": 10.22,
+  "fin": 10.52
+ },
+ {
+  "mot": "chacun",
+  "debut": 10.58,
+  "fin": 10.8
+ },
+ {
+  "mot": "a",
+  "debut": 10.84,
+  "fin": 10.88
+ },
+ {
+  "mot": "son",
+  "debut": 10.94,
+  "fin": 11.06
+ },
+ {
+  "mot": "histoire.",
+  "debut": 11.08,
+  "fin": 11.44
+ },
+ {
+  "mot": "Et",
+  "debut": 11.48,
+  "fin": 11.54
+ },
+ {
+  "mot": "de",
+  "debut": 11.56,
+  "fin": 11.58
+ },
+ {
+  "mot": "se",
+  "debut": 11.6,
+  "fin": 11.68
+ },
+ {
+  "mot": "dire :",
+  "debut": 11.7,
+  "fin": 11.82
+ },
+ {
+  "mot": "Ok,",
+  "debut": 11.86,
+  "fin": 12.0
+ },
+ {
+  "mot": "cette",
+  "debut": 12.08,
+  "fin": 12.22
+ },
+ {
+  "mot": "personne-là,",
+  "debut": 12.24,
+  "fin": 12.62
+ },
+ {
+  "mot": "elle",
+  "debut": 12.66,
+  "fin": 12.74
+ },
+ {
+  "mot": "ne",
+  "debut": 12.74,
+  "fin": 12.8
+ },
+ {
+  "mot": "pense",
+  "debut": 12.82,
+  "fin": 13.0
+ },
+ {
+  "mot": "pas",
+  "debut": 13.02,
+  "fin": 13.1
+ },
+ {
+  "mot": "spécialement",
+  "debut": 13.14,
+  "fin": 13.68
+ },
+ {
+  "mot": "comme",
+  "debut": 13.74,
+  "fin": 13.88
+ },
+ {
+  "mot": "moi,",
+  "debut": 13.96,
+  "fin": 14.14
+ },
+ {
+  "mot": "elle",
+  "debut": 14.22,
+  "fin": 14.3
+ },
+ {
+  "mot": "ne",
+  "debut": 14.3,
+  "fin": 14.34
+ },
+ {
+  "mot": "fait",
+  "debut": 14.36,
+  "fin": 14.46
+ },
+ {
+  "mot": "pas",
+  "debut": 14.5,
+  "fin": 14.56
+ },
+ {
+  "mot": "attention",
+  "debut": 14.6,
+  "fin": 14.92
+ },
+ {
+  "mot": "aux",
+  "debut": 14.939,
+  "fin": 15.0
+ },
+ {
+  "mot": "mêmes",
+  "debut": 15.04,
+  "fin": 15.18
+ },
+ {
+  "mot": "choses",
+  "debut": 15.219,
+  "fin": 15.4
+ },
+ {
+  "mot": "que",
+  "debut": 15.42,
+  "fin": 15.5
+ },
+ {
+  "mot": "moi.",
+  "debut": 15.56,
+  "fin": 15.68
+ }
+]

@@ -1,0 +1,157 @@
+{
+  "_aide": "Extrait 1/3 du podcast « De stagiaire à associé » (Loïs) : le début en stagiaire. Rush coupé à l'image près dans projets/associe/rush/rush.mp4, images 0 à 633 (0.00–25.36 s), aux coupes du vidéaste. Même style que la vidéo complète (sous-titres INCENDIE, phrases fortes, cadres fixes, éclair blanc après l'accroche, riser fourni riser_sub, musique pizzicato). Accroche : « J'ai commencé chez LOCALISY comme stagiaire il y a neuf ans et aujourd'hui, je suis associé. »",
+  "duree": 25.36,
+  "fps": 25,
+  "rush": {
+    "video": "rush/rush.mp4",
+    "mots": "mots.json"
+  },
+  "musique": {
+    "actif": true,
+    "fichier": "media/musique_pizzicato.wav",
+    "_note": "Musique originale, style pizzicato (celle de la vidéo complète) : outils/musique_douce.py media/musique_pizzicato.wav --duree 25.36 --debut 3.24 --style pizzicato. Démarre sur l'éclair."
+  },
+  "sous_titres": {
+    "mode": "premiere_video",
+    "phrases_fortes": [
+      {
+        "debut": 1.16,
+        "lignes": [
+          [
+            {
+              "mot": "comme",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "stagiaire",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "il y a neuf ans",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 2.76,
+        "lignes": [
+          [
+            {
+              "mot": "je suis",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "associé.",
+              "role": "fort"
+            }
+          ]
+        ],
+        "fin": 3.42,
+        "_note": "Chute de l'accroche, reste pendant l'éclair de 3,24 s ; « Je suis arrivé » s'affiche ensuite (au moins 0,33 s)."
+      },
+      {
+        "debut": 5.88,
+        "lignes": [
+          [
+            {
+              "mot": "le premier",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "devant la porte.",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 18.04,
+        "lignes": [
+          [
+            {
+              "mot": "livré",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "à moi-même",
+              "role": "appui"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 23.64,
+        "lignes": [
+          [
+            {
+              "mot": "sa",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "débrouillardise",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "et son autonomie.",
+              "role": "appui"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "camera": {
+    "visage": [
+      0.55,
+      0.225
+    ],
+    "coupes": [],
+    "cadrages": [
+      1.0
+    ],
+    "decalages_x": [
+      0
+    ],
+    "avancee": 0,
+    "_cadrages": "Cadres FIXES, rythme de la vidéo INCENDIE, un seul cadre pendant l'accroche. Plans : 0.0 s ×1.0 « tout l'extrait : cadres et zooms du vidéaste gardés tels quels (comme dans la vidéo complète) »"
+  },
+  "ambiance": {
+    "grain": 0,
+    "vignette": 0,
+    "etalonnage": false
+  },
+  "effets": [
+    {
+      "type": "transition",
+      "style": "lumiere_blanche",
+      "debut": 3.24,
+      "duree": 1.0,
+      "son": false,
+      "assombrir": false,
+      "rai": false,
+      "_note": "Éclair blanc à la fin de l'accroche (3.24 s)."
+    },
+    {
+      "type": "son",
+      "nom": "riser_sub",
+      "debut": 3.24,
+      "facteur": 1.26,
+      "_note": "Riser fourni (riser_sub) : son coup de basse (2,02 s dans le fichier) tombe pile sur l'éclair de 3.24 s. Volume ×1,26."
+    }
+  ]
+}

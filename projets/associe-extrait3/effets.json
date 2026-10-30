@@ -1,0 +1,122 @@
+{
+  "_aide": "Extrait 3/3 du podcast « De stagiaire à associé » (Loïs) : le plus dur dans la gestion d'équipe. Rush coupé à l'image près dans projets/associe/rush/rush.mp4, images 1229 à 1622 (49.16–64.92 s), aux coupes du vidéaste. Même style que la vidéo complète (sous-titres INCENDIE, phrases fortes, cadres fixes, éclair blanc après l'accroche, riser fourni riser_sub, musique pizzicato). Accroche : « Le management, il n'y a pas vraiment d'échelle la plus dure au niveau du nombre de personnes. »",
+  "duree": 15.76,
+  "fps": 25,
+  "rush": {
+    "video": "rush/rush.mp4",
+    "mots": "mots.json"
+  },
+  "musique": {
+    "actif": true,
+    "fichier": "media/musique_pizzicato.wav",
+    "_note": "Musique originale, style pizzicato (celle de la vidéo complète) : outils/musique_douce.py media/musique_pizzicato.wav --duree 15.76 --debut 5.08 --style pizzicato. Démarre sur l'éclair."
+  },
+  "sous_titres": {
+    "mode": "premiere_video",
+    "phrases_fortes": [
+      {
+        "debut": 3.5,
+        "lignes": [
+          [
+            {
+              "mot": "au niveau du nombre",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "de personnes.",
+              "role": "fort"
+            }
+          ]
+        ],
+        "fin": 5.2,
+        "_note": "Chute de l'accroche, reste pendant l'éclair de 5,08 s."
+      },
+      {
+        "debut": 6.66,
+        "lignes": [
+          [
+            {
+              "mot": "gérer",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "les caractères",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 10.58,
+        "lignes": [
+          [
+            {
+              "mot": "chacun a",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "son histoire.",
+              "role": "fort"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "camera": {
+    "visage": [
+      0.55,
+      0.225
+    ],
+    "coupes": [
+      5.08,
+      6.6,
+      8.96,
+      11.44,
+      14.18
+    ],
+    "cadrages": [
+      1.4,
+      1.0,
+      1.2,
+      1.0,
+      1.2,
+      1.4
+    ],
+    "decalages_x": [
+      0
+    ],
+    "avancee": 0,
+    "_cadrages": "Cadres FIXES, rythme de la vidéo INCENDIE, un seul cadre pendant l'accroche. Plans : 0.0 s ×1.4 « accroche, un seul cadre » | 5.08 s ×1.0 « éclair, sur la coupe du vidéaste » | 6.60 s ×1.2 « gérer les caractères » | 8.96 s ×1.0 | 11.44 s ×1.2 | 14.18 s ×1.4 « elle ne fait pas attention aux mêmes choses que moi. »"
+  },
+  "ambiance": {
+    "grain": 0,
+    "vignette": 0,
+    "etalonnage": false
+  },
+  "effets": [
+    {
+      "type": "transition",
+      "style": "lumiere_blanche",
+      "debut": 5.08,
+      "duree": 1.0,
+      "son": false,
+      "assombrir": false,
+      "rai": false,
+      "_note": "Éclair blanc à la fin de l'accroche (5.08 s)."
+    },
+    {
+      "type": "son",
+      "nom": "riser_sub",
+      "debut": 5.08,
+      "facteur": 1.26,
+      "_note": "Riser fourni (riser_sub) : son coup de basse (2,02 s dans le fichier) tombe pile sur l'éclair de 5.08 s. Volume ×1,26."
+    }
+  ]
+}
