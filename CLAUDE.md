@@ -74,6 +74,10 @@ polices = sous_titres.dossier_polices_statiques("DOSSIER_TEMP/polices")
 
 `transcrire(fichier, langue="fr", cache_dir=...)` (Scribe, mis en cache), `mots(transcription)`, `voix()`, `synthese(texte, voice_id, sortie)`. Voix française pour les tests : Sarah, `EXAVITQu4vr4xnSDxMaL`, modèle `eleven_multilingual_v2`.
 
+### Animation « lutin de Noël » Mobilier Fortemps : `animations/lutin-fortemps/`
+
+Animation 3D (three.js rendue dans Chromium sans écran, ~12 min de rendu) : un lutin tire une corde, une luge apporte le bon cadeau Fortemps devant un sapin flou, puis le texte apparaît. Mode d'emploi et réglages dans `animations/lutin-fortemps/LISEZMOI.md`. L'image de la carte (client) n'est pas dans le dépôt : la demander à l'utilisateur et la copier en `carte_source.png`.
+
 ### Moteur d'animation Remotion : `moteur/` (en construction)
 
 Il doit composer toute la vidéo à partir de `ma-charte.json` et d'un fichier `effets.json` (temps en secondes) : sous-titres mot à mot, accroche, grands titres 3D, icônes, chiffres, cartes, mouvements de caméra, transitions, grain, étalonnage, effets sonores (fabriqués avec ffmpeg dans `moteur/public/sons/`), musique facultative 20 dB sous la voix.

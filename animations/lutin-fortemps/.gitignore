@@ -1,0 +1,9 @@
+# médias régénérables et image du client : jamais dans le dépôt
+carte_source.png
+carte_texture.png
+fond.png
+images/
+fini/
+*.mkv
+*_coins.json
+*.mp4

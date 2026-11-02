@@ -1,0 +1,1 @@
+{ "name": "lutin-fortemps", "private": true, "description": "Animation 3D lutin de Noël + bon cadeau Fortemps (three.js rendu dans Chromium)", "type": "module", "dependencies": { "three": "0.170.0" } }
