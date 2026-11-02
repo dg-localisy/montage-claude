@@ -113,7 +113,8 @@ def _mise_en_page(bloc):
         bases.append(bases[-1] + ecart)
     haut = bases[0] - 0.72 * lignes[0]["taille"] * EM_PAR_TAILLE  # haut des majuscules de la 1re ligne
     decal_y = FORTES["centre_vertical_y"] - (haut + bases[-1]) / 2
-    decal_x = FORTES["decalage_lignes_px"].get(str(len(lignes)), [0] * len(lignes))
+    # « decalages_px » sur un bloc : décalages propres à ce bloc (ex. [0, 0] pour centrer un mot seul sous une longue ligne)
+    decal_x = bloc.get("decalages_px") or FORTES["decalage_lignes_px"].get(str(len(lignes)), [0] * len(lignes))
     # Centrage sans aucun mouvement (demandes de l'utilisateur : « pas centré, surtout quand il n'y a qu'une ligne »,
     # puis « ne mets pas de texte qui bouge pour le recentrer ») : chaque mot reste là où il apparaît.
     # La 1re ligne, seule au début, est au centre. Chaque ligne suivante garde son décalage en quinconce par rapport

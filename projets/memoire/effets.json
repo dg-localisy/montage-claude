@@ -62,18 +62,18 @@
         "lignes": [
           [
             {
-              "mot": "oui",
-              "role": "fort"
+              "mot": "OUI",
+              "role": "choc"
             }
           ],
           [
             {
               "mot": "tout de suite.",
-              "role": "appui"
+              "role": "liaison"
             }
           ]
         ],
-        "_note": "Après la carte en verre (qui couvre « je dis »)."
+        "_note": "Après la carte en verre (qui couvre « je dis »). « OUI » plus en évidence (demande de l'utilisateur, 02/11) : majuscules, rôle choc, « tout de suite. » en liaison."
       },
       {
         "debut": 18.18,
@@ -91,7 +91,11 @@
             }
           ]
         ],
-        "_note": "Commence à « on n'a » (sinon « on n'a » ne restait que 0,22 s en sous-titre)."
+        "_note": "Commence à « on n'a » (sinon « on n'a » ne restait que 0,22 s en sous-titre). « envie » centré sous la longue ligne (decalages_px [0, 0]) : avec la quinconce il paraissait décalé (remarque de l'utilisateur).",
+        "decalages_px": [
+          0,
+          0
+        ]
       },
       {
         "debut": 23.08,
