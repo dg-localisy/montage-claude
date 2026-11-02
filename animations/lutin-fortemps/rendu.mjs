@@ -1,6 +1,7 @@
 // Pilote Chromium sans écran pour rendre la scène 3D.
 //   node rendu.mjs images 0.5,2,4   -> images fixes (images/t_XXX.png)
 //   node rendu.mjs video SORTIE.mkv [debut] [fin] -> toutes les images à 30 i/s, sans perte (FFV1)
+//   node rendu.mjs etat ETAT.json [fin]   -> positions des pieds et de la luge (calage des bruitages)
 import { createRequire } from 'module';
 import http from 'http';
 import fs from 'fs';
@@ -48,6 +49,13 @@ if (mode === 'images') {
     fs.writeFileSync(f, buf);
     console.log(f, `${Date.now() - d} ms`);
   }
+} else if (mode === 'etat') {
+  // positions des pieds et de la luge, 240 fois par seconde (pour les bruitages)
+  const sortie = process.argv[3];
+  const fin = Number(process.argv[4] || (infos.tFin + 4.6));
+  const lignes = await page.evaluate((fin) => { const r = []; for (let i = 0; i <= fin * 240; i++) r.push(window.etat(i / 240)); return r; }, fin);
+  fs.writeFileSync(sortie, JSON.stringify({ infos, colonnes: ['t', 'piedGx', 'piedGy', 'piedDx', 'piedDy', 'bassinX', 'lugeX'], lignes }));
+  console.log('état écrit', sortie, lignes.length, 'lignes');
 } else if (mode === 'video') {
   const sortie = process.argv[3];
   const FPS = 30;

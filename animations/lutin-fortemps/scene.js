@@ -533,6 +533,13 @@ function rendre(t) {
   renderer.render(scene, camera);
   return luge.coinsEcran();
 }
+// état de la scène sans dessiner (pour caler les bruitages) : pieds du lutin, bassin, luge
+function etat(t) {
+  luge.pose(t); lutin.pose(t);
+  const m = lutin.membres;
+  return [t, m.piedG.position.x, m.piedG.position.y, m.piedD.position.x, m.piedD.position.y, lutin.bassin.position.x, luge.g.position.x];
+}
+window.etat = etat;
 window.preparer = preparer;
 window.rendre = rendre;
 window.T = T;

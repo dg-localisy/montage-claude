@@ -23,7 +23,16 @@ python3 fond.py fond.png                        # décor : sapin flou + neige (1
 node rendu.mjs images 1.6,4.3,6.5,10.5,13       # images fixes de contrôle -> images/
 node rendu.mjs video brut.mkv                   # rendu complet sans perte (~12 min)
 python3 finition.py brut.mkv brut_coins.json lutin_9x16.mp4 lutin_4x5.mp4
+# son : musique + bruitages calés sur l'image
+apt-get install -y fluidsynth fluid-soundfont-gm && pip3 install mido
+node rendu.mjs etat etat.json 16.8                 # instants où les pieds touchent le sol, position de la luge
+python3 musique.py 12.163011695906434 16.766667 musique.wav   # T_FIN (fin de la luge) et durée de la vidéo
+mkdir -p sortie && python3 son.py etat.json musique.wav lutin_9x16.mp4 lutin_4x5.mp4 sortie
 ```
+
+Le son final est à -14 LUFS, crête vraie sous -1 dBTP (fonctions de `outils/son_final.py`).
+`son.py` écrit aussi les pistes séparées (`piste_musique.wav`, `piste_pas.wav`, `piste_luge.wav`)
+et `son_rapport.json` (instants des pas).
 
 Pour vérifier des images finies (avec texte) sans tout exporter :
 `python3 finition.py brut.mkv brut_coins.json x x --images 12.5,13.5,16 images`
@@ -39,10 +48,13 @@ Pour vérifier des images finies (avec texte) sans tout exporter :
 | `texte.py` | Calques de texte en Figtree (SemiBold, Black, Bold) avec ombre douce. |
 | `finition.py` | Zoom lent final, reflet et étoile sur la carte, halo sombre + texte animé, vignette, grain, exports 9:16 et 4:5. |
 | `preparer_carte.py` | Découpe la carte dans l'image du client et nettoie les coins. |
+| `musique.py` | Musique : arrangement original de « Jingle Bells » (mélodie de 1857, domaine public), célesta, glockenspiel, cordes pincées, cordes, grelots. Tempo calé pour que l'accord final tombe à l'arrêt de la luge. Rendu avec FluidSynth + banque FluidR3 GM. |
+| `son.py` | Bruitages fabriqués par calcul : pas dans la neige à chaque contact d'un pied, frottement de la luge qui suit sa vitesse, tassement + petit « toc » à l'arrêt. Mixage, -14 LUFS, pose du son sur les vidéos. |
 
 ## Réglages faciles
 
 - Vitesses, durée de la pause, longueur de la corde : objet `T` au début de `scene.js`.
 - Couleurs du lutin : objet `M` dans `scene.js` (tunique `vert`, bonnet `feutre`, etc.).
 - Texte : variante 3 dans `texte.py` (`calques(3)`), utilisée par `finition.py`.
-- Le son n'est pas inclus (piste muette) : ajouter une musique dans Instagram ou TikTok.
+- Volume des bruitages : `ECART_PAS` et `ECART_LUGE` dans `son.py` (dB par rapport à la musique).
+- Musique : notes, instruments et tempo dans `musique.py`. Si on change la chronologie de `scene.js`, repasser la nouvelle valeur de T_FIN.

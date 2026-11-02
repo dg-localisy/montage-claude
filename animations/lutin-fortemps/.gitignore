@@ -7,3 +7,9 @@ fini/
 *.mkv
 *_coins.json
 *.mp4
+# son (régénérable)
+*.mid
+*.wav
+etat.json
+son_rapport.json
+sortie/
