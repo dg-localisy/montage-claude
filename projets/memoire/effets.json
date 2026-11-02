@@ -1,16 +1,16 @@
 {
-  "_aide": "Podcast « 1 mois de salaire dans un mémoire » (Loïs, studio de podcast LOCALISY, fond bleu). v11, retours de l'utilisateur du 02/11/2026 : « Au final » coupé au début ; vraie pause avant « Même si je traînais une casserole derrière moi, ça m'a permis… » (le vidéaste avait collé les deux phrases) ; plus de dynamisme : quelques animations de la charte de Gary (1 MOIS derrière la tête, page sombre à flèche, chiffre, pastilles) en plus des sous-titres INCENDIE, des phrases fortes, des cadres fixes, de l'éclair, du riser fourni et du plan de coupe.",
-  "duree": 28.88,
+  "_aide": "Podcast « 1 mois de salaire dans un mémoire » (Loïs, studio de podcast LOCALISY, fond bleu). v11, retours de l'utilisateur du 02/11/2026 : « Au final » coupé au début ; plus de dynamisme : quelques animations de la charte de Gary (1 MOIS derrière la tête, page sombre à flèche, chiffre, pastilles) en plus des sous-titres INCENDIE, des phrases fortes, des cadres fixes, de l'éclair, du riser fourni et du plan de coupe. v12 (retours du 02/11) : la pause avant « Même si » est retirée (« je n'aime pas l'effet très lent du début de phrase, rétablis comme c'était ») : ce passage est revenu à la v10 ; la page « stage → job » n'a plus de fond noir : carte en verre sous le visage, Loïs visible, cadres qui se resserrent à chaque étape (1,0 → 1,25 → 1,5).",
+  "duree": 28.56,
   "fps": 25,
   "rush": {
-    "video": "rush/rush_v11.mp4",
+    "video": "rush/rush_v12.mp4",
     "mots": "mots.json",
-    "_montage": "rush_v11.mp4 = rush.mp4 remonté, à l'image près (ffmpeg trim/atrim + concat) : image 17 répétée 4 fois pendant « J'ai » (le vidéaste coupe à 0,68 s, juste après « Au final, j'ai ») + images 17 à 570 (son 0,52 → 22,84 s, « Au final, » enlevé) + image 571 répétée 8 fois sur 0,32 s de silence (pause avant « Même si », au début du plan suivant) + images 571 à la fin. Temps : nouveau = ancien − 0,52 avant 22,84 s, ancien − 0,20 ensuite. mots.json recalé ainsi, ponctuation : « d'études. Même si je traînais une casserole derrière moi, ça m'a permis… »."
+    "_montage": "rush_v12.mp4 = rush.mp4 remonté à l'image près (ffmpeg trim/atrim + concat) : image 17 répétée 4 fois pendant « J'ai » (le vidéaste coupe à 0,68 s, juste après « Au final, j'ai »), puis images 17 à la fin, son à partir de 0,52 s (« Au final, » enlevé). Temps : nouveau = ancien − 0,52 s. mots.json recalé ainsi."
   },
   "musique": {
     "actif": true,
     "fichier": "media/musique_bossa.wav",
-    "_note": "Musique originale, style bossa (celle de la v10) : outils/musique_douce.py media/musique_bossa.wav --duree 28.88 --debut 0 --style bossa."
+    "_note": "Musique originale, style bossa (celle de la v10) : outils/musique_douce.py media/musique_bossa.wav --duree 28.56 --debut 0 --style bossa."
   },
   "sous_titres": {
     "mode": "premiere_video",
@@ -58,14 +58,8 @@
         ]
       },
       {
-        "debut": 11.4,
+        "debut": 11.66,
         "lignes": [
-          [
-            {
-              "mot": "je dis",
-              "role": "liaison"
-            }
-          ],
           [
             {
               "mot": "oui",
@@ -78,7 +72,8 @@
               "role": "appui"
             }
           ]
-        ]
+        ],
+        "_note": "Après la carte en verre (qui couvre « je dis »)."
       },
       {
         "debut": 18.18,
@@ -99,31 +94,31 @@
         "_note": "Commence à « on n'a » (sinon « on n'a » ne restait que 0,22 s en sous-titre)."
       },
       {
-        "debut": 22.74,
+        "debut": 23.08,
         "lignes": [
           [
             {
-              "mot": "Même si je traînais",
+              "mot": "une",
               "role": "liaison"
             }
           ],
           [
             {
-              "mot": "une casserole",
+              "mot": "casserole",
               "role": "fort"
             }
           ],
           [
             {
-              "mot": "derrière moi,",
+              "mot": "derrière moi.",
               "role": "appui"
             }
           ]
         ],
-        "_note": "Début de phrase marqué (retour de l'utilisateur) : pause, nouveau cadre et « Même si » en tête du bloc ; « ça m'a permis » suit en minuscule."
+        "_note": "Comme en v10 (l'utilisateur a préféré revenir à la version sans pause)."
       },
       {
-        "debut": 27.88,
+        "debut": 27.56,
         "lignes": [
           [
             {
@@ -151,23 +146,25 @@
       5.64,
       7.72,
       8.96,
+      10.4,
       11.32,
       12.36,
       16.2,
       18.18,
       19.8,
       22.32,
-      23.92,
-      25.64,
-      27.0
+      23.6,
+      25.32,
+      26.68
     ],
     "cadrages": [
       1.0,
       1.4,
       1.0,
-      1.2,
-      1.0,
       1.4,
+      1.0,
+      1.25,
+      1.5,
       1.0,
       1.2,
       1.4,
@@ -182,7 +179,7 @@
     ],
     "avancee": 0,
     "masques": "masques",
-    "_cadrages": "Cadres FIXES au rythme de la vidéo INCENDIE (13 changements en 29 s, plans sur la tête de 1 à 3,8 s). Accroche en plan large ×1,0 (un seul cadre) pour laisser la place à « 1 MOIS » au-dessus de la tête. Plans : 0 ×1,0 accroche | 2,40 ×1,4 éclair « Il y a quelque chose que peu de gens savent » | 5,64 ×1,0 | 7,72 ×1,2 « Pour resituer l'histoire » | 8,96 page sombre à flèche | 11,32 ×1,4 « je dis oui tout de suite » | 12,36 ×1,0 (plan de coupe 14,80–16,20) | 16,20 ×1,2 chiffre 9 h | 18,18 ×1,4 « pas spécialement envie » | 19,80 ×1,0 | 22,32 ×1,4 pause puis « Même si je traînais » | 23,92 ×1,2 | 25,64 ×1,0 pastilles | 27,00 ×1,4 « À refaire »."
+    "_cadrages": "Cadres FIXES au rythme de la vidéo INCENDIE, accroche en plan large ×1,0 (un seul cadre, place pour « 1 MOIS » au-dessus de la tête). Plans : 0 ×1,0 accroche | 2,40 ×1,4 éclair | 5,64 ×1,0 | 7,72 ×1,4 « Pour resituer l'histoire » | 8,96 ×1,0 carte en verre « Je fais mon stage de fin d'études » | 10,40 ×1,25 « ↓ on me propose un job » | 11,32 ×1,5 « je dis oui tout de suite » (les trois cadres se resserrent sur les coupes du vidéaste : « joue avec des zooms », zooms fixes) | 12,36 ×1,0 (plan de coupe 14,80–16,20) | 16,20 ×1,2 chiffre 9 h | 18,18 ×1,4 | 19,80 ×1,0 | 22,32 ×1,4 « même si je traînais » | 23,60 ×1,2 | 25,32 ×1,0 pastilles | 26,68 ×1,4 « À refaire »."
   },
   "ambiance": {
     "grain": 0,
@@ -233,36 +230,41 @@
     {
       "type": "page",
       "debut": 8.96,
-      "fin": 11.32,
-      "fond": "sombre",
-      "code_barres": false,
-      "son_entree": "transition_base",
+      "fin": 11.62,
+      "fond": "verre",
+      "y": 930,
+      "largeur": 860,
+      "son_entree": "transition_whoosh_oxid",
       "elements": [
         {
           "type": "etiquette",
           "texte": "Je fais mon",
-          "temps": 9.02
+          "temps": 9.02,
+          "taille": 30
         },
         {
           "type": "grand",
           "texte": "stage de fin d'études",
-          "taille": 112,
-          "largeur": 1000
+          "taille": 80,
+          "largeur": 760
         },
         {
-          "type": "fleche"
+          "type": "fleche",
+          "hauteur": 90
         },
         {
           "type": "petit",
-          "texte": "on me propose"
+          "texte": "on me propose",
+          "taille": 46
         },
         {
           "type": "grand",
           "texte": "un job",
-          "taille": 176
+          "taille": 124
         }
       ],
-      "_note": "Page sombre à flèche (adorée par l'utilisateur, une fois par vidéo) : « Je fais mon stage de fin d'études ↓ on me propose un job », entre deux coupes du vidéaste (8,96 et 11,32 s) ; « je dis oui tout de suite » revient sur Loïs en phrase forte."
+      "_note": "Page à flèche en carte de verre (v12, demande de l'utilisateur : « mets cet effet en voyant Loïs en fond, ne mets pas de fond noir, ne cache pas le visage, joue avec des zooms ») : sous le visage, entre deux coupes du vidéaste (8,96 et 11,32 s) ; le cadre se resserre à 10,40 s quand la flèche arrive. Elle reste jusqu'à 11,62 s (« un job » est dit tout à la fin, 10,94–11,30 s) ; « je dis » est couvert par la carte.",
+      "sortie_s": 0.2
     },
     {
       "type": "transition",
@@ -302,21 +304,21 @@
     },
     {
       "type": "liste",
-      "debut": 25.6,
-      "fin": 26.98,
+      "debut": 25.28,
+      "fin": 26.66,
       "items": [
         "Dans le travail",
         "Dans l'entreprise"
       ],
       "temps": [
-        25.64,
-        26.24
+        25.32,
+        25.92
       ],
       "numeros": false,
       "remplace_temps": [
         [
-          25.62,
-          26.9
+          25.3,
+          26.58
         ]
       ],
       "_note": "Pastilles de Gary sans numéro sur « ça m'a permis de me développer dans le travail et dans l'entreprise »."

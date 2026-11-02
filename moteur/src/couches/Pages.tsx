@@ -72,12 +72,12 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
     switch (el.type) {
       case 'etiquette':
         return (
-          <div key={k} style={{fontFamily: 'Figtree Bold', fontSize: P.etiquette_px, letterSpacing: '0.24em', textTransform: 'uppercase', color: clair ? '#555' : 'rgba(255,255,255,0.7)',
+          <div key={k} style={{fontFamily: 'Figtree Bold', fontSize: el.taille ?? P.etiquette_px, letterSpacing: '0.24em', textTransform: 'uppercase', color: clair ? '#555' : 'rgba(255,255,255,0.7)',
             opacity: easeOut(prog(t, el.debut, el.debut + 0.3)) * avant}}>{el.texte}</div>
         );
       case 'petit':
         // « largeur » (px) : pour choisir où le texte passe à la ligne (lignes équilibrées, pas de mot seul en bas)
-        return <div key={k} style={{fontFamily: 'Figtree Medium', fontSize: P.petit_px, lineHeight: 1.25, opacity: avant, maxWidth: el.largeur ?? 860}}>{ligneDeMots(t, el.mots, clair)}</div>;
+        return <div key={k} style={{fontFamily: 'Figtree Medium', fontSize: el.taille ?? P.petit_px, lineHeight: 1.25, opacity: avant, maxWidth: el.largeur ?? 860}}>{ligneDeMots(t, el.mots, clair)}</div>;
       case 'italique':
         return (
           <div key={k} style={{fontFamily: 'Figtree Light Italic', fontSize: el.taille ?? P.italique_px, lineHeight: 1.02, letterSpacing: '-0.025em', opacity: avant, maxWidth: 960}}>
@@ -155,6 +155,31 @@ export const Page: React.FC<{e: any; charte: any}> = ({e, charte}) => {
         return null;
     }
   };
+
+  // fond « verre » (vidéo mémoire, demande de l'utilisateur : « mets cet effet en voyant Loïs en fond, ne mets pas de fond noir ») :
+  // pas de page plein écran ni de flash ; les mêmes éléments s'écrivent dans une carte en verre dépoli sous le visage
+  // (même verre que carte_verre), la personne reste visible. Champs : y (haut de la carte), largeur, ecart, sortie_s.
+  if (e.fond === 'verre') {
+    if (!visible) return null;
+    const ent = spring({frame: (t - e.debut) * fps, fps, config: {damping: 16, stiffness: 120, mass: 0.9}});
+    const sor = easeInOut(prog(t, e.fin - (e.sortie_s ?? 0.3), e.fin));
+    const largeur = e.largeur ?? 860;
+    const y = e.y ?? 920;
+    return (
+      <div style={{position: 'absolute', left: 0, top: 0, width: W, height: H, perspective: 1400, perspectiveOrigin: `50% ${y}px`}}>
+        <div style={{position: 'absolute', left: (W - largeur) / 2, top: y, width: largeur, boxSizing: 'border-box', padding: '30px 36px 34px', borderRadius: 36,
+          background: 'linear-gradient(160deg, rgba(40,40,40,0.62) 0%, rgba(10,10,10,0.72) 100%)',
+          backdropFilter: 'blur(22px) saturate(0.6)', WebkitBackdropFilter: 'blur(22px) saturate(0.6)', border: '2px solid rgba(255,255,255,0.55)',
+          boxShadow: '0 0 28px rgba(255,255,255,0.28), 0 0 70px rgba(255,255,255,0.12), 0 30px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.35)',
+          color: '#fff', opacity: Math.min(1, ent * 1.4) * (1 - sor),
+          transform: `translateY(${((1 - ent) * 140 + sor * 40).toFixed(1)}px) rotateX(${((1 - ent) * 28 + 4).toFixed(2)}deg) scale(${(0.9 + 0.1 * ent - 0.04 * sor).toFixed(4)})`,
+          transformOrigin: '50% 100%', filter: sor > 0 ? `blur(${(sor * 14).toFixed(1)}px)` : 'none',
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: e.ecart ?? 12, textAlign: 'center'}}>
+          {elements.map(rendu)}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <AbsoluteFill>
