@@ -1,652 +1,642 @@
 [
  {
-  "mot": "Au",
-  "debut": 0.06,
-  "fin": 0.12
- },
- {
-  "mot": "final,",
-  "debut": 0.2,
-  "fin": 0.5
- },
- {
-  "mot": "j'ai",
-  "debut": 0.56,
-  "fin": 0.66
+  "mot": "J'ai",
+  "debut": 0.04,
+  "fin": 0.14
  },
  {
   "mot": "dépensé",
-  "debut": 0.76,
-  "fin": 1.18
+  "debut": 0.24,
+  "fin": 0.66
  },
  {
   "mot": "un",
-  "debut": 1.22,
-  "fin": 1.28
+  "debut": 0.7,
+  "fin": 0.76
  },
  {
   "mot": "mois",
-  "debut": 1.3,
-  "fin": 1.38
+  "debut": 0.78,
+  "fin": 0.86
  },
  {
   "mot": "de",
-  "debut": 1.42,
-  "fin": 1.44
+  "debut": 0.9,
+  "fin": 0.92
  },
  {
   "mot": "salaire",
-  "debut": 1.46,
-  "fin": 1.68
+  "debut": 0.94,
+  "fin": 1.16
  },
  {
   "mot": "pour",
-  "debut": 1.76,
+  "debut": 1.24,
+  "fin": 1.34
+ },
+ {
+  "mot": "un",
+  "debut": 1.38,
+  "fin": 1.44
+ },
+ {
+  "mot": "mémoire",
+  "debut": 1.48,
+  "fin": 1.74
+ },
+ {
+  "mot": "que",
+  "debut": 1.8,
   "fin": 1.86
  },
  {
-  "mot": "un",
+  "mot": "j'écrivais",
   "debut": 1.9,
-  "fin": 1.96
- },
- {
-  "mot": "mémoire",
-  "debut": 2.0,
   "fin": 2.26
  },
  {
-  "mot": "que",
-  "debut": 2.32,
-  "fin": 2.38
- },
- {
-  "mot": "j'écrivais",
-  "debut": 2.42,
-  "fin": 2.78
- },
- {
   "mot": "pas.",
-  "debut": 2.8,
-  "fin": 2.88
+  "debut": 2.28,
+  "fin": 2.36
  },
  {
   "mot": "Il",
-  "debut": 2.98,
-  "fin": 3.0
+  "debut": 2.46,
+  "fin": 2.48
  },
  {
   "mot": "y",
-  "debut": 3.02,
-  "fin": 3.04
+  "debut": 2.5,
+  "fin": 2.52
  },
  {
   "mot": "a",
-  "debut": 3.04,
-  "fin": 3.1
+  "debut": 2.52,
+  "fin": 2.58
  },
  {
   "mot": "quelque",
-  "debut": 3.14,
-  "fin": 3.34
+  "debut": 2.62,
+  "fin": 2.82
  },
  {
   "mot": "chose",
-  "debut": 3.36,
-  "fin": 3.54
+  "debut": 2.84,
+  "fin": 3.02
  },
  {
   "mot": "que",
-  "debut": 3.58,
-  "fin": 3.78
+  "debut": 3.06,
+  "fin": 3.26
  },
  {
   "mot": "peu",
-  "debut": 3.82,
-  "fin": 3.98
+  "debut": 3.3,
+  "fin": 3.46
  },
  {
   "mot": "de",
-  "debut": 4.059,
-  "fin": 4.1
+  "debut": 3.539,
+  "fin": 3.58
  },
  {
   "mot": "gens",
-  "debut": 4.12,
-  "fin": 4.46
+  "debut": 3.6,
+  "fin": 3.94
  },
  {
   "mot": "savent,",
-  "debut": 4.54,
-  "fin": 4.88
+  "debut": 4.02,
+  "fin": 4.36
  },
  {
   "mot": "c'est",
-  "debut": 4.96,
-  "fin": 5.08
+  "debut": 4.44,
+  "fin": 4.56
  },
  {
   "mot": "que",
-  "debut": 5.12,
-  "fin": 5.22
+  "debut": 4.6,
+  "fin": 4.7
  },
  {
   "mot": "j'ai",
-  "debut": 5.28,
-  "fin": 5.44
+  "debut": 4.76,
+  "fin": 4.92
  },
  {
   "mot": "eu",
-  "debut": 5.48,
-  "fin": 5.56
+  "debut": 4.96,
+  "fin": 5.04
  },
  {
   "mot": "mon",
-  "debut": 5.6,
-  "fin": 5.72
+  "debut": 5.08,
+  "fin": 5.2
  },
  {
   "mot": "diplôme",
-  "debut": 5.78,
-  "fin": 6.16
+  "debut": 5.26,
+  "fin": 5.64
  },
  {
   "mot": "deux",
-  "debut": 6.22,
-  "fin": 6.4
+  "debut": 5.7,
+  "fin": 5.88
  },
  {
   "mot": "ans",
-  "debut": 6.44,
-  "fin": 6.56
+  "debut": 5.92,
+  "fin": 6.04
  },
  {
   "mot": "après",
-  "debut": 6.64,
-  "fin": 6.88
+  "debut": 6.12,
+  "fin": 6.36
  },
  {
   "mot": "avoir",
-  "debut": 6.94,
-  "fin": 7.3
+  "debut": 6.42,
+  "fin": 6.78
  },
  {
   "mot": "commencé",
-  "debut": 7.38,
-  "fin": 7.66
+  "debut": 6.86,
+  "fin": 7.14
  },
  {
   "mot": "à",
-  "debut": 7.7,
-  "fin": 7.74
+  "debut": 7.18,
+  "fin": 7.22
  },
  {
   "mot": "travailler.",
-  "debut": 7.78,
-  "fin": 8.18
+  "debut": 7.26,
+  "fin": 7.66
  },
  {
   "mot": "Pour",
-  "debut": 8.28,
-  "fin": 8.4
+  "debut": 7.76,
+  "fin": 7.88
  },
  {
   "mot": "resituer",
-  "debut": 8.44,
-  "fin": 8.88
+  "debut": 7.92,
+  "fin": 8.36
  },
  {
   "mot": "l'histoire,",
-  "debut": 8.9,
-  "fin": 9.4
+  "debut": 8.38,
+  "fin": 8.88
  },
  {
   "mot": "je",
-  "debut": 9.54,
-  "fin": 9.6
+  "debut": 9.02,
+  "fin": 9.08
  },
  {
   "mot": "fais",
-  "debut": 9.64,
-  "fin": 9.74
+  "debut": 9.12,
+  "fin": 9.22
  },
  {
   "mot": "mon",
-  "debut": 9.78,
-  "fin": 9.86
+  "debut": 9.26,
+  "fin": 9.34
  },
  {
   "mot": "stage",
-  "debut": 9.92,
-  "fin": 10.1
+  "debut": 9.4,
+  "fin": 9.58
  },
  {
   "mot": "de",
-  "debut": 10.14,
-  "fin": 10.22
+  "debut": 9.62,
+  "fin": 9.7
  },
  {
   "mot": "fin",
-  "debut": 10.26,
-  "fin": 10.36
+  "debut": 9.74,
+  "fin": 9.84
  },
  {
   "mot": "d'études,",
-  "debut": 10.4,
-  "fin": 10.86
+  "debut": 9.88,
+  "fin": 10.34
  },
  {
   "mot": "on",
-  "debut": 10.96,
-  "fin": 11.02
+  "debut": 10.44,
+  "fin": 10.5
  },
  {
   "mot": "me",
-  "debut": 11.04,
-  "fin": 11.08
+  "debut": 10.52,
+  "fin": 10.56
  },
  {
   "mot": "propose",
-  "debut": 11.12,
-  "fin": 11.42
+  "debut": 10.6,
+  "fin": 10.9
  },
  {
   "mot": "un",
-  "debut": 11.46,
-  "fin": 11.54
+  "debut": 10.94,
+  "fin": 11.02
  },
  {
   "mot": "job,",
-  "debut": 11.62,
-  "fin": 11.82
+  "debut": 11.1,
+  "fin": 11.3
  },
  {
   "mot": "je",
-  "debut": 11.92,
-  "fin": 11.98
+  "debut": 11.4,
+  "fin": 11.46
  },
  {
   "mot": "dis",
-  "debut": 12.02,
-  "fin": 12.14
+  "debut": 11.5,
+  "fin": 11.62
  },
  {
   "mot": "oui",
-  "debut": 12.18,
-  "fin": 12.3
+  "debut": 11.66,
+  "fin": 11.78
  },
  {
   "mot": "tout",
-  "debut": 12.42,
-  "fin": 12.5
+  "debut": 11.9,
+  "fin": 11.98
  },
  {
   "mot": "de",
-  "debut": 12.54,
-  "fin": 12.56
+  "debut": 12.02,
+  "fin": 12.04
  },
  {
   "mot": "suite.",
-  "debut": 12.58,
-  "fin": 12.84
+  "debut": 12.06,
+  "fin": 12.32
  },
  {
   "mot": "Sauf",
-  "debut": 12.96,
-  "fin": 13.12
+  "debut": 12.44,
+  "fin": 12.6
  },
  {
   "mot": "que",
-  "debut": 13.22,
-  "fin": 13.36
+  "debut": 12.7,
+  "fin": 12.84
  },
  {
   "mot": "dans",
-  "debut": 13.42,
-  "fin": 13.7
+  "debut": 12.9,
+  "fin": 13.18
  },
  {
   "mot": "l'intervalle,",
-  "debut": 13.74,
-  "fin": 14.16
+  "debut": 13.22,
+  "fin": 13.64
  },
  {
   "mot": "pendant",
-  "debut": 14.24,
-  "fin": 14.44
+  "debut": 13.72,
+  "fin": 13.92
  },
  {
   "mot": "le",
-  "debut": 14.46,
-  "fin": 14.52
+  "debut": 13.94,
+  "fin": 14.0
  },
  {
   "mot": "stage,",
-  "debut": 14.6,
-  "fin": 14.82
+  "debut": 14.08,
+  "fin": 14.3
  },
  {
   "mot": "j'avais",
-  "debut": 14.86,
-  "fin": 15.24
+  "debut": 14.34,
+  "fin": 14.72
  },
  {
   "mot": "ce",
-  "debut": 15.32,
-  "fin": 15.38
+  "debut": 14.8,
+  "fin": 14.86
  },
  {
   "mot": "qu'on",
-  "debut": 15.38,
-  "fin": 15.5
+  "debut": 14.86,
+  "fin": 14.98
  },
  {
   "mot": "appelle",
-  "debut": 15.56,
-  "fin": 15.76
+  "debut": 15.04,
+  "fin": 15.24
  },
  {
   "mot": "un",
-  "debut": 15.8,
+  "debut": 15.28,
+  "fin": 15.36
+ },
+ {
+  "mot": "mémoire",
+  "debut": 15.4,
+  "fin": 15.74
+ },
+ {
+  "mot": "à",
+  "debut": 15.78,
   "fin": 15.88
  },
  {
-  "mot": "mémoire",
-  "debut": 15.92,
-  "fin": 16.26
- },
- {
-  "mot": "à",
-  "debut": 16.3,
-  "fin": 16.4
- },
- {
   "mot": "faire.",
-  "debut": 16.44,
-  "fin": 16.66
+  "debut": 15.92,
+  "fin": 16.14
  },
  {
   "mot": "Quand",
-  "debut": 16.76,
-  "fin": 16.9
+  "debut": 16.24,
+  "fin": 16.38
  },
  {
   "mot": "on",
-  "debut": 16.92,
-  "fin": 17.0
+  "debut": 16.4,
+  "fin": 16.48
  },
  {
   "mot": "a",
-  "debut": 17.04,
-  "fin": 17.1
+  "debut": 16.52,
+  "fin": 16.58
  },
  {
   "mot": "travaillé",
-  "debut": 17.12,
-  "fin": 17.56
+  "debut": 16.6,
+  "fin": 17.04
  },
  {
   "mot": "huit",
-  "debut": 17.62,
-  "fin": 17.74
+  "debut": 17.1,
+  "fin": 17.22
  },
  {
   "mot": "ou",
-  "debut": 17.78,
-  "fin": 17.82
+  "debut": 17.26,
+  "fin": 17.3
  },
  {
   "mot": "neuf",
-  "debut": 17.86,
-  "fin": 18.0
+  "debut": 17.34,
+  "fin": 17.48
  },
  {
   "mot": "heures",
-  "debut": 18.04,
-  "fin": 18.14
+  "debut": 17.52,
+  "fin": 17.62
  },
  {
   "mot": "sur",
-  "debut": 18.18,
-  "fin": 18.28
+  "debut": 17.66,
+  "fin": 17.76
  },
  {
   "mot": "la",
-  "debut": 18.32,
-  "fin": 18.38
+  "debut": 17.8,
+  "fin": 17.86
  },
  {
   "mot": "journée,",
-  "debut": 18.42,
-  "fin": 18.66
+  "debut": 17.9,
+  "fin": 18.14
  },
  {
   "mot": "on",
-  "debut": 18.7,
-  "fin": 18.76
+  "debut": 18.18,
+  "fin": 18.24
  },
  {
   "mot": "n'a",
-  "debut": 18.78,
-  "fin": 18.84
+  "debut": 18.26,
+  "fin": 18.32
  },
  {
   "mot": "pas",
-  "debut": 18.92,
-  "fin": 18.98
+  "debut": 18.4,
+  "fin": 18.46
  },
  {
   "mot": "spécialement",
-  "debut": 19.02,
-  "fin": 19.6
+  "debut": 18.5,
+  "fin": 19.08
  },
  {
   "mot": "envie",
-  "debut": 19.66,
-  "fin": 20.04
+  "debut": 19.14,
+  "fin": 19.52
  },
  {
   "mot": "de",
-  "debut": 20.2,
-  "fin": 20.32
+  "debut": 19.68,
+  "fin": 19.8
  },
  {
   "mot": "se",
-  "debut": 20.38,
-  "fin": 20.44
+  "debut": 19.86,
+  "fin": 19.92
  },
  {
   "mot": "remettre",
-  "debut": 20.48,
-  "fin": 20.68
+  "debut": 19.96,
+  "fin": 20.16
  },
  {
   "mot": "à",
-  "debut": 20.72,
-  "fin": 20.74
+  "debut": 20.2,
+  "fin": 20.22
  },
  {
   "mot": "son",
-  "debut": 20.8,
-  "fin": 20.96
+  "debut": 20.28,
+  "fin": 20.44
  },
  {
   "mot": "bureau",
-  "debut": 20.98,
-  "fin": 21.26
+  "debut": 20.46,
+  "fin": 20.74
  },
  {
   "mot": "pour",
-  "debut": 21.34,
-  "fin": 21.44
+  "debut": 20.82,
+  "fin": 20.92
  },
  {
   "mot": "écrire",
-  "debut": 21.5,
-  "fin": 21.76
+  "debut": 20.98,
+  "fin": 21.24
  },
  {
   "mot": "un",
-  "debut": 21.8,
-  "fin": 21.86
+  "debut": 21.28,
+  "fin": 21.34
  },
  {
   "mot": "mémoire",
-  "debut": 21.9,
-  "fin": 22.16
+  "debut": 21.38,
+  "fin": 21.64
  },
  {
   "mot": "de",
-  "debut": 22.2,
-  "fin": 22.28
+  "debut": 21.68,
+  "fin": 21.76
  },
  {
   "mot": "fin",
-  "debut": 22.32,
-  "fin": 22.42
+  "debut": 21.8,
+  "fin": 21.9
  },
  {
-  "mot": "d'études,",
-  "debut": 22.44,
-  "fin": 22.8
+  "mot": "d'études.",
+  "debut": 21.92,
+  "fin": 22.28
  },
  {
-  "mot": "même",
-  "debut": 22.94,
-  "fin": 23.1
+  "mot": "Même",
+  "debut": 22.74,
+  "fin": 22.9
  },
  {
   "mot": "si",
-  "debut": 23.14,
-  "fin": 23.22
+  "debut": 22.94,
+  "fin": 23.02
  },
  {
   "mot": "je",
-  "debut": 23.26,
-  "fin": 23.32
+  "debut": 23.06,
+  "fin": 23.12
  },
  {
   "mot": "traînais",
-  "debut": 23.36,
-  "fin": 23.58
+  "debut": 23.16,
+  "fin": 23.38
  },
  {
   "mot": "une",
-  "debut": 23.6,
-  "fin": 23.7
+  "debut": 23.4,
+  "fin": 23.5
  },
  {
   "mot": "casserole",
-  "debut": 23.74,
-  "fin": 24.12
+  "debut": 23.54,
+  "fin": 23.92
  },
  {
   "mot": "derrière",
-  "debut": 24.16,
+  "debut": 23.96,
+  "fin": 24.24
+ },
+ {
+  "mot": "moi,",
+  "debut": 24.32,
   "fin": 24.44
  },
  {
-  "mot": "moi.",
-  "debut": 24.52,
-  "fin": 24.64
- },
- {
-  "mot": "Ça",
-  "debut": 24.76,
-  "fin": 24.82
+  "mot": "ça",
+  "debut": 24.56,
+  "fin": 24.62
  },
  {
   "mot": "m'a",
-  "debut": 24.84,
-  "fin": 24.94
+  "debut": 24.64,
+  "fin": 24.74
  },
  {
   "mot": "permis",
-  "debut": 24.98,
-  "fin": 25.18
+  "debut": 24.78,
+  "fin": 24.98
  },
  {
   "mot": "de",
-  "debut": 25.22,
-  "fin": 25.28
+  "debut": 25.02,
+  "fin": 25.08
  },
  {
   "mot": "me",
-  "debut": 25.32,
-  "fin": 25.36
+  "debut": 25.12,
+  "fin": 25.16
  },
  {
   "mot": "développer",
-  "debut": 25.4,
-  "fin": 25.8
+  "debut": 25.2,
+  "fin": 25.6
  },
  {
   "mot": "dans",
-  "debut": 25.84,
-  "fin": 25.96
+  "debut": 25.64,
+  "fin": 25.76
  },
  {
   "mot": "le",
-  "debut": 25.98,
-  "fin": 26.02
+  "debut": 25.78,
+  "fin": 25.82
  },
  {
   "mot": "travail",
-  "debut": 26.06,
-  "fin": 26.34
+  "debut": 25.86,
+  "fin": 26.14
  },
  {
   "mot": "et",
-  "debut": 26.38,
-  "fin": 26.42
+  "debut": 26.18,
+  "fin": 26.22
  },
  {
   "mot": "dans",
-  "debut": 26.44,
-  "fin": 26.56
+  "debut": 26.24,
+  "fin": 26.36
  },
  {
   "mot": "l'entreprise.",
-  "debut": 26.58,
-  "fin": 27.16
+  "debut": 26.38,
+  "fin": 26.96
  },
  {
   "mot": "À",
-  "debut": 27.24,
-  "fin": 27.28
+  "debut": 27.04,
+  "fin": 27.08
  },
  {
   "mot": "refaire,",
-  "debut": 27.3,
-  "fin": 27.56
+  "debut": 27.1,
+  "fin": 27.36
  },
  {
   "mot": "je",
-  "debut": 27.62,
-  "fin": 27.7
+  "debut": 27.42,
+  "fin": 27.5
  },
  {
   "mot": "referais",
-  "debut": 27.76,
-  "fin": 28.02
+  "debut": 27.56,
+  "fin": 27.82
  },
  {
   "mot": "exactement",
-  "debut": 28.08,
-  "fin": 28.46
+  "debut": 27.88,
+  "fin": 28.26
  },
  {
   "mot": "la",
-  "debut": 28.5,
-  "fin": 28.54
+  "debut": 28.3,
+  "fin": 28.34
  },
  {
   "mot": "même",
-  "debut": 28.58,
-  "fin": 28.72
+  "debut": 28.38,
+  "fin": 28.52
  },
  {
   "mot": "chose",
-  "debut": 28.76,
-  "fin": 28.98
+  "debut": 28.56,
+  "fin": 28.78
  }
 ]

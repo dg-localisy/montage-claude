@@ -3,6 +3,7 @@ import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {easeOut, lerp, nombreFr, prog} from '../temps';
 
 // Chiffre qui défile jusqu'à sa valeur. Le chiffre et ses signes (+, %, €…) sont blancs (charte → moteur.accent).
+// Sur un vêtement clair : couleur "#000000" (chiffre noir, sans ombre sombre) ; x pour le décaler (ex. pour éviter un micro).
 export const Chiffre: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const frame = useCurrentFrame();
   const {fps, width: W} = useVideoConfig();
@@ -18,21 +19,23 @@ export const Chiffre: React.FC<{e: any; charte: any}> = ({e, charte}) => {
   const impulsion = t > b ? 1 + 0.07 * Math.exp(-(t - b) * 14) : 1;
   const sortie = prog(t, e.fin - 0.25, e.fin);
   const y = e.y ?? C.y;
+  const noir = e.couleur === '#000000';
+  const encre = e.couleur ?? '#fff';
 
   return (
     <div
       style={{
-        position: 'absolute', left: 0, width: W, top: y - taille * 0.6, textAlign: 'center', opacity: Math.min(1, entree * 1.4) * (1 - sortie),
+        position: 'absolute', left: (e.x ?? W / 2) - W / 2, width: W, top: y - taille * 0.6, textAlign: 'center', opacity: Math.min(1, entree * 1.4) * (1 - sortie),
         transform: `translateY(${(-30 * sortie).toFixed(1)}px) scale(${((0.75 + 0.25 * entree) * impulsion).toFixed(3)})`, transformOrigin: `50% ${taille * 0.6}px`,
       }}
     >
-      <div style={{fontFamily: 'Figtree Black', fontSize: taille, lineHeight: 1.2, color: '#fff', letterSpacing: -3, fontVariantNumeric: 'tabular-nums', textShadow: '0 10px 40px rgba(0,0,0,0.5)'}}>
-        {e.prefixe && <span style={{color: accent}}>{e.prefixe}</span>}
+      <div style={{fontFamily: 'Figtree Black', fontSize: taille, lineHeight: 1.2, color: encre, letterSpacing: -3, fontVariantNumeric: 'tabular-nums', textShadow: noir ? '0 6px 30px rgba(255,255,255,0.35)' : '0 10px 40px rgba(0,0,0,0.5)'}}>
+        {e.prefixe && <span style={{color: e.couleur ?? accent}}>{e.prefixe}</span>}
         {nombreFr(valeur, e.decimales ?? 0)}
-        {e.suffixe && <span style={{color: accent}}>{e.suffixe}</span>}
+        {e.suffixe && <span style={{color: e.couleur ?? accent}}>{e.suffixe}</span>}
       </div>
       {e.legende && (
-        <div style={{fontFamily: 'Figtree Medium', fontSize: 46, lineHeight: 1.15, whiteSpace: 'pre-line', color: 'rgba(255,255,255,0.88)', marginTop: -8, textShadow: '0 4px 20px rgba(0,0,0,0.6)'}}>{e.legende}</div>
+        <div style={{fontFamily: 'Figtree Medium', fontSize: 46, lineHeight: 1.15, whiteSpace: 'pre-line', color: noir ? 'rgba(0,0,0,0.82)' : 'rgba(255,255,255,0.88)', marginTop: -8, textShadow: noir ? 'none' : '0 4px 20px rgba(0,0,0,0.6)'}}>{e.legende}</div>
       )}
     </div>
   );

@@ -85,6 +85,8 @@ def piste_effets(projet, dossier_sons, n, gains_db=None):
         y = y[:2] if y.shape[0] >= 2 else np.vstack([y[0], y[0]])
         gain = s["volume"] * (10 ** ((gains_db[i] if gains_db else 0) / 20))
         a = int(round(s["debut"] * SR))
+        if a < 0:  # son qui commence avant la vidéo (riser dont le sommet tombe tôt) : on garde sa fin
+            y, a = y[:, -a:], 0
         b = min(n, a + y.shape[1])
         if a < n:
             effets[:, a:b] += gain * y[:, : b - a]

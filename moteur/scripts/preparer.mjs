@@ -148,7 +148,7 @@ export function construireGroupes(mots, regles) {
   for (const m of mots) {
     if (courant.length) {
       const dernier = courant[courant.length - 1];
-      if (courant.length >= regles.max_mots || texte([...courant, m]).length > regles.max_caracteres || m.debut - dernier.fin > regles.pause_coupure_s) pousser();
+      if (m.coupure_avant || courant.length >= regles.max_mots || texte([...courant, m]).length > regles.max_caracteres || m.debut - dernier.fin > regles.pause_coupure_s) pousser();
     }
     courant.push(m);
     if (/[.,!?;:…]$/.test(m.texte)) pousser();
@@ -348,7 +348,8 @@ function calculerTemps(e, M, mots = []) {
 // ---------- sons ----------
 function sonsPour(e, M) {
   const v = M.sons.volumes;
-  const s = (nom, debut, facteur = 1) => ({fichier: `sons/${nom}.wav`, debut: Math.max(0, debut), volume: +(v[nom] * facteur).toFixed(3), effet: e.type});
+  // un son peut commencer avant la vidéo (riser dont le sommet tombe tôt) : son début est alors coupé (son_final.py le gère)
+  const s = (nom, debut, facteur = 1) => ({fichier: `sons/${nom}.wav`, debut: e.type === 'son' ? debut : Math.max(0, debut), volume: +(v[nom] * facteur).toFixed(3), effet: e.type});
   const t = e._t || {};
   // son d'entrée choisi pour cette animation (« son_entree », ex. un son fourni par l'utilisateur), sinon le son par défaut
   const entree = (defaut, avance) => (e.son_entree ? s(e.son_entree, e.debut - ((M.sons.fournis || {})[e.son_entree]?.avance_s ?? 0.15)) : s(defaut, e.debut - avance));
@@ -461,7 +462,11 @@ export function preparer(cheminEffets) {
     || remplaces.some((r) => normaliser(m.texte) === r.mot && m.debut >= r.debut && m.debut <= r.fin)
     || intervalles.some(([a, z]) => m.debut >= a && m.debut < z);
   const premiereVideo = (st.mode || st.mode_par_defaut) === 'premiere_video';
-  const groupes = construireGroupes(premiereVideo ? mots.filter((m) => !masque(m)) : mots, st);
+  // un mot retiré (affiché par une animation ou une phrase forte) coupe le sous-titre : sinon les mots d'après
+  // s'affichent avant l'animation (« J'ai dépensé de » avant « 1 MOIS », vidéo mémoire)
+  let retire = false;
+  const visibles = premiereVideo ? mots.filter((m) => { if (masque(m)) { retire = true; return false; } m.coupure_avant = retire; retire = false; return true; }) : mots;
+  const groupes = construireGroupes(visibles, st);
   // un sous-titre normal s'efface quand une phrase forte commence (jamais les deux en même temps)
   if (premiereVideo) for (const g of groups()) for (const b of phrasesFortes) if (b.debut > g.debut) g.fin_affichage = Math.min(g.fin_affichage, b.debut);
   // ni quand une animation commence à afficher les mots suivants à sa place (ex. le nom de la présentation, posé sur la ligne des sous-titres)

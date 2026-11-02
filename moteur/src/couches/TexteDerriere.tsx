@@ -53,6 +53,47 @@ export const TexteDerriere: React.FC<{e: any; charte: any}> = ({e, charte}) => {
       </>
     );
   }
+  // entrée « roulette » (« 1 mois de salaire », vidéo mémoire) : chaque caractère défile de haut en bas comme
+  // le rouleau d'une machine à sous, ralentit et se pose ; les rouleaux partent l'un après l'autre (intervalle).
+  // Les caractères qui défilent sont des chiffres pour un chiffre, des lettres pour une lettre.
+  if (e.entree === 'roulette') {
+    const tours = e.tours ?? 7;
+    const dureeRoule = e.duree_roulette ?? 0.5;
+    const hLigne = taille * T.interligne;
+    const LETTRES = 'AZERTYUIOPQSDFGHJKLMWXCVBN';
+    let r = 0;
+    return (
+      <div style={{position: 'absolute', left: (e.x ?? W / 2) - W, width: 2 * W, top: (e.y ?? T.y) - hauteur / 2, textAlign: 'center', fontFamily: T.police, fontSize: taille,
+        lineHeight: T.interligne, letterSpacing: `${T.interlettrage_em}em`, color: e.couleur ?? T.couleur, opacity: (e.opacite ?? T.opacite) * (1 - sortie), whiteSpace: 'pre',
+        textShadow: ombre, filter: sortie > 0 ? `blur(${(sortie * 10).toFixed(1)}px)` : 'none'}}>
+        {lignes.map((ligne, li) => (
+          <div key={li}>
+            {ligne.split('').map((ch, ci) => {
+              if (ch === ' ') return <span key={ci}> </span>;
+              const n = r++;
+              const d = e.debut + n * (e.intervalle ?? 0.05);
+              const p = easeOut(prog(t, d, d + dureeRoule));
+              const vitesse = (easeOut(prog(t + 1 / fps, d, d + dureeRoule)) - p) * tours * fps; // caractères par seconde
+              const chiffre = /[0-9]/.test(ch);
+              const defile = Array.from({length: tours}, (_, k) => (chiffre ? String((Number(ch) + 3 + 7 * k + n) % 10) : LETTRES[(ch.charCodeAt(0) + 5 * k + 3 * n) % 26]));
+              // rouleau arrêté : seulement la lettre finale (sans fenêtre, l'ombre n'est plus coupée)
+              if (p >= 1) return <span key={ci} style={{display: 'inline-block', verticalAlign: 'top', height: hLigne}}>{ch}</span>;
+              return (
+                <span key={ci} style={{display: 'inline-block', position: 'relative', clipPath: 'inset(-6% -40% -6% -40%)', verticalAlign: 'top', height: hLigne}}>
+                  <span style={{visibility: 'hidden'}}>{ch}</span>
+                  <span style={{position: 'absolute', left: '50%', top: 0, display: 'flex', flexDirection: 'column', alignItems: 'center',
+                    transform: `translate(-50%, ${(-(1 - p) * tours * hLigne).toFixed(1)}px)`, opacity: Math.min(1, prog(t, d - 0.02, d + 0.08)),
+                    filter: vitesse > 3 ? `blur(${Math.min(9, vitesse / 9).toFixed(1)}px)` : 'none'}}>
+                    {[ch, ...defile].map((c, k) => <span key={k} style={{height: hLigne, display: 'block'}}>{c}</span>)}
+                  </span>
+                </span>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    );
+  }
   if (e.entree === 'rebond') {
     const r = spring({frame: (t - e.debut) * fps, fps, config: {damping: 9, stiffness: 190, mass: 0.8}});
     const net = easeOut(prog(t, e.debut, e.debut + 0.12));

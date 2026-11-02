@@ -1,46 +1,30 @@
 {
-  "_aide": "Podcast « 1 mois de salaire dans un mémoire » (studio de podcast LOCALISY, fond bleu). Style de la vidéo INCENDIE, comme « Maman » : seulement les sous-titres INCENDIE avec les mots importants en phrases fortes ; aucun autre texte. La vidéo reçue est un plan fixe avec quelques coupes (pas de zoom) et sans musique : musique originale ajoutée (style bossa), cadres fixes marqués comme la vidéo INCENDIE (pas de zoom qui bouge, demande de l'utilisateur), jeu de lumière après l'accroche (demande de l'utilisateur, mesurés sur Maman : cadrages serrés ×1,3 à ×1,5 en coupe franche entre deux phrases, petits zooms de ×1,1 en 0,5 s, lente avancée dans chaque plan, jamais de recul en pleine phrase). Un seul plan de coupe (prise de notes, sur « un mémoire à faire »), avec une nouvelle transition « rotation ».",
-  "duree": 29.08,
+  "_aide": "Podcast « 1 mois de salaire dans un mémoire » (Loïs, studio de podcast LOCALISY, fond bleu). v11, retours de l'utilisateur du 02/11/2026 : « Au final » coupé au début ; vraie pause avant « Même si je traînais une casserole derrière moi, ça m'a permis… » (le vidéaste avait collé les deux phrases) ; plus de dynamisme : quelques animations de la charte de Gary (1 MOIS derrière la tête, page sombre à flèche, chiffre, pastilles) en plus des sous-titres INCENDIE, des phrases fortes, des cadres fixes, de l'éclair, du riser fourni et du plan de coupe.",
+  "duree": 28.88,
   "fps": 25,
   "rush": {
-    "video": "rush/rush.mp4",
-    "mots": "mots.json"
+    "video": "rush/rush_v11.mp4",
+    "mots": "mots.json",
+    "_montage": "rush_v11.mp4 = rush.mp4 remonté, à l'image près (ffmpeg trim/atrim + concat) : image 17 répétée 4 fois pendant « J'ai » (le vidéaste coupe à 0,68 s, juste après « Au final, j'ai ») + images 17 à 570 (son 0,52 → 22,84 s, « Au final, » enlevé) + image 571 répétée 8 fois sur 0,32 s de silence (pause avant « Même si », au début du plan suivant) + images 571 à la fin. Temps : nouveau = ancien − 0,52 avant 22,84 s, ancien − 0,20 ensuite. mots.json recalé ainsi, ponctuation : « d'études. Même si je traînais une casserole derrière moi, ça m'a permis… »."
   },
   "musique": {
     "actif": true,
     "fichier": "media/musique_bossa.wav",
-    "_note": "Musique originale, style bossa (bossa nova douce, guitare nylon, contrebasse, Do majeur jazzy, 124 BPM) : outils/musique_douce.py media/musique_bossa.wav --duree 29.08 --debut 0 --style bossa. 6e style, différent de Gary (lofi), Cheminées (acoustique), Black and Bike (electro), DS Cleaning (marimba) et TS (piano) ; Maman avait déjà sa musique."
+    "_note": "Musique originale, style bossa (celle de la v10) : outils/musique_douce.py media/musique_bossa.wav --duree 28.88 --debut 0 --style bossa."
   },
   "sous_titres": {
     "mode": "premiere_video",
     "phrases_fortes": [
       {
-        "debut": 1.22,
+        "debut": 1.24,
+        "fin": 2.65,
         "lignes": [
-          [
-            {
-              "mot": "un mois",
-              "role": "fort"
-            }
-          ],
-          [
-            {
-              "mot": "de salaire",
-              "role": "appui"
-            }
-          ],
           [
             {
               "mot": "pour un mémoire",
               "role": "liaison"
             }
-          ]
-        ]
-      },
-      {
-        "debut": 2.32,
-        "fin": 3.17,
-        "lignes": [
+          ],
           [
             {
               "mot": "que j'écrivais",
@@ -54,10 +38,10 @@
             }
           ]
         ],
-        "_note": "Chute de l'accroche mise en évidence (demande de l'utilisateur). Reste nette jusqu'après l'éclair (s'efface de 3,05 à 3,17 s). « Il y a quelque » s'affiche ensuite (3,17–3,50, demande de l'utilisateur), puis « chose que peu de » avec 0,14 s de retard."
+        "_note": "Chute de l'accroche (« que j'écrivais / pas. » demandé par l'utilisateur), reste pendant l'éclair de 2,40 s ; « Il y a quelque » s'affiche ensuite (au moins 0,33 s)."
       },
       {
-        "debut": 5.6,
+        "debut": 5.08,
         "lignes": [
           [
             {
@@ -74,7 +58,7 @@
         ]
       },
       {
-        "debut": 11.92,
+        "debut": 11.4,
         "lignes": [
           [
             {
@@ -97,11 +81,11 @@
         ]
       },
       {
-        "debut": 18.92,
+        "debut": 18.18,
         "lignes": [
           [
             {
-              "mot": "pas spécialement",
+              "mot": "on n'a pas spécialement",
               "role": "liaison"
             }
           ],
@@ -111,33 +95,35 @@
               "role": "fort"
             }
           ]
-        ]
+        ],
+        "_note": "Commence à « on n'a » (sinon « on n'a » ne restait que 0,22 s en sous-titre)."
       },
       {
-        "debut": 23.6,
+        "debut": 22.74,
         "lignes": [
           [
             {
-              "mot": "une",
+              "mot": "Même si je traînais",
               "role": "liaison"
             }
           ],
           [
             {
-              "mot": "casserole",
+              "mot": "une casserole",
               "role": "fort"
             }
           ],
           [
             {
-              "mot": "derrière moi.",
+              "mot": "derrière moi,",
               "role": "appui"
             }
           ]
-        ]
+        ],
+        "_note": "Début de phrase marqué (retour de l'utilisateur) : pause, nouveau cadre et « Même si » en tête du bloc ; « ça m'a permis » suit en minuscule."
       },
       {
-        "debut": 28.08,
+        "debut": 27.88,
         "lignes": [
           [
             {
@@ -161,41 +147,42 @@
       0.245
     ],
     "coupes": [
-      2.92,
-      6.16,
-      8.24,
-      9.48,
-      11.84,
-      12.88,
-      16.72,
-      18.7,
-      20.32,
-      22.84,
-      24.12,
-      25.84,
-      27.2
+      2.4,
+      5.64,
+      7.72,
+      8.96,
+      11.32,
+      12.36,
+      16.2,
+      18.18,
+      19.8,
+      22.32,
+      23.92,
+      25.64,
+      27.0
     ],
     "cadrages": [
+      1.0,
       1.4,
+      1.0,
+      1.2,
       1.0,
       1.4,
       1.0,
       1.2,
       1.4,
       1.0,
-      1.2,
       1.4,
-      1.0,
-      1.4,
-      1.0,
       1.2,
+      1.0,
       1.4
     ],
     "decalages_x": [
       0
     ],
     "avancee": 0,
-    "_cadrages": "Rythme de la vidéo INCENDIE (mesurée plan par plan : plans sur la tête de 1 à 2,3 s, jamais moins d'1 s sauf une fois, deux tailles surtout, large ~1,0 et serré ~1,6, parfois 1,22). Demandes de l'utilisateur : un seul cadre pendant toute l'accroche, et moins brusque que la v8 (25 changements, beaucoup de plans de moins d'1 s). Ici : 13 changements, plans de 1 à 3,2 s, cadres fixes large 1,0 / moyen 1,2 / serré 1,4. Les changements tombent sur les coupes du vidéaste les plus visibles (2,92 ; 6,16 ; 12,88 ; 22,84 ; 24,12 ; 27,20 et 8,24 ; 9,48 ; 11,84 ; 16,72 ; 20,32) ou entre deux mots loin de toute coupe (18,70 ; 25,84) ; les petites coupes restantes (0,68 ; 3,76 ; 5,40 ; 7,36 ; 10,92 ; 12,40 ; 17,56 ; 21,76 ; 24,68 ; 28,08) restent comme le vidéaste les a faites. Plans : 0.0 s ×1.4 « Au final, j'ai dépensé un mois de salaire pour un mémoire que j'écrivais pas. (accroche : un seul cadre) » | 2.92 s ×1.0 « Il y a quelque chose que peu de gens savent, c'est que j'ai eu mon diplôme (éclair à la coupe) » | 6.16 s ×1.4 « deux ans après avoir commencé à travailler. » | 8.24 s ×1.0 « Pour resituer l'histoire, » | 9.48 s ×1.2 « je fais mon stage de fin d'études, on me propose un job, » | 11.84 s ×1.4 « je dis oui tout de suite. » | 12.88 s ×1.0 « Sauf que dans l'intervalle, pendant le stage, j'avais… (plan de coupe 15,32–16,72) » | 16.72 s ×1.2 « Quand on a travaillé huit ou neuf heures sur la journée, » | 18.7 s ×1.4 « on n'a pas spécialement envie de » | 20.32 s ×1.0 « se remettre à son bureau pour écrire un mémoire de fin d'études, » | 22.84 s ×1.4 « même si je traînais une casserole » | 24.12 s ×1.0 « derrière moi. Ça m'a permis de me développer » | 25.84 s ×1.2 « dans le travail et dans l'entreprise. » | 27.2 s ×1.4 « À refaire, je referais exactement la même chose »"
+    "masques": "masques",
+    "_cadrages": "Cadres FIXES au rythme de la vidéo INCENDIE (13 changements en 29 s, plans sur la tête de 1 à 3,8 s). Accroche en plan large ×1,0 (un seul cadre) pour laisser la place à « 1 MOIS » au-dessus de la tête. Plans : 0 ×1,0 accroche | 2,40 ×1,4 éclair « Il y a quelque chose que peu de gens savent » | 5,64 ×1,0 | 7,72 ×1,2 « Pour resituer l'histoire » | 8,96 page sombre à flèche | 11,32 ×1,4 « je dis oui tout de suite » | 12,36 ×1,0 (plan de coupe 14,80–16,20) | 16,20 ×1,2 chiffre 9 h | 18,18 ×1,4 « pas spécialement envie » | 19,80 ×1,0 | 22,32 ×1,4 pause puis « Même si je traînais » | 23,92 ×1,2 | 25,64 ×1,0 pastilles | 27,00 ×1,4 « À refaire »."
   },
   "ambiance": {
     "grain": 0,
@@ -204,26 +191,83 @@
   },
   "effets": [
     {
+      "type": "texte_derriere",
+      "debut": 0.62,
+      "fin": 2.1,
+      "texte": "1 MOIS",
+      "taille": 270,
+      "y": 203,
+      "x": 540,
+      "couleur": "#FFFFFF",
+      "ombre": true,
+      "entree": "roulette",
+      "intervalle": 0.04,
+      "son": false,
+      "remplace_temps": [
+        [
+          0.6,
+          0.88
+        ]
+      ],
+      "_note": "« 1 MOIS » derrière la tête pendant « un mois de salaire » (nouvelle entrée « roulette » : chaque lettre défile comme un rouleau de machine à sous). Blanc avec ombre sur le fond bleu. « de salaire » reste en sous-titre.",
+      "duree_roulette": 0.35,
+      "tours": 6
+    },
+    {
       "type": "transition",
       "style": "lumiere_blanche",
-      "debut": 2.92,
+      "debut": 2.4,
       "duree": 1.0,
       "son": false,
-      "_note": "Éclair blanc après l'accroche, sur la coupe de 2,92 s (demande de l'utilisateur : d'abord un jeu de lumière pour le suspense à la place du riser, puis « je n'aime pas que l'image s'assombrisse, laisse juste l'éclair » : ni assombrissement ni rai de lumière). Le plan suivant arrive surexposé et légèrement flou, puis se pose. Sans son, sans zoom.",
+      "_note": "Éclair blanc après l'accroche, sur la coupe du vidéaste (2,40 s), sans assombrissement ni rai (demande de l'utilisateur).",
       "assombrir": false,
       "rai": false
     },
     {
       "type": "son",
       "nom": "riser_impact",
-      "debut": 2.92,
-      "_note": "Riser + impact fourni par l'utilisateur pour cette vidéo de Loïs (remplace le riser B de Gary) : il monte pendant toute l'accroche et son impact tombe pile sur l'éclair blanc de 2,92 s (sommet du fichier à 2,653 s, donc départ à 0,27 s). Volume : même sonie maximale que le riser B qu'il remplace (charte 0,183, égalisé sur riser_court ; ×1,26 comme le B).",
+      "debut": 2.4,
+      "_note": "Riser + impact fourni (riser_impact) : l'impact (2,653 s dans le fichier) tombe pile sur l'éclair de 2,40 s ; le riser démarre 0,25 s avant l'image (son début, presque silencieux, est coupé). ×1,26.",
       "facteur": 1.26
+    },
+    {
+      "type": "page",
+      "debut": 8.96,
+      "fin": 11.32,
+      "fond": "sombre",
+      "code_barres": false,
+      "son_entree": "transition_base",
+      "elements": [
+        {
+          "type": "etiquette",
+          "texte": "Je fais mon",
+          "temps": 9.02
+        },
+        {
+          "type": "grand",
+          "texte": "stage de fin d'études",
+          "taille": 112,
+          "largeur": 1000
+        },
+        {
+          "type": "fleche"
+        },
+        {
+          "type": "petit",
+          "texte": "on me propose"
+        },
+        {
+          "type": "grand",
+          "texte": "un job",
+          "taille": 176
+        }
+      ],
+      "_note": "Page sombre à flèche (adorée par l'utilisateur, une fois par vidéo) : « Je fais mon stage de fin d'études ↓ on me propose un job », entre deux coupes du vidéaste (8,96 et 11,32 s) ; « je dis oui tout de suite » revient sur Loïs en phrase forte."
     },
     {
       "type": "transition",
       "style": "rotation",
-      "debut": 15.32,
+      "debut": 14.8,
       "duree": 0.5,
       "son_entree": "swoosh_universfield",
       "_note": "Nouvelle transition (pour changer du zoom flou de Maman) : rotation floue dans le sens des aiguilles d'une montre, sur « ce qu'on appelle un mémoire ».",
@@ -231,12 +275,51 @@
     },
     {
       "type": "plan_de_coupe",
-      "debut": 15.32,
-      "fin": 16.72,
+      "debut": 14.8,
+      "fin": 16.2,
       "fichier": "media/memoire.mp4",
       "debut_clip": 0,
       "son": false,
       "_source": "Clip fourni (4769550, prise de notes à côté d'un livre), passage 9,0–10,8 s recadré sur la main qui écrit : le texte du livre reste flou (illisible). Seul plan de coupe de la vidéo (demande de l'utilisateur : point 4 uniquement). Sur « ce qu'on appelle un mémoire à faire », jusqu'à la coupe du vidéaste de 16,72 s."
+    },
+    {
+      "type": "chiffre",
+      "debut": 17.04,
+      "fin": 18.14,
+      "valeur": 9,
+      "de": 0,
+      "suffixe": " h",
+      "legende": "de travail\nsur la journée",
+      "remplace_temps": [
+        [
+          17.04,
+          18.16
+        ]
+      ],
+      "_note": "Chiffre de Gary : les heures défilent jusqu'à 9 h sur « huit ou neuf heures sur la journée » (il dit huit ou neuf : 9 est l'un des deux). En noir et décalé à gauche (x 440) : blanc, il se lisait mal sur le pull blanc, et il touchait le micro.",
+      "couleur": "#000000",
+      "x": 440
+    },
+    {
+      "type": "liste",
+      "debut": 25.6,
+      "fin": 26.98,
+      "items": [
+        "Dans le travail",
+        "Dans l'entreprise"
+      ],
+      "temps": [
+        25.64,
+        26.24
+      ],
+      "numeros": false,
+      "remplace_temps": [
+        [
+          25.62,
+          26.9
+        ]
+      ],
+      "_note": "Pastilles de Gary sans numéro sur « ça m'a permis de me développer dans le travail et dans l'entreprise »."
     }
   ]
 }
