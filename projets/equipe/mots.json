@@ -1,417 +1,417 @@
 [
  {
   "mot": "Salut,",
-  "debut": 0.42,
-  "fin": 0.68
+  "debut": 0.12,
+  "fin": 0.38
  },
  {
   "mot": "nous",
-  "debut": 0.74,
-  "fin": 0.82
+  "debut": 0.44,
+  "fin": 0.52
  },
  {
   "mot": "c'est",
-  "debut": 0.84,
-  "fin": 0.92
+  "debut": 0.54,
+  "fin": 0.62
  },
  {
   "mot": "l'équipe",
-  "debut": 0.94,
-  "fin": 1.16
+  "debut": 0.64,
+  "fin": 0.86
  },
  {
   "mot": "de",
-  "debut": 1.2,
-  "fin": 1.26
+  "debut": 0.9,
+  "fin": 0.96
  },
  {
   "mot": "LOCALISY.",
-  "debut": 1.28,
-  "fin": 1.8
+  "debut": 0.98,
+  "fin": 1.5
  },
  {
   "mot": "Et",
-  "debut": 2.18,
-  "fin": 2.22
+  "debut": 1.713,
+  "fin": 1.753
  },
  {
   "mot": "on",
-  "debut": 2.26,
-  "fin": 2.32
+  "debut": 1.793,
+  "fin": 1.853
  },
  {
   "mot": "a",
-  "debut": 2.36,
-  "fin": 2.46
+  "debut": 1.893,
+  "fin": 1.993
  },
  {
   "mot": "besoin",
-  "debut": 2.5,
-  "fin": 2.76
+  "debut": 2.033,
+  "fin": 2.293
  },
  {
   "mot": "de",
-  "debut": 2.8,
-  "fin": 2.86
+  "debut": 2.333,
+  "fin": 2.393
  },
  {
   "mot": "toi.",
-  "debut": 2.94,
-  "fin": 3.1
+  "debut": 2.473,
+  "fin": 2.633
  },
  {
   "mot": "Pour",
-  "debut": 3.52,
-  "fin": 3.62
+  "debut": 2.787,
+  "fin": 2.887
  },
  {
   "mot": "nos",
-  "debut": 3.66,
-  "fin": 3.76
+  "debut": 2.927,
+  "fin": 3.027
  },
  {
   "mot": "clients,",
-  "debut": 3.78,
-  "fin": 4.08
+  "debut": 3.047,
+  "fin": 3.347
  },
  {
   "mot": "on",
-  "debut": 4.22,
-  "fin": 4.28
+  "debut": 3.487,
+  "fin": 3.547
  },
  {
   "mot": "tourne",
-  "debut": 4.36,
-  "fin": 4.56
+  "debut": 3.627,
+  "fin": 3.827
  },
  {
   "mot": "des",
-  "debut": 4.6,
-  "fin": 4.68
+  "debut": 3.867,
+  "fin": 3.947
  },
  {
   "mot": "micro-trottoirs",
-  "debut": 4.72,
-  "fin": 5.3
+  "debut": 3.987,
+  "fin": 4.567
  },
  {
   "mot": "dans",
-  "debut": 5.34,
-  "fin": 5.42
+  "debut": 4.607,
+  "fin": 4.687
  },
  {
   "mot": "les",
-  "debut": 5.44,
-  "fin": 5.52
+  "debut": 4.707,
+  "fin": 4.787
  },
  {
   "mot": "rues",
-  "debut": 5.56,
-  "fin": 5.64
+  "debut": 4.827,
+  "fin": 4.907
  },
  {
   "mot": "de",
-  "debut": 5.66,
-  "fin": 5.74
+  "debut": 4.927,
+  "fin": 5.007
  },
  {
   "mot": "Liège",
-  "debut": 5.78,
-  "fin": 6.08
+  "debut": 5.047,
+  "fin": 5.347
  },
  {
   "mot": "et",
-  "debut": 6.38,
-  "fin": 6.44
+  "debut": 5.48,
+  "fin": 5.54
  },
  {
   "mot": "on",
-  "debut": 6.46,
-  "fin": 6.56
+  "debut": 5.56,
+  "fin": 5.66
  },
  {
   "mot": "cherche",
-  "debut": 6.6,
-  "fin": 6.78
+  "debut": 5.7,
+  "fin": 5.88
  },
  {
   "mot": "de",
-  "debut": 6.82,
-  "fin": 6.88
+  "debut": 5.92,
+  "fin": 5.98
  },
  {
   "mot": "nouvelles",
-  "debut": 6.92,
-  "fin": 7.2
+  "debut": 6.02,
+  "fin": 6.3
  },
  {
   "mot": "têtes",
-  "debut": 7.26,
-  "fin": 7.5
+  "debut": 6.36,
+  "fin": 6.6
  },
  {
   "mot": "pour",
-  "debut": 7.54,
-  "fin": 7.64
+  "debut": 6.64,
+  "fin": 6.74
  },
  {
   "mot": "tendre",
-  "debut": 7.7,
-  "fin": 7.92
+  "debut": 6.8,
+  "fin": 7.02
  },
  {
   "mot": "le",
-  "debut": 7.98,
-  "fin": 8.039
+  "debut": 7.08,
+  "fin": 7.139
  },
  {
   "mot": "micro",
-  "debut": 8.06,
-  "fin": 8.32
+  "debut": 7.16,
+  "fin": 7.42
  },
  {
   "mot": "aux",
-  "debut": 8.34,
-  "fin": 8.4
+  "debut": 7.44,
+  "fin": 7.5
  },
  {
   "mot": "passants.",
-  "debut": 8.44,
-  "fin": 8.98
+  "debut": 7.54,
+  "fin": 8.08
  },
  {
   "mot": "Alors,",
-  "debut": 9.06,
-  "fin": 9.38
+  "debut": 8.16,
+  "fin": 8.48
  },
  {
   "mot": "est-ce",
-  "debut": 9.7,
-  "fin": 9.8
+  "debut": 8.6,
+  "fin": 8.7
  },
  {
   "mot": "que",
-  "debut": 9.82,
-  "fin": 9.9
+  "debut": 8.72,
+  "fin": 8.8
  },
  {
   "mot": "c'est",
-  "debut": 9.94,
-  "fin": 10.04
+  "debut": 8.84,
+  "fin": 8.94
  },
  {
   "mot": "pour",
-  "debut": 10.08,
-  "fin": 10.16
+  "debut": 8.98,
+  "fin": 9.06
  },
  {
   "mot": "toi ?",
-  "debut": 10.22,
-  "fin": 10.32
+  "debut": 9.12,
+  "fin": 9.22
  },
  {
   "mot": "T'as",
-  "debut": 10.88,
-  "fin": 10.96
+  "debut": 9.447,
+  "fin": 9.527
  },
  {
   "mot": "dix-huit",
-  "debut": 10.98,
-  "fin": 11.24
+  "debut": 9.547,
+  "fin": 9.807
  },
  {
   "mot": "ans",
-  "debut": 11.28,
-  "fin": 11.36
+  "debut": 9.847,
+  "fin": 9.927
  },
  {
   "mot": "ou",
-  "debut": 11.38,
-  "fin": 11.42
+  "debut": 9.947,
+  "fin": 9.987
  },
  {
   "mot": "plus ?",
-  "debut": 11.5,
-  "fin": 11.72
+  "debut": 10.067,
+  "fin": 10.287
  },
  {
   "mot": "Tu",
-  "debut": 12.08,
-  "fin": 12.16
+  "debut": 10.447,
+  "fin": 10.527
  },
  {
   "mot": "souris",
-  "debut": 12.2,
-  "fin": 12.4
+  "debut": 10.567,
+  "fin": 10.767
  },
  {
   "mot": "comme",
-  "debut": 12.44,
-  "fin": 12.56
+  "debut": 10.807,
+  "fin": 10.927
  },
  {
   "mot": "ça",
-  "debut": 12.6,
-  "fin": 12.68
+  "debut": 10.967,
+  "fin": 11.047
  },
  {
   "mot": "sans",
-  "debut": 12.72,
-  "fin": 12.84
+  "debut": 11.087,
+  "fin": 11.207
  },
  {
   "mot": "forcer ?",
-  "debut": 12.86,
-  "fin": 13.12
+  "debut": 11.227,
+  "fin": 11.487
  },
  {
   "mot": "Est-ce",
-  "debut": 13.92,
-  "fin": 14.04
+  "debut": 11.753,
+  "fin": 11.873
  },
  {
   "mot": "que",
-  "debut": 14.06,
-  "fin": 14.12
+  "debut": 11.893,
+  "fin": 11.953
  },
  {
   "mot": "tu",
-  "debut": 14.16,
-  "fin": 14.18
+  "debut": 11.993,
+  "fin": 12.013
  },
  {
   "mot": "es",
-  "debut": 14.2,
-  "fin": 14.26
+  "debut": 12.033,
+  "fin": 12.093
  },
  {
   "mot": "à",
-  "debut": 14.28,
-  "fin": 14.32
+  "debut": 12.113,
+  "fin": 12.153
  },
  {
   "mot": "l'aise",
-  "debut": 14.34,
-  "fin": 14.5
+  "debut": 12.173,
+  "fin": 12.333
  },
  {
   "mot": "devant",
-  "debut": 14.52,
-  "fin": 14.68
+  "debut": 12.353,
+  "fin": 12.513
  },
  {
   "mot": "la",
-  "debut": 14.72,
-  "fin": 14.78
+  "debut": 12.553,
+  "fin": 12.613
  },
  {
   "mot": "caméra ?",
-  "debut": 14.82,
-  "fin": 15.14
+  "debut": 12.653,
+  "fin": 12.973
  },
  {
   "mot": "Alors,",
-  "debut": 15.78,
-  "fin": 15.98
+  "debut": 13.313,
+  "fin": 13.513
  },
  {
   "mot": "on",
-  "debut": 16.02,
-  "fin": 16.1
+  "debut": 13.553,
+  "fin": 13.633
  },
  {
   "mot": "veut",
-  "debut": 16.14,
-  "fin": 16.219
+  "debut": 13.673,
+  "fin": 13.752
  },
  {
   "mot": "te",
-  "debut": 16.239,
-  "fin": 16.28
+  "debut": 13.772,
+  "fin": 13.813
  },
  {
   "mot": "rencontrer.",
-  "debut": 16.3,
-  "fin": 16.82
+  "debut": 13.833,
+  "fin": 14.353
  },
  {
   "mot": "Intéressé ?",
-  "debut": 17.06,
-  "fin": 17.54
+  "debut": 14.46,
+  "fin": 14.94
  },
  {
   "mot": "Alors",
-  "debut": 17.72,
-  "fin": 17.88
+  "debut": 15.12,
+  "fin": 15.28
  },
  {
   "mot": "envoie-nous",
-  "debut": 17.9,
-  "fin": 18.22
+  "debut": 15.3,
+  "fin": 15.62
  },
  {
   "mot": "un",
-  "debut": 18.24,
-  "fin": 18.3
+  "debut": 15.64,
+  "fin": 15.7
  },
  {
   "mot": "DM.",
-  "debut": 18.34,
-  "fin": 18.58
+  "debut": 15.74,
+  "fin": 15.98
  },
  {
   "mot": "Attendez,",
-  "debut": 18.82,
-  "fin": 19.24
+  "debut": 16.087,
+  "fin": 16.507
  },
  {
   "mot": "attendez,",
-  "debut": 19.24,
-  "fin": 19.4
+  "debut": 16.507,
+  "fin": 16.667
  },
  {
   "mot": "attendez,",
-  "debut": 19.44,
-  "fin": 19.72
+  "debut": 16.707,
+  "fin": 16.987
  },
  {
   "mot": "attendez.",
-  "debut": 19.78,
-  "fin": 20.1
+  "debut": 17.047,
+  "fin": 17.367
  },
  {
   "mot": "Les",
-  "debut": 20.36,
-  "fin": 20.42
+  "debut": 17.46,
+  "fin": 17.52
  },
  {
   "mot": "gars,",
-  "debut": 20.46,
-  "fin": 20.58
+  "debut": 17.56,
+  "fin": 17.68
  },
  {
   "mot": "c'est",
-  "debut": 20.64,
-  "fin": 20.7
+  "debut": 17.74,
+  "fin": 17.8
  },
  {
   "mot": "ouvert",
-  "debut": 20.74,
-  "fin": 20.92
+  "debut": 17.84,
+  "fin": 18.02
  },
  {
   "mot": "pour",
-  "debut": 20.96,
-  "fin": 21.1
+  "debut": 18.06,
+  "fin": 18.2
  },
  {
   "mot": "vous",
-  "debut": 21.12,
-  "fin": 21.22
+  "debut": 18.22,
+  "fin": 18.32
  },
  {
   "mot": "aussi",
-  "debut": 21.24,
-  "fin": 21.44
+  "debut": 18.34,
+  "fin": 18.54
  }
 ]
