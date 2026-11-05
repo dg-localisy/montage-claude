@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr-BE">
+<head>
+<meta charset="utf-8">
+<title>SOCO · Visuel 02 · L'occasion, sans le hasard</title>
+<link rel="stylesheet" href="../assets/css/polices.css">
+<link rel="stylesheet" href="../assets/css/soco.css">
+<style>
+  body { background: #0b0f12; }
+  /* photo remontée de 250 px : le sol sombre se prolonge en aplat sous la voiture */
+  .photo {
+    background-image: url("../assets/photos/v2_station_lavage.jpg");
+    top: -250px; bottom: 250px;
+    filter: contrast(1.04) saturate(.95);
+  }
+  .voile-haut { background: linear-gradient(180deg, rgba(8,11,14,.55) 0%, rgba(8,11,14,0) 18%); }
+  .voile-bas  { background: linear-gradient(0deg, #0b0f12 0%, #0b0f12 30%, rgba(11,15,18,.82) 41%, rgba(11,15,18,0) 56%); }
+
+  .bloc { position: absolute; left: var(--marge); right: var(--marge); bottom: var(--marge-bas); }
+  .titre { font-size: 104px; margin-top: 24px; }
+  .chiffres { margin-top: 46px; padding: 36px 0 0; border-top: 1.5px solid rgba(255,255,255,.2); }
+  .action { display: flex; align-items: center; justify-content: space-between; margin-top: 46px; }
+  .mention { margin-top: 22px; }
+</style>
+</head>
+<body>
+<div class="visuel">
+  <div class="photo"></div>
+  <div class="voile voile-haut"></div>
+  <div class="voile voile-bas"></div>
+  <div class="grain"></div>
+
+  <div class="logo-attente">LOGO SOCO</div>
+
+  <div class="bloc">
+    <div class="surtitre">Occasions reconditionnées</div>
+    <h1 class="titre">L’occasion,<br>sans le hasard.</h1>
+
+    <div class="chiffres">
+      <div class="chiffre">
+        <div class="nombre">100<small>+</small></div>
+        <div class="legende">points de contrôle<br>par véhicule</div>
+      </div>
+      <div class="chiffre">
+        <div class="nombre">15<small>&nbsp;jours</small></div>
+        <div class="legende">de préparation<br>en moyenne</div>
+      </div>
+      <div class="chiffre">
+        <div class="nombre">7<small>&nbsp;ans</small></div>
+        <div class="legende">de garantie<br>maximum*</div>
+      </div>
+    </div>
+
+    <div class="action">
+      <span class="cta">Découvrir le stock
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+      <span class="url">soco.be</span>
+    </div>
+    <p class="mention">*Extension de garantie selon conditions, hors véhicules utilitaires.</p>
+  </div>
+</div>
+</body>
+</html>

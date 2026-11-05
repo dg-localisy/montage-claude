@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr-BE">
+<head>
+<meta charset="utf-8">
+<title>SOCO · Visuel 03 · Votre prochaine voiture est déjà en stock</title>
+<link rel="stylesheet" href="../assets/css/polices.css">
+<link rel="stylesheet" href="../assets/css/soco.css">
+<style>
+  .photo { background-image: url("../assets/photos/v3_berline_coucher_soleil.jpg"); filter: contrast(1.03); }
+  .voile-haut { background: linear-gradient(180deg, rgba(10,12,18,.62) 0%, rgba(10,12,18,.28) 24%, rgba(10,12,18,0) 38%); }
+  .voile-bas  { background: linear-gradient(0deg, rgba(9,9,11,.95) 0%, rgba(9,9,11,.8) 16%, rgba(9,9,11,.25) 30%, rgba(9,9,11,0) 38%); }
+
+  .haut { position: absolute; left: var(--marge); right: var(--marge); top: 160px; }
+  .titre { font-size: 94px; margin-top: 24px; }
+
+  .bas { position: absolute; left: var(--marge); right: var(--marge); bottom: var(--marge-bas); }
+  .ligne { display: flex; align-items: flex-end; justify-content: space-between; }
+  .chiffres { grid-auto-columns: auto; }
+  .chiffre { padding: 0 36px; }
+  .chiffre:first-child { padding-left: 0; }
+  .action { display: flex; align-items: center; justify-content: space-between; margin-top: 40px; }
+</style>
+</head>
+<body>
+<div class="visuel">
+  <div class="photo"></div>
+  <div class="voile voile-haut"></div>
+  <div class="voile voile-bas"></div>
+  <div class="grain"></div>
+
+  <div class="logo-attente">LOGO SOCO</div>
+
+  <div class="haut">
+    <div class="surtitre">Avant la fin de l’année</div>
+    <h1 class="titre">Votre prochaine<br>voiture est déjà<br>en stock.</h1>
+  </div>
+
+  <div class="bas">
+    <div class="chiffres">
+      <div class="chiffre">
+        <div class="nombre">1&#8239;000<small>+</small></div>
+        <div class="legende">véhicules en stock</div>
+      </div>
+      <div class="chiffre">
+        <div class="nombre">30<small>+</small></div>
+        <div class="legende">marques</div>
+      </div>
+    </div>
+    <div class="action">
+      <span class="cta">Voir les véhicules disponibles
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+      <span class="url">soco.be</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr-BE">
+<head>
+<meta charset="utf-8">
+<title>SOCO · Visuel 04 · Estimée, rachetée, payée</title>
+<link rel="stylesheet" href="../assets/css/polices.css">
+<link rel="stylesheet" href="../assets/css/soco.css">
+<style>
+  /* Haut : bandeau photo 1080 x 1010. Bas : aplat sombre avec les 3 étapes. */
+  .photo {
+    background-image: url("../assets/photos/v4_proprietaire_cle.jpg");
+    bottom: auto; height: 1010px;
+    filter: saturate(.92) contrast(1.02);
+  }
+  .voile-gauche { height: 1010px; background: linear-gradient(90deg, rgba(246,242,235,.82) 0%, rgba(246,242,235,.5) 28%, rgba(246,242,235,0) 48%); }
+  .voile-photo-bas { top: 770px; height: 240px; background: linear-gradient(180deg, rgba(14,15,18,0) 0%, rgba(14,15,18,.35) 100%); }
+
+  .haut { position: absolute; left: var(--marge); top: 150px; color: var(--soco-fonce); }
+  .haut .surtitre::before { background: var(--soco-fonce); }
+  .titre { font-size: 96px; margin-top: 24px; }
+
+  .pied {
+    position: absolute; left: 0; right: 0; top: 1010px; bottom: 0;
+    background: var(--soco-fonce);
+    padding: 50px var(--marge) var(--marge-bas);
+  }
+  .etapes { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; }
+  .etape { display: flex; align-items: center; gap: 16px; }
+  .etape .num {
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1.5px solid var(--soco-accent); color: var(--soco-accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700;
+  }
+  .etape .txt { font-size: 24px; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+  .action { display: flex; align-items: center; justify-content: space-between; margin-top: 40px; }
+  .mention { margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="visuel">
+  <div class="photo"></div>
+  <div class="voile voile-gauche"></div>
+  <div class="voile voile-photo-bas"></div>
+  <div class="grain"></div>
+
+  <div class="logo-attente" style="color: var(--soco-fonce)">LOGO SOCO</div>
+
+  <div class="haut">
+    <div class="surtitre">Vendre votre voiture</div>
+    <h1 class="titre">Estimée.<br>Rachetée.<br>Payée.</h1>
+  </div>
+
+  <div class="pied">
+    <div class="etapes">
+      <div class="etape"><div class="num">1</div><div class="txt">Estimation<br>gratuite</div></div>
+      <div class="etape"><div class="num">2</div><div class="txt">Offre sans<br>engagement</div></div>
+      <div class="etape"><div class="num">3</div><div class="txt">Paiement<br>rapide</div></div>
+    </div>
+    <div class="action">
+      <span class="cta">Faire estimer ma voiture
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+      <span class="url">soco.be</span>
+    </div>
+    <p class="mention">Sans obligation d’achat chez SOCO pour les véhicules de moins de 7&nbsp;ans et de moins de 90&#8239;000&nbsp;km. Conditions sur soco.be.</p>
+  </div>
+</div>
+</body>
+</html>
