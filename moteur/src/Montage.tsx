@@ -19,6 +19,7 @@ import {Sons} from './couches/Sons';
 import {SousTitres} from './couches/SousTitres';
 import {TexteDerriere} from './couches/TexteDerriere';
 import {CourbeDerriere} from './couches/CourbeDerriere';
+import {BoutonDM, Epingle, Etincelles, PlaceLibre, Viseur} from './couches/Fun';
 import {usePolices} from './polices';
 import {fondu} from './temps';
 
@@ -55,6 +56,11 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
       {zf && zf.eclat > 0.005 && <AbsoluteFill style={{background: '#fff', opacity: zf.eclat}} />}
       {voile > 0 && <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0) 100%)', opacity: voile}} />}
       {libres.map((e: any) => <Icone key={e.id} e={e} charte={charte} />)}
+      {de('place_libre').map((e: any) => <PlaceLibre key={e.id} e={e} />)}
+      {de('etincelles').map((e: any) => <Etincelles key={e.id} e={e} />)}
+      {de('viseur').map((e: any) => <Viseur key={e.id} e={e} />)}
+      {de('bouton_dm').map((e: any) => <BoutonDM key={e.id} e={e} />)}
+      {de('epingle').map((e: any) => <Epingle key={e.id} e={e} />)}
       {de('carte_verre').map((e: any) => <CarteVerre key={e.id} e={e} charte={charte} />)}
       {de('liste').map((e: any) => <Liste key={e.id} e={e} charte={charte} />)}
       {de('chiffre').map((e: any) => <Chiffre key={e.id} e={e} charte={charte} />)}

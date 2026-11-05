@@ -368,7 +368,7 @@ function sonsPour(e, M) {
       ...Array.from({length: Math.floor(e.question.length / 3)}, (_, i) => s('frappe', t.frappe + (3 * i) / t.vitesse, i % 2 ? 0.6 : 0.9)),
       s('clic', t.envoi - 0.04)];
     // l'accroche principale monte avec un riser qui s'arrête net quand le chiffre tombe (« ×3 »), puis un coup sourd
-    case 'texte_derriere': return e.riser ? [s(typeof e.riser === 'string' ? e.riser : 'riser', e.debut - (e.riser_duree ?? M.sons.riser_duree_s)), s('chute', e.debut)] : [e.entree === 'montee' ? s('woutch_grave', e.debut) : s('impact_doux', e.debut)];
+    case 'texte_derriere': return e.riser ? [s(typeof e.riser === 'string' ? e.riser : 'riser', e.debut - (e.riser_duree ?? M.sons.riser_duree_s)), s('chute', e.debut)] : [e.entree === 'montee' ? s('woutch_grave', e.debut) : e.entree === 'chute' ? s('woutch', e.debut, 0.8) : s('impact_doux', e.debut)];
     case 'carte_verre': return [s('woutch_grave', e.debut - 0.05), ...t.items.map((c) => s('tap', c, 0.8))];
     // courbe derrière la tête : le riser accompagne le tracé et s'arrête net quand le résultat (« ×2 ») surgit, puis coup sourd
     case 'courbe_derriere': return e.riser ? [s(typeof e.riser === 'string' ? e.riser : 'riser', e.cle - (e.riser_duree ?? M.sons.riser_duree_s)), s('chute', e.cle)] : [s('impact_doux', e.cle)];
@@ -389,6 +389,13 @@ function sonsPour(e, M) {
     case 'ticket': return [entree('woutch_grave', 0.05), ...t.lignes.filter((l) => l.type !== 'tirets').map((l) => s('tap', l.debut, 0.5))];
     case 'choix': return [entree('woutch', 0.1), ...t.options.map((o) => s('tap', o.mots[0].debut, 0.6))];
     case 'zoom': return []; // pas de bruitage sur les zooms (demande de l'utilisateur)
+    // famille « fun » (vidéo recrutement)
+    case 'contour': return [s('pop_doux', e.debut, 0.9)];
+    case 'place_libre': return [s('woutch_court', e.debut, 0.8)];
+    case 'etincelles': return [s('scintillement', e.debut + (e.points?.[0]?.[3] ?? 0), 0.7)];
+    case 'viseur': return [s('clic', e.verrou ?? e.debut + 0.5, 0.8)];
+    case 'bouton_dm': return [s('woutch_court', e.debut, 0.8), s('tap', e.tap)];
+    case 'epingle': return [s('tap', e.debut + 0.2, 0.9)];
     // son seul, sans image (ex. riser à la fin de l'accroche, comme dans la vidéo INCENDIE) : « debut » = moment où il
     // culmine ; un riser démarre « duree » secondes avant (durée du son fourni par défaut) ; « chute » ajoute le coup sourd
     // un son fourni avec « avance_s » (moment de son sommet, ex. l'impact d'un riser) est calé pour que ce sommet tombe sur « debut »
@@ -517,6 +524,12 @@ export function preparer(cheminEffets) {
     const dossier = chemin(effetsJson.camera.masques);
     for (const f of fs.readdirSync(dossier)) if (f.endsWith('.png')) relier(path.join(dossier, f), path.join(PUBLIC, 'masques', f));
     masques = 'masques';
+  }
+  // contour (autocollant) : l'image « zone » qui le limite à une personne est copiée dans public/media
+  for (const e of effets.filter((x) => x.type === 'contour' && x.zone)) {
+    const f = chemin(e.zone);
+    e.zone_src = `media/contour_${e.id}${path.extname(f)}`;
+    relier(f, path.join(PUBLIC, e.zone_src));
   }
   // plan de coupe : la vidéo est copiée dans public/media
   for (const e of effets.filter((x) => x.type === 'plan_de_coupe')) {

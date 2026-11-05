@@ -1,0 +1,417 @@
+[
+ {
+  "mot": "Salut,",
+  "debut": 0.42,
+  "fin": 0.68
+ },
+ {
+  "mot": "nous",
+  "debut": 0.74,
+  "fin": 0.82
+ },
+ {
+  "mot": "c'est",
+  "debut": 0.84,
+  "fin": 0.92
+ },
+ {
+  "mot": "l'équipe",
+  "debut": 0.94,
+  "fin": 1.16
+ },
+ {
+  "mot": "de",
+  "debut": 1.2,
+  "fin": 1.26
+ },
+ {
+  "mot": "LOCALISY.",
+  "debut": 1.28,
+  "fin": 1.8
+ },
+ {
+  "mot": "Et",
+  "debut": 2.18,
+  "fin": 2.22
+ },
+ {
+  "mot": "on",
+  "debut": 2.26,
+  "fin": 2.32
+ },
+ {
+  "mot": "a",
+  "debut": 2.36,
+  "fin": 2.46
+ },
+ {
+  "mot": "besoin",
+  "debut": 2.5,
+  "fin": 2.76
+ },
+ {
+  "mot": "de",
+  "debut": 2.8,
+  "fin": 2.86
+ },
+ {
+  "mot": "toi.",
+  "debut": 2.94,
+  "fin": 3.1
+ },
+ {
+  "mot": "Pour",
+  "debut": 3.52,
+  "fin": 3.62
+ },
+ {
+  "mot": "nos",
+  "debut": 3.66,
+  "fin": 3.76
+ },
+ {
+  "mot": "clients,",
+  "debut": 3.78,
+  "fin": 4.08
+ },
+ {
+  "mot": "on",
+  "debut": 4.22,
+  "fin": 4.28
+ },
+ {
+  "mot": "tourne",
+  "debut": 4.36,
+  "fin": 4.56
+ },
+ {
+  "mot": "des",
+  "debut": 4.6,
+  "fin": 4.68
+ },
+ {
+  "mot": "micro-trottoirs",
+  "debut": 4.72,
+  "fin": 5.3
+ },
+ {
+  "mot": "dans",
+  "debut": 5.34,
+  "fin": 5.42
+ },
+ {
+  "mot": "les",
+  "debut": 5.44,
+  "fin": 5.52
+ },
+ {
+  "mot": "rues",
+  "debut": 5.56,
+  "fin": 5.64
+ },
+ {
+  "mot": "de",
+  "debut": 5.66,
+  "fin": 5.74
+ },
+ {
+  "mot": "Liège",
+  "debut": 5.78,
+  "fin": 6.08
+ },
+ {
+  "mot": "et",
+  "debut": 6.38,
+  "fin": 6.44
+ },
+ {
+  "mot": "on",
+  "debut": 6.46,
+  "fin": 6.56
+ },
+ {
+  "mot": "cherche",
+  "debut": 6.6,
+  "fin": 6.78
+ },
+ {
+  "mot": "de",
+  "debut": 6.82,
+  "fin": 6.88
+ },
+ {
+  "mot": "nouvelles",
+  "debut": 6.92,
+  "fin": 7.2
+ },
+ {
+  "mot": "têtes",
+  "debut": 7.26,
+  "fin": 7.5
+ },
+ {
+  "mot": "pour",
+  "debut": 7.54,
+  "fin": 7.64
+ },
+ {
+  "mot": "tendre",
+  "debut": 7.7,
+  "fin": 7.92
+ },
+ {
+  "mot": "le",
+  "debut": 7.98,
+  "fin": 8.039
+ },
+ {
+  "mot": "micro",
+  "debut": 8.06,
+  "fin": 8.32
+ },
+ {
+  "mot": "aux",
+  "debut": 8.34,
+  "fin": 8.4
+ },
+ {
+  "mot": "passants.",
+  "debut": 8.44,
+  "fin": 8.98
+ },
+ {
+  "mot": "Alors,",
+  "debut": 9.06,
+  "fin": 9.38
+ },
+ {
+  "mot": "est-ce",
+  "debut": 9.7,
+  "fin": 9.8
+ },
+ {
+  "mot": "que",
+  "debut": 9.82,
+  "fin": 9.9
+ },
+ {
+  "mot": "c'est",
+  "debut": 9.94,
+  "fin": 10.04
+ },
+ {
+  "mot": "pour",
+  "debut": 10.08,
+  "fin": 10.16
+ },
+ {
+  "mot": "toi ?",
+  "debut": 10.22,
+  "fin": 10.32
+ },
+ {
+  "mot": "T'as",
+  "debut": 10.88,
+  "fin": 10.96
+ },
+ {
+  "mot": "dix-huit",
+  "debut": 10.98,
+  "fin": 11.24
+ },
+ {
+  "mot": "ans",
+  "debut": 11.28,
+  "fin": 11.36
+ },
+ {
+  "mot": "ou",
+  "debut": 11.38,
+  "fin": 11.42
+ },
+ {
+  "mot": "plus ?",
+  "debut": 11.5,
+  "fin": 11.72
+ },
+ {
+  "mot": "Tu",
+  "debut": 12.08,
+  "fin": 12.16
+ },
+ {
+  "mot": "souris",
+  "debut": 12.2,
+  "fin": 12.4
+ },
+ {
+  "mot": "comme",
+  "debut": 12.44,
+  "fin": 12.56
+ },
+ {
+  "mot": "ça",
+  "debut": 12.6,
+  "fin": 12.68
+ },
+ {
+  "mot": "sans",
+  "debut": 12.72,
+  "fin": 12.84
+ },
+ {
+  "mot": "forcer ?",
+  "debut": 12.86,
+  "fin": 13.12
+ },
+ {
+  "mot": "Est-ce",
+  "debut": 13.92,
+  "fin": 14.04
+ },
+ {
+  "mot": "que",
+  "debut": 14.06,
+  "fin": 14.12
+ },
+ {
+  "mot": "tu",
+  "debut": 14.16,
+  "fin": 14.18
+ },
+ {
+  "mot": "es",
+  "debut": 14.2,
+  "fin": 14.26
+ },
+ {
+  "mot": "à",
+  "debut": 14.28,
+  "fin": 14.32
+ },
+ {
+  "mot": "l'aise",
+  "debut": 14.34,
+  "fin": 14.5
+ },
+ {
+  "mot": "devant",
+  "debut": 14.52,
+  "fin": 14.68
+ },
+ {
+  "mot": "la",
+  "debut": 14.72,
+  "fin": 14.78
+ },
+ {
+  "mot": "caméra ?",
+  "debut": 14.82,
+  "fin": 15.14
+ },
+ {
+  "mot": "Alors,",
+  "debut": 15.78,
+  "fin": 15.98
+ },
+ {
+  "mot": "on",
+  "debut": 16.02,
+  "fin": 16.1
+ },
+ {
+  "mot": "veut",
+  "debut": 16.14,
+  "fin": 16.219
+ },
+ {
+  "mot": "te",
+  "debut": 16.239,
+  "fin": 16.28
+ },
+ {
+  "mot": "rencontrer.",
+  "debut": 16.3,
+  "fin": 16.82
+ },
+ {
+  "mot": "Intéressé ?",
+  "debut": 17.06,
+  "fin": 17.54
+ },
+ {
+  "mot": "Alors",
+  "debut": 17.72,
+  "fin": 17.88
+ },
+ {
+  "mot": "envoie-nous",
+  "debut": 17.9,
+  "fin": 18.22
+ },
+ {
+  "mot": "un",
+  "debut": 18.24,
+  "fin": 18.3
+ },
+ {
+  "mot": "DM.",
+  "debut": 18.34,
+  "fin": 18.58
+ },
+ {
+  "mot": "Attendez,",
+  "debut": 18.82,
+  "fin": 19.24
+ },
+ {
+  "mot": "attendez,",
+  "debut": 19.24,
+  "fin": 19.4
+ },
+ {
+  "mot": "attendez,",
+  "debut": 19.44,
+  "fin": 19.72
+ },
+ {
+  "mot": "attendez.",
+  "debut": 19.78,
+  "fin": 20.1
+ },
+ {
+  "mot": "Les",
+  "debut": 20.36,
+  "fin": 20.42
+ },
+ {
+  "mot": "gars,",
+  "debut": 20.46,
+  "fin": 20.58
+ },
+ {
+  "mot": "c'est",
+  "debut": 20.64,
+  "fin": 20.7
+ },
+ {
+  "mot": "ouvert",
+  "debut": 20.74,
+  "fin": 20.92
+ },
+ {
+  "mot": "pour",
+  "debut": 20.96,
+  "fin": 21.1
+ },
+ {
+  "mot": "vous",
+  "debut": 21.12,
+  "fin": 21.22
+ },
+ {
+  "mot": "aussi",
+  "debut": 21.24,
+  "fin": 21.44
+ }
+]

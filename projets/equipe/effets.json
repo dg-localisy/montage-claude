@@ -1,0 +1,368 @@
+{
+  "_aide": "Vidéo de recrutement de l'équipe LOCALISY (micro-trottoirs à Liège), tournée dehors au téléphone (1440×2560, 30 i/s, remis en 1080×1920). Demande de l'utilisateur (05/11/2026) : « mettre des nouveaux effets, laisse place à ton imagination pour que la vidéo soit super sympa ; pas de plan de coupe, tu peux mettre des effets sur nous ; pas de musique de fond ni de hook ». Sous-titres INCENDIE et phrases fortes, noir et blanc, Figtree, aucun visage caché. Nouveaux effets (famille « fun ») : contour blanc façon autocollant sur chaque personne qui apparaît, LOCALISY dont les lettres tombent, épingle LIÈGE, place libre « TOI ? » là où la fille en rouge va apparaître, 18+ tamponné derrière la tête, étincelles autour du sourire, viseur de caméra REC, bouton « Envoie-nous un DM » appuyé, zooms qui se resserrent sur chaque « attendez », VOUS AUSSI derrière les garçons.",
+  "duree": 22.0,
+  "fps": 30,
+  "rush": {
+    "video": "rush/rush.mp4",
+    "mots": "mots.json",
+    "_source": "647a1e1f-1105_compressed.mov (HEVC 1440×2560) remis en 1080×1920 H.264, 30 i/s, son AAC 48 kHz."
+  },
+  "musique": {
+    "actif": false,
+    "_note": "Pas de musique de fond (demande de l'utilisateur)."
+  },
+  "sous_titres": {
+    "mode": "premiere_video",
+    "phrases_fortes": [
+      {
+        "debut": 0.74,
+        "fin": 1.3,
+        "lignes": [
+          [
+            {
+              "mot": "nous c'est",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "l'équipe de",
+              "role": "appui"
+            }
+          ]
+        ],
+        "_note": "Mène à LOCALISY qui tombe derrière l'équipe ; « nous c'est » seul ne restait que 0,2 s."
+      },
+      {
+        "debut": 2.18,
+        "lignes": [
+          [
+            {
+              "mot": "Et on a besoin",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "de toi.",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 6.82,
+        "lignes": [
+          [
+            {
+              "mot": "de nouvelles",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "têtes",
+              "role": "fort"
+            }
+          ]
+        ],
+        "decalages_px": [
+          0,
+          0
+        ]
+      },
+      {
+        "debut": 9.7,
+        "lignes": [
+          [
+            {
+              "mot": "est-ce que c'est",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "pour toi ?",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 15.78,
+        "lignes": [
+          [
+            {
+              "mot": "Alors, on veut",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "te rencontrer.",
+              "role": "fort"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "camera": {
+    "visage": [
+      0.5,
+      0.5
+    ],
+    "masques": "masques",
+    "coupes": [
+      6.82,
+      9.7,
+      12.44,
+      13.8,
+      19.24,
+      19.44,
+      19.78,
+      20.36
+    ],
+    "cadrages": [
+      1.0,
+      1.35,
+      1.0,
+      1.18,
+      1.0,
+      1.15,
+      1.3,
+      1.45,
+      1.0
+    ],
+    "visages": [
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.39,
+        0.5
+      ],
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.46,
+        0.42
+      ],
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.92,
+        0.3
+      ],
+      [
+        0.88,
+        0.3
+      ],
+      [
+        0.72,
+        0.3
+      ],
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "decalages_x": [
+      0
+    ],
+    "avancee": 0,
+    "_cadrages": "Cadres fixes. Coupes du téléphone : 1,9 / 3,4 / 6,2 / 8,867 / 10,6 / 11,867 / 13,8 / 15,467 / 17,033 / 18,833 s. 6,82 ×1,35 sur la place vide (« de nouvelles têtes ») jusqu'à « est-ce que » (9,70) : la fille en rouge y apparaît à 8,867 s | 12,44 ×1,18 sur le sourire (« comme ça ») | 19,24 / 19,44 / 19,78 : ×1,15 → ×1,30 → ×1,45 sur le garçon qui arrive à chaque « attendez » (origine qui le suit) | 20,36 retour en large pour « Les gars ». camera.visages : origine du cadrage pour chaque plan."
+  },
+  "ambiance": {
+    "grain": 0,
+    "vignette": 0,
+    "etalonnage": false
+  },
+  "effets": [
+    {
+      "type": "texte_derriere",
+      "debut": 1.28,
+      "fin": 2.15,
+      "texte": "LOCALISY",
+      "taille": 170,
+      "y": 820,
+      "x": 540,
+      "couleur": "#FFFFFF",
+      "ombre": true,
+      "entree": "chute",
+      "intervalle": 0.045,
+      "remplace_temps": [
+        [
+          1.27,
+          1.9
+        ]
+      ],
+      "_note": "Les lettres de LOCALISY tombent une à une et rebondissent, dans les arbres au-dessus de l'équipe."
+    },
+    {
+      "type": "contour",
+      "debut": 1.9,
+      "fin": 2.55,
+      "zone": "masques/regions/fille2.png",
+      "_note": "Contour blanc (autocollant) sur la 2e personne qui apparaît (pull vert)."
+    },
+    {
+      "type": "contour",
+      "debut": 3.4,
+      "fin": 4.05,
+      "zone": "masques/regions/fille3.png",
+      "_note": "Contour sur la 3e personne (debout, en noir)."
+    },
+    {
+      "type": "epingle",
+      "debut": 5.72,
+      "fin": 6.35,
+      "x": 540,
+      "y": 500,
+      "texte": "LIÈGE",
+      "remplace_temps": [
+        [
+          5.76,
+          6.1
+        ]
+      ],
+      "_note": "Épingle de carte qui tombe sur « Liège ».",
+      "echelle": 1.5
+    },
+    {
+      "type": "place_libre",
+      "debut": 7.3,
+      "fin": 8.867,
+      "x": 421,
+      "y": 960,
+      "r": 68,
+      "largeur": 347,
+      "bas": 1216,
+      "texte": "TOI ?",
+      "_note": "Silhouette en pointillés « TOI ? » sur la place vide, pendant « nouvelles têtes pour tendre le micro aux passants » ; à 8,867 s la fille en rouge apparaît pile à cet endroit (coordonnées à l'écran, cadre ×1,35)."
+    },
+    {
+      "type": "contour",
+      "debut": 8.867,
+      "fin": 9.6,
+      "zone": "masques/regions/fille4.png",
+      "_note": "Contour sur la fille en rouge, qui prend la place libre."
+    },
+    {
+      "type": "texte_derriere",
+      "debut": 10.98,
+      "fin": 11.85,
+      "texte": "18+",
+      "taille": 360,
+      "y": 360,
+      "x": 560,
+      "couleur": "#FFFFFF",
+      "ombre": true,
+      "entree": "tampon",
+      "rotation": -8,
+      "remplace_temps": [
+        [
+          10.86,
+          11.8
+        ]
+      ],
+      "_note": "« 18+ » tamponné derrière sa tête sur « T'as dix-huit ans ou plus ? »."
+    },
+    {
+      "type": "etincelles",
+      "debut": 12.4,
+      "fin": 13.78,
+      "points": [
+        [
+          190,
+          600,
+          150,
+          0.06
+        ],
+        [
+          850,
+          540,
+          170,
+          0.18
+        ],
+        [
+          920,
+          870,
+          110,
+          0.32
+        ],
+        [
+          150,
+          940,
+          105,
+          0.44
+        ],
+        [
+          700,
+          410,
+          100,
+          0.56
+        ],
+        [
+          330,
+          400,
+          90,
+          0.7
+        ]
+      ],
+      "_note": "Étincelles autour du sourire (« Tu souris comme ça sans forcer ? »), jamais sur le visage."
+    },
+    {
+      "type": "viseur",
+      "debut": 13.84,
+      "fin": 15.44,
+      "verrou": 14.85,
+      "cible": [
+        430,
+        780,
+        700,
+        1110
+      ],
+      "_note": "Viseur de caméra (coins, REC, compteur) ; le cadre de mise au point se resserre autour de son visage sur « caméra »."
+    },
+    {
+      "type": "bouton_dm",
+      "debut": 17.86,
+      "fin": 18.82,
+      "tap": 18.36,
+      "y": 560,
+      "texte": "Envoie-nous un DM",
+      "remplace_temps": [
+        [
+          17.7,
+          18.62
+        ]
+      ],
+      "_note": "Bouton façon Instagram au-dessus du groupe, appuyé sur « DM ».",
+      "echelle": 1.15
+    },
+    {
+      "type": "texte_derriere",
+      "debut": 21.1,
+      "fin": 22.3,
+      "texte": "VOUS\nAUSSI",
+      "taille": 200,
+      "y": 378,
+      "x": 540,
+      "couleur": "#FFFFFF",
+      "ombre": true,
+      "remplace_temps": [
+        [
+          21.1,
+          21.5
+        ]
+      ],
+      "_note": "VOUS AUSSI s'écrit derrière les deux garçons, jusqu'à la fin."
+    }
+  ]
+}

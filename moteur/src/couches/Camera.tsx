@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, Img, OffthreadVideo, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Img, OffthreadVideo, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {clamp, easeIn, easeInOut, easeOut, fondu, lerp, prog} from '../temps';
 
 type Zoom = {debut: number; fin?: number; a: number; duree: number};
@@ -69,10 +69,12 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
   const pano = panoramique(t, projet.transitions, W);
 
   // l'image doit toujours couvrir tout le cadre malgré son décalage horizontal (sinon une bande noire apparaît sur un côté)
-  const ox = cam.visage[0] * W;
+  // origine du cadrage : le visage du plan (camera.visages, un par plan) ou le visage commun (camera.visage)
+  const visage: number[] = cam.visages?.[k] ?? cam.visage;
+  const ox = visage[0] * W;
   const couvre = decalage > 0 ? 1 + decalage / ox : decalage < 0 ? 1 - decalage / (W - ox) : 1;
   const echelle = Math.max(cadrage * avancee * z * (1 + 0.07 * g + 0.03 * v), couvre + 0.002);
-  const origine = `${cam.visage[0] * W}px ${cam.visage[1] * H}px`;
+  const origine = `${visage[0] * W}px ${visage[1] * H}px`;
 
   const filtres = [
     pano.flou > 0.5 ? 'url(#flou-panoramique)' : '',
@@ -89,7 +91,10 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
 
   if (avantPlan) {
     const derriere = projet.effets.some((e: any) => (e.type === 'texte_derriere' || e.type === 'courbe_derriere') && t >= e.debut - 0.02 && t <= e.fin + 0.02);
-    if (!derriere || !cam.masques) return null;
+    // contour blanc façon autocollant autour d'une personne qui apparaît (vidéo recrutement) : silhouette blanche élargie
+    // (feMorphology) sous la personne détourée ; « zone » (image) limite le contour à la nouvelle personne
+    const contours = projet.effets.filter((e: any) => e.type === 'contour' && t >= e.debut && t <= e.fin);
+    if ((!derriere && !contours.length) || !cam.masques) return null;
     const masque = staticFile(`${cam.masques}/m_${String(frame).padStart(5, '0')}.png`);
     return (
       <AbsoluteFill>
@@ -97,6 +102,21 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
         <Img src={masque} style={{position: 'absolute', width: 1, height: 1, opacity: 0}} />
         <div style={{position: 'absolute', inset: 0, filter: filtres}}>
           <div style={{position: 'absolute', inset: 0, transform: `translateX(${decalage + pano.x}px) scale(${echelle})`, transformOrigin: origine}}>
+            {contours.map((c: any) => {
+              const s = Math.min(1, Math.max(0, spring({frame: (t - c.debut) * fps, fps, config: {damping: 9, stiffness: 240, mass: 0.6}})));
+              const op = 1 - easeInOut(prog(t, c.fin - 0.2, c.fin));
+              const zone = c.zone_src ? {WebkitMaskImage: `url(${staticFile(c.zone_src)})`, maskImage: `url(${staticFile(c.zone_src)})`, WebkitMaskSize: '100% 100%', maskSize: '100% 100%'} : {};
+              return (
+                <div key={c.id} style={{position: 'absolute', inset: 0, opacity: op, ...zone}}>
+                  <div style={{position: 'absolute', inset: 0, filter: `url(#contour-${c.id}) drop-shadow(0 6px 14px rgba(0,0,0,0.35))`}}>
+                    <div style={{position: 'absolute', inset: 0, background: '#fff', WebkitMaskImage: `url(${masque})`, maskImage: `url(${masque})`, WebkitMaskSize: '100% 100%', maskSize: '100% 100%'}} />
+                  </div>
+                  <svg width="0" height="0" style={{position: 'absolute'}}>
+                    <defs><filter id={`contour-${c.id}`} x="-5%" y="-5%" width="110%" height="110%"><feMorphology operator="dilate" radius={((c.epaisseur ?? 11) * (0.6 + 0.4 * s)).toFixed(1)} /></filter></defs>
+                  </svg>
+                </div>
+              );
+            })}
             <div style={{position: 'absolute', inset: 0, WebkitMaskImage: `url(${masque})`, maskImage: `url(${masque})`, WebkitMaskSize: '100% 100%', maskSize: '100% 100%'}}>
               <OffthreadVideo src={staticFile(projet.rush.video)} muted style={{width: W, height: H, objectFit: 'cover'}} />
             </div>

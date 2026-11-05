@@ -94,6 +94,44 @@ export const TexteDerriere: React.FC<{e: any; charte: any}> = ({e, charte}) => {
       </div>
     );
   }
+  // entrée « chute » (vidéo recrutement) : les lettres tombent du haut l'une après l'autre et rebondissent en se posant
+  if (e.entree === 'chute') {
+    let r = 0;
+    return (
+      <div style={{position: 'absolute', left: (e.x ?? W / 2) - W, width: 2 * W, top: (e.y ?? T.y) - hauteur / 2, textAlign: 'center', fontFamily: T.police, fontSize: taille,
+        lineHeight: T.interligne, letterSpacing: `${T.interlettrage_em}em`, color: e.couleur ?? T.couleur, opacity: (e.opacite ?? T.opacite) * (1 - sortie), whiteSpace: 'pre',
+        textShadow: ombre, filter: sortie > 0 ? `blur(${(sortie * 10).toFixed(1)}px)` : 'none'}}>
+        {lignes.map((ligne, li) => (
+          <div key={li}>
+            {ligne.split('').map((ch, ci) => {
+              if (ch === ' ') return <span key={ci}> </span>;
+              const d = e.debut + r++ * (e.intervalle ?? 0.045);
+              const s = spring({frame: (t - d) * fps, fps, config: {damping: 11, stiffness: 210, mass: 0.7}});
+              return (
+                <span key={ci} style={{display: 'inline-block', opacity: t < d ? 0 : Math.min(1, (t - d) * 12),
+                  transform: `translateY(${((1 - s) * -1.6 * taille).toFixed(1)}px) rotate(${((1 - s) * (ci % 2 ? 14 : -14)).toFixed(2)}deg)`}}>{ch}</span>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    );
+  }
+  // entrée « tampon » (vidéo recrutement, « 18+ ») : le texte arrive en grand, penché, et se pose d'un coup sur le décor
+  // comme un coup de tampon (petite secousse) ; il reste légèrement penché (rotation, en degrés).
+  if (e.entree === 'tampon') {
+    const a = easeOut(prog(t, e.debut, e.debut + 0.16));
+    const secousse = t > e.debut + 0.16 ? Math.sin((t - e.debut - 0.16) * 70) * Math.exp(-(t - e.debut - 0.16) * 18) * 0.035 : 0;
+    const rot = e.rotation ?? -8;
+    return (
+      <div style={{position: 'absolute', left: (e.x ?? W / 2) - W, width: 2 * W, top: (e.y ?? T.y) - hauteur / 2, textAlign: 'center', fontFamily: T.police, fontSize: taille,
+        lineHeight: T.interligne, letterSpacing: `${T.interlettrage_em}em`, color: e.couleur ?? T.couleur, opacity: (e.opacite ?? T.opacite) * Math.min(1, a * 2) * (1 - sortie), whiteSpace: 'pre',
+        textShadow: ombre, transform: `scale(${(1.9 - 0.9 * a + secousse).toFixed(4)}) rotate(${(rot - 10 * (1 - a)).toFixed(2)}deg)`, transformOrigin: '50% 50%',
+        filter: a < 1 || sortie > 0 ? `blur(${((1 - a) * 12 + sortie * 10).toFixed(1)}px)` : 'none'}}>
+        {lignes.join('\n')}
+      </div>
+    );
+  }
   if (e.entree === 'rebond') {
     const r = spring({frame: (t - e.debut) * fps, fps, config: {damping: 9, stiffness: 190, mass: 0.8}});
     const net = easeOut(prog(t, e.debut, e.debut + 0.12));
