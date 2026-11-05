@@ -174,14 +174,19 @@ def main():
     musique, info_musique = (None, None) if a.sans_musique else piste_musique(projet, Path(a.sons).parent, voix, n)
     mix = voix + effets + (musique if musique is not None else 0)
     gain = CIBLE_LUFS - sonie_integree(mix)
-    mix *= 10 ** (gain / 20)
+    base = mix * 10 ** (gain / 20)
     tmp = Path(a.sortie).with_suffix(".mix.wav")
-    wavfile.write(tmp, SR, mix.T.astype(np.float32))
-    # limiteur si besoin ; l'encodage AAC peut faire dépasser un peu la crête : on mesure le fichier livré et,
-    # s'il dépasse encore, on recommence avec un limiteur plus strict (3 essais au plus)
-    marge = 0.3
-    besoin = crete_vraie(mix) > CRETE_MAX
-    for essai in range(4):
+    # un limiteur qui travaille beaucoup fait perdre de la sonie (voix très basse au départ, ex. vidéo au téléphone
+    # à -29 LUFS) : on mesure le fichier livré et on remonte le gain de ce qui manque (3 tours au plus)
+    supplement = 0.0
+    for tour in range(3):
+      mix = base * 10 ** (supplement / 20)
+      wavfile.write(tmp, SR, mix.T.astype(np.float32))
+      # limiteur si besoin ; l'encodage AAC peut faire dépasser un peu la crête : on mesure le fichier livré et,
+      # s'il dépasse encore, on recommence avec un limiteur plus strict (3 essais au plus)
+      marge = 0.3
+      besoin = crete_vraie(mix) > CRETE_MAX
+      for essai in range(4):
         filtre = f"alimiter=limit={10 ** ((CRETE_MAX - marge) / 20):.4f}:attack=5:release=50:level=disabled" if besoin else "anull"
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(a.video), "-i", str(tmp), "-map", "0:v", "-map", "1:a",
                         "-c:v", "copy", "-af", filtre, "-c:a", "aac", "-b:a", "256k", "-ar", str(SR),
@@ -193,10 +198,14 @@ def main():
         integre = float(resume.split("I:")[1].split("LUFS")[0])
         crete = float(resume.split("Peak:")[1].split("dBFS")[0])
         if crete <= CRETE_MAX + 0.05:
-            break
+          break
         if besoin:
-            marge += (crete - CRETE_MAX) + 0.2
+          marge += (crete - CRETE_MAX) + 0.2
         besoin = True
+      if not besoin or integre >= CIBLE_LUFS - 0.3:
+        break
+      supplement += CIBLE_LUFS - integre
+    gain += supplement
     tmp.unlink()
 
     rapport = {"lufs_integre": integre, "crete_vraie_dbtp": crete, "gain_applique_db": round(gain, 1),

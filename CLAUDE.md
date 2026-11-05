@@ -144,7 +144,7 @@ python3 outils/son_final.py --video moteur/sortie/NOM_9x16.mp4 --voix RUSH.mp4 \
     --projet moteur/public/projet.json --sons moteur/public/sons --sortie FINAL_9x16.mp4
 ```
 
-Refait le mélange voix + effets à partir des pistes séparées, baisse les effets qui dépassent la voix de plus de 6 dB (sonie momentanée EBU R128, mesurée sur toute la durée de chaque son : un riser est jugé à son sommet), règle le tout à -14 LUFS et la crête sous -1 dBTP, puis vérifie avec ffmpeg. Écrit `FINAL_9x16.son.json`. Applique ensuite le même son à la version 4:5 (`-c:v copy`).
+Refait le mélange voix + effets à partir des pistes séparées (si la voix de départ est très basse, comme une vidéo au téléphone à -29 LUFS, le limiteur fait perdre de la sonie : l'outil remonte alors le gain de ce qui manque, 3 tours au plus), baisse les effets qui dépassent la voix de plus de 6 dB (sonie momentanée EBU R128, mesurée sur toute la durée de chaque son : un riser est jugé à son sommet), règle le tout à -14 LUFS et la crête sous -1 dBTP, puis vérifie avec ffmpeg. Écrit `FINAL_9x16.son.json`. Applique ensuite le même son à la version 4:5 (`-c:v copy`).
 
 ## Chaîne de montage conseillée
 
