@@ -1,12 +1,12 @@
 {
   "_aide": "Vidéo de recrutement de l'équipe LOCALISY (micro-trottoirs à Liège), tournée dehors au téléphone (1440×2560, 30 i/s, remis en 1080×1920). Demande de l'utilisateur (05/11/2026) : « mettre des nouveaux effets, laisse place à ton imagination pour que la vidéo soit super sympa ; pas de plan de coupe, tu peux mettre des effets sur nous ; pas de musique de fond ni de hook ». Sous-titres INCENDIE et phrases fortes, noir et blanc, Figtree, aucun visage caché. Nouveaux effets (famille « fun ») : contour blanc façon autocollant sur chaque personne qui apparaît, LOCALISY dont les lettres tombent, épingle LIÈGE, place libre « TOI ? » là où la fille en rouge va apparaître, 18+ tamponné derrière la tête, étincelles autour du sourire, viseur de caméra REC, bouton « Envoie-nous un DM » appuyé, zooms qui se resserrent sur chaque « attendez », VOUS AUSSI derrière les garçons.",
-  "duree": 19.1,
+  "duree": 19.267,
   "fps": 30,
   "rush": {
-    "video": "rush/rush_v2.mp4",
+    "video": "rush/rush_v3.mp4",
     "mots": "mots.json",
     "_source": "647a1e1f-1105_compressed.mov (HEVC 1440×2560) remis en 1080×1920 H.264, 30 i/s, son AAC 48 kHz.",
-    "_montage": "rush_v2.mp4 = rush.mp4 sans ses blancs (demande de l'utilisateur : « y a des blancs, faut que ce soit plus vivant et spontané ») : 87 images (2.90 s) retirées, toujours dans un silence, collées aux coupes du téléphone quand le blanc en contient une ; deux nouveaux sauts (9,43 et 20,17 s, anciens temps) tombent sur un retour au cadre large. Plages retirées (anciennes images, 30 i/s) : 0–8, 57–61, 96–103, 184–188, 283–288, 313–322, 354–359, 400–415, 459–467, 507–510, 560–563, 605–609. Segments recollés avec des fondus de 8 ms. Masques renumérotés dans masques_v2 (liens vers masques). mots.json recalé sur ce montage ; l'ancien montage : rush.mp4 et l'historique git."
+    "_montage": "rush_v3.mp4 = rush.mp4 sans ses blancs (« y a des blancs, faut que ce soit plus vivant et spontané ») : 82 images (2.73 s) retirées, toujours dans un silence (aucun mot touché), collées aux coupes du téléphone quand le blanc en contient une ; deux nouveaux sauts (9,43 et 20,17 s, anciens temps) tombent sur un retour au cadre large. Plages retirées (anciennes images, 30 i/s) : 0–8, 57–61, 96–103, 184–188, 283–288, 313–322, 354–359, 414–415, 459–467, 507–510, 560–563, 605–609, 651–659. v3 : la pose de Lara (sourire, main sous le menton, 13,43–13,8 s) est gardée en entier ; fin coupée 0,26 s après « aussi ». Segments recollés avec des fondus de 8 ms. Masques renumérotés dans masques_v3 (liens vers masques). mots.json recalé sur ce montage."
   },
   "musique": {
     "actif": false,
@@ -90,7 +90,7 @@
         ]
       },
       {
-        "debut": 13.313,
+        "debut": 13.78,
         "lignes": [
           [
             {
@@ -113,16 +113,16 @@
       0.5,
       0.5
     ],
-    "masques": "masques_v2",
+    "masques": "masques_v3",
     "coupes": [
       5.92,
       8.533,
       10.807,
-      11.7,
-      16.507,
-      16.707,
-      17.047,
-      17.433
+      12.167,
+      16.973,
+      17.173,
+      17.513,
+      17.9
     ],
     "cadrages": [
       1.0,
@@ -177,7 +177,7 @@
       0
     ],
     "avancee": 0,
-    "_cadrages": "Cadres fixes. Coupes du téléphone : 1,9 / 3,4 / 6,2 / 8,867 / 10,6 / 11,867 / 13,8 / 15,467 / 17,033 / 18,833 s. 6,82 ×1,35 sur la place vide (« de nouvelles têtes ») jusqu'à « est-ce que » (9,70) : la fille en rouge y apparaît à 8,867 s | 12,44 ×1,18 sur le sourire (« comme ça ») | 19,24 / 19,44 / 19,78 : ×1,15 → ×1,30 → ×1,45 sur le garçon qui arrive à chaque « attendez » (origine qui le suit) | 20,36 retour en large pour « Les gars ». camera.visages : origine du cadrage pour chaque plan. v2 (blancs coupés) : temps recalés ; le retour au cadre large tombe sur les deux nouveaux sauts."
+    "_cadrages": "Cadres fixes. Coupes du téléphone : 1,9 / 3,4 / 6,2 / 8,867 / 10,6 / 11,867 / 13,8 / 15,467 / 17,033 / 18,833 s. 6,82 ×1,35 sur la place vide (« de nouvelles têtes ») jusqu'à « est-ce que » (9,70) : la fille en rouge y apparaît à 8,867 s | 12,44 ×1,18 sur le sourire (« comme ça ») | 19,24 / 19,44 / 19,78 : ×1,15 → ×1,30 → ×1,45 sur le garçon qui arrive à chaque « attendez » (origine qui le suit) | 20,36 retour en large pour « Les gars ». camera.visages : origine du cadrage pour chaque plan. Montage sans blancs : temps recalés ; le retour au cadre large tombe sur les deux nouveaux sauts."
   },
   "ambiance": {
     "grain": 0,
@@ -185,6 +185,13 @@
     "etalonnage": false
   },
   "effets": [
+    {
+      "type": "contour",
+      "debut": 0.12,
+      "fin": 0.77,
+      "zone": "masques/regions/fille1.png",
+      "_note": "Contour blanc sur Sophie quand elle commence à parler (« Salut »), comme les trois autres filles (demande de l'utilisateur, v3)."
+    },
     {
       "type": "texte_derriere",
       "debut": 0.98,
@@ -203,7 +210,7 @@
           1.6
         ]
       ],
-      "_note": "Les lettres de LOCALISY tombent une à une et rebondissent, dans les arbres au-dessus de l'équipe. v2 : lettres plus rapides et LOCALISY gardé jusqu'à 1,95 s (le blanc qui suivait est coupé)."
+      "_note": "Les lettres de LOCALISY tombent une à une et rebondissent, dans les arbres au-dessus de l'équipe. Lettres plus rapides et LOCALISY gardé jusqu'à 1,95 s (le blanc qui suivait est coupé)."
     },
     {
       "type": "contour",
@@ -221,8 +228,8 @@
     },
     {
       "type": "epingle",
-      "debut": 4.987,
-      "fin": 5.75,
+      "debut": 4.827,
+      "fin": 5.88,
       "x": 540,
       "y": 500,
       "texte": "LIÈGE",
@@ -232,7 +239,7 @@
           5.367
         ]
       ],
-      "_note": "Épingle de carte qui tombe sur « Liège ». v2 : gardée 0,3 s de plus (le blanc qui suivait est coupé).",
+      "_note": "Épingle de carte qui tombe sur « rues » ; la pastille LIÈGE arrive sur « Liège » et reste jusqu'au zoom sur la place vide (v3 : « l'élément Liège apparaît et disparaît trop vite »).",
       "echelle": 1.5
     },
     {
@@ -277,7 +284,7 @@
     {
       "type": "etincelles",
       "debut": 10.767,
-      "fin": 11.7,
+      "fin": 12.147,
       "points": [
         [
           190,
@@ -292,8 +299,8 @@
           0.18
         ],
         [
-          920,
-          870,
+          985,
+          600,
           110,
           0.32
         ],
@@ -316,13 +323,13 @@
           0.7
         ]
       ],
-      "_note": "Étincelles autour du sourire (« Tu souris comme ça sans forcer ? »), jamais sur le visage."
+      "_note": "Étincelles autour du sourire (« Tu souris comme ça sans forcer ? »), jamais sur le visage. v3 : l'étincelle de droite remontée (elle tombait sur la main de Lara pendant la pose)."
     },
     {
       "type": "viseur",
-      "debut": 11.7,
-      "fin": 13.133,
-      "verrou": 12.683,
+      "debut": 12.167,
+      "fin": 13.6,
+      "verrou": 13.15,
       "cible": [
         430,
         780,
@@ -333,15 +340,15 @@
     },
     {
       "type": "bouton_dm",
-      "debut": 15.26,
-      "fin": 16.087,
-      "tap": 15.76,
+      "debut": 15.727,
+      "fin": 16.553,
+      "tap": 16.227,
       "y": 560,
       "texte": "Envoie-nous un DM",
       "remplace_temps": [
         [
-          15.1,
-          16.02
+          15.567,
+          16.487
         ]
       ],
       "_note": "Bouton façon Instagram au-dessus du groupe, appuyé sur « DM ».",
@@ -349,8 +356,8 @@
     },
     {
       "type": "texte_derriere",
-      "debut": 18.2,
-      "fin": 19.4,
+      "debut": 18.617,
+      "fin": 19.567,
       "texte": "VOUS\nAUSSI",
       "taille": 200,
       "y": 378,
@@ -359,11 +366,12 @@
       "ombre": true,
       "remplace_temps": [
         [
-          18.2,
-          18.6
+          18.667,
+          19.067
         ]
       ],
-      "_note": "VOUS AUSSI s'écrit derrière les deux garçons, jusqu'à la fin."
+      "_note": "VOUS AUSSI s'écrit vite derrière les deux garçons (fini quand « aussi » se termine) ; la vidéo s'arrête 0,26 s après (v3 : blanc trop long à la fin).",
+      "intervalle": 0.025
     }
   ]
 }
