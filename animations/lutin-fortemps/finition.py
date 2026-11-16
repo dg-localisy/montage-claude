@@ -1,4 +1,4 @@
-"""Finition : texte animé, reflet sur la carte, petite étoile, zoom lent, vignette, grain.
+"""Finition : texte animé, adresse sous la luge, reflet sur la carte, petite étoile, zoom lent, vignette, grain.
 Exporte la version 9:16 (1080x1920) et la version 4:5 (1080x1350) en H.264 + AAC 48 kHz.
 
 python3 finition.py brut.mkv brut_coins.json SORTIE_9x16.mp4 SORTIE_4x5.mp4 [--images t1,t2 DOSSIER]
@@ -37,7 +37,11 @@ def sortie_douce(a, b, x):
 
 
 # --- calques fixes
-LIGNES = texte.calques(3)
+DECALAGE = 150                      # le sol et le sujet sont remontés de 150 px (même valeur que fond.py / scene.js)
+SOL_ECRAN = 1499 - DECALAGE         # ligne où la luge touche la neige, avant zoom
+ADRESSE = "Rue de Heuseux, 65 – 4630 Soumagne"
+LIGNES = texte.calques(3, DECALAGE)
+ETIQUETTE = texte.etiquette(ADRESSE)
 T_TEXTE = T_FIN + 0.55
 T_REFLET = T_FIN + 0.2
 yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
@@ -59,11 +63,15 @@ def etoile(taille=90):
 
 
 ETOILE = etoile()
-CENTRE_ZOOM = (W / 2, 1180.0)
+CENTRE_ZOOM = (W / 2, 1180.0 - DECALAGE)
+ZOOM_MAX = 1.04
+# l'adresse est posée sous le bas de la luge, tel qu'il sera à la fin du zoom (+14 px : patin le plus proche)
+Y_ADRESSE = CENTRE_ZOOM[1] + (SOL_ECRAN + 14 - CENTRE_ZOOM[1]) * ZOOM_MAX + 26 + ETIQUETTE[0].shape[0] / 2 - 40
+T_ADRESSE = T_FIN + 0.55 + 0.74
 
 
 def zoom_facteur(t):
-    return 1 + 0.04 * lisse(T_FIN - 1.2, T_FIN + 4.6, t)
+    return 1 + (ZOOM_MAX - 1) * lisse(T_FIN - 1.2, T_FIN + 4.6, t)
 
 
 def appliquer_zoom(im, s):
@@ -134,6 +142,9 @@ def finir(rgb, n):
         if a <= 0:
             continue
         texte.poser(img, rgba, omb, y, opacite=float(a), dy=float(16 * (1 - a)), flou=float(9 * (1 - a)))
+    a = sortie_douce(T_ADRESSE, T_ADRESSE + 0.7, t)
+    if a > 0:
+        texte.poser(img, ETIQUETTE[0], ETIQUETTE[1], Y_ADRESSE, opacite=float(a), dy=float(14 * (1 - a)), flou=float(6 * (1 - a)))
     img *= VIGNETTE
     # grain fin
     g = rng.normal(0, 0.011, (H, W, 1)).astype(np.float32)

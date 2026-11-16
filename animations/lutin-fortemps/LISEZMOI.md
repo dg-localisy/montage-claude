@@ -1,10 +1,11 @@
 # Lutin de Noël — bon cadeau Mobilier Fortemps
 
-Animation 3D de 16,5 secondes, inspirée de la vidéo « casse-noisette + COMING SOON » :
+Animation 3D de 16 secondes, inspirée de la vidéo « casse-noisette + COMING SOON » :
 un lutin en bois peint entre par la droite en tirant une corde, s'arrête au milieu pour
 faire coucou à la caméra, repart et sort à gauche. Au bout de la corde arrive une luge
 qui porte le bon cadeau Fortemps. Elle s'arrête au centre, un reflet passe sur la carte,
-puis le texte apparaît : « DÉCOUVREZ NOS / BONS CADEAUX / CHEZ MOBILIER FORTEMPS ».
+puis le texte apparaît : « DÉCOUVREZ NOS / BONS CADEAUX / CHEZ MOBILIER FORTEMPS », et
+l'adresse du magasin dans une étiquette verte sous la luge.
 
 Tout est fabriqué par du code : décor peint puis flouté comme par un objectif (bokeh),
 scène 3D avec three.js rendue dans Chromium sans écran, finitions avec Python.
@@ -21,12 +22,12 @@ pip3 install numpy scipy pillow
 python3 preparer_carte.py carte_source.png      # -> carte_texture.png
 python3 fond.py fond.png                        # décor : sapin flou + neige (15 s)
 node rendu.mjs images 1.6,4.3,6.5,10.5,13       # images fixes de contrôle -> images/
-node rendu.mjs video brut.mkv                   # rendu complet sans perte (~12 min)
+node rendu.mjs video brut.mkv 0 16.0156        # rendu complet sans perte (~11 min) : fin = T_FIN + 4,8 s
 python3 finition.py brut.mkv brut_coins.json lutin_9x16.mp4 lutin_4x5.mp4
 # son : musique + bruitages calés sur l'image
 apt-get install -y fluidsynth fluid-soundfont-gm && pip3 install mido
 node rendu.mjs etat etat.json 16.8                 # instants où les pieds touchent le sol, position de la luge
-python3 musique.py 12.163011695906434 16.766667 musique.wav   # T_FIN (fin de la luge) et durée de la vidéo
+python3 musique.py 11.2156432748538 16.0 musique.wav   # T_FIN (arrêt de la luge, affiché par rendu.mjs) et durée
 mkdir -p sortie && python3 son.py etat.json musique.wav lutin_9x16.mp4 lutin_4x5.mp4 sortie
 ```
 
@@ -56,5 +57,9 @@ Pour vérifier des images finies (avec texte) sans tout exporter :
 - Vitesses, durée de la pause, longueur de la corde : objet `T` au début de `scene.js`.
 - Couleurs du lutin : objet `M` dans `scene.js` (tunique `vert`, bonnet `feutre`, etc.).
 - Texte : variante 3 dans `texte.py` (`calques(3)`), utilisée par `finition.py`.
+- Adresse : `ADRESSE` dans `finition.py` (étiquette verte `texte.etiquette`, posée sous la luge).
+- Cadrage : `DECALAGE` (150 px) remonte le sol et le sujet pour laisser de la place à l'adresse
+  au-dessus de la zone cachée par la légende d'Instagram. Même valeur dans `fond.py`, `scene.js` et `finition.py`.
+- Longueur de la corde : `ecartLuge` dans `scene.js` (4,1 ; 5,0 dans la première version, jugée un peu longue).
 - Volume des bruitages : `ECART_PAS` et `ECART_LUGE` dans `son.py` (dB par rapport à la musique).
 - Musique : notes, instruments et tempo dans `musique.py`. Si on change la chronologie de `scene.js`, repasser la nouvelle valeur de T_FIN.

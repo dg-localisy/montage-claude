@@ -1,7 +1,7 @@
 """Musique de fond : arrangement original de « Jingle Bells » (mélodie de J. L. Pierpont, 1857, domaine public).
 
 Célesta + glockenspiel (mélodie), cordes pincées (basse et accords), grelots, cordes douces.
-Le tempo est calé sur l'animation : le dernier « do » de la phrase tombe pile quand la luge
+Le tempo est calculé à partir de l'animation : le dernier « do » de la phrase tombe pile quand la luge
 s'arrête (T_FIN), puis la musique se termine en douceur sur le texte.
 
 python3 musique.py T_FIN DUREE SORTIE.wav
@@ -15,7 +15,8 @@ from scipy.io import wavfile
 T_FIN, DUREE, SORTIE = float(sys.argv[1]), float(sys.argv[2]), sys.argv[3]
 SF2 = "/usr/share/sounds/sf2/FluidR3_GM.sf2"
 SR = 48000
-BPM = 145
+DEBUT_MELODIE = 0.55                # la mélodie démarre quand le lutin entre dans l'image
+BPM = 60 * 4 * 7 / (T_FIN - DEBUT_MELODIE)   # 7 mesures entre l'entrée du lutin et l'arrêt de la luge
 TPB = 480
 TEMPS = 60 / BPM                    # durée d'un temps (s)
 MESURE = 4 * TEMPS
@@ -142,5 +143,5 @@ else:
 f = int(0.6 * SR)
 y[-f:] *= np.linspace(1, 0, f)[:, None] ** 1.5
 wavfile.write(SORTIE, SR, y)
-print(f"ok {SORTIE} — tempo {BPM}, mesure 1 à {DEBUT_M0 + MESURE:.3f} s, mesure 8 (arrêt luge) à {DEBUT_M0 + 8 * MESURE:.3f} s, "
+print(f"ok {SORTIE} — tempo {BPM:.1f}, mesure 1 à {DEBUT_M0 + MESURE:.3f} s, mesure 8 (arrêt luge) à {DEBUT_M0 + 8 * MESURE:.3f} s, "
       f"fin de l'accord final à {DEBUT_M0 + 10 * MESURE:.3f} s, crête {20*np.log10(np.abs(y).max()+1e-9):.1f} dBFS")

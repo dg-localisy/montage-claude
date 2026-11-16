@@ -9,13 +9,18 @@ import numpy as np
 from scipy.signal import fftconvolve
 from PIL import Image
 
-W, H = 1080, 1920
+W, H_ECRAN = 1080, 1920
+# Le sol et le sujet remontent de DECALAGE px à l'écran (place pour l'adresse sous la luge).
+# On peint une image plus haute (repère « plein ») puis on coupe les DECALAGE premières lignes.
+# Même valeur que DECALAGE dans scene.js et finition.py.
+DECALAGE = 150
+H = H_ECRAN + DECALAGE
 rng = np.random.default_rng(7)
 SORTIE = sys.argv[1] if len(sys.argv) > 1 else "fond.png"
 
 # Caméra 3D (doit correspondre à scene.js) : hauteur 1.2, distance 11, fov vertical 22°
 CAM_H, CAM_D, TAN = 1.2, 11.0, np.tan(np.radians(11.0))
-HORIZON = H / 2
+HORIZON = H_ECRAN / 2                                  # horizon de la caméra (repère plein)
 
 
 def lin(c):
@@ -88,23 +93,23 @@ def point(img, cx, cy, energie, couleur, taille=2.0):
 mur = np.zeros((H, W, 3), np.float32)
 haut = lin([0.12, 0.08, 0.06])
 milieu = lin([0.50, 0.39, 0.29])
-t = np.clip(yy / 1250, 0, 1)[..., None]
+t = np.clip((yy - DECALAGE) / 1250, 0, 1)[..., None]
 mur[:] = haut * (1 - t) + milieu * t
 # halo chaud derrière le sapin
-halo = np.exp(-(((xx - 560) / 520) ** 2 + ((yy - 700) / 700) ** 2))[..., None]
+halo = np.exp(-(((xx - 560) / 520) ** 2 + ((yy - 700 - DECALAGE) / 700) ** 2))[..., None]
 mur += halo * lin([0.55, 0.36, 0.18]) * 0.9
 # fenêtre du soir à droite (bleu nuit + quelques lumières)
-fen = ((xx > 860) & (xx < 1180) & (yy > 180) & (yy < 820)).astype(np.float32)
+fen = ((xx > 860) & (xx < 1180) & (yy > 180 + DECALAGE) & (yy < 820 + DECALAGE)).astype(np.float32)
 fen = gauss(fen, 6)[..., None]
 mur = mur * (1 - fen * 0.85) + fen * 0.85 * lin([0.10, 0.16, 0.30])
 for _ in range(10):
-    point(mur, rng.uniform(880, 1080), rng.uniform(220, 780), rng.uniform(250, 700), lin([1.0, 0.75, 0.45]))
+    point(mur, rng.uniform(880, 1080), rng.uniform(220, 780) + DECALAGE, rng.uniform(250, 700), lin([1.0, 0.75, 0.45]))
 # lampe chaude en haut à gauche
 for cx, cy, e in [(70, 260, 9000), (110, 300, 3000)]:
-    point(mur, cx, cy, e, lin([1.0, 0.68, 0.32]), 3)
+    point(mur, cx, cy + DECALAGE, e, lin([1.0, 0.68, 0.32]), 3)
 
 # ---------------------------------------------------------------- 2. le sapin
-CX, Y_SOMMET, Y_BASE, DEMI_BASE = 520, 70, 1320, 760
+CX, Y_SOMMET, Y_BASE, DEMI_BASE = 520, 70 + DECALAGE, 1320 + DECALAGE, 760   # le sapin garde sa place à l'écran
 sapin = np.zeros((H, W, 3), np.float32)
 alpha = np.zeros((H, W), np.float32)
 
@@ -160,7 +165,7 @@ for _ in range(30):
     y = rng.uniform(Y_SOMMET + 120, Y_BASE - 40)
     d = demi_largeur(y) * 0.85
     x = CX + rng.uniform(-d, d)
-    r = rng.uniform(24, 42) * (0.7 + 0.5 * (y / H))
+    r = rng.uniform(24, 42) * (0.7 + 0.5 * ((y - DECALAGE) / H_ECRAN))
     c = [ROUGE, OR, BORDEAUX, ROUGE][rng.integers(0, 4)]
     tache(sapin, x, y, r, c)
     point(sapin, x - r * 0.35, y - r * 0.4, 70 * r, lin([1.0, 0.92, 0.8]), 2)
@@ -252,7 +257,8 @@ x = image * expo
 # épaule douce pour les hautes lumières
 seuil = 0.75
 x = np.where(x < seuil, x, seuil + (1 - seuil) * (1 - np.exp(-(x - seuil) / (1 - seuil))))
+x = x[DECALAGE:DECALAGE + H_ECRAN]                     # retour au cadre 1080x1920
 out = srgb(x)
 out = out + rng.uniform(-0.5, 0.5, out.shape) / 255.0      # anti-bandes
 Image.fromarray((np.clip(out, 0, 1) * 255 + 0.5).astype(np.uint8)).save(SORTIE)
-print("ok", SORTIE, "rayon flou par ligne : bas", round(float(r_ligne[-1]), 1), "focus", round(float(r_ligne[1499]), 1), "bord", round(float(r_ligne[Y_BORD]), 1))
+print("ok", SORTIE, "rayon flou par ligne : bas", round(float(r_ligne[-1]), 1), "focus (ligne plein 1499 = écran " + str(1499 - DECALAGE) + ")", round(float(r_ligne[1499]), 1), "bord", round(float(r_ligne[Y_BORD]), 1))

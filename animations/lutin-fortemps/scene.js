@@ -15,7 +15,7 @@ export const T = {
   x0: 2.05, v1: 0.72, decA: 0.7,      // entrée par la droite, arrêt au centre
   pause: 2.2,                          // regarde la caméra et fait coucou
   accB: 0.6, v2: 0.95, decB: 2.3,      // repart, sort à gauche ; la luge s'arrête au centre
-  ecartLuge: 5.0,                      // distance lutin -> luge (la corde)
+  ecartLuge: 4.1,                      // distance lutin -> luge (la corde) ; 5.0 dans la 1re version
   carteX: 0.0,
 };
 const S3 = (u) => u * u * u - u * u * u * u / 2;              // intégrale de smoothstep
@@ -82,6 +82,9 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(22, W / H, 0.1, 100);
 camera.position.set(0, 1.2, 11);
 camera.lookAt(0, 1.2, 0);
+// le sol et le sujet remontent de DECALAGE px à l'écran (place pour l'adresse) : même valeur que fond.py
+const DECALAGE = 150;
+camera.setViewOffset(W, H, 0, DECALAGE, W, H);
 
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;

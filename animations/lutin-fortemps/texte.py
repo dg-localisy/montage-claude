@@ -36,8 +36,8 @@ def ombre(alpha, rayon=10, force=0.55, decalage=(0, 4)):
     return np.roll(o, decalage, axis=(1, 0))
 
 
-def calques(variante=1):
-    """Renvoie une liste de lignes : (rgba, alpha_ombre, y_centre)."""
+def calques(variante=1, decalage=0):
+    """Renvoie une liste de lignes : (rgba, alpha_ombre, y_centre). decalage : remonte le texte de N px."""
     if variante == 1:
         l1 = ligne("DÉCOUVREZ NOS BONS CADEAUX", "Figtree-SemiBold.ttf", 44, 7)
         l2 = ligne("CHEZ MOBILIER FORTEMPS", "Figtree-Black.ttf", 66, 2)
@@ -50,8 +50,51 @@ def calques(variante=1):
         l1 = ligne("DÉCOUVREZ NOS", "Figtree-SemiBold.ttf", 46, 8)
         l2 = ligne("BONS CADEAUX", "Figtree-Black.ttf", 92, 1)
         l3 = ligne("CHEZ MOBILIER FORTEMPS", "Figtree-Bold.ttf", 40, 6)
-        return [(l[0], ombre(l[0][..., 3]), y) for l, y in zip([l1, l2, l3], [610, 690, 775])]
-    return [(l[0], ombre(l[0][..., 3]), y) for l, y in zip([l1, l2], ys)]
+        return [(l[0], ombre(l[0][..., 3]), y - decalage) for l, y in zip([l1, l2, l3], [610, 690, 775])]
+    return [(l[0], ombre(l[0][..., 3]), y - decalage) for l, y in zip([l1, l2], ys)]
+
+
+def etiquette(texte, fichier="Figtree-SemiBold.ttf", taille=34, espacement=1.0, fond=(95, 150, 48), hauteur=66):
+    """Pastille arrondie verte Fortemps, icône de localisation + texte blanc. Renvoie (rgba, alpha_ombre)."""
+    k = 4                                                     # dessin 4x plus grand puis réduit (bords lisses)
+    f = ImageFont.truetype(f"{POLICES}/{fichier}", taille * k)
+    larg_txt = sum(f.getlength(c) for c in texte) + espacement * k * (len(texte) - 1)
+    h = hauteur * k
+    icone = int(0.44 * h)
+    marge_g, marge_d, ecart = int(0.42 * h), int(0.5 * h), int(0.2 * h)
+    w = int(marge_g + icone + ecart + larg_txt + marge_d)
+    marge = 40 * k
+    a = Image.new("L", (w + 2 * marge, h + 2 * marge), 0)
+    blanc = Image.new("L", a.size, 0)
+    d, db = ImageDraw.Draw(a), ImageDraw.Draw(blanc)
+    d.rounded_rectangle((marge, marge, marge + w, marge + h), radius=h // 2, fill=255)
+    # icône : goutte de localisation au trait, avec un point au centre
+    cx, cy, r = marge + marge_g + icone / 2, marge + h * 0.43, icone * 0.36
+    trait = max(int(0.085 * icone), 2)
+    pointe = (cx, marge + h * 0.43 + icone * 0.62)
+    import math
+    ang = math.asin(r / (pointe[1] - cy))
+    p1 = (cx - r * math.cos(ang), cy + r * math.sin(ang)); p2 = (cx + r * math.cos(ang), cy + r * math.sin(ang))
+    db.pieslice((cx - r - trait / 2, cy - r - trait / 2, cx + r + trait / 2, cy + r + trait / 2), 0, 360, fill=255)
+    db.polygon([(p1[0] - trait / 2, p1[1]), (p2[0] + trait / 2, p2[1]), (pointe[0], pointe[1] + trait / 2)], fill=255)
+    db.pieslice((cx - r + trait / 2, cy - r + trait / 2, cx + r - trait / 2, cy + r - trait / 2), 0, 360, fill=0)
+    db.polygon([(p1[0] + trait * 0.9, p1[1] - trait * 0.3), (p2[0] - trait * 0.9, p2[1] - trait * 0.3), (pointe[0], pointe[1] - trait * 1.4)], fill=0)
+    rp = r * 0.36
+    db.ellipse((cx - rp, cy - rp, cx + rp, cy + rp), fill=255)
+    asc, desc = f.getmetrics()
+    x = marge + marge_g + icone + ecart
+    y = marge + (h - (asc + desc)) / 2 + desc * 0.15
+    for c in texte:
+        db.text((x, y), c, font=f, fill=255)
+        x += f.getlength(c) + espacement * k
+    taille_finale = (a.width // k, a.height // k)
+    a = np.asarray(a.resize(taille_finale, Image.LANCZOS)).astype(np.float32) / 255
+    b = np.asarray(blanc.resize(taille_finale, Image.LANCZOS)).astype(np.float32) / 255
+    rgba = np.zeros((*a.shape, 4), np.float32)
+    couleur = np.array(fond, np.float32) / 255
+    rgba[..., :3] = couleur * (1 - b[..., None]) + b[..., None]
+    rgba[..., 3] = a
+    return rgba, ombre(a, rayon=12, force=0.35, decalage=(0, 6))
 
 
 def poser(img, rgba, omb, y_centre, opacite=1.0, dy=0.0, flou=0.0, voile=None):
