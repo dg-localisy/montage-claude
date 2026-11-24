@@ -5,7 +5,8 @@
   "rush": {
     "video": "rush/rush.mp4",
     "mots": "mots.json",
-    "_source": "Testi - Vectura 30Mo.mp4 (1080×1920, 25 i/s), gardée telle quelle."
+    "_source": "Testi - Vectura 30Mo.mp4 (1080×1920, 25 i/s), gardée telle quelle.",
+    "video_avec_50": "rush/rush_50.mp4"
   },
   "musique": {
     "actif": false,
@@ -19,23 +20,19 @@
         "lignes": [
           [
             {
-              "mot": "lié à notre marketing par",
+              "mot": "lié à notre",
               "role": "liaison"
             }
           ],
           [
             {
-              "mot": "50",
-              "role": "choc"
+              "mot": "marketing par",
+              "role": "appui"
             }
           ]
         ],
-        "_note": "Fin de l'accroche : « multiplier notre chiffre d'affaires lié à notre marketing par 50 » (Scribe avait entendu « par cinq ans »). 50 mis en évidence (rôle choc, demande de l'utilisateur), gardé jusqu'à 5,3 s.",
-        "fin": 5.3,
-        "decalages_px": [
-          0,
-          0
-        ]
+        "_note": "« multiplier notre chiffre d'affaires lié à notre marketing par 50 » : le bloc s'arrête sur « par » et reste jusqu'à 4,72 s, quand le grand 50 apparaît derrière lui (pas de doublon).",
+        "fin": 4.72
       },
       {
         "debut": 9.68,
@@ -220,12 +217,33 @@
     "decalages_x": [
       0
     ],
-    "avancee": 0
+    "avancee": 0,
+    "masques": "masques"
   },
   "ambiance": {
     "grain": 0,
     "vignette": 0,
     "etalonnage": false
   },
-  "effets": []
+  "effets": [
+    {
+      "type": "texte_derriere",
+      "debut": 4.72,
+      "fin": 5.75,
+      "texte": "50",
+      "taille": 300,
+      "x": 620,
+      "y": 228,
+      "couleur": "#0A0A0A",
+      "opacite": 0.9,
+      "remplace_temps": [
+        [
+          4.3,
+          4.72
+        ]
+      ],
+      "_incruste": "Déjà incrusté dans rush/rush_50.mp4 par outils/incruster_texte_derriere.py (--texte 50 --debut 4.72 --fin 5.75 --taille 300 --x 620 --base 335, entrée « compte » : les chiffres défilent de 0 à 50) ; cette ligne sert à retirer « 50 » des sous-titres. Ne pas le rendre une 2e fois avec le moteur.",
+      "_note": "Grand 50 derrière lui (demande de l'utilisateur : « mets le 50 en grand au-dessus de lui comme pour les autres vidéos »), en noir sur le mur clair, décalé à droite pour éviter le tableau sombre, après le zoom arrière du monteur (4,64–4,76 s) : dans le plan serré, sa tête touche le haut de l'image."
+    }
+  ]
 }
