@@ -1,0 +1,477 @@
+[
+ {
+  "mot": "Je",
+  "debut": 0.1,
+  "fin": 0.18
+ },
+ {
+  "mot": "pense",
+  "debut": 0.36,
+  "fin": 0.74
+ },
+ {
+  "mot": "que",
+  "debut": 0.78,
+  "fin": 0.86
+ },
+ {
+  "mot": "ma",
+  "debut": 1.3,
+  "fin": 1.4
+ },
+ {
+  "mot": "mère",
+  "debut": 1.44,
+  "fin": 1.58
+ },
+ {
+  "mot": "sait",
+  "debut": 1.64,
+  "fin": 1.78
+ },
+ {
+  "mot": "pas",
+  "debut": 1.82,
+  "fin": 1.9
+ },
+ {
+  "mot": "ce",
+  "debut": 1.98,
+  "fin": 2.04
+ },
+ {
+  "mot": "que",
+  "debut": 2.08,
+  "fin": 2.12
+ },
+ {
+  "mot": "je",
+  "debut": 2.16,
+  "fin": 2.28
+ },
+ {
+  "mot": "fais",
+  "debut": 2.34,
+  "fin": 2.56
+ },
+ {
+  "mot": "dans",
+  "debut": 2.62,
+  "fin": 2.72
+ },
+ {
+  "mot": "la",
+  "debut": 2.76,
+  "fin": 2.88
+ },
+ {
+  "mot": "vie",
+  "debut": 2.94,
+  "fin": 3.12
+ },
+ {
+  "mot": "parce",
+  "debut": 3.22,
+  "fin": 3.36
+ },
+ {
+  "mot": "que",
+  "debut": 3.38,
+  "fin": 3.46
+ },
+ {
+  "mot": "déjà,",
+  "debut": 3.54,
+  "fin": 3.8
+ },
+ {
+  "mot": "on",
+  "debut": 3.86,
+  "fin": 3.96
+ },
+ {
+  "mot": "est",
+  "debut": 4.0,
+  "fin": 4.12
+ },
+ {
+  "mot": "dans",
+  "debut": 4.28,
+  "fin": 4.54
+ },
+ {
+  "mot": "un",
+  "debut": 4.58,
+  "fin": 4.66
+ },
+ {
+  "mot": "métier",
+  "debut": 4.7,
+  "fin": 5.02
+ },
+ {
+  "mot": "dont",
+  "debut": 5.08,
+  "fin": 5.24
+ },
+ {
+  "mot": "elle",
+  "debut": 5.32,
+  "fin": 5.42
+ },
+ {
+  "mot": "est",
+  "debut": 5.44,
+  "fin": 5.54
+ },
+ {
+  "mot": "très",
+  "debut": 5.72,
+  "fin": 5.96
+ },
+ {
+  "mot": "très",
+  "debut": 6.02,
+  "fin": 6.28
+ },
+ {
+  "mot": "éloignée.",
+  "debut": 6.34,
+  "fin": 6.76
+ },
+ {
+  "mot": "Donc",
+  "debut": 6.82,
+  "fin": 6.92
+ },
+ {
+  "mot": "le",
+  "debut": 6.96,
+  "fin": 7.04
+ },
+ {
+  "mot": "digital,",
+  "debut": 7.08,
+  "fin": 7.44
+ },
+ {
+  "mot": "ça",
+  "debut": 7.54,
+  "fin": 7.6
+ },
+ {
+  "mot": "lui",
+  "debut": 7.64,
+  "fin": 7.78
+ },
+ {
+  "mot": "parle",
+  "debut": 7.82,
+  "fin": 8.08
+ },
+ {
+  "mot": "pas",
+  "debut": 8.119,
+  "fin": 8.22
+ },
+ {
+  "mot": "du",
+  "debut": 8.26,
+  "fin": 8.36
+ },
+ {
+  "mot": "tout.",
+  "debut": 8.4,
+  "fin": 8.56
+ },
+ {
+  "mot": "Puis",
+  "debut": 8.58,
+  "fin": 8.68
+ },
+ {
+  "mot": "aujourd'hui,",
+  "debut": 8.7,
+  "fin": 9.0
+ },
+ {
+  "mot": "on",
+  "debut": 9.06,
+  "fin": 9.12
+ },
+ {
+  "mot": "a",
+  "debut": 9.16,
+  "fin": 9.22
+ },
+ {
+  "mot": "un",
+  "debut": 9.28,
+  "fin": 9.32
+ },
+ {
+  "mot": "métier",
+  "debut": 9.36,
+  "fin": 9.56
+ },
+ {
+  "mot": "qui",
+  "debut": 9.6,
+  "fin": 9.64
+ },
+ {
+  "mot": "est",
+  "debut": 9.66,
+  "fin": 9.76
+ },
+ {
+  "mot": "tellement",
+  "debut": 9.82,
+  "fin": 10.26
+ },
+ {
+  "mot": "vaste,",
+  "debut": 10.4,
+  "fin": 10.62
+ },
+ {
+  "mot": "avec",
+  "debut": 10.66,
+  "fin": 10.78
+ },
+ {
+  "mot": "des",
+  "debut": 10.82,
+  "fin": 10.88
+ },
+ {
+  "mot": "métiers",
+  "debut": 10.92,
+  "fin": 11.2
+ },
+ {
+  "mot": "tellement",
+  "debut": 11.24,
+  "fin": 11.52
+ },
+ {
+  "mot": "différents",
+  "debut": 11.64,
+  "fin": 12.4
+ },
+ {
+  "mot": "et",
+  "debut": 12.5,
+  "fin": 12.62
+ },
+ {
+  "mot": "par",
+  "debut": 12.74,
+  "fin": 12.86
+ },
+ {
+  "mot": "ma",
+  "debut": 12.9,
+  "fin": 13.04
+ },
+ {
+  "mot": "position",
+  "debut": 13.08,
+  "fin": 13.6
+ },
+ {
+  "mot": "d'associé,",
+  "debut": 13.66,
+  "fin": 14.08
+ },
+ {
+  "mot": "j'ai",
+  "debut": 14.18,
+  "fin": 14.4
+ },
+ {
+  "mot": "tellement",
+  "debut": 14.42,
+  "fin": 14.66
+ },
+ {
+  "mot": "de",
+  "debut": 14.74,
+  "fin": 14.78
+ },
+ {
+  "mot": "casquettes",
+  "debut": 14.82,
+  "fin": 15.14
+ },
+ {
+  "mot": "différentes",
+  "debut": 15.16,
+  "fin": 15.52
+ },
+ {
+  "mot": "dans",
+  "debut": 15.56,
+  "fin": 15.66
+ },
+ {
+  "mot": "le",
+  "debut": 15.76,
+  "fin": 15.8
+ },
+ {
+  "mot": "RH,",
+  "debut": 15.96,
+  "fin": 16.14
+ },
+ {
+  "mot": "le",
+  "debut": 16.18,
+  "fin": 16.26
+ },
+ {
+  "mot": "commercial,",
+  "debut": 16.3,
+  "fin": 16.94
+ },
+ {
+  "mot": "la",
+  "debut": 17.02,
+  "fin": 17.1
+ },
+ {
+  "mot": "gestion",
+  "debut": 17.12,
+  "fin": 17.36
+ },
+ {
+  "mot": "d'équipe,",
+  "debut": 17.4,
+  "fin": 17.72
+ },
+ {
+  "mot": "des",
+  "debut": 17.78,
+  "fin": 17.9
+ },
+ {
+  "mot": "plannings,",
+  "debut": 17.94,
+  "fin": 18.26
+ },
+ {
+  "mot": "etc.",
+  "debut": 18.32,
+  "fin": 18.42
+ },
+ {
+  "mot": "Que",
+  "debut": 18.84,
+  "fin": 18.98
+ },
+ {
+  "mot": "je",
+  "debut": 19.04,
+  "fin": 19.1
+ },
+ {
+  "mot": "crois",
+  "debut": 19.14,
+  "fin": 19.24
+ },
+ {
+  "mot": "que",
+  "debut": 19.26,
+  "fin": 19.3
+ },
+ {
+  "mot": "même",
+  "debut": 19.34,
+  "fin": 19.46
+ },
+ {
+  "mot": "moi,",
+  "debut": 19.5,
+  "fin": 19.6
+ },
+ {
+  "mot": "parfois,",
+  "debut": 19.68,
+  "fin": 19.9
+ },
+ {
+  "mot": "je",
+  "debut": 19.96,
+  "fin": 20.0
+ },
+ {
+  "mot": "suis",
+  "debut": 20.04,
+  "fin": 20.32
+ },
+ {
+  "mot": "un",
+  "debut": 20.38,
+  "fin": 20.42
+ },
+ {
+  "mot": "peu",
+  "debut": 20.5,
+  "fin": 20.58
+ },
+ {
+  "mot": "incapable",
+  "debut": 20.62,
+  "fin": 21.02
+ },
+ {
+  "mot": "d'expliquer",
+  "debut": 21.04,
+  "fin": 21.42
+ },
+ {
+  "mot": "ce",
+  "debut": 21.46,
+  "fin": 21.52
+ },
+ {
+  "mot": "que",
+  "debut": 21.54,
+  "fin": 21.58
+ },
+ {
+  "mot": "je",
+  "debut": 21.62,
+  "fin": 21.72
+ },
+ {
+  "mot": "fais",
+  "debut": 21.76,
+  "fin": 21.86
+ },
+ {
+  "mot": "quand",
+  "debut": 21.9,
+  "fin": 22.08
+ },
+ {
+  "mot": "on",
+  "debut": 22.12,
+  "fin": 22.22
+ },
+ {
+  "mot": "me",
+  "debut": 22.26,
+  "fin": 22.32
+ },
+ {
+  "mot": "le",
+  "debut": 22.34,
+  "fin": 22.38
+ },
+ {
+  "mot": "demande.",
+  "debut": 22.42,
+  "fin": 22.9
+ }
+]
