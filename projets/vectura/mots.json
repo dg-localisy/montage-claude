@@ -1,0 +1,872 @@
+[
+ {
+  "mot": "Ce",
+  "debut": 0.08,
+  "fin": 0.16
+ },
+ {
+  "mot": "qui",
+  "debut": 0.2,
+  "fin": 0.26
+ },
+ {
+  "mot": "nous",
+  "debut": 0.3,
+  "fin": 0.38
+ },
+ {
+  "mot": "a",
+  "debut": 0.4,
+  "fin": 0.48
+ },
+ {
+  "mot": "permis",
+  "debut": 0.52,
+  "fin": 0.84
+ },
+ {
+  "mot": "de",
+  "debut": 0.94,
+  "fin": 1.18
+ },
+ {
+  "mot": "multiplier",
+  "debut": 1.26,
+  "fin": 1.9
+ },
+ {
+  "mot": "notre",
+  "debut": 1.98,
+  "fin": 2.28
+ },
+ {
+  "mot": "chiffre",
+  "debut": 2.54,
+  "fin": 2.8
+ },
+ {
+  "mot": "d'affaires",
+  "debut": 2.82,
+  "fin": 3.14
+ },
+ {
+  "mot": "lié",
+  "debut": 3.18,
+  "fin": 3.3
+ },
+ {
+  "mot": "à",
+  "debut": 3.32,
+  "fin": 3.36
+ },
+ {
+  "mot": "notre",
+  "debut": 3.4,
+  "fin": 3.58
+ },
+ {
+  "mot": "marketing",
+  "debut": 3.62,
+  "fin": 4.1
+ },
+ {
+  "mot": "par",
+  "debut": 4.14,
+  "fin": 4.26
+ },
+ {
+  "mot": "cinq.",
+  "debut": 4.32,
+  "fin": 4.52
+ },
+ {
+  "mot": "LOCALISY",
+  "debut": 4.94,
+  "fin": 5.58
+ },
+ {
+  "mot": "est",
+  "debut": 5.64,
+  "fin": 5.72
+ },
+ {
+  "mot": "vraiment",
+  "debut": 5.78,
+  "fin": 6.22
+ },
+ {
+  "mot": "présent",
+  "debut": 6.28,
+  "fin": 6.94
+ },
+ {
+  "mot": "chez",
+  "debut": 7.02,
+  "fin": 7.24
+ },
+ {
+  "mot": "nous",
+  "debut": 7.32,
+  "fin": 7.52
+ },
+ {
+  "mot": "sur",
+  "debut": 7.7,
+  "fin": 7.9
+ },
+ {
+  "mot": "tous",
+  "debut": 8.0,
+  "fin": 8.1
+ },
+ {
+  "mot": "les",
+  "debut": 8.119,
+  "fin": 8.2
+ },
+ {
+  "mot": "niveaux",
+  "debut": 8.24,
+  "fin": 8.46
+ },
+ {
+  "mot": "du",
+  "debut": 8.48,
+  "fin": 8.56
+ },
+ {
+  "mot": "marketing,",
+  "debut": 8.6,
+  "fin": 9.06
+ },
+ {
+  "mot": "c'est-à-dire",
+  "debut": 9.14,
+  "fin": 9.6
+ },
+ {
+  "mot": "qu'ils",
+  "debut": 9.68,
+  "fin": 9.82
+ },
+ {
+  "mot": "nous",
+  "debut": 9.88,
+  "fin": 10.06
+ },
+ {
+  "mot": "challengent",
+  "debut": 10.24,
+  "fin": 10.58
+ },
+ {
+  "mot": "au",
+  "debut": 10.58,
+  "fin": 10.64
+ },
+ {
+  "mot": "niveau",
+  "debut": 10.68,
+  "fin": 10.84
+ },
+ {
+  "mot": "de",
+  "debut": 10.86,
+  "fin": 10.88
+ },
+ {
+  "mot": "notre",
+  "debut": 10.9,
+  "fin": 11.02
+ },
+ {
+  "mot": "stratégie.",
+  "debut": 11.08,
+  "fin": 11.6
+ },
+ {
+  "mot": "Ils",
+  "debut": 11.68,
+  "fin": 11.76
+ },
+ {
+  "mot": "ont",
+  "debut": 11.8,
+  "fin": 12.0
+ },
+ {
+  "mot": "compris",
+  "debut": 12.06,
+  "fin": 12.42
+ },
+ {
+  "mot": "notre",
+  "debut": 12.48,
+  "fin": 12.66
+ },
+ {
+  "mot": "métier,",
+  "debut": 12.7,
+  "fin": 13.02
+ },
+ {
+  "mot": "ils",
+  "debut": 13.06,
+  "fin": 13.14
+ },
+ {
+  "mot": "ont",
+  "debut": 13.16,
+  "fin": 13.28
+ },
+ {
+  "mot": "compris",
+  "debut": 13.32,
+  "fin": 13.6
+ },
+ {
+  "mot": "notre",
+  "debut": 13.64,
+  "fin": 13.78
+ },
+ {
+  "mot": "business",
+  "debut": 13.82,
+  "fin": 14.36
+ },
+ {
+  "mot": "et",
+  "debut": 14.44,
+  "fin": 14.52
+ },
+ {
+  "mot": "ensuite",
+  "debut": 14.58,
+  "fin": 15.06
+ },
+ {
+  "mot": "ils",
+  "debut": 15.2,
+  "fin": 15.28
+ },
+ {
+  "mot": "s'occupent",
+  "debut": 15.32,
+  "fin": 15.58
+ },
+ {
+  "mot": "de",
+  "debut": 15.62,
+  "fin": 15.7
+ },
+ {
+  "mot": "tout",
+  "debut": 15.76,
+  "fin": 15.86
+ },
+ {
+  "mot": "l'opérationnel,",
+  "debut": 15.88,
+  "fin": 16.44
+ },
+ {
+  "mot": "c'est-à-dire",
+  "debut": 16.5,
+  "fin": 16.94
+ },
+ {
+  "mot": "la",
+  "debut": 17.08,
+  "fin": 17.16
+ },
+ {
+  "mot": "création",
+  "debut": 17.2,
+  "fin": 17.68
+ },
+ {
+  "mot": "et",
+  "debut": 17.74,
+  "fin": 17.8
+ },
+ {
+  "mot": "l'optimisation",
+  "debut": 17.84,
+  "fin": 18.36
+ },
+ {
+  "mot": "de",
+  "debut": 18.38,
+  "fin": 18.42
+ },
+ {
+  "mot": "notre",
+  "debut": 18.46,
+  "fin": 18.56
+ },
+ {
+  "mot": "site",
+  "debut": 18.6,
+  "fin": 18.74
+ },
+ {
+  "mot": "Internet,",
+  "debut": 18.78,
+  "fin": 19.3
+ },
+ {
+  "mot": "notre",
+  "debut": 19.52,
+  "fin": 19.66
+ },
+ {
+  "mot": "référencement,",
+  "debut": 19.7,
+  "fin": 20.44
+ },
+ {
+  "mot": "créent",
+  "debut": 20.64,
+  "fin": 20.82
+ },
+ {
+  "mot": "pour",
+  "debut": 20.86,
+  "fin": 21.02
+ },
+ {
+  "mot": "nous",
+  "debut": 21.06,
+  "fin": 21.16
+ },
+ {
+  "mot": "aussi",
+  "debut": 21.2,
+  "fin": 21.6
+ },
+ {
+  "mot": "des",
+  "debut": 21.9,
+  "fin": 22.0
+ },
+ {
+  "mot": "layouts,",
+  "debut": 22.04,
+  "fin": 22.54
+ },
+ {
+  "mot": "des",
+  "debut": 22.64,
+  "fin": 22.72
+ },
+ {
+  "mot": "supports",
+  "debut": 22.78,
+  "fin": 23.06
+ },
+ {
+  "mot": "marketing,",
+  "debut": 23.1,
+  "fin": 23.66
+ },
+ {
+  "mot": "des",
+  "debut": 23.88,
+  "fin": 23.98
+ },
+ {
+  "mot": "newsletters,",
+  "debut": 24.02,
+  "fin": 24.76
+ },
+ {
+  "mot": "des",
+  "debut": 24.98,
+  "fin": 25.06
+ },
+ {
+  "mot": "vidéos.",
+  "debut": 25.1,
+  "fin": 25.48
+ },
+ {
+  "mot": "Pour",
+  "debut": 25.54,
+  "fin": 25.64
+ },
+ {
+  "mot": "nous,",
+  "debut": 25.68,
+  "fin": 25.76
+ },
+ {
+  "mot": "ce",
+  "debut": 25.8,
+  "fin": 25.82
+ },
+ {
+  "mot": "n'était",
+  "debut": 25.82,
+  "fin": 26.02
+ },
+ {
+  "mot": "pas",
+  "debut": 26.04,
+  "fin": 26.16
+ },
+ {
+  "mot": "primordial,",
+  "debut": 26.2,
+  "fin": 26.68
+ },
+ {
+  "mot": "mais",
+  "debut": 26.74,
+  "fin": 26.78
+ },
+ {
+  "mot": "on",
+  "debut": 26.8,
+  "fin": 26.86
+ },
+ {
+  "mot": "se",
+  "debut": 26.9,
+  "fin": 26.94
+ },
+ {
+  "mot": "rend",
+  "debut": 26.98,
+  "fin": 27.08
+ },
+ {
+  "mot": "compte",
+  "debut": 27.14,
+  "fin": 27.34
+ },
+ {
+  "mot": "aujourd'hui",
+  "debut": 27.4,
+  "fin": 27.78
+ },
+ {
+  "mot": "que",
+  "debut": 27.86,
+  "fin": 28.0
+ },
+ {
+  "mot": "nos",
+  "debut": 28.22,
+  "fin": 28.38
+ },
+ {
+  "mot": "clients",
+  "debut": 28.42,
+  "fin": 28.96
+ },
+ {
+  "mot": "consomment",
+  "debut": 29.04,
+  "fin": 29.46
+ },
+ {
+  "mot": "le",
+  "debut": 29.5,
+  "fin": 29.58
+ },
+ {
+  "mot": "contenu",
+  "debut": 29.62,
+  "fin": 29.98
+ },
+ {
+  "mot": "de",
+  "debut": 30.02,
+  "fin": 30.08
+ },
+ {
+  "mot": "manière",
+  "debut": 30.12,
+  "fin": 30.34
+ },
+ {
+  "mot": "différente",
+  "debut": 30.38,
+  "fin": 30.82
+ },
+ {
+  "mot": "par",
+  "debut": 30.88,
+  "fin": 30.94
+ },
+ {
+  "mot": "rapport",
+  "debut": 30.98,
+  "fin": 31.26
+ },
+ {
+  "mot": "à",
+  "debut": 31.32,
+  "fin": 31.36
+ },
+ {
+  "mot": "avant.",
+  "debut": 31.42,
+  "fin": 31.76
+ },
+ {
+  "mot": "Et",
+  "debut": 31.88,
+  "fin": 31.94
+ },
+ {
+  "mot": "LOCALISY",
+  "debut": 32.0,
+  "fin": 32.619
+ },
+ {
+  "mot": "va",
+  "debut": 32.68,
+  "fin": 32.759
+ },
+ {
+  "mot": "jusqu'à",
+  "debut": 32.82,
+  "fin": 33.28
+ },
+ {
+  "mot": "écrire",
+  "debut": 33.46,
+  "fin": 33.76
+ },
+ {
+  "mot": "nos",
+  "debut": 33.8,
+  "fin": 33.92
+ },
+ {
+  "mot": "scripts,",
+  "debut": 33.96,
+  "fin": 34.3
+ },
+ {
+  "mot": "réaliser",
+  "debut": 34.38,
+  "fin": 34.92
+ },
+ {
+  "mot": "les",
+  "debut": 34.98,
+  "fin": 35.1
+ },
+ {
+  "mot": "vidéos,",
+  "debut": 35.14,
+  "fin": 35.66
+ },
+ {
+  "mot": "s'occuper",
+  "debut": 35.76,
+  "fin": 36.16
+ },
+ {
+  "mot": "de",
+  "debut": 36.2,
+  "fin": 36.28
+ },
+ {
+  "mot": "tout",
+  "debut": 36.34,
+  "fin": 36.42
+ },
+ {
+  "mot": "l'environnement",
+  "debut": 36.46,
+  "fin": 37.06
+ },
+ {
+  "mot": "qui",
+  "debut": 37.14,
+  "fin": 37.24
+ },
+ {
+  "mot": "va",
+  "debut": 37.28,
+  "fin": 37.38
+ },
+ {
+  "mot": "autour",
+  "debut": 37.42,
+  "fin": 37.86
+ },
+ {
+  "mot": "et",
+  "debut": 38.08,
+  "fin": 38.3
+ },
+ {
+  "mot": "évidemment",
+  "debut": 38.4,
+  "fin": 38.84
+ },
+ {
+  "mot": "promouvoir",
+  "debut": 38.9,
+  "fin": 39.36
+ },
+ {
+  "mot": "la",
+  "debut": 39.44,
+  "fin": 39.5
+ },
+ {
+  "mot": "vidéo",
+  "debut": 39.54,
+  "fin": 39.92
+ },
+ {
+  "mot": "une",
+  "debut": 39.98,
+  "fin": 40.06
+ },
+ {
+  "mot": "fois",
+  "debut": 40.1,
+  "fin": 40.2
+ },
+ {
+  "mot": "qu'elle",
+  "debut": 40.24,
+  "fin": 40.34
+ },
+ {
+  "mot": "est",
+  "debut": 40.34,
+  "fin": 40.4
+ },
+ {
+  "mot": "créée.",
+  "debut": 40.44,
+  "fin": 40.72
+ },
+ {
+  "mot": "Ils",
+  "debut": 40.86,
+  "fin": 40.94
+ },
+ {
+  "mot": "sont",
+  "debut": 41.0,
+  "fin": 41.1
+ },
+ {
+  "mot": "venus",
+  "debut": 41.12,
+  "fin": 41.32
+ },
+ {
+  "mot": "fin",
+  "debut": 41.38,
+  "fin": 41.5
+ },
+ {
+  "mot": "2025",
+  "debut": 41.6,
+  "fin": 42.26
+ },
+ {
+  "mot": "en",
+  "debut": 42.3,
+  "fin": 42.34
+ },
+ {
+  "mot": "nous",
+  "debut": 42.38,
+  "fin": 42.46
+ },
+ {
+  "mot": "suggérant",
+  "debut": 42.52,
+  "fin": 43.22
+ },
+ {
+  "mot": "de",
+  "debut": 43.28,
+  "fin": 43.34
+ },
+ {
+  "mot": "rajouter",
+  "debut": 43.38,
+  "fin": 43.72
+ },
+ {
+  "mot": "une",
+  "debut": 43.74,
+  "fin": 43.9
+ },
+ {
+  "mot": "couche",
+  "debut": 43.96,
+  "fin": 44.22
+ },
+ {
+  "mot": "IA",
+  "debut": 44.3,
+  "fin": 44.58
+ },
+ {
+  "mot": "au",
+  "debut": 44.66,
+  "fin": 44.72
+ },
+ {
+  "mot": "niveau",
+  "debut": 44.78,
+  "fin": 45.1
+ },
+ {
+  "mot": "de",
+  "debut": 45.18,
+  "fin": 45.26
+ },
+ {
+  "mot": "notre",
+  "debut": 45.3,
+  "fin": 45.54
+ },
+ {
+  "mot": "ciblage",
+  "debut": 45.64,
+  "fin": 46.18
+ },
+ {
+  "mot": "marketing.",
+  "debut": 46.24,
+  "fin": 46.82
+ },
+ {
+  "mot": "Ce",
+  "debut": 46.96,
+  "fin": 47.02
+ },
+ {
+  "mot": "qui",
+  "debut": 47.08,
+  "fin": 47.14
+ },
+ {
+  "mot": "a",
+  "debut": 47.18,
+  "fin": 47.22
+ },
+ {
+  "mot": "été",
+  "debut": 47.26,
+  "fin": 47.44
+ },
+ {
+  "mot": "évidemment",
+  "debut": 47.48,
+  "fin": 47.96
+ },
+ {
+  "mot": "payant,",
+  "debut": 48.02,
+  "fin": 48.44
+ },
+ {
+  "mot": "car",
+  "debut": 48.62,
+  "fin": 48.9
+ },
+ {
+  "mot": "le",
+  "debut": 49.22,
+  "fin": 49.3
+ },
+ {
+  "mot": "nombre",
+  "debut": 49.38,
+  "fin": 49.58
+ },
+ {
+  "mot": "de",
+  "debut": 49.62,
+  "fin": 49.68
+ },
+ {
+  "mot": "leads",
+  "debut": 49.74,
+  "fin": 49.94
+ },
+ {
+  "mot": "qu'on",
+  "debut": 49.96,
+  "fin": 50.08
+ },
+ {
+  "mot": "a",
+  "debut": 50.14,
+  "fin": 50.2
+ },
+ {
+  "mot": "réussi",
+  "debut": 50.26,
+  "fin": 50.74
+ },
+ {
+  "mot": "à",
+  "debut": 51.02,
+  "fin": 51.2
+ },
+ {
+  "mot": "générer",
+  "debut": 51.32,
+  "fin": 51.74
+ },
+ {
+  "mot": "grâce",
+  "debut": 51.8,
+  "fin": 51.96
+ },
+ {
+  "mot": "à",
+  "debut": 52.0,
+  "fin": 52.04
+ },
+ {
+  "mot": "ChatGPT",
+  "debut": 52.1,
+  "fin": 52.7
+ },
+ {
+  "mot": "est",
+  "debut": 52.74,
+  "fin": 52.84
+ },
+ {
+  "mot": "exponentiel",
+  "debut": 52.88,
+  "fin": 53.42
+ },
+ {
+  "mot": "sur",
+  "debut": 53.46,
+  "fin": 53.52
+ },
+ {
+  "mot": "les",
+  "debut": 53.54,
+  "fin": 53.6
+ },
+ {
+  "mot": "derniers",
+  "debut": 53.64,
+  "fin": 53.88
+ },
+ {
+  "mot": "mois.",
+  "debut": 53.9,
+  "fin": 54.02
+ }
+]

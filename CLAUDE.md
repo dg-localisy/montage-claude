@@ -96,6 +96,10 @@ polices = sous_titres.dossier_polices_statiques("DOSSIER_TEMP/polices")
 - Phrases fortes : `{"debut", "fin", "lignes": [[{"mot", "role", "debut"}, ...], ...]}` avec les rôles `liaison`, `liaison_gras`, `appui`, `fort`, `choc` (un seul `choc` par bloc). Chaque mot passe du flou au net quand il est prononcé.
 - Ne change ni la taille ni la position sans demande de l'utilisateur. Position actuelle : ligne de base à 1440 px (75 %, au plus bas de la zone sûre), 143 px plus bas que la première vidéo, à sa demande. Les temps des mots viennent de Scribe (`outils/elevenlabs.py`).
 
+### Sous-titres seuls sur une vidéo déjà montée : `outils/graver_sous_titres.py`
+
+Quand l'agence envoie une vidéo déjà montée (riser, zooms, effets) et demande « juste les sous-titres » (Vectura, 24/11/2026, `projets/vectura`) : transcription Scribe, `mots.json` corrigé (LOCALISY, ponctuation, petits mots parasites comme le « hein » final transcrit « ans »), `effets.json` sans effets ni musique avec les phrases fortes, puis `node moteur/scripts/preparer.mjs projets/NOM/effets.json` et `python3 outils/graver_sous_titres.py moteur/public/projet.json RUSH.mp4 SORTIE.mp4` : pas de rendu Remotion, la vidéo reçue est gardée telle quelle, son remonté à -14 LUFS par un simple gain. Un mot clé de phrase forte reste affiché au moins ~0,5 s (sinon ajouter la fin de la phrase au bloc, ou une `fin` imposée).
+
 ### Aperçus : `outils/generer_apercus.py`
 
 `python3 outils/generer_apercus.py` refait toutes les images de `apercus/` à partir de la charte. À relancer après chaque changement de la charte, puis à montrer à l'utilisateur pour validation.

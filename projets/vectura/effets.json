@@ -1,0 +1,226 @@
+{
+  "_aide": "Témoignage Vectura (bornes de recharge, panneaux photovoltaïques et batteries de stockage). Vidéo reçue déjà montée : riser, zooms, plans de coupe et effets faits par l'agence. Demande de l'utilisateur (24/11/2026) : « juste sous-titres selon notre charte » : sous-titres INCENDIE et phrases fortes, rien d'autre. Gravés directement sur la vidéo reçue (outils/sous_titres.py), son seulement remis à -14 LUFS / -1 dBTP.",
+  "duree": 54.378,
+  "fps": 25,
+  "rush": {
+    "video": "rush/rush.mp4",
+    "mots": "mots.json",
+    "_source": "Testi - Vectura 30Mo.mp4 (1080×1920, 25 i/s), gardée telle quelle."
+  },
+  "musique": {
+    "actif": false,
+    "_note": "La vidéo reçue a déjà son mixage (riser compris)."
+  },
+  "sous_titres": {
+    "mode": "premiere_video",
+    "phrases_fortes": [
+      {
+        "debut": 3.18,
+        "lignes": [
+          [
+            {
+              "mot": "lié à notre marketing",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "par cinq.",
+              "role": "fort"
+            }
+          ]
+        ],
+        "_note": "Fin de l'accroche ; le « hein » qui suit (« par cinq, hein », transcrit « ans ») n'est pas affiché."
+      },
+      {
+        "debut": 9.68,
+        "lignes": [
+          [
+            {
+              "mot": "qu'ils nous",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "challengent",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "au niveau de notre stratégie.",
+              "role": "liaison"
+            }
+          ]
+        ],
+        "_note": "« challengent » ne restait que 0,3 s : la fin de la phrase est ajoutée au bloc."
+      },
+      {
+        "debut": 15.2,
+        "lignes": [
+          [
+            {
+              "mot": "ils s'occupent de",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "tout l'opérationnel,",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 19.52,
+        "lignes": [
+          [
+            {
+              "mot": "notre",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "référencement,",
+              "role": "fort"
+            }
+          ]
+        ],
+        "decalages_px": [
+          0,
+          0
+        ],
+        "_note": "« notre » seul ne restait que 0,18 s en sous-titre."
+      },
+      {
+        "debut": 25.54,
+        "lignes": [
+          [
+            {
+              "mot": "Pour nous, ce n'était pas",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "primordial,",
+              "role": "fort"
+            }
+          ]
+        ],
+        "decalages_px": [
+          0,
+          0
+        ],
+        "_note": "« Pour nous, » seul ne restait que 0,26 s en sous-titre."
+      },
+      {
+        "debut": 32.68,
+        "lignes": [
+          [
+            {
+              "mot": "va jusqu'à",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "écrire nos scripts,",
+              "role": "fort"
+            }
+          ]
+        ]
+      },
+      {
+        "debut": 43.74,
+        "lignes": [
+          [
+            {
+              "mot": "une couche",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "IA",
+              "role": "fort"
+            }
+          ]
+        ],
+        "decalages_px": [
+          0,
+          0
+        ],
+        "fin": 45.1,
+        "_note": "« IA » gardé jusqu'à 45,1 s (sinon 0,3 s seulement)."
+      },
+      {
+        "debut": 46.96,
+        "lignes": [
+          [
+            {
+              "mot": "Ce qui a été évidemment",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "payant,",
+              "role": "fort"
+            }
+          ]
+        ],
+        "decalages_px": [
+          0,
+          0
+        ]
+      },
+      {
+        "debut": 52.74,
+        "lignes": [
+          [
+            {
+              "mot": "est",
+              "role": "liaison"
+            }
+          ],
+          [
+            {
+              "mot": "exponentiel",
+              "role": "fort"
+            }
+          ],
+          [
+            {
+              "mot": "sur les derniers mois.",
+              "role": "appui"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "camera": {
+    "visage": [
+      0.5,
+      0.3
+    ],
+    "coupes": [],
+    "cadrages": [
+      1
+    ],
+    "decalages_x": [
+      0
+    ],
+    "avancee": 0
+  },
+  "ambiance": {
+    "grain": 0,
+    "vignette": 0,
+    "etalonnage": false
+  },
+  "effets": []
+}
