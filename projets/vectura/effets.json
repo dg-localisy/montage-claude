@@ -229,10 +229,10 @@
     {
       "type": "texte_derriere",
       "debut": 4.32,
-      "fin": 5.75,
+      "fin": 4.94,
       "texte": "50",
-      "taille": 250,
-      "x": 900,
+      "taille": 300,
+      "x": 850,
       "y": 228,
       "couleur": "#0A0A0A",
       "opacite": 0.9,
@@ -242,8 +242,8 @@
           4.72
         ]
       ],
-      "_incruste": "Déjà incrusté dans rush/rush_50.mp4 par outils/incruster_texte_derriere.py --texte 50 --debut 4.32 --fin 5.75 --taille 250 --x 900 --base 265 --deplacement 4.62,4.78 --x2 620 --base2 335 --taille2 300 (entrée « compte »). Cette ligne sert à retirer « 50 » des sous-titres ; ne pas le rendre une 2e fois avec le moteur.",
-      "_note": "Grand 50 derrière lui, dès qu'il le dit (v2 : « le 50 arrive trop tard »). Plan serré : en haut à droite, seule place libre (sa tête touche le haut de l'image), ses cheveux devant le bas des chiffres ; il glisse au-dessus de sa tête pendant le zoom arrière du monteur (4,62–4,78 s). Noir sur le mur clair, loin du tableau sombre."
+      "_incruste": "Déjà incrusté dans rush/rush_50.mp4 par outils/incruster_texte_derriere.py --texte 50 --debut 4.32 --fin 4.94 --taille 300 --x 850 --base 272 --duree_compte 0.2 --battements 4.54,4.74 --force_battement 0.14 --sortie_s 0.1 (entrée « compte »). Cette ligne sert à retirer « 50 » des sous-titres ; ne pas le rendre une 2e fois avec le moteur.",
+      "_note": "Grand 50 derrière lui, dès qu'il le dit (v2 : « trop tard ») ; v3 : plus grand, deux battements (« boum-boum ») pour être plus percutant, disparaît d'un coup quand « LOCALISY » commence (4,94 s). En haut à droite, seule place libre dans le plan serré (cheveux devant le bas du 5), sans glissement (affiché 0,6 s seulement)."
     }
   ]
 }

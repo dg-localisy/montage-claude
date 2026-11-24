@@ -7,6 +7,7 @@ Usage :
         --taille 300 --x 620 --base 330 [--couleur 0A0A0A] [--opacite 0.9] [--entree compte]
 --x : centre du texte (px) ; --base : ligne de base des chiffres (px), à placer un peu sous le haut de la tête.
 --deplacement D0,D1 --x2 --base2 --taille2 : le texte glisse vers une autre place pendant un changement de plan (Vectura : zoom arrière).
+--duree_compte, --battements T1,T2 (« boum » : grossit d'un coup puis revient), --force_battement, --sortie_s (sortie rapide).
 La sortie est presque sans perte (crf 10) : les sous-titres se gravent ensuite dessus (outils/graver_sous_titres.py).
 """
 import argparse
@@ -39,6 +40,11 @@ def main():
     p.add_argument('--police', default=str(RACINE / 'Figtree-Black.ttf'))
     # déplacement facultatif pendant un changement de plan du monteur (ex. zoom arrière) : de (x, base, taille) à (x2, base2, taille2)
     p.add_argument('--deplacement', default=None, help='DEBUT,FIN du déplacement, en s')
+    # rythme : durée du défilement des chiffres, battements (« boum » : le texte grossit d'un coup puis revient), sortie rapide
+    p.add_argument('--duree_compte', type=float, default=0.45)
+    p.add_argument('--battements', default=None, help='instants des battements, en s, séparés par des virgules')
+    p.add_argument('--force_battement', type=float, default=0.16)
+    p.add_argument('--sortie_s', type=float, default=0.25)
     p.add_argument('--x2', type=float); p.add_argument('--base2', type=float); p.add_argument('--taille2', type=int)
     a = p.parse_args()
 
@@ -64,13 +70,17 @@ def main():
         if a.debut <= t <= a.fin:
             img = np.frombuffer(brut, np.uint8).reshape(H, W, 3).astype(np.float32)
             entree = ease_out((t - a.debut) / 0.25)
-            sortie = min(1.0, max(0.0, (t - (a.fin - 0.25)) / 0.25))
+            sortie = min(1.0, max(0.0, (t - (a.fin - a.sortie_s)) / a.sortie_s))
             if a.entree == 'compte' and valeur is not None:
-                texte = str(round(valeur * ease_out((t - a.debut) / 0.45)))
+                texte = str(round(valeur * ease_out((t - a.debut) / a.duree_compte)))
             else:
                 texte = a.texte
             # léger rebond à l'arrivée (1,12 → 1), flou qui se dissipe, puis fondu flou à la sortie
             echelle = 1.12 - 0.12 * entree
+            if a.battements:
+                for k, tb in enumerate(float(v) for v in a.battements.split(',')):
+                    echelle *= 1 + a.force_battement * (0.7 ** k) * np.exp(-((t - tb) / 0.045) ** 2)
+            echelle *= 1 + 0.25 * sortie  # sortie : il grossit en s'effaçant
             x, base, taille, flou_bouge = a.x, a.base, a.taille, 0.0
             if a.deplacement:
                 d0, d1 = (float(v) for v in a.deplacement.split(','))
