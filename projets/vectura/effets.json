@@ -19,18 +19,23 @@
         "lignes": [
           [
             {
-              "mot": "lié à notre marketing",
+              "mot": "lié à notre marketing par",
               "role": "liaison"
             }
           ],
           [
             {
-              "mot": "par cinq.",
-              "role": "fort"
+              "mot": "50",
+              "role": "choc"
             }
           ]
         ],
-        "_note": "Fin de l'accroche ; le « hein » qui suit (« par cinq, hein », transcrit « ans ») n'est pas affiché."
+        "_note": "Fin de l'accroche : « multiplier notre chiffre d'affaires lié à notre marketing par 50 » (Scribe avait entendu « par cinq ans »). 50 mis en évidence (rôle choc, demande de l'utilisateur), gardé jusqu'à 5,3 s.",
+        "fin": 5.3,
+        "decalages_px": [
+          0,
+          0
+        ]
       },
       {
         "debut": 9.68,
