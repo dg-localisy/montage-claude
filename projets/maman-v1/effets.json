@@ -1,11 +1,11 @@
 {
- "_aide": "« Ma mère ne sait pas ce que je fais comme métier - V1 » : version montée par le vidéaste (zooms, musique, sans plans de coupe) avec ses propres sous-titres incrustés. Demande de l'utilisateur (24/11/2026) : « Il faut enlever ceux présents sur la vidéo et les modifier par les nôtres ». Anciens sous-titres effacés par outils/effacer_sous_titres.py (rush/rush_propre.mp4), puis nos sous-titres INCENDIE et les phrases fortes du projet « maman » gravés par outils/graver_sous_titres.py. Même son que la vidéo « maman » : mots.json repris tel quel (temps vérifiés sur les changements des anciens sous-titres).",
+ "_aide": "« Ma mère ne sait pas ce que je fais comme métier - V1 » : version montée par le vidéaste (zooms, musique, sans plans de coupe). Demande de l'utilisateur (24/11/2026) : remplacer ses sous-titres incrustés par les nôtres. Les sous-titres incrustés ne s'effacent pas proprement (essai du 24/11, voir CLAUDE.md) : il faut la même vidéo SANS sous-titres (export du vidéaste) dans rush/rush.mp4. Puis node moteur/scripts/preparer.mjs projets/maman-v1/effets.json et python3 outils/graver_sous_titres.py moteur/public/projet.json projets/maman-v1/rush/rush.mp4 SORTIE.mp4. Même son que la vidéo « maman » : mots.json repris tel quel (temps vérifiés sur les changements des anciens sous-titres de la V1).",
  "duree": 23.04,
  "fps": 25,
  "rush": {
-  "video": "rush/rush_propre.mp4",
+  "video": "rush/rush.mp4",
   "mots": "mots.json",
-  "_source": "Ma mère ne sait pas ce que je fais comme métier - V1 30Mo.mp4 (1080×1920, 25 i/s), anciens sous-titres effacés."
+  "_source": "À fournir : « Ma mère ne sait pas ce que je fais comme métier - V1 » exportée sans sous-titres (1080×1920, 25 i/s, 23,04 s)."
  },
  "musique": {
   "actif": false,
