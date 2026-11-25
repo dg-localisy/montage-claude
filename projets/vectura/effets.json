@@ -1,249 +1,254 @@
 {
-  "_aide": "Témoignage Vectura (bornes de recharge, panneaux photovoltaïques et batteries de stockage). Vidéo reçue déjà montée : riser, zooms, plans de coupe et effets faits par l'agence. Demande de l'utilisateur (24/11/2026) : « juste sous-titres selon notre charte » : sous-titres INCENDIE et phrases fortes, rien d'autre. Gravés directement sur la vidéo reçue (outils/sous_titres.py), son seulement remis à -14 LUFS / -1 dBTP.",
-  "duree": 54.378,
-  "fps": 25,
-  "rush": {
-    "video": "rush/rush.mp4",
-    "mots": "mots.json",
-    "_source": "Testi - Vectura 30Mo.mp4 (1080×1920, 25 i/s), gardée telle quelle.",
-    "video_avec_50": "rush/rush_50.mp4"
-  },
-  "musique": {
-    "actif": false,
-    "_note": "La vidéo reçue a déjà son mixage (riser compris)."
-  },
-  "sous_titres": {
-    "mode": "premiere_video",
-    "phrases_fortes": [
+ "_aide": "Témoignage Vectura (bornes de recharge, panneaux photovoltaïques et batteries de stockage). Vidéo reçue déjà montée : riser, zooms, plans de coupe et effets faits par l'agence. Demande de l'utilisateur (24/11/2026) : « juste sous-titres selon notre charte » : sous-titres INCENDIE et phrases fortes, rien d'autre. Gravés directement sur la vidéo reçue (outils/sous_titres.py), son seulement remis à -14 LUFS / -1 dBTP.",
+ "duree": 54.378,
+ "fps": 25,
+ "rush": {
+  "video": "rush/rush.mp4",
+  "mots": "mots.json",
+  "_source": "Testi - Vectura 30Mo.mp4 (1080×1920, 25 i/s), gardée telle quelle.",
+  "video_avec_50": "rush/rush_50.mp4"
+ },
+ "musique": {
+  "actif": false,
+  "_note": "La vidéo reçue a déjà son mixage (riser compris)."
+ },
+ "sous_titres": {
+  "mode": "premiere_video",
+  "phrases_fortes": [
+   {
+    "debut": 3.18,
+    "lignes": [
+     [
       {
-        "debut": 3.18,
-        "lignes": [
-          [
-            {
-              "mot": "lié à notre",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "marketing par",
-              "role": "appui"
-            }
-          ]
-        ],
-        "_note": "« multiplier notre chiffre d'affaires lié à notre marketing par 50 » : le bloc s'arrête sur « par » ; le grand 50 prend le relais dès qu'il est dit (4,32 s), pas de doublon.",
-        "fin": 4.34
-      },
-      {
-        "debut": 9.68,
-        "lignes": [
-          [
-            {
-              "mot": "qu'ils nous",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "challengent",
-              "role": "fort"
-            }
-          ],
-          [
-            {
-              "mot": "au niveau de notre stratégie.",
-              "role": "liaison"
-            }
-          ]
-        ],
-        "_note": "« challengent » ne restait que 0,3 s : la fin de la phrase est ajoutée au bloc."
-      },
-      {
-        "debut": 15.2,
-        "lignes": [
-          [
-            {
-              "mot": "ils s'occupent de",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "tout l'opérationnel,",
-              "role": "fort"
-            }
-          ]
-        ]
-      },
-      {
-        "debut": 19.52,
-        "lignes": [
-          [
-            {
-              "mot": "notre",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "référencement,",
-              "role": "fort"
-            }
-          ]
-        ],
-        "decalages_px": [
-          0,
-          0
-        ],
-        "_note": "« notre » seul ne restait que 0,18 s en sous-titre."
-      },
-      {
-        "debut": 25.54,
-        "lignes": [
-          [
-            {
-              "mot": "Pour nous, ce n'était pas",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "primordial,",
-              "role": "fort"
-            }
-          ]
-        ],
-        "decalages_px": [
-          0,
-          0
-        ],
-        "_note": "« Pour nous, » seul ne restait que 0,26 s en sous-titre."
-      },
-      {
-        "debut": 32.68,
-        "lignes": [
-          [
-            {
-              "mot": "va jusqu'à",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "écrire nos scripts,",
-              "role": "fort"
-            }
-          ]
-        ]
-      },
-      {
-        "debut": 43.74,
-        "lignes": [
-          [
-            {
-              "mot": "une couche",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "IA",
-              "role": "fort"
-            }
-          ]
-        ],
-        "decalages_px": [
-          0,
-          0
-        ],
-        "fin": 45.1,
-        "_note": "« IA » gardé jusqu'à 45,1 s (sinon 0,3 s seulement)."
-      },
-      {
-        "debut": 46.96,
-        "lignes": [
-          [
-            {
-              "mot": "Ce qui a été évidemment",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "payant,",
-              "role": "fort"
-            }
-          ]
-        ],
-        "decalages_px": [
-          0,
-          0
-        ]
-      },
-      {
-        "debut": 52.74,
-        "lignes": [
-          [
-            {
-              "mot": "est",
-              "role": "liaison"
-            }
-          ],
-          [
-            {
-              "mot": "exponentiel",
-              "role": "fort"
-            }
-          ],
-          [
-            {
-              "mot": "sur les derniers mois.",
-              "role": "appui"
-            }
-          ]
-        ]
+       "mot": "lié à notre",
+       "role": "liaison"
       }
+     ],
+     [
+      {
+       "mot": "marketing par",
+       "role": "appui"
+      }
+     ]
+    ],
+    "_note": "« multiplier notre chiffre d'affaires lié à notre marketing par 50 » : le bloc s'arrête sur « par » ; le grand 50 prend le relais dès qu'il est dit (4,32 s), pas de doublon.",
+    "fin": 4.34
+   },
+   {
+    "debut": 9.68,
+    "lignes": [
+     [
+      {
+       "mot": "qu'ils nous",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "challengent",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "au niveau de notre stratégie.",
+       "role": "liaison"
+      }
+     ]
+    ],
+    "_note": "« challengent » ne restait que 0,3 s : la fin de la phrase est ajoutée au bloc."
+   },
+   {
+    "debut": 15.2,
+    "lignes": [
+     [
+      {
+       "mot": "ils s'occupent de",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "tout l'opérationnel,",
+       "role": "fort"
+      }
+     ]
     ]
-  },
-  "camera": {
-    "visage": [
-      0.5,
-      0.3
+   },
+   {
+    "debut": 19.52,
+    "lignes": [
+     [
+      {
+       "mot": "notre",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "référencement,",
+       "role": "fort"
+      }
+     ]
     ],
-    "coupes": [],
-    "cadrages": [
-      1
+    "decalages_px": [
+     0,
+     0
     ],
-    "decalages_x": [
-      0
+    "_note": "« notre » seul ne restait que 0,18 s en sous-titre."
+   },
+   {
+    "debut": 25.54,
+    "lignes": [
+     [
+      {
+       "mot": "Pour nous, ce n'était pas",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "primordial,",
+       "role": "fort"
+      }
+     ]
     ],
-    "avancee": 0,
-    "masques": "masques"
-  },
-  "ambiance": {
-    "grain": 0,
-    "vignette": 0,
-    "etalonnage": false
-  },
-  "effets": [
-    {
-      "type": "texte_derriere",
-      "debut": 4.32,
-      "fin": 4.94,
-      "texte": "50",
-      "taille": 300,
-      "x": 850,
-      "y": 228,
-      "couleur": "#0A0A0A",
-      "opacite": 0.9,
-      "remplace_temps": [
-        [
-          4.3,
-          4.72
-        ]
-      ],
-      "_incruste": "Déjà incrusté dans rush/rush_50.mp4 par outils/incruster_texte_derriere.py --texte 50 --debut 4.32 --fin 4.94 --taille 300 --x 850 --base 272 --duree_compte 0.2 --battements 4.54,4.74 --force_battement 0.14 --sortie_s 0.1 (entrée « compte »). Cette ligne sert à retirer « 50 » des sous-titres ; ne pas le rendre une 2e fois avec le moteur.",
-      "_note": "Grand 50 derrière lui, dès qu'il le dit (v2 : « trop tard ») ; v3 : plus grand, deux battements (« boum-boum ») pour être plus percutant, disparaît d'un coup quand « LOCALISY » commence (4,94 s). En haut à droite, seule place libre dans le plan serré (cheveux devant le bas du 5), sans glissement (affiché 0,6 s seulement)."
-    }
+    "decalages_px": [
+     0,
+     0
+    ],
+    "_note": "« Pour nous, » seul ne restait que 0,26 s en sous-titre."
+   },
+   {
+    "debut": 32.68,
+    "lignes": [
+     [
+      {
+       "mot": "va jusqu'à",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "écrire nos scripts,",
+       "role": "fort"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 43.74,
+    "lignes": [
+     [
+      {
+       "mot": "une couche",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "IA",
+       "role": "fort"
+      }
+     ]
+    ],
+    "decalages_px": [
+     0,
+     0
+    ],
+    "fin": 45.1,
+    "_note": "« IA » gardé jusqu'à 45,1 s (sinon 0,3 s seulement)."
+   },
+   {
+    "debut": 46.96,
+    "lignes": [
+     [
+      {
+       "mot": "Ce qui a été évidemment",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "payant,",
+       "role": "fort"
+      }
+     ]
+    ],
+    "decalages_px": [
+     0,
+     0
+    ]
+   },
+   {
+    "debut": 52.74,
+    "lignes": [
+     [
+      {
+       "mot": "est",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "exponentiel",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "sur les derniers mois.",
+       "role": "appui"
+      }
+     ]
+    ]
+   }
   ]
+ },
+ "camera": {
+  "visage": [
+   0.5,
+   0.3
+  ],
+  "coupes": [],
+  "cadrages": [
+   1
+  ],
+  "decalages_x": [
+   0
+  ],
+  "avancee": 0,
+  "masques": "masques"
+ },
+ "ambiance": {
+  "grain": 0,
+  "vignette": 0,
+  "etalonnage": false
+ },
+ "effets": [
+  {
+   "type": "texte_derriere",
+   "debut": 4.32,
+   "fin": 4.94,
+   "texte": "50",
+   "taille": 300,
+   "x": 850,
+   "y": 228,
+   "couleur": "#0A0A0A",
+   "opacite": 0.9,
+   "remplace_temps": [
+    [
+     4.3,
+     4.72
+    ]
+   ],
+   "_incruste": "Déjà incrusté dans rush/rush_50.mp4 par outils/incruster_texte_derriere.py --texte 50 --debut 4.32 --fin 4.94 --taille 300 --x 850 --base 272 --duree_compte 0.2 --battements 4.54,4.74 --force_battement 0.14 --sortie_s 0.1 (entrée « compte »). Cette ligne sert à retirer « 50 » des sous-titres ; ne pas le rendre une 2e fois avec le moteur.",
+   "_note": "Grand 50 derrière lui, dès qu'il le dit (v2 : « trop tard ») ; v3 : plus grand, deux battements (« boum-boum ») pour être plus percutant, disparaît d'un coup quand « LOCALISY » commence (4,94 s). En haut à droite, seule place libre dans le plan serré (cheveux devant le bas du 5), sans glissement (affiché 0,6 s seulement)."
+  }
+ ],
+ "couverture": {
+  "temps": 41.92,
+  "image": 1048,
+  "_note": "25/11/2026 : image du rush (sans sous-titres), non étalonnée (vidéo déjà étalonnée par l'agence). Il sourit très peu dans la vidéo : 41,92 s est le moment le plus souriant, yeux ouverts, image nette (plan rapproché). Autres choix envoyés sur une planche numérotée (46,24 s, 5,04 s…)."
+ }
 }
