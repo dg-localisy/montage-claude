@@ -538,8 +538,9 @@
   "_note": "Image du rush (rush_v4b.mp4), non étalonnée comme la vidéo : Loïs qui sourit, yeux ouverts (score de sourire le plus haut avec le n° 1 à 30,4 s). Autres choix : planche numérotée envoyée."
  },
  "livraison": {
-  "fichier": "Video8_marketing_rapporte_9x16.mp4",
-  "son": "-14,2 LUFS, crête -1,2 dBTP, riser +5,5 dB au-dessus de la voix (son_final.py)",
-  "duree_s": 66.07
+  "fichier": "Video8_marketing_rapporte_9x16_v3.mp4",
+  "duree_s": 65.9,
+  "son": "-14,3 LUFS, crête -1,3 dBTP",
+  "_note": "v3 (27/11) : « à la fin, ça se coupe trop tard avec ses yeux vers le bas » → vidéo coupée pile à la fin de « campagnes. » (65,90 s au lieu de 66,07), fondu du son de 0,14 s ; image et son du rendu v2 sinon identiques."
  }
 }
