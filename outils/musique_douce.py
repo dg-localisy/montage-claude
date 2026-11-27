@@ -19,6 +19,9 @@ Styles :
   pizzicato  (vidéo « De stagiaire à associé », ~108 BPM) : pop inspirante en La majeur (La – Fa♯ m – Ré – Mi),
              cordes pincées en croches, basse pincée, glockenspiel très doux, nappe de cordes, grosse caisse
              feutrée et claquements de mains. Positif, idée de progression.
+  vibraphone (vidéo « Personne ne sait ce que son marketing rapporte », ~90 BPM) : jazz-hop en Mi♭ majeur
+             (Mi♭ maj9 – Do m9 – La♭ maj7 – Si♭ 13 sus), vibraphone avec trémolo, basse ronde, grosse caisse
+             « boom-bap », caisse claire aux balais, charleston swingué. Posé et précis.
 
 Usage :
     python3 outils/musique_douce.py SORTIE.wav --duree 48.16 --debut 4.62 --style acoustique [--bpm 96] [--graine 7]
@@ -647,7 +650,75 @@ def style_pizzicato(a, rng):
     return signal.sosfiltfilt(signal.butter(1, 10000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
 
 
-STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112), "marimba": (style_marimba, 100), "piano": (style_piano, 120), "bossa": (style_bossa, 124), "pizzicato": (style_pizzicato, 108)}
+def note_vibra(f, duree, vel):
+    """Lame de vibraphone : partiels de lame (1 ; 3,9 ; 9,2), longue tenue, trémolo du moteur (5,5 Hz)."""
+    t = np.arange(int(duree * SR)) / SR
+    env = np.exp(-t / 1.5) * (1 - np.exp(-t / 0.002))
+    x = (np.sin(2 * np.pi * f * t) + 0.22 * np.sin(2 * np.pi * 3.9 * f * t) * np.exp(-t / 0.35)
+         + 0.06 * np.sin(2 * np.pi * 9.2 * f * t) * np.exp(-t / 0.08))
+    tremolo = 1 - 0.28 * (0.5 + 0.5 * np.sin(2 * np.pi * 5.5 * t))
+    return vel * env * tremolo * x
+
+
+def balai(rng):
+    """Caisse claire jouée aux balais : souffle filtré, attaque douce."""
+    t = np.arange(int(0.35 * SR)) / SR
+    bruit = rng.standard_normal(len(t))
+    b, a = signal.butter(2, [900 / (SR / 2), 6000 / (SR / 2)], btype="band")
+    return signal.lfilter(b, a, bruit) * np.exp(-t / 0.14) * (1 - np.exp(-t / 0.008))
+
+
+def style_vibraphone(a, rng):
+    """Jazz-hop au vibraphone (vidéo « Personne ne sait ce que son marketing rapporte », ~90 BPM) : Mi♭ majeur jazzy
+    (Mi♭ maj9 – Do m9 – La♭ maj7 – Si♭ 13 sus), vibraphone qui plaque les accords sur le 1 et le « et » du 2, petite
+    phrase pentatonique toutes les deux mesures, basse ronde, grosse caisse « boom-bap » (1 et « et » du 2), caisse claire
+    aux balais sur 2 et 4, charleston swingué très doux. Posé, précis, un peu « tech » ; différent du lo-fi (pas de
+    piano électrique ni de vinyle), de l'acoustique, de l'électro, du marimba, du piano, de la bossa et du pizzicato."""
+    n = int(a.duree * SR)
+    temps = 60 / a.bpm
+    mesure = 4 * temps
+    accords = [  # (basse, accord) en numéros MIDI
+        (39, [55, 58, 62, 65]),   # Mi♭ maj9
+        (36, [51, 55, 58, 62]),   # Do m9
+        (44, [56, 60, 63, 67]),   # La♭ maj7
+        (46, [56, 60, 63, 67]),   # Si♭ 13 sus
+    ]
+    phrases = [[75, 72, 70, 67], [70, 72, 75, 77], [79, 77, 75, 72], [72, 70, 67, 70]]  # pentatonique de Mi♭
+    vibra = np.zeros((2, n))
+    basse = np.zeros((2, n))
+    batterie = np.zeros((2, n))
+    gc = grosse_caisse()
+    swing = temps / 2 * 0.16
+    nb_mesures = int(np.ceil((a.duree - a.debut) / mesure)) + 1
+    for m in range(nb_mesures):
+        t0 = a.debut + m * mesure
+        racine, accord = accords[m % 4]
+        for pos, v in ((0, 0.16), (1.5, 0.12)):
+            for k, nn in enumerate(accord):
+                placer(vibra, note_vibra(midi(nn), 2.4, v), t0 + pos * temps + 0.012 * k, pan=-0.25 + 0.17 * k)
+        if m % 2 == 1:  # petite phrase sur la 2e mesure de chaque paire
+            for k, nn in enumerate(phrases[(m // 2) % 4]):
+                placer(vibra, note_vibra(midi(nn), 1.6, 0.11), t0 + (2 + 0.5 * k) * temps + (swing if k % 2 else 0), pan=0.3)
+        placer(basse, note_piano(midi(racine), 1.4, 0.5, rng), t0)
+        placer(basse, note_piano(midi(racine + 7), 0.8, 0.32, rng), t0 + 2.5 * temps + swing)
+        if m >= 1:
+            placer(batterie, 0.2 * gc, t0)
+            placer(batterie, 0.14 * gc, t0 + 1.5 * temps + swing)
+            for pos in (1, 3):
+                placer(batterie, 0.09 * balai(rng), t0 + pos * temps, pan=0.1)
+            for k in range(8):
+                placer(batterie, (0.035 if k % 2 == 0 else 0.022) * charleston(rng), t0 + k * temps / 2 + (swing if k % 2 else 0), pan=0.4)
+    vibra = reverb(vibra, rng, duree=1.8, tau=0.6, mouille=0.3)
+    vibra = signal.sosfiltfilt(signal.butter(2, [160 / (SR / 2), 5200 / (SR / 2)], btype="band", output="sos"), vibra, axis=1)
+    basse = signal.sosfiltfilt(signal.butter(2, 350 / (SR / 2), btype="low", output="sos"), basse, axis=1)
+    mix = 1.0 * vibra + 0.3 * basse + 0.55 * batterie
+    # place pour la voix : bande 1–4 kHz creusée ; pas d'infra-basses
+    mix = mix - 0.8 * signal.sosfiltfilt(signal.butter(2, [1000 / (SR / 2), 4000 / (SR / 2)], btype="band", output="sos"), mix, axis=1)
+    mix = signal.sosfiltfilt(signal.butter(2, 70 / (SR / 2), btype="high", output="sos"), mix, axis=1)
+    return signal.sosfiltfilt(signal.butter(1, 10000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
+
+
+STYLES = {"lofi": (style_lofi, 84), "acoustique": (style_acoustique, 96), "electro": (style_electro, 112), "marimba": (style_marimba, 100), "piano": (style_piano, 120), "bossa": (style_bossa, 124), "pizzicato": (style_pizzicato, 108), "vibraphone": (style_vibraphone, 90)}
 
 
 def main():
@@ -656,7 +727,7 @@ def main():
     p.add_argument("--duree", type=float, required=True)
     p.add_argument("--debut", type=float, default=0.0)
     p.add_argument("--style", choices=sorted(STYLES), default="lofi",
-                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike), marimba (DS Cleaning), piano (TS), bossa (mémoire), pizzicato (stagiaire → associé) : changer de style à chaque vidéo")
+                   help="lofi (Gary), acoustique (Cheminées Liégeois), electro (Black and Bike), marimba (DS Cleaning), piano (TS), bossa (mémoire), pizzicato (stagiaire → associé), vibraphone (marketing rapporte) : changer de style à chaque vidéo")
     p.add_argument("--bpm", type=float, default=None)
     p.add_argument("--graine", type=int, default=7)
     a = p.parse_args()
