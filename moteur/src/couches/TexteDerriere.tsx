@@ -132,6 +132,30 @@ export const TexteDerriere: React.FC<{e: any; charte: any}> = ({e, charte}) => {
       </div>
     );
   }
+  // entrée « bascule » (vidéo 8, « coûte → rapporte ») : le mot tombe d'un coup sur le décor, puis à `bascule.temps`
+  // il se retourne comme un panneau (rotation autour de l'axe horizontal, en perspective) et laisse place au second
+  // mot (`bascule.texte`, `bascule.taille` possible, `bascule.duree` en s).
+  if (e.entree === 'bascule') {
+    const B = e.bascule;
+    const dB = B.duree ?? 0.36;
+    const a = easeOut(prog(t, e.debut, e.debut + 0.22));
+    const p = prog(t, B.temps, B.temps + dB);
+    const second = p >= 0.5;
+    const rot = second ? -90 * (1 - easeOut((p - 0.5) * 2)) : 90 * Math.pow(p * 2, 2);
+    const tailleB = second ? (B.taille ?? taille) : taille;
+    const texteB = (second ? B.texte : e.texte).toUpperCase();
+    const flou = (1 - a) * 14 + Math.abs(Math.sin((rot * Math.PI) / 180)) * 5 + sortie * 10;
+    return (
+      <div style={{position: 'absolute', left: (e.x ?? W / 2) - W, width: 2 * W, top: (e.y ?? T.y) - (tailleB * T.interligne) / 2, perspective: '1100px', textAlign: 'center'}}>
+        <div style={{fontFamily: T.police, fontSize: tailleB, lineHeight: T.interligne, letterSpacing: `${T.interlettrage_em}em`, color: e.couleur ?? T.couleur,
+          opacity: (e.opacite ?? T.opacite) * Math.min(1, a * 3) * (1 - sortie), whiteSpace: 'pre', textShadow: ombre,
+          transform: `rotateX(${rot.toFixed(2)}deg) scale(${((1.28 - 0.28 * a) * (1 + 0.03 * sortie)).toFixed(4)})`, transformOrigin: '50% 50%',
+          filter: flou > 0.3 ? `blur(${flou.toFixed(1)}px)` : 'none'}}>
+          {texteB}
+        </div>
+      </div>
+    );
+  }
   if (e.entree === 'rebond') {
     const r = spring({frame: (t - e.debut) * fps, fps, config: {damping: 9, stiffness: 190, mass: 0.8}});
     const net = easeOut(prog(t, e.debut, e.debut + 0.12));

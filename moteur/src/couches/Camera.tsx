@@ -49,7 +49,9 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
   const listeSurLePlan = projet.effets.some((e: any) => e.type === 'liste' && e.debut < finPlan && e.fin > debutPlan);
   const verreSurLePlan = projet.effets.some((e: any) => e.type === 'carte_verre' && e.debut < finPlan && e.fin > debutPlan);
   const etiquettesSurLePlan = projet.effets.some((e: any) => (e.type === 'frise' || e.type === 'bilan' || e.type === 'etiquettes_flottantes') && e.debut < finPlan && e.fin > debutPlan);
-  const cadrage = Math.min(cam.cadrages[k % cam.cadrages.length], listeSurLePlan ? M.liste.cadrage_max : Infinity, verreSurLePlan ? M.carte_verre.cadrage_max : Infinity, etiquettesSurLePlan ? M.etiquettes.cadrage_max : Infinity);
+  // `cadrage_max` sur une liste : permet un cadrage plus serré quand les zooms gardent le visage assez haut (vidéo 8)
+  const capListe = Math.min(...projet.effets.filter((e: any) => e.type === 'liste' && e.debut < finPlan && e.fin > debutPlan).map((e: any) => e.cadrage_max ?? M.liste.cadrage_max));
+  const cadrage = Math.min(cam.cadrages[k % cam.cadrages.length], listeSurLePlan ? capListe : Infinity, verreSurLePlan ? M.carte_verre.cadrage_max : Infinity, etiquettesSurLePlan ? M.etiquettes.cadrage_max : Infinity);
   const decalage = cam.decalages_x[k % cam.decalages_x.length] * W;
   const avancee = 1 + cam.avancee * prog(t, debutPlan, finPlan);
 

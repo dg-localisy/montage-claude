@@ -14,3 +14,7 @@ l'accroche (sa dernière phrase, déplacée au début) puis la méthode (2e pris
 4. `rush/rush_v3.mp4` (66,07 s, 1982 images) : blancs de plus de 0,3 s ramenés à ~0,24 s (images retirées dans leur partie
    la plus calme, jamais à moins de 60 ms d'un mot) ; le blanc après l'accroche (3,88–4,22 s) est gardé pour l'éclair.
    Vérification Scribe finale (`transcription_scribe.json`) : 246/246 mots du script, seuls ajouts « donc » ×2 et « et donc ».
+5. `rush/rush_v3b.mp4` (27/11, après le « bug » signalé à 30 s : 6 images figées pour fusionner deux coupes proches) :
+   mêmes blancs resserrés, mais les images retirées sont collées à une coupe existante quand le blanc en contient une
+   (un seul saut au lieu de deux, mots aux mêmes temps). `rush/rush_v4b.mp4` : seules 2 images figées restent, sous l'éclair de 4 s.
+   Le plan de coupe de l'équipe (30,65–36,2 s) cache le cas restant (coupe pile au début de « comment »).

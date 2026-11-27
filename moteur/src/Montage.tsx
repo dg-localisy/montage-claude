@@ -44,7 +44,7 @@ export const Montage: React.FC<Props> = ({projet, charte}) => {
 
   return (
     <AbsoluteFill style={{background: '#000'}}>
-      <AbsoluteFill style={zf ? {transform: `scale(${zf.echelle})` + (zf.rotation ? ` rotate(${zf.rotation.toFixed(3)}deg)` : ''), transformOrigin: zf.origine ?? '50% 40%', filter: `blur(${zf.flou.toFixed(2)}px) brightness(${zf.lumiere.toFixed(3)})`} : undefined}>
+      <AbsoluteFill style={zf ? {transform: (zf.x ? `translateX(${zf.x.toFixed(1)}px) ` : '') + `scale(${zf.echelle})` + (zf.rotation ? ` rotate(${zf.rotation.toFixed(3)}deg)` : ''), transformOrigin: zf.origine ?? '50% 40%', filter: `blur(${zf.flou.toFixed(2)}px) brightness(${zf.lumiere.toFixed(3)})`} : undefined}>
         <Camera projet={projet} charte={charte} />
         {de('texte_derriere').map((e: any) => <TexteDerriere key={e.id} e={e} charte={charte} />)}
         {de('courbe_derriere').map((e: any) => <CourbeDerriere key={e.id} e={e} charte={charte} />)}

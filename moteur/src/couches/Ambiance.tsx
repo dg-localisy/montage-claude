@@ -43,6 +43,11 @@ export const zoomFlou = (t: number, transitions: any[], W = 1080, H = 1920) => {
       if (r) return r;
       continue;
     }
+    if (tr.style === 'fouet') {
+      const r = fouet(t, tr, W);
+      if (r) return r;
+      continue;
+    }
     if (tr.style !== 'zoom_flou') continue;
     const avant = tr.duree * 0.42; // la plongée est plus courte que l'arrivée
     const apres = tr.duree - avant;
@@ -81,6 +86,25 @@ const rotationFloue = (t: number, tr: any, W: number, H: number) => {
     rot = -angle * p;
   } else return null;
   return {echelle: Math.max(1 + 0.12 * p, couvre(rot)), rotation: rot, flou: 16 * p * p, lumiere: 1 + 0.08 * p, eclat: 0, origine: '50% 50%'};
+};
+
+// Transition « fouet » (vidéo 8, « Personne ne sait ce que son marketing rapporte », pour changer de la rotation) :
+// l'image part d'un coup vers la gauche en se floutant (comme un mouvement de caméra très rapide), le plan suivant
+// arrive par la droite, flou, et se pose. Toujours assez agrandie pour ne jamais laisser voir de bord noir.
+const fouet = (t: number, tr: any, W: number) => {
+  const avant = tr.duree * 0.4;
+  const apres = tr.duree - avant;
+  const course = (tr.course ?? 0.08) * W;
+  let p = 0;
+  let x = 0;
+  if (t >= tr.debut - avant && t < tr.debut) {
+    p = Math.pow(prog(t, tr.debut - avant, tr.debut), 2);
+    x = -course * p;
+  } else if (t >= tr.debut && t < tr.debut + apres) {
+    p = Math.pow(1 - easeOut(prog(t, tr.debut, tr.debut + apres)), 2);
+    x = course * p;
+  } else return null;
+  return {echelle: 1 + (2 * course / W + 0.01) * Math.min(1, p * 1.5), x, flou: 26 * p, lumiere: 1 + 0.06 * p, eclat: 0, origine: '50% 50%'};
 };
 
 // Jeu de lumière « suspense » (vidéo « mémoire », après l'accroche) : sans zoom ni mouvement de l'image.
