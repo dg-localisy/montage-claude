@@ -29,18 +29,25 @@ const sortie = path.resolve(option('--sortie', path.join(MOTEUR, 'sortie')));
 fs.mkdirSync(sortie, {recursive: true});
 
 // ---------- navigateur ----------
-function trouver(motif, fichier) {
+function trouver(motif, ...fichiers) {
   const base = '/opt/pw-browsers';
   if (!fs.existsSync(base)) return undefined;
   const d = fs.readdirSync(base).filter((n) => n.startsWith(motif)).sort().pop();
-  const chemin = d && path.join(base, d, 'chrome-linux', fichier);
-  return chemin && fs.existsSync(chemin) ? chemin : undefined;
+  if (!d) return undefined;
+  // le dossier de Playwright change d'une version à l'autre (chrome-linux, chrome-linux64, chrome-headless-shell-linux64)
+  for (const sous of ['chrome-linux', 'chrome-linux64', 'chrome-headless-shell-linux64']) {
+    for (const f of fichiers) {
+      const chemin = path.join(base, d, sous, f);
+      if (fs.existsSync(chemin)) return chemin;
+    }
+  }
+  return undefined;
 }
 
 async function ouvrirNavigateur() {
   const essais = [];
   if (process.env.MOTEUR_CHROME_MODE !== 'chrome-for-testing') {
-    essais.push({chromeMode: 'headless-shell', browserExecutable: process.env.MOTEUR_NAVIGATEUR || trouver('chromium_headless_shell', 'headless_shell') || null});
+    essais.push({chromeMode: 'headless-shell', browserExecutable: process.env.MOTEUR_NAVIGATEUR || trouver('chromium_headless_shell', 'headless_shell', 'chrome-headless-shell') || null});
   }
   // Repli demandé en cas d'erreur « Target closed » ou « icudtl.dat »
   essais.push({chromeMode: 'chrome-for-testing', browserExecutable: process.env.MOTEUR_NAVIGATEUR_CFT || trouver('chromium-', 'chrome') || null});

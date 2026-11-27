@@ -1,0 +1,529 @@
+{
+ "_aide": "Vidéo 8 · « Personne ne sait ce que son marketing rapporte » (podcast, Loïs, studio fond vert). Version courte « B » validée (27/11/2026) : accroche (sa dernière phrase, déplacée au début) puis la méthode de mesure (2e prise). Montage du rush : voir rush_montage.md. Rush brut, sans zooms ni musique : cadres FIXES centrés sur le visage (cadres.json, ×1,0 / ×1,25 / ×1,45 ; gros plans ×1,7 refusés), zoom avant progressif dans l'accroche sur « mais rarement ce que ça lui rapporte » (demandé), éclair blanc + riser fourni à la fin de l'accroche, plans de coupe fournis par l'utilisateur (recadrés en vertical) qui cachent les coupes rapprochées, transition nouvelle « fouet » sur deux d'entre eux, musique nouvelle (vibraphone).",
+ "duree": 66.067,
+ "fps": 30,
+ "rush": {
+  "video": "rush/rush_v4b.mp4",
+  "mots": "mots.json"
+ },
+ "musique": {
+  "actif": true,
+  "fichier": "media/musique_vibraphone.wav",
+  "_note": "Musique originale, nouveau style « vibraphone » (jazz-hop au vibraphone, Mi♭ majeur, 90 BPM) : python3 outils/musique_douce.py projets/marketing-rapporte/media/musique_vibraphone.wav --duree 66.067 --debut 4.033 --style vibraphone. Démarre sur l'éclair."
+ },
+ "camera": {
+  "visage": [
+   0.55,
+   0.0
+  ],
+  "visages": [
+   [
+    0.55,
+    0.0
+   ],
+   [
+    1.0,
+    0.0184
+   ],
+   [
+    0.664,
+    0.258
+   ],
+   [
+    0.8662,
+    0.1003
+   ],
+   [
+    1.0,
+    0.1817
+   ],
+   [
+    0.6587,
+    0.2439
+   ],
+   [
+    0.8787,
+    0.1338
+   ],
+   [
+    0.5828,
+    0.2428
+   ],
+   [
+    1.0,
+    0.0
+   ],
+   [
+    0.7173,
+    0.2563
+   ],
+   [
+    1.0,
+    0.1153
+   ],
+   [
+    1.0,
+    0.0
+   ],
+   [
+    0.9807,
+    0.0999
+   ],
+   [
+    1.0,
+    0.0
+   ],
+   [
+    0.6344,
+    0.233
+   ],
+   [
+    1.0,
+    0.0
+   ],
+   [
+    0.9038,
+    0.1052
+   ],
+   [
+    1.0,
+    0.0
+   ],
+   [
+    0.5606,
+    0.2276
+   ],
+   [
+    0.8286,
+    0.0843
+   ],
+   [
+    0.6566,
+    0.2424
+   ],
+   [
+    1.0,
+    0.1213
+   ],
+   [
+    1.0,
+    0.0
+   ],
+   [
+    0.6624,
+    0.2434
+   ],
+   [
+    1.0,
+    0.1332
+   ],
+   [
+    0.6619,
+    0.229
+   ],
+   [
+    1.0,
+    0.1257
+   ]
+  ],
+  "coupes": [
+   4.033,
+   6.733,
+   8.1,
+   9.833,
+   10.867,
+   13.533,
+   16.53,
+   18.3,
+   20.3,
+   21.567,
+   22.867,
+   28.5,
+   36.2,
+   37.9,
+   40.733,
+   42.1,
+   46.8,
+   48.66,
+   50.267,
+   51.867,
+   54.4,
+   55.833,
+   59.45,
+   61.433,
+   62.8,
+   64.367
+  ],
+  "cadrages": [
+   1.0,
+   1.25,
+   1.0,
+   1.25,
+   1.45,
+   1.0,
+   1.45,
+   1.0,
+   1.25,
+   1.0,
+   1.45,
+   1.25,
+   1.45,
+   1.25,
+   1.0,
+   1.25,
+   1.45,
+   1.25,
+   1.0,
+   1.45,
+   1.0,
+   1.45,
+   1.25,
+   1.0,
+   1.45,
+   1.0,
+   1.45
+  ],
+  "decalages_x": [
+   0
+  ],
+  "avancee": 0,
+  "masques": "masques",
+  "_cadrages": "Copie de cadres.json : un cadrage et une origine par plan (origine calculée pour garder les yeux vers 30 % de la hauteur et le visage centré, comme l'aperçu validé). Masques de détourage seulement pour l'accroche (0–4,3 s)."
+ },
+ "ambiance": {
+  "grain": 0,
+  "vignette": 0,
+  "etalonnage": false
+ },
+ "sous_titres": {
+  "mode": "premiere_video",
+  "phrases_fortes": [
+   {
+    "debut": 6.84,
+    "lignes": [
+     [
+      {
+       "mot": "super orienté",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "chiffres.",
+       "role": "fort"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 11.5,
+    "lignes": [
+     [
+      {
+       "mot": "combien",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "les campagnes marketing",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "me rapportent.",
+       "role": "appui"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 14.94,
+    "lignes": [
+     [
+      {
+       "mot": "pas de mesure",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "qui était possible",
+       "role": "liaison"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 18.32,
+    "lignes": [
+     [
+      {
+       "mot": "le retour",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "sur investissement",
+       "role": "fort"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 23.42,
+    "lignes": [
+     [
+      {
+       "mot": "le parcours type",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "d'un client,",
+       "role": "liaison"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 34.52,
+    "lignes": [
+     [
+      {
+       "mot": "signé",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "ou perdu,",
+       "role": "appui"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 48.0,
+    "lignes": [
+     [
+      {
+       "mot": "in fine",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "signés,",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "pour quel montant.",
+       "role": "appui"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 63.54,
+    "lignes": [
+     [
+      {
+       "mot": "par A + B",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "les effets",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "de nos campagnes.",
+       "role": "liaison"
+      }
+     ]
+    ],
+    "_note": "Fin de la vidéo sur sa phrase la plus forte, en phrase forte."
+   }
+  ]
+ },
+ "effets": [
+  {
+   "type": "texte_derriere",
+   "debut": 2.14,
+   "fin": 4.033,
+   "texte": "COÛTE",
+   "entree": "bascule",
+   "bascule": {
+    "texte": "RAPPORTE ?",
+    "temps": 3.5,
+    "duree": 0.36,
+    "taille": 140
+   },
+   "taille": 140,
+   "x": 540,
+   "y": 160,
+   "son": false,
+   "remplace_temps": [
+    [
+     2.12,
+     2.45
+    ],
+    [
+     3.48,
+     3.95
+    ]
+   ],
+   "_note": "Nouvelle entrée « bascule » : COÛTE tombe sur le mur à « coûte », puis se retourne comme un panneau et devient RAPPORTE ? à « rapporte ». Au-dessus de la tête, jamais sur le visage. Haut de la tête vers 255 px (masques) : mot centré à 160 px ; le zoom de l'accroche part du haut de l'image (origine y = 0) pour que la tête descende au lieu de monter dans le mot."
+  },
+  {
+   "type": "zoom",
+   "debut": 2.62,
+   "a": 1.2,
+   "duree": 1.0,
+   "_note": "Zoom avant progressif vers le visage sur « mais rarement ce que ça lui rapporte » (demande du 27/11), tenu jusqu'à la coupe de l'éclair."
+  },
+  {
+   "type": "transition",
+   "style": "lumiere_blanche",
+   "debut": 4.033,
+   "duree": 1.0,
+   "son": false,
+   "assombrir": false,
+   "rai": false
+  },
+  {
+   "type": "son",
+   "nom": "riser_impact",
+   "debut": 4.033,
+   "facteur": 1.26
+  },
+  {
+   "type": "transition",
+   "style": "fouet",
+   "debut": 25.0,
+   "duree": 0.36,
+   "son_entree": "transition_oxid"
+  },
+  {
+   "type": "plan_de_coupe",
+   "debut": 25.0,
+   "fin": 28.5,
+   "fichier": "media/crm_liste.mp4",
+   "debut_clip": 0,
+   "son": false,
+   "_source": "Clip fourni (2516162, CRM sur un ordinateur portable : liste des fiches), 0–3,6 s, recadré sur la main et l'écran. Sur « comment les clients arrivent dans son CRM, via quels canaux. Une fois dans le CRM »."
+  },
+  {
+   "type": "plan_de_coupe",
+   "debut": 30.65,
+   "fin": 36.2,
+   "fichier": "media/equipe_ecrans.mp4",
+   "debut_clip": 0,
+   "_source": "Clip fourni (8201290, 4K, équipe au casque devant des écrans), 0–5,7 s, recadré sur la femme au casque. De « comment est-ce que le parcours client évolue » à « dans son logiciel » ; cache les coupes de 30,7 à 35,8 s."
+  },
+  {
+   "type": "transition",
+   "style": "fouet",
+   "debut": 43.9,
+   "duree": 0.36,
+   "son_entree": "swoosh_universfield"
+  },
+  {
+   "type": "plan_de_coupe",
+   "debut": 43.9,
+   "fin": 46.8,
+   "fichier": "media/crm_tableau.mp4",
+   "debut_clip": 0,
+   "son": false,
+   "_source": "Clip fourni (2516162, le même CRM : tableau de bord), 4,15–7,15 s. Sur « tous les clients qui rentrent dans son CRM depuis le site web »."
+  },
+  {
+   "type": "plan_de_coupe",
+   "debut": 57.7,
+   "fin": 59.45,
+   "fichier": "media/tablette_graphiques.mp4",
+   "debut_clip": 0,
+   "_source": "Clip fourni (13829010, stylet sur des graphiques de tablette), 7,9–9,8 s. Sur « à l'euro près, et trois »."
+  },
+  {
+   "type": "page",
+   "debut": 38.0,
+   "fin": 42.95,
+   "fond": "verre",
+   "y": 930,
+   "largeur": 860,
+   "sortie_s": 0.2,
+   "elements": [
+    {
+     "type": "etiquette",
+     "texte": "Une fois qu'on avait",
+     "temps": 38.06,
+     "taille": 30
+    },
+    {
+     "type": "grand",
+     "texte": "toutes ces données",
+     "taille": 80,
+     "largeur": 760
+    },
+    {
+     "type": "fleche",
+     "hauteur": 90
+    },
+    {
+     "type": "petit",
+     "texte": "on a pu créer",
+     "taille": 46
+    },
+    {
+     "type": "grand",
+     "texte": "un reporting automatisé",
+     "taille": 84,
+     "largeur": 800
+    }
+   ],
+   "_note": "Page à flèche dans une carte en verre sous le visage (Loïs visible derrière), cadres qui se resserrent (×1,0 → ×1,25 → ×1,45)."
+  },
+  {
+   "type": "liste",
+   "debut": 51.9,
+   "fin": 62.75,
+   "items": [
+    "CA du site internet",
+    "CA des campagnes, à l'euro près",
+    "Retour sur investissement"
+   ],
+   "temps": [
+    51.98,
+    54.52,
+    59.04
+   ],
+   "numeros": true,
+   "cadrage_max": 1.45,
+   "remplace_temps": [
+    [
+     51.95,
+     53.95
+    ],
+    [
+     54.5,
+     59.02
+    ],
+    [
+     59.02,
+     61.45
+    ]
+   ],
+   "_note": "Ses « un, deux, trois ». cadrage_max 1,45 : les cadres serrés gardent les yeux à 30 % de la hauteur, le menton reste au-dessus des pastilles."
+  }
+ ]
+}
