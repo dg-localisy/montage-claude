@@ -205,6 +205,8 @@ if (!drapeau('--stills-seulement')) {
     composition, serveUrl, codec: 'h264', outputLocation: brut, inputProps, puppeteerInstance: navigateur, browserExecutable, chromeMode,
     crf: charte.moteur.rendu.crf, audioBitrate: `${charte.moteur.rendu.audio_kbps}k`, imageFormat: 'jpeg', jpegQuality: 92,
     frameRange: plage ? plage.split('-').map(Number) : null,
+    // délai par image plus long (défaut 30 s) : une image lourde (plan de coupe 4K, détourage) peut le dépasser sur la machine cloud
+    timeoutInMilliseconds: 180000,
     onProgress: ({progress}) => {
       const p = Math.floor(progress * 10) * 10;
       if (p !== dernierPourcent) { dernierPourcent = p; console.log(`  ${p} %`); }
