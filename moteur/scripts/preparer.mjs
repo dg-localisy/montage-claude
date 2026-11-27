@@ -555,7 +555,7 @@ export function preparer(cheminEffets) {
     decalages_x: cam.decalages_x || M.camera.decalages_x,
     avancee: cam.avancee ?? M.camera.avancee_par_plan,
     masques,
-    zooms: effets.filter((e) => e.type === 'zoom').map((e) => ({debut: e.debut, fin: e.fin, a: e.a ?? 1.25, duree: e.duree ?? M.camera.zoom_duree_s})),
+    zooms: effets.filter((e) => e.type === 'zoom').map((e) => ({debut: e.debut, fin: e.fin, a: e.a ?? 1.25, duree: e.duree ?? M.camera.zoom_duree_s, flou: e.flou})),
   };
   const transitions = effets.filter((e) => e.type === 'transition').map((e) => ({...e, duree: e.duree ?? M.transitions.duree_s}));
 

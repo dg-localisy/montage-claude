@@ -1,5 +1,5 @@
 {
- "_aide": "Vidéo 8 · « Personne ne sait ce que son marketing rapporte » (podcast, Loïs, studio fond vert). Version courte « B » validée (27/11/2026) : accroche (sa dernière phrase, déplacée au début) puis la méthode de mesure (2e prise). Montage du rush : voir rush_montage.md. Rush brut, sans zooms ni musique : cadres FIXES centrés sur le visage (cadres.json, ×1,0 / ×1,25 / ×1,45 ; gros plans ×1,7 refusés), zoom avant progressif dans l'accroche sur « mais rarement ce que ça lui rapporte » (demandé), éclair blanc + riser fourni à la fin de l'accroche, plans de coupe fournis par l'utilisateur (recadrés en vertical) qui cachent les coupes rapprochées, transition nouvelle « fouet » sur deux d'entre eux, musique nouvelle (vibraphone).",
+ "_aide": "Vidéo 8 · « Personne ne sait ce que son marketing rapporte » (podcast, Loïs, studio fond vert). Version courte « B » validée (27/11/2026) : accroche (sa dernière phrase, déplacée au début) puis la méthode de mesure (2e prise). Montage du rush : voir rush_montage.md. Podcast (27/11) : PAS les effets de texte des témoignages (demande de l'utilisateur : « c'est différent lorsque c'est les podcasts ») : seulement les sous-titres INCENDIE et les phrases fortes ; le mot derrière la tête, la page en verre et les pastilles ont été retirés. Rush brut, sans zooms ni musique : cadres FIXES centrés sur le visage (cadres.json, ×1,0 / ×1,25 / ×1,45 ; gros plans ×1,7 refusés), zoom avant progressif dans l'accroche sur « mais rarement ce que ça lui rapporte » (demandé), éclair blanc + riser fourni à la fin de l'accroche, plans de coupe fournis par l'utilisateur (recadrés en vertical) qui cachent les coupes rapprochées, transition nouvelle « fouet » sur deux d'entre eux, musique nouvelle (vibraphone).",
  "duree": 66.067,
  "fps": 30,
  "rush": {
@@ -13,13 +13,13 @@
  },
  "camera": {
   "visage": [
-   0.55,
-   0.0
+   0.5518,
+   0.2258
   ],
   "visages": [
    [
-    0.55,
-    0.0
+    0.5518,
+    0.2258
    ],
    [
     1.0,
@@ -187,7 +187,6 @@
    0
   ],
   "avancee": 0,
-  "masques": "masques",
   "_cadrages": "Copie de cadres.json : un cadrage et une origine par plan (origine calculée pour garder les yeux vers 30 % de la hauteur et le visage centré, comme l'aperçu validé). Masques de détourage seulement pour l'accroche (0–4,3 s)."
  },
  "ambiance": {
@@ -198,6 +197,48 @@
  "sous_titres": {
   "mode": "premiere_video",
   "phrases_fortes": [
+   {
+    "debut": 1.22,
+    "lignes": [
+     [
+      {
+       "mot": "ce que son marketing",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "lui coûte,",
+       "role": "fort"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 2.62,
+    "fin": 4.2,
+    "lignes": [
+     [
+      {
+       "mot": "mais rarement",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "ce que ça lui",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "rapporte.",
+       "role": "fort"
+      }
+     ]
+    ],
+    "_note": "Chute de l'accroche en phrase forte, reste pendant l'éclair (fin imposée 0,17 s après l'éclair), comme pour « 1 mois de salaire »."
+   },
    {
     "debut": 6.84,
     "lignes": [
@@ -307,6 +348,23 @@
     ]
    },
    {
+    "debut": 40.8,
+    "lignes": [
+     [
+      {
+       "mot": "un reporting",
+       "role": "fort"
+      }
+     ],
+     [
+      {
+       "mot": "automatisé",
+       "role": "appui"
+      }
+     ]
+    ]
+   },
+   {
     "debut": 48.0,
     "lignes": [
      [
@@ -325,6 +383,46 @@
       {
        "mot": "pour quel montant.",
        "role": "appui"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 52.32,
+    "lignes": [
+     [
+      {
+       "mot": "le chiffre d'affaires",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "généré par",
+       "role": "liaison"
+      }
+     ],
+     [
+      {
+       "mot": "son site internet,",
+       "role": "fort"
+      }
+     ]
+    ]
+   },
+   {
+    "debut": 57.88,
+    "lignes": [
+     [
+      {
+       "mot": "à l'euro",
+       "role": "appui"
+      }
+     ],
+     [
+      {
+       "mot": "près,",
+       "role": "fort"
       }
      ]
     ]
@@ -357,39 +455,12 @@
  },
  "effets": [
   {
-   "type": "texte_derriere",
-   "debut": 2.14,
-   "fin": 4.033,
-   "texte": "COÛTE",
-   "entree": "bascule",
-   "bascule": {
-    "texte": "RAPPORTE ?",
-    "temps": 3.5,
-    "duree": 0.36,
-    "taille": 140
-   },
-   "taille": 140,
-   "x": 540,
-   "y": 160,
-   "son": false,
-   "remplace_temps": [
-    [
-     2.12,
-     2.45
-    ],
-    [
-     3.48,
-     3.95
-    ]
-   ],
-   "_note": "Nouvelle entrée « bascule » : COÛTE tombe sur le mur à « coûte », puis se retourne comme un panneau et devient RAPPORTE ? à « rapporte ». Au-dessus de la tête, jamais sur le visage. Haut de la tête vers 255 px (masques) : mot centré à 160 px ; le zoom de l'accroche part du haut de l'image (origine y = 0) pour que la tête descende au lieu de monter dans le mot."
-  },
-  {
    "type": "zoom",
    "debut": 2.62,
    "a": 1.2,
    "duree": 1.0,
-   "_note": "Zoom avant progressif vers le visage sur « mais rarement ce que ça lui rapporte » (demande du 27/11), tenu jusqu'à la coupe de l'éclair."
+   "_note": "Zoom avant progressif vers le visage sur « mais rarement ce que ça lui rapporte » (demande du 27/11), tenu jusqu'à la coupe de l'éclair.",
+   "flou": false
   },
   {
    "type": "transition",
@@ -453,77 +524,6 @@
    "fichier": "media/tablette_graphiques.mp4",
    "debut_clip": 0,
    "_source": "Clip fourni (13829010, stylet sur des graphiques de tablette), 7,9–9,8 s. Sur « à l'euro près, et trois »."
-  },
-  {
-   "type": "page",
-   "debut": 38.0,
-   "fin": 42.95,
-   "fond": "verre",
-   "y": 930,
-   "largeur": 860,
-   "sortie_s": 0.2,
-   "elements": [
-    {
-     "type": "etiquette",
-     "texte": "Une fois qu'on avait",
-     "temps": 38.06,
-     "taille": 30
-    },
-    {
-     "type": "grand",
-     "texte": "toutes ces données",
-     "taille": 80,
-     "largeur": 760
-    },
-    {
-     "type": "fleche",
-     "hauteur": 90
-    },
-    {
-     "type": "petit",
-     "texte": "on a pu créer",
-     "taille": 46
-    },
-    {
-     "type": "grand",
-     "texte": "un reporting automatisé",
-     "taille": 84,
-     "largeur": 800
-    }
-   ],
-   "_note": "Page à flèche dans une carte en verre sous le visage (Loïs visible derrière), cadres qui se resserrent (×1,0 → ×1,25 → ×1,45)."
-  },
-  {
-   "type": "liste",
-   "debut": 51.9,
-   "fin": 62.75,
-   "items": [
-    "CA du site internet",
-    "CA des campagnes, à l'euro près",
-    "Retour sur investissement"
-   ],
-   "temps": [
-    51.98,
-    54.52,
-    59.04
-   ],
-   "numeros": true,
-   "cadrage_max": 1.45,
-   "remplace_temps": [
-    [
-     51.95,
-     53.95
-    ],
-    [
-     54.5,
-     59.02
-    ],
-    [
-     59.02,
-     61.45
-    ]
-   ],
-   "_note": "Ses « un, deux, trois ». cadrage_max 1,45 : les cadres serrés gardent les yeux à 30 % de la hauteur, le menton reste au-dessus des pastilles."
   }
  ]
 }

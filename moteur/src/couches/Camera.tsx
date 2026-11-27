@@ -132,7 +132,9 @@ export const Camera: React.FC<{projet: any; charte: any; avantPlan?: boolean}> =
   couches.push(video('principale', pano.x, echelle, 1, Boolean(projet.rush.voix)));
   if (pano.flou > 0.5) couches.push(video('panoramique', pano.x + (pano.x < 0 ? W : -W), echelle, 1, true));
   // flou de mouvement du zoom : copies légèrement décalées en taille, semi-transparentes
-  const force = clamp(Math.abs(vitesseZoom) / 1.2);
+  // `flou: false` sur un zoom (vidéo 8, zoom lent de l'accroche) : pas de copies fantômes, l'image ne se dédouble pas
+  const sansFlou = cam.zooms.some((zz: any) => zz.flou === false && t >= zz.debut - 0.05 && t <= zz.debut + (zz.duree ?? 0) + 0.05);
+  const force = sansFlou ? 0 : clamp(Math.abs(vitesseZoom) / 1.2);
   if (force > 0.15) {
     for (let i = 1; i <= 3; i++) couches.push(video(`fantome${i}`, pano.x, echelle * (1 - Math.sign(vitesseZoom) * 0.02 * i * force), 0.3, true));
   }
