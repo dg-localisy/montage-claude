@@ -525,5 +525,15 @@
    "debut_clip": 0,
    "_source": "Clip fourni (13829010, stylet sur des graphiques de tablette), 7,9–9,8 s. Sur « à l'euro près, et trois »."
   }
- ]
+ ],
+ "couverture": {
+  "image": 1932,
+  "temps": 64.4,
+  "_note": "Image du rush (rush_v4b.mp4), non étalonnée comme la vidéo : Loïs qui sourit, yeux ouverts (score de sourire le plus haut avec le n° 1 à 30,4 s). Autres choix : planche numérotée envoyée."
+ },
+ "livraison": {
+  "fichier": "Video8_marketing_rapporte_9x16.mp4",
+  "son": "-14,2 LUFS, crête -1,2 dBTP, riser +5,5 dB au-dessus de la voix (son_final.py)",
+  "duree_s": 66.07
+ }
 }
