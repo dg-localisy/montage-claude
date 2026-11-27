@@ -654,8 +654,8 @@ def note_vibra(f, duree, vel):
     """Lame de vibraphone : partiels de lame (1 ; 3,9 ; 9,2), longue tenue, trémolo du moteur (5,5 Hz)."""
     t = np.arange(int(duree * SR)) / SR
     env = np.exp(-t / 1.5) * (1 - np.exp(-t / 0.002))
-    x = (np.sin(2 * np.pi * f * t) + 0.22 * np.sin(2 * np.pi * 3.9 * f * t) * np.exp(-t / 0.35)
-         + 0.06 * np.sin(2 * np.pi * 9.2 * f * t) * np.exp(-t / 0.08))
+    x = (np.sin(2 * np.pi * f * t) + 0.42 * np.sin(2 * np.pi * 3.9 * f * t) * np.exp(-t / 0.6)
+         + 0.12 * np.sin(2 * np.pi * 9.2 * f * t) * np.exp(-t / 0.12))
     tremolo = 1 - 0.28 * (0.5 + 0.5 * np.sin(2 * np.pi * 5.5 * t))
     return vel * env * tremolo * x
 
@@ -707,13 +707,14 @@ def style_vibraphone(a, rng):
             for pos in (1, 3):
                 placer(batterie, 0.09 * balai(rng), t0 + pos * temps, pan=0.1)
             for k in range(8):
-                placer(batterie, (0.035 if k % 2 == 0 else 0.022) * charleston(rng), t0 + k * temps / 2 + (swing if k % 2 else 0), pan=0.4)
+                placer(batterie, (0.06 if k % 2 == 0 else 0.04) * charleston(rng), t0 + k * temps / 2 + (swing if k % 2 else 0), pan=0.4)
     vibra = reverb(vibra, rng, duree=1.8, tau=0.6, mouille=0.3)
-    vibra = signal.sosfiltfilt(signal.butter(2, [160 / (SR / 2), 5200 / (SR / 2)], btype="band", output="sos"), vibra, axis=1)
+    vibra = signal.sosfiltfilt(signal.butter(2, [160 / (SR / 2), 7500 / (SR / 2)], btype="band", output="sos"), vibra, axis=1)
     basse = signal.sosfiltfilt(signal.butter(2, 350 / (SR / 2), btype="low", output="sos"), basse, axis=1)
-    mix = 1.0 * vibra + 0.3 * basse + 0.55 * batterie
-    # place pour la voix : bande 1–4 kHz creusée ; pas d'infra-basses
-    mix = mix - 0.8 * signal.sosfiltfilt(signal.butter(2, [1000 / (SR / 2), 4000 / (SR / 2)], btype="band", output="sos"), mix, axis=1)
+    mix = 1.0 * vibra + 0.25 * basse + 0.6 * batterie
+    # place pour la voix : bande 1–4 kHz creusée, un peu moins que les autres styles (« on n'entend rien » sur un
+    # téléphone : sans un peu d'aigu, le vibraphone disparaît derrière la voix) ; pas d'infra-basses
+    mix = mix - 0.5 * signal.sosfiltfilt(signal.butter(2, [1000 / (SR / 2), 4000 / (SR / 2)], btype="band", output="sos"), mix, axis=1)
     mix = signal.sosfiltfilt(signal.butter(2, 70 / (SR / 2), btype="high", output="sos"), mix, axis=1)
     return signal.sosfiltfilt(signal.butter(1, 10000 / (SR / 2), btype="low", output="sos"), mix, axis=1)
 

@@ -1,5 +1,5 @@
 {
- "_aide": "Vidéo 8 · « Personne ne sait ce que son marketing rapporte » (podcast, Loïs, studio fond vert). Version courte « B » validée (27/11/2026) : accroche (sa dernière phrase, déplacée au début) puis la méthode de mesure (2e prise). Montage du rush : voir rush_montage.md. Podcast (27/11) : PAS les effets de texte des témoignages (demande de l'utilisateur : « c'est différent lorsque c'est les podcasts ») : seulement les sous-titres INCENDIE et les phrases fortes ; le mot derrière la tête, la page en verre et les pastilles ont été retirés. Rush brut, sans zooms ni musique : cadres FIXES centrés sur le visage (cadres.json, ×1,0 / ×1,25 / ×1,45 ; gros plans ×1,7 refusés), zoom avant progressif dans l'accroche sur « mais rarement ce que ça lui rapporte » (demandé), éclair blanc + riser fourni à la fin de l'accroche, plans de coupe fournis par l'utilisateur (recadrés en vertical) qui cachent les coupes rapprochées, transition nouvelle « fouet » sur deux d'entre eux, musique nouvelle (vibraphone).",
+ "_aide": "Vidéo 8 · « Personne ne sait ce que son marketing rapporte » (podcast, Loïs, studio fond vert). Version courte « B » validée (27/11/2026) : accroche (sa dernière phrase, déplacée au début) puis la méthode de mesure (2e prise). Montage du rush : voir rush_montage.md. Podcast (27/11) : PAS les effets de texte des témoignages (demande de l'utilisateur : « c'est différent lorsque c'est les podcasts ») : seulement les sous-titres INCENDIE et les phrases fortes ; le mot derrière la tête, la page en verre et les pastilles ont été retirés. Rush brut, sans zooms ni musique : cadres FIXES centrés sur le visage (cadres.json, ×1,0 / ×1,25 / ×1,45 ; gros plans ×1,7 refusés), zoom avant progressif dans l'accroche sur « mais rarement ce que ça lui rapporte » (demandé), éclair blanc + riser fourni à la fin de l'accroche, plans de coupe fournis par l'utilisateur (recadrés en vertical) qui cachent les coupes rapprochées, transition nouvelle « fouet » sur deux d'entre eux, musique nouvelle (vibraphone). v2 son (27/11) : aucun bruitage sur les plans de coupe ni sur les transitions « fouet » (« je n'aime pas les riser qui apparaissent lorsqu'on voit les plans de coupe »), seul le riser de l'accroche reste.",
  "duree": 66.067,
  "fps": 30,
  "rush": {
@@ -9,7 +9,11 @@
  "musique": {
   "actif": true,
   "fichier": "media/musique_vibraphone.wav",
-  "_note": "Musique originale, nouveau style « vibraphone » (jazz-hop au vibraphone, Mi♭ majeur, 90 BPM) : python3 outils/musique_douce.py projets/marketing-rapporte/media/musique_vibraphone.wav --duree 66.067 --debut 4.033 --style vibraphone. Démarre sur l'éclair."
+  "_note": "Musique originale, nouveau style « vibraphone » (jazz-hop au vibraphone, Mi♭ majeur, 90 BPM) : python3 outils/musique_douce.py projets/marketing-rapporte/media/musique_vibraphone.wav --duree 66.067 --debut 4.033 --style vibraphone. Démarre sur l'éclair. v2 (27/11) : « la musique de fond on n'entend rien » → 10 dB sous la voix (au lieu de 17) et baisse de 4 dB quand il parle (au lieu de 6) ; vibraphone plus brillant.",
+  "reglages": {
+   "sous_la_voix_db": -10,
+   "baisse_quand_je_parle_db": -4
+  }
  },
  "camera": {
   "visage": [
@@ -482,7 +486,7 @@
    "style": "fouet",
    "debut": 25.0,
    "duree": 0.36,
-   "son_entree": "transition_oxid"
+   "son": false
   },
   {
    "type": "plan_de_coupe",
@@ -499,14 +503,15 @@
    "fin": 36.2,
    "fichier": "media/equipe_ecrans.mp4",
    "debut_clip": 0,
-   "_source": "Clip fourni (8201290, 4K, équipe au casque devant des écrans), 0–5,7 s, recadré sur la femme au casque. De « comment est-ce que le parcours client évolue » à « dans son logiciel » ; cache les coupes de 30,7 à 35,8 s."
+   "_source": "Clip fourni (8201290, 4K, équipe au casque devant des écrans), 0–5,7 s, recadré sur la femme au casque. De « comment est-ce que le parcours client évolue » à « dans son logiciel » ; cache les coupes de 30,7 à 35,8 s.",
+   "son": false
   },
   {
    "type": "transition",
    "style": "fouet",
    "debut": 43.9,
    "duree": 0.36,
-   "son_entree": "swoosh_universfield"
+   "son": false
   },
   {
    "type": "plan_de_coupe",
@@ -523,7 +528,8 @@
    "fin": 59.45,
    "fichier": "media/tablette_graphiques.mp4",
    "debut_clip": 0,
-   "_source": "Clip fourni (13829010, stylet sur des graphiques de tablette), 7,9–9,8 s. Sur « à l'euro près, et trois »."
+   "_source": "Clip fourni (13829010, stylet sur des graphiques de tablette), 7,9–9,8 s. Sur « à l'euro près, et trois ».",
+   "son": false
   }
  ],
  "couverture": {
