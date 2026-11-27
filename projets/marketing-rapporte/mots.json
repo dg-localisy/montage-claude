@@ -1,0 +1,1182 @@
+[
+{
+"mot": "Un",
+"debut": 0.22,
+"fin": 0.28
+},
+{
+"mot": "chef",
+"debut": 0.3,
+"fin": 0.42
+},
+{
+"mot": "d'entreprise",
+"debut": 0.44,
+"fin": 0.92
+},
+{
+"mot": "sait",
+"debut": 0.98,
+"fin": 1.14
+},
+{
+"mot": "ce",
+"debut": 1.22,
+"fin": 1.3
+},
+{
+"mot": "que",
+"debut": 1.32,
+"fin": 1.36
+},
+{
+"mot": "son",
+"debut": 1.38,
+"fin": 1.48
+},
+{
+"mot": "marketing",
+"debut": 1.5,
+"fin": 1.94
+},
+{
+"mot": "lui",
+"debut": 1.98,
+"fin": 2.08
+},
+{
+"mot": "coûte,",
+"debut": 2.14,
+"fin": 2.34
+},
+{
+"mot": "mais",
+"debut": 2.62,
+"fin": 2.72
+},
+{
+"mot": "rarement",
+"debut": 2.76,
+"fin": 3.06
+},
+{
+"mot": "ce",
+"debut": 3.1,
+"fin": 3.16
+},
+{
+"mot": "que",
+"debut": 3.2,
+"fin": 3.22
+},
+{
+"mot": "ça",
+"debut": 3.26,
+"fin": 3.32
+},
+{
+"mot": "lui",
+"debut": 3.36,
+"fin": 3.46
+},
+{
+"mot": "rapporte.",
+"debut": 3.5,
+"fin": 3.88
+},
+{
+"mot": "On",
+"debut": 4.22,
+"fin": 4.28
+},
+{
+"mot": "a",
+"debut": 4.32,
+"fin": 4.36
+},
+{
+"mot": "récemment",
+"debut": 4.42,
+"fin": 4.72
+},
+{
+"mot": "lancé",
+"debut": 4.76,
+"fin": 4.96
+},
+{
+"mot": "des",
+"debut": 5.0,
+"fin": 5.08
+},
+{
+"mot": "campagnes",
+"debut": 5.12,
+"fin": 5.58
+},
+{
+"mot": "pour",
+"debut": 5.64,
+"fin": 5.82
+},
+{
+"mot": "un",
+"debut": 5.88,
+"fin": 6.08
+},
+{
+"mot": "client",
+"debut": 6.2,
+"fin": 6.66
+},
+{
+"mot": "qui",
+"debut": 6.76,
+"fin": 6.82
+},
+{
+"mot": "est",
+"debut": 6.84,
+"fin": 6.92
+},
+{
+"mot": "super",
+"debut": 6.96,
+"fin": 7.24
+},
+{
+"mot": "orienté",
+"debut": 7.28,
+"fin": 7.68
+},
+{
+"mot": "chiffres.",
+"debut": 7.8,
+"fin": 8.1
+},
+{
+"mot": "Donc",
+"debut": 8.119,
+"fin": 8.28
+},
+{
+"mot": "lui,",
+"debut": 8.32,
+"fin": 8.46
+},
+{
+"mot": "il",
+"debut": 8.52,
+"fin": 8.56
+},
+{
+"mot": "nous",
+"debut": 8.6,
+"fin": 8.74
+},
+{
+"mot": "a",
+"debut": 8.78,
+"fin": 8.82
+},
+{
+"mot": "clairement",
+"debut": 8.9,
+"fin": 9.26
+},
+{
+"mot": "dit :",
+"debut": 9.3,
+"fin": 9.42
+},
+{
+"mot": "« Moi,",
+"debut": 9.54,
+"fin": 9.74
+},
+{
+"mot": "je",
+"debut": 10.02,
+"fin": 10.28
+},
+{
+"mot": "veux",
+"debut": 10.54,
+"fin": 10.78
+},
+{
+"mot": "savoir",
+"debut": 11.06,
+"fin": 11.38
+},
+{
+"mot": "combien",
+"debut": 11.5,
+"fin": 11.74
+},
+{
+"mot": "les",
+"debut": 11.78,
+"fin": 11.86
+},
+{
+"mot": "campagnes",
+"debut": 11.9,
+"fin": 12.2
+},
+{
+"mot": "marketing",
+"debut": 12.24,
+"fin": 12.64
+},
+{
+"mot": "me",
+"debut": 12.68,
+"fin": 12.78
+},
+{
+"mot": "rapportent. »",
+"debut": 12.84,
+"fin": 13.32
+},
+{
+"mot": "Avant",
+"debut": 13.62,
+"fin": 13.82
+},
+{
+"mot": "de",
+"debut": 13.84,
+"fin": 13.86
+},
+{
+"mot": "lancer",
+"debut": 13.9,
+"fin": 14.12
+},
+{
+"mot": "les",
+"debut": 14.14,
+"fin": 14.22
+},
+{
+"mot": "campagnes,",
+"debut": 14.26,
+"fin": 14.6
+},
+{
+"mot": "il",
+"debut": 14.62,
+"fin": 14.66
+},
+{
+"mot": "n'y",
+"debut": 14.68,
+"fin": 14.7
+},
+{
+"mot": "avait",
+"debut": 14.72,
+"fin": 14.9
+},
+{
+"mot": "pas",
+"debut": 14.94,
+"fin": 15.02
+},
+{
+"mot": "de",
+"debut": 15.04,
+"fin": 15.16
+},
+{
+"mot": "mesure",
+"debut": 15.22,
+"fin": 15.56
+},
+{
+"mot": "qui",
+"debut": 15.62,
+"fin": 15.72
+},
+{
+"mot": "était",
+"debut": 15.76,
+"fin": 15.98
+},
+{
+"mot": "possible",
+"debut": 16.02,
+"fin": 16.5
+},
+{
+"mot": "pour",
+"debut": 16.56,
+"fin": 16.82
+},
+{
+"mot": "savoir",
+"debut": 16.9,
+"fin": 17.32
+},
+{
+"mot": "exactement",
+"debut": 17.44,
+"fin": 18.08
+},
+{
+"mot": "le",
+"debut": 18.32,
+"fin": 18.38
+},
+{
+"mot": "retour",
+"debut": 18.42,
+"fin": 18.66
+},
+{
+"mot": "sur",
+"debut": 18.7,
+"fin": 18.8
+},
+{
+"mot": "investissement",
+"debut": 18.84,
+"fin": 19.32
+},
+{
+"mot": "des",
+"debut": 19.36,
+"fin": 19.44
+},
+{
+"mot": "campagnes",
+"debut": 19.48,
+"fin": 19.76
+},
+{
+"mot": "marketing.",
+"debut": 19.8,
+"fin": 20.28
+},
+{
+"mot": "Donc",
+"debut": 20.34,
+"fin": 20.44
+},
+{
+"mot": "ce",
+"debut": 20.48,
+"fin": 20.56
+},
+{
+"mot": "qu'on",
+"debut": 20.6,
+"fin": 20.7
+},
+{
+"mot": "a",
+"debut": 20.74,
+"fin": 20.8
+},
+{
+"mot": "fait,",
+"debut": 20.88,
+"fin": 20.98
+},
+{
+"mot": "c'est",
+"debut": 21.06,
+"fin": 21.16
+},
+{
+"mot": "quoi ?",
+"debut": 21.2,
+"fin": 21.36
+},
+{
+"mot": "C'est",
+"debut": 21.62,
+"fin": 21.72
+},
+{
+"mot": "qu'on",
+"debut": 21.74,
+"fin": 21.88
+},
+{
+"mot": "a",
+"debut": 21.92,
+"fin": 22.12
+},
+{
+"mot": "étudié",
+"debut": 22.22,
+"fin": 22.86
+},
+{
+"mot": "avec",
+"debut": 22.92,
+"fin": 23.12
+},
+{
+"mot": "lui",
+"debut": 23.18,
+"fin": 23.3
+},
+{
+"mot": "le",
+"debut": 23.42,
+"fin": 23.5
+},
+{
+"mot": "parcours",
+"debut": 23.6,
+"fin": 24.0
+},
+{
+"mot": "type",
+"debut": 24.08,
+"fin": 24.3
+},
+{
+"mot": "d'un",
+"debut": 24.44,
+"fin": 24.62
+},
+{
+"mot": "client,",
+"debut": 24.64,
+"fin": 24.98
+},
+{
+"mot": "donc",
+"debut": 25.06,
+"fin": 25.2
+},
+{
+"mot": "comment",
+"debut": 25.24,
+"fin": 25.48
+},
+{
+"mot": "les",
+"debut": 25.52,
+"fin": 25.6
+},
+{
+"mot": "clients",
+"debut": 25.64,
+"fin": 25.88
+},
+{
+"mot": "arrivent",
+"debut": 25.94,
+"fin": 26.14
+},
+{
+"mot": "dans",
+"debut": 26.16,
+"fin": 26.28
+},
+{
+"mot": "son",
+"debut": 26.32,
+"fin": 26.44
+},
+{
+"mot": "CRM,",
+"debut": 26.52,
+"fin": 26.92
+},
+{
+"mot": "via",
+"debut": 27.16,
+"fin": 27.32
+},
+{
+"mot": "quels",
+"debut": 27.38,
+"fin": 27.52
+},
+{
+"mot": "canaux.",
+"debut": 27.56,
+"fin": 27.98
+},
+{
+"mot": "Une",
+"debut": 28.24,
+"fin": 28.32
+},
+{
+"mot": "fois",
+"debut": 28.36,
+"fin": 28.44
+},
+{
+"mot": "dans",
+"debut": 28.48,
+"fin": 28.56
+},
+{
+"mot": "le",
+"debut": 28.58,
+"fin": 28.62
+},
+{
+"mot": "CRM,",
+"debut": 28.68,
+"fin": 29.06
+},
+{
+"mot": "comment",
+"debut": 29.14,
+"fin": 29.36
+},
+{
+"mot": "les",
+"debut": 29.4,
+"fin": 29.5
+},
+{
+"mot": "clients",
+"debut": 29.54,
+"fin": 29.86
+},
+{
+"mot": "sont",
+"debut": 29.94,
+"fin": 30.08
+},
+{
+"mot": "traités,",
+"debut": 30.12,
+"fin": 30.58
+},
+{
+"mot": "comment",
+"debut": 30.84,
+"fin": 31.18
+},
+{
+"mot": "est-ce",
+"debut": 31.22,
+"fin": 31.36
+},
+{
+"mot": "que",
+"debut": 31.38,
+"fin": 31.44
+},
+{
+"mot": "le",
+"debut": 31.46,
+"fin": 31.52
+},
+{
+"mot": "parcours",
+"debut": 31.56,
+"fin": 31.84
+},
+{
+"mot": "client",
+"debut": 31.9,
+"fin": 32.119
+},
+{
+"mot": "évolue.",
+"debut": 32.2,
+"fin": 32.6
+},
+{
+"mot": "Et",
+"debut": 32.84,
+"fin": 32.9
+},
+{
+"mot": "puis,",
+"debut": 33.02,
+"fin": 33.2
+},
+{
+"mot": "une",
+"debut": 33.5,
+"fin": 33.62
+},
+{
+"mot": "fois",
+"debut": 33.68,
+"fin": 33.8
+},
+{
+"mot": "le",
+"debut": 33.82,
+"fin": 33.9
+},
+{
+"mot": "client",
+"debut": 33.94,
+"fin": 34.34
+},
+{
+"mot": "signé",
+"debut": 34.52,
+"fin": 34.98
+},
+{
+"mot": "ou",
+"debut": 35.2,
+"fin": 35.26
+},
+{
+"mot": "perdu,",
+"debut": 35.4,
+"fin": 35.74
+},
+{
+"mot": "comment",
+"debut": 35.84,
+"fin": 36.0
+},
+{
+"mot": "est-ce",
+"debut": 36.02,
+"fin": 36.12
+},
+{
+"mot": "que",
+"debut": 36.14,
+"fin": 36.2
+},
+{
+"mot": "ça",
+"debut": 36.26,
+"fin": 36.34
+},
+{
+"mot": "se",
+"debut": 36.38,
+"fin": 36.44
+},
+{
+"mot": "traduit",
+"debut": 36.48,
+"fin": 36.8
+},
+{
+"mot": "dans",
+"debut": 36.84,
+"fin": 36.98
+},
+{
+"mot": "son",
+"debut": 37.04,
+"fin": 37.16
+},
+{
+"mot": "logiciel.",
+"debut": 37.22,
+"fin": 37.72
+},
+{
+"mot": "Et",
+"debut": 38.0,
+"fin": 38.1
+},
+{
+"mot": "une",
+"debut": 38.14,
+"fin": 38.24
+},
+{
+"mot": "fois",
+"debut": 38.26,
+"fin": 38.38
+},
+{
+"mot": "qu'on",
+"debut": 38.4,
+"fin": 38.5
+},
+{
+"mot": "avait",
+"debut": 38.56,
+"fin": 38.72
+},
+{
+"mot": "toutes",
+"debut": 38.76,
+"fin": 38.9
+},
+{
+"mot": "ces",
+"debut": 38.92,
+"fin": 39.02
+},
+{
+"mot": "données-là,",
+"debut": 39.06,
+"fin": 39.46
+},
+{
+"mot": "on",
+"debut": 39.66,
+"fin": 39.74
+},
+{
+"mot": "a",
+"debut": 39.78,
+"fin": 39.82
+},
+{
+"mot": "pu",
+"debut": 39.9,
+"fin": 40.06
+},
+{
+"mot": "créer",
+"debut": 40.12,
+"fin": 40.52
+},
+{
+"mot": "un",
+"debut": 40.8,
+"fin": 40.88
+},
+{
+"mot": "reporting",
+"debut": 40.92,
+"fin": 41.42
+},
+{
+"mot": "automatisé",
+"debut": 41.48,
+"fin": 42.08
+},
+{
+"mot": "qui",
+"debut": 42.14,
+"fin": 42.24
+},
+{
+"mot": "nous",
+"debut": 42.28,
+"fin": 42.4
+},
+{
+"mot": "permet",
+"debut": 42.46,
+"fin": 42.72
+},
+{
+"mot": "quoi ?",
+"debut": 42.78,
+"fin": 42.92
+},
+{
+"mot": "Qui",
+"debut": 43.0,
+"fin": 43.06
+},
+{
+"mot": "nous",
+"debut": 43.1,
+"fin": 43.22
+},
+{
+"mot": "permet",
+"debut": 43.26,
+"fin": 43.5
+},
+{
+"mot": "de",
+"debut": 43.54,
+"fin": 43.58
+},
+{
+"mot": "savoir",
+"debut": 43.62,
+"fin": 43.92
+},
+{
+"mot": "tous",
+"debut": 44.04,
+"fin": 44.12
+},
+{
+"mot": "les",
+"debut": 44.14,
+"fin": 44.22
+},
+{
+"mot": "clients",
+"debut": 44.26,
+"fin": 44.5
+},
+{
+"mot": "qui",
+"debut": 44.54,
+"fin": 44.66
+},
+{
+"mot": "rentrent",
+"debut": 44.72,
+"fin": 45.22
+},
+{
+"mot": "dans",
+"debut": 45.26,
+"fin": 45.36
+},
+{
+"mot": "son",
+"debut": 45.4,
+"fin": 45.52
+},
+{
+"mot": "CRM",
+"debut": 45.56,
+"fin": 45.9
+},
+{
+"mot": "depuis",
+"debut": 45.94,
+"fin": 46.14
+},
+{
+"mot": "le",
+"debut": 46.16,
+"fin": 46.2
+},
+{
+"mot": "site",
+"debut": 46.24,
+"fin": 46.4
+},
+{
+"mot": "web,",
+"debut": 46.46,
+"fin": 46.62
+},
+{
+"mot": "tous",
+"debut": 46.86,
+"fin": 46.96
+},
+{
+"mot": "les",
+"debut": 46.98,
+"fin": 47.06
+},
+{
+"mot": "clients",
+"debut": 47.1,
+"fin": 47.4
+},
+{
+"mot": "qui",
+"debut": 47.44,
+"fin": 47.56
+},
+{
+"mot": "sont",
+"debut": 47.64,
+"fin": 47.96
+},
+{
+"mot": "in",
+"debut": 48.0,
+"fin": 48.16
+},
+{
+"mot": "fine",
+"debut": 48.22,
+"fin": 48.58
+},
+{
+"mot": "signés,",
+"debut": 48.68,
+"fin": 49.04
+},
+{
+"mot": "pour",
+"debut": 49.24,
+"fin": 49.36
+},
+{
+"mot": "quel",
+"debut": 49.4,
+"fin": 49.58
+},
+{
+"mot": "montant.",
+"debut": 49.64,
+"fin": 50.08
+},
+{
+"mot": "Et",
+"debut": 50.34,
+"fin": 50.4
+},
+{
+"mot": "donc",
+"debut": 50.46,
+"fin": 50.62
+},
+{
+"mot": "ça",
+"debut": 50.68,
+"fin": 50.74
+},
+{
+"mot": "nous",
+"debut": 50.76,
+"fin": 50.88
+},
+{
+"mot": "permet",
+"debut": 50.92,
+"fin": 51.14
+},
+{
+"mot": "de",
+"debut": 51.18,
+"fin": 51.22
+},
+{
+"mot": "dégager,",
+"debut": 51.26,
+"fin": 51.72
+},
+{
+"mot": "un,",
+"debut": 51.98,
+"fin": 52.16
+},
+{
+"mot": "le",
+"debut": 52.32,
+"fin": 52.4
+},
+{
+"mot": "chiffre",
+"debut": 52.46,
+"fin": 52.62
+},
+{
+"mot": "d'affaires",
+"debut": 52.64,
+"fin": 52.92
+},
+{
+"mot": "généré",
+"debut": 52.98,
+"fin": 53.28
+},
+{
+"mot": "par",
+"debut": 53.32,
+"fin": 53.42
+},
+{
+"mot": "son",
+"debut": 53.48,
+"fin": 53.6
+},
+{
+"mot": "site",
+"debut": 53.66,
+"fin": 53.78
+},
+{
+"mot": "internet,",
+"debut": 53.82,
+"fin": 54.26
+},
+{
+"mot": "deux,",
+"debut": 54.52,
+"fin": 54.72
+},
+{
+"mot": "le",
+"debut": 54.88,
+"fin": 54.96
+},
+{
+"mot": "chiffre",
+"debut": 55.02,
+"fin": 55.2
+},
+{
+"mot": "d'affaires",
+"debut": 55.22,
+"fin": 55.74
+},
+{
+"mot": "généré",
+"debut": 55.94,
+"fin": 56.26
+},
+{
+"mot": "par",
+"debut": 56.36,
+"fin": 56.46
+},
+{
+"mot": "ses",
+"debut": 56.5,
+"fin": 56.6
+},
+{
+"mot": "campagnes",
+"debut": 56.66,
+"fin": 57.06
+},
+{
+"mot": "marketing",
+"debut": 57.1,
+"fin": 57.62
+},
+{
+"mot": "à",
+"debut": 57.88,
+"fin": 57.94
+},
+{
+"mot": "l'euro",
+"debut": 58.0,
+"fin": 58.3
+},
+{
+"mot": "près,",
+"debut": 58.44,
+"fin": 58.62
+},
+{
+"mot": "et",
+"debut": 58.84,
+"fin": 58.98
+},
+{
+"mot": "trois,",
+"debut": 59.04,
+"fin": 59.32
+},
+{
+"mot": "on",
+"debut": 59.42,
+"fin": 59.46
+},
+{
+"mot": "peut",
+"debut": 59.52,
+"fin": 59.62
+},
+{
+"mot": "calculer",
+"debut": 59.66,
+"fin": 60.02
+},
+{
+"mot": "le",
+"debut": 60.06,
+"fin": 60.12
+},
+{
+"mot": "retour",
+"debut": 60.16,
+"fin": 60.42
+},
+{
+"mot": "sur",
+"debut": 60.48,
+"fin": 60.58
+},
+{
+"mot": "investissement",
+"debut": 60.62,
+"fin": 61.28
+},
+{
+"mot": "de",
+"debut": 61.52,
+"fin": 61.6
+},
+{
+"mot": "ses",
+"debut": 61.64,
+"fin": 61.76
+},
+{
+"mot": "campagnes",
+"debut": 61.8,
+"fin": 62.14
+},
+{
+"mot": "marketing",
+"debut": 62.18,
+"fin": 62.66
+},
+{
+"mot": "et",
+"debut": 62.82,
+"fin": 62.9
+},
+{
+"mot": "lui",
+"debut": 62.94,
+"fin": 63.06
+},
+{
+"mot": "montrer",
+"debut": 63.12,
+"fin": 63.44
+},
+{
+"mot": "par",
+"debut": 63.54,
+"fin": 63.64
+},
+{
+"mot": "A",
+"debut": 63.7,
+"fin": 63.76
+},
+{
+"mot": "+",
+"debut": 63.84,
+"fin": 64.04
+},
+{
+"mot": "B",
+"debut": 64.12,
+"fin": 64.28
+},
+{
+"mot": "les",
+"debut": 64.56,
+"fin": 64.959
+},
+{
+"mot": "effets",
+"debut": 65.019,
+"fin": 65.239
+},
+{
+"mot": "de",
+"debut": 65.28,
+"fin": 65.34
+},
+{
+"mot": "nos",
+"debut": 65.379,
+"fin": 65.48
+},
+{
+"mot": "campagnes.",
+"debut": 65.519,
+"fin": 65.9
+}
+]
